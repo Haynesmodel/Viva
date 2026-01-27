@@ -45,3 +45,24 @@
    .bg-nuss-rishi{background:linear-gradient(180deg, rgba(255,0,0,.2), rgba(0,0,0,.05))}
    .bg-singer-nuss{background:linear-gradient(180deg, rgba(160,82,45,.2), rgba(0,0,0,.05))}
    
+   /* Viva group overlays */
+   .egg-texans{background:rgba(139,69,19,.7)}
+   .egg-guns{background:rgba(60,60,60,.7)}
+   .egg-depauw{background:rgba(255,140,0,.7)}
+   .egg-kkg{background:rgba(255,182,193,.7)}
+   .egg-fiji{background:rgba(0,128,128,.7)}
+   .egg-former-champs{background:rgba(218,165,32,.7)}
+   .egg-last-place{background:rgba(80,80,80,.7)}
+   .egg-skiers{background:rgba(70,130,180,.7)}
+
+   /* Viva group backdrops */
+   .bg-texans{background:linear-gradient(180deg, rgba(139,69,19,.18), rgba(255,255,255,.08))}
+   .bg-guns{background:linear-gradient(180deg, rgba(60,60,60,.22), rgba(0,0,0,.05))}
+   .bg-depauw-tigers{background:linear-gradient(180deg, rgba(255,140,0,.2), rgba(255,255,255,.08))}
+   .bg-kappa-kappa-gamma{background:linear-gradient(180deg, rgba(255,182,193,.2), rgba(255,255,255,.08))}
+   .bg-fiji{background:linear-gradient(180deg, rgba(0,128,128,.2), rgba(255,255,255,.08))}
+   .bg-former-champs{background:linear-gradient(180deg, rgba(218,165,32,.2), rgba(0,0,0,.05))}
+   .bg-former-last-place{background:linear-gradient(180deg, rgba(80,80,80,.2), rgba(255,255,255,.08))}
+   .bg-park-city-skiers{background:linear-gradient(180deg, rgba(70,130,180,.2), rgba(255,255,255,.08))}
+
+   .bg-married-to-each-other{background:linear-gradient(180deg, rgba(255,105,180,.18), rgba(255,255,255,.08))}

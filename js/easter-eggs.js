@@ -24,21 +24,15 @@
     }
   
     const GROUP_EGGS = {
-      'the-jews':            { cls: 'egg-the-jews', label: 'The Jews ✡️', emoji: '✡️' },
-      'churchill-baseball':  { cls: 'egg-churchill-baseball', label: 'Churchill Baseball ⚾', emoji: '⚾' },
-      'blue-bloods':         { cls: 'egg-blue-bloods', label: 'Blue Bloods 👑', emoji: '👑' },
-      'commish':             { cls: 'egg-commish', label: 'Commish 🔨', emoji: '🔨' },
-      'fathers':             { cls: 'egg-fathers', label: 'Fathers 👶', emoji: '🍼' },
-      'hoosiers':            { cls: 'egg-hoosiers', label: 'Hoosiers 🏀', emoji: '🏀' },
-      'married':             { cls: 'egg-married', label: 'Married 💍', emoji: '💖' },
-      'birthday-boys':       { cls: 'egg-birthday-boys', label: 'Birthday Boys 🎂', emoji: '🎈' },
-      'former-champions':    { cls: 'egg-former-champions', label: 'Former Champions 🏆', emoji: '🏆' },
-      'educated':            { cls: 'egg-educated', label: 'Educated 🎓', emoji: '🎓' },
-      'birds-clinch':        { cls: 'egg-birds-clinch', label: 'CLINCHED', emoji: '🐦' },
-      'sec':                 { cls: 'egg-sec', label: 'SEC 🏈', emoji: '🏈' },
-      // "pairs" treated as groups for visuals
-      'nuss-rishi':          { cls: 'egg-terps', label: 'Terps 🐢', emoji: '🐢' },
-      'singer-nuss':         { cls: 'egg-butter-bowl', label: 'Butter Bowl 🧈', emoji: '🧈' }
+      'texans':               { cls: 'egg-texans', label: 'Texans 🤠', emoji: '🤠' },
+      'married-to-each-other':{ cls: 'egg-married', label: 'Married 💍', emoji: '💖' },
+      'guns':                 { cls: 'egg-guns', label: 'Guns 🔫', emoji: '🔫' },
+      'depauw-tigers':        { cls: 'egg-depauw', label: 'DePauw (Tigers) 🐯', emoji: '🐯' },
+      'kappa-kappa-gamma':    { cls: 'egg-kkg', label: 'Kappa Kappa Gamma ✨', emoji: '✨' },
+      'fiji':                 { cls: 'egg-fiji', label: 'Fiji 🌺', emoji: '🌺' },
+      'former-champs':        { cls: 'egg-former-champs', label: 'Former Champs 🏆', emoji: '🏆' },
+      'former-last-place':    { cls: 'egg-last-place', label: 'Former Last Place 🪦', emoji: '🪦' },
+      'park-city-skiers':     { cls: 'egg-skiers', label: 'Park City Skiers 🎿', emoji: '🎿' }
     };
   
     // one-shot celebratory overlay
