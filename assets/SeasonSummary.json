@@ -16,7 +16,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2020,
@@ -35,7 +36,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2020,
@@ -54,7 +56,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2020,
@@ -73,7 +76,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2020,
@@ -92,7 +96,8 @@
     "saunders": true,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2020,
@@ -111,7 +116,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2020,
@@ -130,7 +136,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2020,
@@ -149,7 +156,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -168,7 +176,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -187,7 +196,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -206,7 +216,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -225,7 +236,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -244,7 +256,8 @@
     "saunders": true,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -263,7 +276,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -282,7 +296,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -301,7 +316,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -320,7 +336,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2021,
@@ -339,7 +356,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -358,7 +376,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -377,7 +396,8 @@
     "saunders": true,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -396,7 +416,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -415,7 +436,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -434,7 +456,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -453,7 +476,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -472,7 +496,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -491,7 +516,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -510,7 +536,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -529,7 +556,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -548,7 +576,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2022,
@@ -567,7 +596,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -586,7 +616,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 3
   },
   {
     "season": 2023,
@@ -605,7 +636,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 7
   },
   {
     "season": 2023,
@@ -624,7 +656,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 8
   },
   {
     "season": 2023,
@@ -643,7 +676,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 3
   },
   {
     "season": 2023,
@@ -662,7 +696,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 1
   },
   {
     "season": 2023,
@@ -681,7 +716,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 6
   },
   {
     "season": 2023,
@@ -700,7 +736,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 2
   },
   {
     "season": 2023,
@@ -719,7 +756,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 2
   },
   {
     "season": 2023,
@@ -738,7 +776,8 @@
     "saunders": true,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 6
   },
   {
     "season": 2023,
@@ -757,7 +796,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 2
   },
   {
     "season": 2023,
@@ -776,7 +816,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 5
   },
   {
     "season": 2023,
@@ -795,7 +836,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 6
   },
   {
     "season": 2024,
@@ -814,7 +856,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 5
   },
   {
     "season": 2024,
@@ -833,7 +876,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 6
   },
   {
     "season": 2024,
@@ -852,7 +896,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 4
   },
   {
     "season": 2024,
@@ -871,7 +916,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 6
   },
   {
     "season": 2024,
@@ -890,7 +936,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 4
   },
   {
     "season": 2024,
@@ -909,7 +956,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 7
   },
   {
     "season": 2024,
@@ -928,7 +976,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 4
   },
   {
     "season": 2024,
@@ -947,7 +996,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 5
   },
   {
     "season": 2024,
@@ -966,7 +1016,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 2
   },
   {
     "season": 2024,
@@ -985,7 +1036,8 @@
     "saunders": true,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 9
   },
   {
     "season": 2024,
@@ -1004,7 +1056,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 3
   },
   {
     "season": 2024,
@@ -1023,7 +1076,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 5
   },
   {
     "season": 2025,
@@ -1042,7 +1096,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 5
   },
   {
     "season": 2025,
@@ -1061,7 +1116,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 4
   },
   {
     "season": 2025,
@@ -1080,7 +1136,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 4
   },
   {
     "season": 2025,
@@ -1099,7 +1156,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 8
   },
   {
     "season": 2025,
@@ -1118,7 +1176,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 6
   },
   {
     "season": 2025,
@@ -1137,7 +1196,8 @@
     "saunders": false,
     "bye": true,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 3
   },
   {
     "season": 2025,
@@ -1156,7 +1216,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 5
   },
   {
     "season": 2025,
@@ -1175,7 +1236,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 1
   },
   {
     "season": 2025,
@@ -1194,7 +1256,8 @@
     "saunders": true,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 4
   },
   {
     "season": 2025,
@@ -1213,7 +1276,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 7
   },
   {
     "season": 2025,
@@ -1232,7 +1296,8 @@
     "saunders": false,
     "bye": false,
     "wild_card": false,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 4
   },
   {
     "season": 2025,
@@ -1251,6 +1316,7 @@
     "saunders": false,
     "bye": false,
     "wild_card": true,
-    "saunders_bye": false
+    "saunders_bye": false,
+    "shotgun_starts": 6
   }
 ]

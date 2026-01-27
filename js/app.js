@@ -2165,11 +2165,12 @@ function renderSeasonRecap(team){
   const mkOutcome = (r)=>{
     const playoffGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isPlayoffGame(g));
     const saundersGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isSaundersGame(g));
+    const shotgunNote = Number.isFinite(+r.shotgun_starts) ? ` • Shotguns: ${r.shotgun_starts}` : "";
     const playoffNarr = narrativeForGames(playoffGames);
-    if(playoffNarr) return `${playoffNarr}`;
+    if(playoffNarr) return `${playoffNarr}${shotgunNote}`;
     const saundersNarr = narrativeForGames(saundersGames, "Last Place");
-    if(saundersNarr) return `${saundersNarr}`;
-    return `🗑️ Missed Playoffs`;
+    if(saundersNarr) return `${saundersNarr}${shotgunNote}`;
+    return `🗑️ Missed Playoffs${shotgunNote}`;
   };
 
   tb.innerHTML = rows.map(r=>`
