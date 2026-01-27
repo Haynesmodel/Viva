@@ -11,6 +11,21 @@
 const startersTotal = 9;
 const DEFAULT_TEAM_FOR_RIVALRY = "Joe";
 
+const TEAM_PHOTOS = {
+  Dulberger: 'assets/Dulberger.jpeg',
+  Erin: 'assets/Erin.jpeg',
+  Joe: 'assets/Joe.jpeg',
+  Kylie: 'assets/Kylie.jpeg',
+  Leah: 'assets/Leah.jpeg',
+  Malcolm: 'assets/Malcolm.jpeg',
+  Marian: 'assets/Marian.jpeg',
+  Mino: 'assets/Mino.jpeg',
+  Rico: 'assets/Rico.jpeg',
+  Seth: 'assets/Seth.jpeg',
+  Taylor: 'assets/Taylor.jpeg',
+  Wei: 'assets/Wei.jpeg'
+};
+
 let leagueGames = [];      // assets/H2H.json
 let seasonSummaries = [];  // assets/SeasonSummary.json
 let rivalries = [];        // assets/Rivalries.json
@@ -406,6 +421,11 @@ function showPage(id){
   if(histPage) histPage.classList.add('visible');
 }
 
+function headerImageForTeam(team){
+  if(team===ALL_TEAMS) return 'assets/LeaguePic.jpeg';
+  return TEAM_PHOTOS[team] || 'assets/LeaguePic.jpeg';
+}
+
 /* ---------- Header banners row ---------- */
 function renderHeaderBannersForOwner(owner){
   const el=document.getElementById('headerBanners'); if(!el) return;
@@ -424,6 +444,11 @@ function updateHeaderForTeam(team){
   try {
     const h2 = document.querySelector('header h2');
     if (h2) h2.textContent = team;
+    const headerEl = document.querySelector('header');
+    if (headerEl) {
+      const img = headerImageForTeam(team);
+      headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+    }
     renderHeaderBannersForOwner(team);
     document.title = team + ' — League History';
   } catch (_) {}
