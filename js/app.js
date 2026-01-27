@@ -10,6 +10,7 @@
 
 const startersTotal = 9;
 const DEFAULT_TEAM_FOR_RIVALRY = "Joe";
+const EXCLUDED_TEAMS = new Set(["Chuck", "Julia"]);
 
 const TEAM_PHOTOS = {
   Dulberger: '../assets/Dulberger.jpeg',
@@ -550,7 +551,7 @@ function renderSidebarPostseason(team){
 function teamOptions(){
   const ts=unique(seasonSummaries.map(r=>r.owner));
   const tg=unique(leagueGames.flatMap(g=>[g.teamA,g.teamB]));
-  const teams=unique([...ts,...tg]).sort();
+  const teams=unique([...ts,...tg]).filter(t=>!EXCLUDED_TEAMS.has(t)).sort();
   return [{value:ALL_TEAMS,label:"All Teams (League)"}, ...teams.map(t=>({value:t,label:t}))];
 }
 function seasonOptions(){ return unique(leagueGames.map(g=>g.season)).sort((a,b)=>b-a); }
@@ -930,6 +931,7 @@ function leagueRowsSingleWeeks(){
   const rows = [];
   for (const g of leagueGames) {
     if (typeof isTwoWeek2014 === 'function' && isTwoWeek2014(g)) continue; // 2014 2-week playoff
+    if (+g.season === 2020 && !isRegularGame(g)) continue; // skip 2020 playoffs (two-week)
     rows.push({ team: g.teamA, pf: g.scoreA, pa: g.scoreB, opp: g.teamB, date: g.date, season: Number(g.season || g.year) || null, g });
     rows.push({ team: g.teamB, pf: g.scoreB, pa: g.scoreA, opp: g.teamA, date: g.date, season: Number(g.season || g.year) || null, g });
   }
@@ -1095,7 +1097,7 @@ function renderLeagueSummaryTablesAllTeams(){
     cur.n += r.n; cur.pf += r.pf; cur.pa += r.pa;
     regByTeam.set(t, cur);
   }
-  const regRows = Array.from(regByTeam.values()).map(r=>{
+  const regRows = Array.from(regByTeam.values()).filter(r=>!EXCLUDED_TEAMS.has(r.team)).map(r=>{
     const games = (r.w + r.l + r.t);
     const winPct = games ? (r.w + 0.5*r.t) / games : 0;
     const ppg = r.n ? (r.pf / r.n) : 0;
@@ -1140,7 +1142,7 @@ function renderLeagueSummaryTablesAllTeams(){
       postByTeam.set(g.teamB, rec);
     }
   }
-  const postRows = Array.from(postByTeam.values()).map(r=>{
+  const postRows = Array.from(postByTeam.values()).filter(r=>!EXCLUDED_TEAMS.has(r.team)).map(r=>{
     const dPPG = r.dN ? (r.dPF/r.dN) : 0;
     const dOPPG = r.dN ? (r.dPA/r.dN) : 0;
     const sPPG = r.sN ? (r.sPF/r.sN) : 0;
@@ -1205,6 +1207,7 @@ function renderLeagueSummaryTablesAllTeams(){
     finishByTeam.set(r.owner, cur);
   }
   const finishRows = Array.from(finishByTeam.values())
+    .filter(r=>!EXCLUDED_TEAMS.has(r.team))
     .map(r=>({ team:r.team, avg: r.n ? (r.sum/r.n) : null, n:r.n }))
     .sort((a,b)=> (a.avg ?? Infinity) - (b.avg ?? Infinity) || b.n - a.n || a.team.localeCompare(b.team));
 
