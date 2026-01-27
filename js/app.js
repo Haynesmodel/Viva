@@ -784,7 +784,7 @@ function renderTopHighlights(team){
   `;
 
   grid.innerHTML = [
-    chip("Viva La Collusion", `${champYears.length}`, champYears.length ? `Years: ${champsDisplay.join(", ")}` : "—", "champs"),
+    chip("Championships", `${champYears.length}`, champYears.length ? `Years: ${champsDisplay.join(", ")}` : "—", "champs"),
     chip("Last Place", `${sauYears.length}`, sauYears.length ? `Years: ${sauDisplay.join(", ")}` : "—", "sau"),
     chip("Regular-Season Titles", `${regYears.length}`, regYears.length ? `Years: ${regYears.join(", ")}` : "—", "regs"),
     chip("Avg Finish", nfmt(avgFinish, 2), avgFinishSeasons ? `Seasons: ${avgFinishSeasons}` : "—", "avg-finish"),
@@ -867,7 +867,6 @@ function renderSeasonCallout(team){
 
     const bits=[];
     if(rec.champion) bits.push("🏆 Champion" + (champNote(team, onlySeason) ? "*" : ""));
-    if(rec.bye) bits.push("🔥 Top-2 Seed");
     if(rec.saunders) bits.push("🪦 Last Place" + (saundersNote(team, onlySeason) ? "*" : ""));
     if(rec.playoff_wins||rec.playoff_losses||rec.playoff_ties) bits.push(`Playoffs: ${(rec.playoff_wins||0)}-${(rec.playoff_losses||0)}-${(rec.playoff_ties||0)}`);
     if(rec.saunders_wins||rec.saunders_losses||rec.saunders_ties) bits.push(`Last Place: ${(rec.saunders_wins||0)}-${(rec.saunders_losses||0)}-${(rec.saunders_ties||0)}`);
@@ -2140,12 +2139,12 @@ function renderSeasonRecap(team){
   const mkOutcome = (r)=>{
     const playoffGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isPlayoffGame(g));
     const saundersGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isSaundersGame(g));
+    const finishText = Number.isFinite(+r.finish) ? `Finished ${r.finish}` : "Finished —";
     const playoffNarr = narrativeForGames(playoffGames);
-    if(playoffNarr) return playoffNarr;
+    if(playoffNarr) return `${playoffNarr}. ${finishText}`;
     const saundersNarr = narrativeForGames(saundersGames, "Last Place");
-    if(saundersNarr) return saundersNarr;
-    if (r.bye) return "Top-2 Seed";
-    return "—";
+    if(saundersNarr) return `${saundersNarr}. ${finishText}`;
+    return `Missed Playoffs. ${finishText}`;
   };
 
   tb.innerHTML = rows.map(r=>`

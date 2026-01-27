@@ -68,10 +68,10 @@
   {
     "season": 2020,
     "date": "2020-09-16",
-    "teamA": "Wei",
-    "teamB": "Leah",
-    "scoreA": 157.6,
-    "scoreB": 156.82,
+    "teamA": "Seth",
+    "teamB": "Dulberger",
+    "scoreA": 191.54,
+    "scoreB": 113.38,
     "week": 2,
     "round": null,
     "type": "Regular"
@@ -79,10 +79,10 @@
   {
     "season": 2020,
     "date": "2020-09-16",
-    "teamA": "Seth",
-    "teamB": "Dulberger",
-    "scoreA": 191.54,
-    "scoreB": 113.38,
+    "teamA": "Wei",
+    "teamB": "Leah",
+    "scoreA": 157.6,
+    "scoreB": 156.82,
     "week": 2,
     "round": null,
     "type": "Regular"
@@ -200,10 +200,10 @@
   {
     "season": 2020,
     "date": "2020-10-07",
-    "teamA": "Wei",
-    "teamB": "Rico",
-    "scoreA": 134.34,
-    "scoreB": 132.12,
+    "teamA": "Seth",
+    "teamB": "Chuck",
+    "scoreA": 164.1,
+    "scoreB": 106.9,
     "week": 5,
     "round": null,
     "type": "Regular"
@@ -211,10 +211,10 @@
   {
     "season": 2020,
     "date": "2020-10-07",
-    "teamA": "Seth",
-    "teamB": "Chuck",
-    "scoreA": 164.1,
-    "scoreB": 106.9,
+    "teamA": "Wei",
+    "teamB": "Rico",
+    "scoreA": 134.34,
+    "scoreB": 132.12,
     "week": 5,
     "round": null,
     "type": "Regular"
@@ -288,10 +288,10 @@
   {
     "season": 2020,
     "date": "2020-10-21",
-    "teamA": "Wei",
-    "teamB": "Malcolm",
-    "scoreA": 77.68,
-    "scoreB": 154.82,
+    "teamA": "Seth",
+    "teamB": "Taylor",
+    "scoreA": 151.9,
+    "scoreB": 199.6,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -299,10 +299,10 @@
   {
     "season": 2020,
     "date": "2020-10-21",
-    "teamA": "Seth",
-    "teamB": "Taylor",
-    "scoreA": 151.9,
-    "scoreB": 199.6,
+    "teamA": "Wei",
+    "teamB": "Malcolm",
+    "scoreA": 77.68,
+    "scoreB": 154.82,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -332,10 +332,10 @@
   {
     "season": 2020,
     "date": "2020-10-28",
-    "teamA": "Wei",
-    "teamB": "Dulberger",
-    "scoreA": 108.32,
-    "scoreB": 174.42,
+    "teamA": "Taylor",
+    "teamB": "Malcolm",
+    "scoreA": 108.92,
+    "scoreB": 95.04,
     "week": 8,
     "round": null,
     "type": "Regular"
@@ -343,10 +343,10 @@
   {
     "season": 2020,
     "date": "2020-10-28",
-    "teamA": "Taylor",
-    "teamB": "Malcolm",
-    "scoreA": 108.92,
-    "scoreB": 95.04,
+    "teamA": "Wei",
+    "teamB": "Dulberger",
+    "scoreA": 108.32,
+    "scoreB": 174.42,
     "week": 8,
     "round": null,
     "type": "Regular"
@@ -420,10 +420,10 @@
   {
     "season": 2020,
     "date": "2020-11-11",
-    "teamA": "Wei",
-    "teamB": "Seth",
-    "scoreA": 101.18,
-    "scoreB": 93.3,
+    "teamA": "Rico",
+    "teamB": "Taylor",
+    "scoreA": 97.36,
+    "scoreB": 146.22,
     "week": 10,
     "round": null,
     "type": "Regular"
@@ -431,10 +431,10 @@
   {
     "season": 2020,
     "date": "2020-11-11",
-    "teamA": "Rico",
-    "teamB": "Taylor",
-    "scoreA": 97.36,
-    "scoreB": 146.22,
+    "teamA": "Wei",
+    "teamB": "Seth",
+    "scoreA": 101.18,
+    "scoreB": 93.3,
     "week": 10,
     "round": null,
     "type": "Regular"
@@ -508,10 +508,10 @@
   {
     "season": 2020,
     "date": "2020-11-25",
-    "teamA": "Wei",
-    "teamB": "Rico",
-    "scoreA": 142.34,
-    "scoreB": 137.48,
+    "teamA": "Seth",
+    "teamB": "Chuck",
+    "scoreA": 91.1,
+    "scoreB": 112.78,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -519,10 +519,10 @@
   {
     "season": 2020,
     "date": "2020-11-25",
-    "teamA": "Seth",
-    "teamB": "Chuck",
-    "scoreA": 91.1,
-    "scoreB": 112.78,
+    "teamA": "Wei",
+    "teamB": "Rico",
+    "scoreA": 142.34,
+    "scoreB": 137.48,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -640,10 +640,10 @@
   {
     "season": 2021,
     "date": "2021-09-09",
-    "teamA": "Wei",
-    "teamB": "Mino",
-    "scoreA": 107.88,
-    "scoreB": 130.9,
+    "teamA": "Rico",
+    "teamB": "Chuck",
+    "scoreA": 108.6,
+    "scoreB": 150.56,
     "week": 1,
     "round": null,
     "type": "Regular"
@@ -651,10 +651,10 @@
   {
     "season": 2021,
     "date": "2021-09-09",
-    "teamA": "Rico",
-    "teamB": "Chuck",
-    "scoreA": 108.6,
-    "scoreB": 150.56,
+    "teamA": "Wei",
+    "teamB": "Mino",
+    "scoreA": 107.88,
+    "scoreB": 130.9,
     "week": 1,
     "round": null,
     "type": "Regular"
@@ -666,17 +666,6 @@
     "teamB": "Julia",
     "scoreA": 174.7,
     "scoreB": 109.62,
-    "week": 2,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2021,
-    "date": "2021-09-15",
-    "teamA": "Wei",
-    "teamB": "Dulberger",
-    "scoreA": 119.32,
-    "scoreB": 113.72,
     "week": 2,
     "round": null,
     "type": "Regular"
@@ -710,6 +699,17 @@
     "teamB": "Seth",
     "scoreA": 154.2,
     "scoreB": 140.74,
+    "week": 2,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2021,
+    "date": "2021-09-15",
+    "teamA": "Wei",
+    "teamB": "Dulberger",
+    "scoreA": 119.32,
+    "scoreB": 113.72,
     "week": 2,
     "round": null,
     "type": "Regular"
@@ -849,17 +849,6 @@
   {
     "season": 2021,
     "date": "2021-10-06",
-    "teamA": "Wei",
-    "teamB": "Leah",
-    "scoreA": 154.72,
-    "scoreB": 95.58,
-    "week": 5,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2021,
-    "date": "2021-10-06",
     "teamA": "Mino",
     "teamB": "Seth",
     "scoreA": 188.58,
@@ -875,6 +864,17 @@
     "teamB": "Julia",
     "scoreA": 192.3,
     "scoreB": 119.18,
+    "week": 5,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2021,
+    "date": "2021-10-06",
+    "teamA": "Wei",
+    "teamB": "Leah",
+    "scoreA": 154.72,
+    "scoreB": 95.58,
     "week": 5,
     "round": null,
     "type": "Regular"
@@ -904,17 +904,6 @@
   {
     "season": 2021,
     "date": "2021-10-13",
-    "teamA": "Wei",
-    "teamB": "Malcolm",
-    "scoreA": 106.3,
-    "scoreB": 100.5,
-    "week": 6,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2021,
-    "date": "2021-10-13",
     "teamA": "Mino",
     "teamB": "Rico",
     "scoreA": 150.58,
@@ -930,6 +919,17 @@
     "teamB": "Chuck",
     "scoreA": 147.98,
     "scoreB": 146.26,
+    "week": 6,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2021,
+    "date": "2021-10-13",
+    "teamA": "Wei",
+    "teamB": "Malcolm",
+    "scoreA": 106.3,
+    "scoreB": 100.5,
     "week": 6,
     "round": null,
     "type": "Regular"
@@ -1014,17 +1014,6 @@
   {
     "season": 2021,
     "date": "2021-10-27",
-    "teamA": "Wei",
-    "teamB": "Taylor",
-    "scoreA": 105.02,
-    "scoreB": 101.06,
-    "week": 8,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2021,
-    "date": "2021-10-27",
     "teamA": "Mino",
     "teamB": "Julia",
     "scoreA": 108.46,
@@ -1040,6 +1029,17 @@
     "teamB": "Malcolm",
     "scoreA": 123.3,
     "scoreB": 95.82,
+    "week": 8,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2021,
+    "date": "2021-10-27",
+    "teamA": "Wei",
+    "teamB": "Taylor",
+    "scoreA": 105.02,
+    "scoreB": 101.06,
     "week": 8,
     "round": null,
     "type": "Regular"
@@ -1190,10 +1190,10 @@
   {
     "season": 2021,
     "date": "2021-11-17",
-    "teamA": "Wei",
-    "teamB": "Seth",
-    "scoreA": 88.48,
-    "scoreB": 170.18,
+    "teamA": "Taylor",
+    "teamB": "Mino",
+    "scoreA": 175.6,
+    "scoreB": 136.62,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -1201,10 +1201,10 @@
   {
     "season": 2021,
     "date": "2021-11-17",
-    "teamA": "Taylor",
-    "teamB": "Mino",
-    "scoreA": 175.6,
-    "scoreB": 136.62,
+    "teamA": "Wei",
+    "teamB": "Seth",
+    "scoreA": 88.48,
+    "scoreB": 170.18,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -1344,17 +1344,6 @@
   {
     "season": 2021,
     "date": "2021-12-08",
-    "teamA": "Wei",
-    "teamB": "Rico",
-    "scoreA": 102.3,
-    "scoreB": 170.92,
-    "week": 14,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2021,
-    "date": "2021-12-08",
     "teamA": "Mino",
     "teamB": "Chuck",
     "scoreA": 115.08,
@@ -1370,6 +1359,17 @@
     "teamB": "Taylor",
     "scoreA": 142.92,
     "scoreB": 146.44,
+    "week": 14,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2021,
+    "date": "2021-12-08",
+    "teamA": "Wei",
+    "teamB": "Rico",
+    "scoreA": 102.3,
+    "scoreB": 170.92,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -1397,6 +1397,50 @@
     "type": "Playoff"
   },
   {
+    "season": 2021,
+    "date": "2021-12-22",
+    "teamA": "Mino",
+    "teamB": "Chuck",
+    "scoreA": 131.82,
+    "scoreB": 101.6,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2021,
+    "date": "2021-12-22",
+    "teamA": "Rico",
+    "teamB": "Wei",
+    "scoreA": 183.86,
+    "scoreB": 93.24,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2021,
+    "date": "2021-12-29",
+    "teamA": "Rico",
+    "teamB": "Mino",
+    "scoreA": 110.5,
+    "scoreB": 153.56,
+    "week": 17,
+    "round": "Championship",
+    "type": "Playoff"
+  },
+  {
+    "season": 2022,
+    "date": "2022-09-08",
+    "teamA": "Dulberger",
+    "teamB": "Seth",
+    "scoreA": 122.12,
+    "scoreB": 125.4,
+    "week": 1,
+    "round": null,
+    "type": "Regular"
+  },
+  {
     "season": 2022,
     "date": "2022-09-08",
     "teamA": "Erin",
@@ -1414,17 +1458,6 @@
     "teamB": "Kylie",
     "scoreA": 114.16,
     "scoreB": 124.7,
-    "week": 1,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-09-08",
-    "teamA": "Dulberger",
-    "teamB": "Seth",
-    "scoreA": 122.12,
-    "scoreB": 125.4,
     "week": 1,
     "round": null,
     "type": "Regular"
@@ -1498,17 +1531,6 @@
   {
     "season": 2022,
     "date": "2022-09-14",
-    "teamA": "Wei",
-    "teamB": "Dulberger",
-    "scoreA": 120.52,
-    "scoreB": 113.92,
-    "week": 2,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-09-14",
     "teamA": "Seth",
     "teamB": "Leah",
     "scoreA": 150.56,
@@ -1530,12 +1552,12 @@
   },
   {
     "season": 2022,
-    "date": "2022-09-21",
-    "teamA": "Joe",
-    "teamB": "Marian",
-    "scoreA": 121.18,
-    "scoreB": 84.34,
-    "week": 3,
+    "date": "2022-09-14",
+    "teamA": "Wei",
+    "teamB": "Dulberger",
+    "scoreA": 120.52,
+    "scoreB": 113.92,
+    "week": 2,
     "round": null,
     "type": "Regular"
   },
@@ -1546,6 +1568,17 @@
     "teamB": "Mino",
     "scoreA": 120.2,
     "scoreB": 89.96,
+    "week": 3,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2022,
+    "date": "2022-09-21",
+    "teamA": "Joe",
+    "teamB": "Marian",
+    "scoreA": 121.18,
+    "scoreB": 84.34,
     "week": 3,
     "round": null,
     "type": "Regular"
@@ -1575,17 +1608,6 @@
   {
     "season": 2022,
     "date": "2022-09-21",
-    "teamA": "Wei",
-    "teamB": "Seth",
-    "scoreA": 127.22,
-    "scoreB": 98.9,
-    "week": 3,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-09-21",
     "teamA": "Rico",
     "teamB": "Taylor",
     "scoreA": 115.0,
@@ -1596,12 +1618,12 @@
   },
   {
     "season": 2022,
-    "date": "2022-09-28",
-    "teamA": "Joe",
-    "teamB": "Rico",
-    "scoreA": 140.4,
-    "scoreB": 135.22,
-    "week": 4,
+    "date": "2022-09-21",
+    "teamA": "Wei",
+    "teamB": "Seth",
+    "scoreA": 127.22,
+    "scoreB": 98.9,
+    "week": 3,
     "round": null,
     "type": "Regular"
   },
@@ -1612,6 +1634,17 @@
     "teamB": "Leah",
     "scoreA": 112.36,
     "scoreB": 75.92,
+    "week": 4,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2022,
+    "date": "2022-09-28",
+    "teamA": "Joe",
+    "teamB": "Rico",
+    "scoreA": 140.4,
+    "scoreB": 135.22,
     "week": 4,
     "round": null,
     "type": "Regular"
@@ -1696,17 +1729,6 @@
   {
     "season": 2022,
     "date": "2022-10-05",
-    "teamA": "Wei",
-    "teamB": "Leah",
-    "scoreA": 138.44,
-    "scoreB": 77.34,
-    "week": 5,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-10-05",
     "teamA": "Mino",
     "teamB": "Seth",
     "scoreA": 98.66,
@@ -1722,6 +1744,17 @@
     "teamB": "Joe",
     "scoreA": 156.4,
     "scoreB": 126.62,
+    "week": 5,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2022,
+    "date": "2022-10-05",
+    "teamA": "Wei",
+    "teamB": "Leah",
+    "scoreA": 138.44,
+    "scoreB": 77.34,
     "week": 5,
     "round": null,
     "type": "Regular"
@@ -1795,17 +1828,6 @@
   {
     "season": 2022,
     "date": "2022-10-19",
-    "teamA": "Erin",
-    "teamB": "Marian",
-    "scoreA": 135.24,
-    "scoreB": 138.9,
-    "week": 7,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-10-19",
     "teamA": "Dulberger",
     "teamB": "Rico",
     "scoreA": 127.22,
@@ -1817,10 +1839,10 @@
   {
     "season": 2022,
     "date": "2022-10-19",
-    "teamA": "Leah",
-    "teamB": "Malcolm",
-    "scoreA": 103.8,
-    "scoreB": 84.6,
+    "teamA": "Erin",
+    "teamB": "Marian",
+    "scoreA": 135.24,
+    "scoreB": 138.9,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -1828,10 +1850,10 @@
   {
     "season": 2022,
     "date": "2022-10-19",
-    "teamA": "Wei",
-    "teamB": "Taylor",
-    "scoreA": 113.02,
-    "scoreB": 97.06,
+    "teamA": "Leah",
+    "teamB": "Malcolm",
+    "scoreA": 103.8,
+    "scoreB": 84.6,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -1854,6 +1876,17 @@
     "teamB": "Joe",
     "scoreA": 88.46,
     "scoreB": 136.92,
+    "week": 7,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2022,
+    "date": "2022-10-19",
+    "teamA": "Wei",
+    "teamB": "Taylor",
+    "scoreA": 113.02,
+    "scoreB": 97.06,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -1927,17 +1960,6 @@
   {
     "season": 2022,
     "date": "2022-11-02",
-    "teamA": "Erin",
-    "teamB": "Joe",
-    "scoreA": 118.84,
-    "scoreB": 90.6,
-    "week": 9,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-11-02",
     "teamA": "Dulberger",
     "teamB": "Taylor",
     "scoreA": 70.92,
@@ -1949,10 +1971,10 @@
   {
     "season": 2022,
     "date": "2022-11-02",
-    "teamA": "Leah",
-    "teamB": "Marian",
-    "scoreA": 78.5,
-    "scoreB": 145.58,
+    "teamA": "Erin",
+    "teamB": "Joe",
+    "scoreA": 118.84,
+    "scoreB": 90.6,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -1960,10 +1982,10 @@
   {
     "season": 2022,
     "date": "2022-11-02",
-    "teamA": "Wei",
-    "teamB": "Kylie",
-    "scoreA": 119.32,
-    "scoreB": 159.54,
+    "teamA": "Leah",
+    "teamB": "Marian",
+    "scoreA": 78.5,
+    "scoreB": 145.58,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -1986,6 +2008,17 @@
     "teamB": "Malcolm",
     "scoreA": 104.64,
     "scoreB": 100.5,
+    "week": 9,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2022,
+    "date": "2022-11-02",
+    "teamA": "Wei",
+    "teamB": "Kylie",
+    "scoreA": 119.32,
+    "scoreB": 159.54,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -2059,17 +2092,6 @@
   {
     "season": 2022,
     "date": "2022-11-16",
-    "teamA": "Erin",
-    "teamB": "Malcolm",
-    "scoreA": 105.6,
-    "scoreB": 136.52,
-    "week": 11,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-11-16",
     "teamA": "Dulberger",
     "teamB": "Kylie",
     "scoreA": 112.8,
@@ -2081,10 +2103,10 @@
   {
     "season": 2022,
     "date": "2022-11-16",
-    "teamA": "Leah",
-    "teamB": "Joe",
-    "scoreA": 119.78,
-    "scoreB": 131.7,
+    "teamA": "Erin",
+    "teamB": "Malcolm",
+    "scoreA": 105.6,
+    "scoreB": 136.52,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -2092,10 +2114,10 @@
   {
     "season": 2022,
     "date": "2022-11-16",
-    "teamA": "Wei",
-    "teamB": "Rico",
-    "scoreA": 101.26,
-    "scoreB": 105.74,
+    "teamA": "Leah",
+    "teamB": "Joe",
+    "scoreA": 119.78,
+    "scoreB": 131.7,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -2124,12 +2146,12 @@
   },
   {
     "season": 2022,
-    "date": "2022-11-23",
-    "teamA": "Erin",
-    "teamB": "Taylor",
-    "scoreA": 76.7,
-    "scoreB": 101.64,
-    "week": 12,
+    "date": "2022-11-16",
+    "teamA": "Wei",
+    "teamB": "Rico",
+    "scoreA": 101.26,
+    "scoreB": 105.74,
+    "week": 11,
     "round": null,
     "type": "Regular"
   },
@@ -2147,10 +2169,10 @@
   {
     "season": 2022,
     "date": "2022-11-23",
-    "teamA": "Leah",
-    "teamB": "Rico",
-    "scoreA": 153.92,
-    "scoreB": 157.72,
+    "teamA": "Erin",
+    "teamB": "Taylor",
+    "scoreA": 76.7,
+    "scoreB": 101.64,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -2158,10 +2180,10 @@
   {
     "season": 2022,
     "date": "2022-11-23",
-    "teamA": "Wei",
-    "teamB": "Malcolm",
-    "scoreA": 112.6,
-    "scoreB": 108.64,
+    "teamA": "Leah",
+    "teamB": "Rico",
+    "scoreA": 153.92,
+    "scoreB": 157.72,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -2184,6 +2206,17 @@
     "teamB": "Kylie",
     "scoreA": 134.16,
     "scoreB": 110.2,
+    "week": 12,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2022,
+    "date": "2022-11-23",
+    "teamA": "Wei",
+    "teamB": "Malcolm",
+    "scoreA": 112.6,
+    "scoreB": 108.64,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -2257,17 +2290,6 @@
   {
     "season": 2022,
     "date": "2022-12-07",
-    "teamA": "Erin",
-    "teamB": "Kylie",
-    "scoreA": 79.06,
-    "scoreB": 95.48,
-    "week": 14,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2022,
-    "date": "2022-12-07",
     "teamA": "Dulberger",
     "teamB": "Malcolm",
     "scoreA": 117.78,
@@ -2279,10 +2301,10 @@
   {
     "season": 2022,
     "date": "2022-12-07",
-    "teamA": "Leah",
-    "teamB": "Taylor",
-    "scoreA": 85.86,
-    "scoreB": 55.36,
+    "teamA": "Erin",
+    "teamB": "Kylie",
+    "scoreA": 79.06,
+    "scoreB": 95.48,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -2290,10 +2312,10 @@
   {
     "season": 2022,
     "date": "2022-12-07",
-    "teamA": "Wei",
-    "teamB": "Marian",
-    "scoreA": 97.2,
-    "scoreB": 111.4,
+    "teamA": "Leah",
+    "teamB": "Taylor",
+    "scoreA": 85.86,
+    "scoreB": 55.36,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -2322,6 +2344,17 @@
   },
   {
     "season": 2022,
+    "date": "2022-12-07",
+    "teamA": "Wei",
+    "teamB": "Marian",
+    "scoreA": 97.2,
+    "scoreB": 111.4,
+    "week": 14,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2022,
     "date": "2022-12-14",
     "teamA": "Joe",
     "teamB": "Marian",
@@ -2343,6 +2376,50 @@
     "type": "Playoff"
   },
   {
+    "season": 2022,
+    "date": "2022-12-21",
+    "teamA": "Rico",
+    "teamB": "Seth",
+    "scoreA": 129.28,
+    "scoreB": 126.32,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2022,
+    "date": "2022-12-21",
+    "teamA": "Taylor",
+    "teamB": "Joe",
+    "scoreA": 88.76,
+    "scoreB": 79.2,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2022,
+    "date": "2022-12-28",
+    "teamA": "Taylor",
+    "teamB": "Rico",
+    "scoreA": 92.16,
+    "scoreB": 84.8,
+    "week": 17,
+    "round": "Championship",
+    "type": "Playoff"
+  },
+  {
+    "season": 2023,
+    "date": "2023-09-07",
+    "teamA": "Dulberger",
+    "teamB": "Seth",
+    "scoreA": 118.14,
+    "scoreB": 82.86,
+    "week": 1,
+    "round": null,
+    "type": "Regular"
+  },
+  {
     "season": 2023,
     "date": "2023-09-07",
     "teamA": "Erin",
@@ -2360,17 +2437,6 @@
     "teamB": "Kylie",
     "scoreA": 94.62,
     "scoreB": 97.04,
-    "week": 1,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-09-07",
-    "teamA": "Dulberger",
-    "teamB": "Seth",
-    "scoreA": 118.14,
-    "scoreB": 82.86,
     "week": 1,
     "round": null,
     "type": "Regular"
@@ -2444,17 +2510,6 @@
   {
     "season": 2023,
     "date": "2023-09-13",
-    "teamA": "Wei",
-    "teamB": "Dulberger",
-    "scoreA": 106.5,
-    "scoreB": 93.04,
-    "week": 2,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-09-13",
     "teamA": "Seth",
     "teamB": "Leah",
     "scoreA": 137.26,
@@ -2476,12 +2531,12 @@
   },
   {
     "season": 2023,
-    "date": "2023-09-20",
-    "teamA": "Joe",
-    "teamB": "Marian",
-    "scoreA": 111.5,
-    "scoreB": 120.86,
-    "week": 3,
+    "date": "2023-09-13",
+    "teamA": "Wei",
+    "teamB": "Dulberger",
+    "scoreA": 106.5,
+    "scoreB": 93.04,
+    "week": 2,
     "round": null,
     "type": "Regular"
   },
@@ -2492,6 +2547,17 @@
     "teamB": "Mino",
     "scoreA": 112.36,
     "scoreB": 144.16,
+    "week": 3,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2023,
+    "date": "2023-09-20",
+    "teamA": "Joe",
+    "teamB": "Marian",
+    "scoreA": 111.5,
+    "scoreB": 120.86,
     "week": 3,
     "round": null,
     "type": "Regular"
@@ -2521,17 +2587,6 @@
   {
     "season": 2023,
     "date": "2023-09-20",
-    "teamA": "Wei",
-    "teamB": "Seth",
-    "scoreA": 134.06,
-    "scoreB": 110.38,
-    "week": 3,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-09-20",
     "teamA": "Rico",
     "teamB": "Taylor",
     "scoreA": 131.7,
@@ -2542,12 +2597,12 @@
   },
   {
     "season": 2023,
-    "date": "2023-09-27",
-    "teamA": "Joe",
-    "teamB": "Rico",
-    "scoreA": 116.76,
-    "scoreB": 96.68,
-    "week": 4,
+    "date": "2023-09-20",
+    "teamA": "Wei",
+    "teamB": "Seth",
+    "scoreA": 134.06,
+    "scoreB": 110.38,
+    "week": 3,
     "round": null,
     "type": "Regular"
   },
@@ -2558,6 +2613,17 @@
     "teamB": "Leah",
     "scoreA": 104.8,
     "scoreB": 118.92,
+    "week": 4,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2023,
+    "date": "2023-09-27",
+    "teamA": "Joe",
+    "teamB": "Rico",
+    "scoreA": 116.76,
+    "scoreB": 96.68,
     "week": 4,
     "round": null,
     "type": "Regular"
@@ -2642,17 +2708,6 @@
   {
     "season": 2023,
     "date": "2023-10-04",
-    "teamA": "Wei",
-    "teamB": "Leah",
-    "scoreA": 136.22,
-    "scoreB": 90.98,
-    "week": 5,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-10-04",
     "teamA": "Mino",
     "teamB": "Seth",
     "scoreA": 109.04,
@@ -2668,6 +2723,17 @@
     "teamB": "Joe",
     "scoreA": 105.32,
     "scoreB": 95.72,
+    "week": 5,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2023,
+    "date": "2023-10-04",
+    "teamA": "Wei",
+    "teamB": "Leah",
+    "scoreA": 136.22,
+    "scoreB": 90.98,
     "week": 5,
     "round": null,
     "type": "Regular"
@@ -2741,17 +2807,6 @@
   {
     "season": 2023,
     "date": "2023-10-18",
-    "teamA": "Erin",
-    "teamB": "Marian",
-    "scoreA": 94.98,
-    "scoreB": 112.94,
-    "week": 7,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-10-18",
     "teamA": "Dulberger",
     "teamB": "Rico",
     "scoreA": 105.64,
@@ -2763,10 +2818,10 @@
   {
     "season": 2023,
     "date": "2023-10-18",
-    "teamA": "Leah",
-    "teamB": "Malcolm",
-    "scoreA": 71.64,
-    "scoreB": 138.46,
+    "teamA": "Erin",
+    "teamB": "Marian",
+    "scoreA": 94.98,
+    "scoreB": 112.94,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -2774,10 +2829,10 @@
   {
     "season": 2023,
     "date": "2023-10-18",
-    "teamA": "Wei",
-    "teamB": "Taylor",
-    "scoreA": 88.36,
-    "scoreB": 100.06,
+    "teamA": "Leah",
+    "teamB": "Malcolm",
+    "scoreA": 71.64,
+    "scoreB": 138.46,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -2800,6 +2855,17 @@
     "teamB": "Joe",
     "scoreA": 110.12,
     "scoreB": 114.4,
+    "week": 7,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2023,
+    "date": "2023-10-18",
+    "teamA": "Wei",
+    "teamB": "Taylor",
+    "scoreA": 88.36,
+    "scoreB": 100.06,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -2873,17 +2939,6 @@
   {
     "season": 2023,
     "date": "2023-11-01",
-    "teamA": "Erin",
-    "teamB": "Joe",
-    "scoreA": 93.38,
-    "scoreB": 119.4,
-    "week": 9,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-11-01",
     "teamA": "Dulberger",
     "teamB": "Taylor",
     "scoreA": 122.7,
@@ -2895,10 +2950,10 @@
   {
     "season": 2023,
     "date": "2023-11-01",
-    "teamA": "Leah",
-    "teamB": "Marian",
-    "scoreA": 95.74,
-    "scoreB": 88.12,
+    "teamA": "Erin",
+    "teamB": "Joe",
+    "scoreA": 93.38,
+    "scoreB": 119.4,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -2906,10 +2961,10 @@
   {
     "season": 2023,
     "date": "2023-11-01",
-    "teamA": "Wei",
-    "teamB": "Kylie",
-    "scoreA": 109.9,
-    "scoreB": 98.02,
+    "teamA": "Leah",
+    "teamB": "Marian",
+    "scoreA": 95.74,
+    "scoreB": 88.12,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -2932,6 +2987,17 @@
     "teamB": "Malcolm",
     "scoreA": 127.0,
     "scoreB": 131.5,
+    "week": 9,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2023,
+    "date": "2023-11-01",
+    "teamA": "Wei",
+    "teamB": "Kylie",
+    "scoreA": 109.9,
+    "scoreB": 98.02,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -3005,17 +3071,6 @@
   {
     "season": 2023,
     "date": "2023-11-15",
-    "teamA": "Erin",
-    "teamB": "Malcolm",
-    "scoreA": 128.76,
-    "scoreB": 104.08,
-    "week": 11,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-11-15",
     "teamA": "Dulberger",
     "teamB": "Kylie",
     "scoreA": 115.14,
@@ -3027,10 +3082,10 @@
   {
     "season": 2023,
     "date": "2023-11-15",
-    "teamA": "Leah",
-    "teamB": "Joe",
-    "scoreA": 104.52,
-    "scoreB": 91.14,
+    "teamA": "Erin",
+    "teamB": "Malcolm",
+    "scoreA": 128.76,
+    "scoreB": 104.08,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -3038,10 +3093,10 @@
   {
     "season": 2023,
     "date": "2023-11-15",
-    "teamA": "Wei",
-    "teamB": "Rico",
-    "scoreA": 67.64,
-    "scoreB": 119.3,
+    "teamA": "Leah",
+    "teamB": "Joe",
+    "scoreA": 104.52,
+    "scoreB": 91.14,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -3070,12 +3125,12 @@
   },
   {
     "season": 2023,
-    "date": "2023-11-22",
-    "teamA": "Erin",
-    "teamB": "Taylor",
-    "scoreA": 125.48,
-    "scoreB": 126.74,
-    "week": 12,
+    "date": "2023-11-15",
+    "teamA": "Wei",
+    "teamB": "Rico",
+    "scoreA": 67.64,
+    "scoreB": 119.3,
+    "week": 11,
     "round": null,
     "type": "Regular"
   },
@@ -3093,10 +3148,10 @@
   {
     "season": 2023,
     "date": "2023-11-22",
-    "teamA": "Leah",
-    "teamB": "Rico",
-    "scoreA": 120.6,
-    "scoreB": 105.58,
+    "teamA": "Erin",
+    "teamB": "Taylor",
+    "scoreA": 125.48,
+    "scoreB": 126.74,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -3104,10 +3159,10 @@
   {
     "season": 2023,
     "date": "2023-11-22",
-    "teamA": "Wei",
-    "teamB": "Malcolm",
-    "scoreA": 105.0,
-    "scoreB": 157.7,
+    "teamA": "Leah",
+    "teamB": "Rico",
+    "scoreA": 120.6,
+    "scoreB": 105.58,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -3130,6 +3185,17 @@
     "teamB": "Kylie",
     "scoreA": 123.12,
     "scoreB": 164.06,
+    "week": 12,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2023,
+    "date": "2023-11-22",
+    "teamA": "Wei",
+    "teamB": "Malcolm",
+    "scoreA": 105.0,
+    "scoreB": 157.7,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -3203,17 +3269,6 @@
   {
     "season": 2023,
     "date": "2023-12-06",
-    "teamA": "Erin",
-    "teamB": "Kylie",
-    "scoreA": 139.54,
-    "scoreB": 132.82,
-    "week": 14,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2023,
-    "date": "2023-12-06",
     "teamA": "Dulberger",
     "teamB": "Malcolm",
     "scoreA": 116.62,
@@ -3225,10 +3280,10 @@
   {
     "season": 2023,
     "date": "2023-12-06",
-    "teamA": "Leah",
-    "teamB": "Taylor",
-    "scoreA": 128.56,
-    "scoreB": 125.94,
+    "teamA": "Erin",
+    "teamB": "Kylie",
+    "scoreA": 139.54,
+    "scoreB": 132.82,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -3236,10 +3291,10 @@
   {
     "season": 2023,
     "date": "2023-12-06",
-    "teamA": "Wei",
-    "teamB": "Marian",
-    "scoreA": 92.5,
-    "scoreB": 127.6,
+    "teamA": "Leah",
+    "teamB": "Taylor",
+    "scoreA": 128.56,
+    "scoreB": 125.94,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -3268,6 +3323,17 @@
   },
   {
     "season": 2023,
+    "date": "2023-12-06",
+    "teamA": "Wei",
+    "teamB": "Marian",
+    "scoreA": 92.5,
+    "scoreB": 127.6,
+    "week": 14,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2023,
     "date": "2023-12-13",
     "teamA": "Kylie",
     "teamB": "Leah",
@@ -3289,6 +3355,50 @@
     "type": "Playoff"
   },
   {
+    "season": 2023,
+    "date": "2023-12-20",
+    "teamA": "Marian",
+    "teamB": "Kylie",
+    "scoreA": 121.82,
+    "scoreB": 110.98,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2023,
+    "date": "2023-12-20",
+    "teamA": "Mino",
+    "teamB": "Joe",
+    "scoreA": 138.14,
+    "scoreB": 143.82,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2023,
+    "date": "2023-12-27",
+    "teamA": "Marian",
+    "teamB": "Joe",
+    "scoreA": 83.58,
+    "scoreB": 112.66,
+    "week": 17,
+    "round": "Championship",
+    "type": "Playoff"
+  },
+  {
+    "season": 2024,
+    "date": "2024-09-05",
+    "teamA": "Dulberger",
+    "teamB": "Seth",
+    "scoreA": 100.62,
+    "scoreB": 97.5,
+    "week": 1,
+    "round": null,
+    "type": "Regular"
+  },
+  {
     "season": 2024,
     "date": "2024-09-05",
     "teamA": "Erin",
@@ -3306,17 +3416,6 @@
     "teamB": "Kylie",
     "scoreA": 125.86,
     "scoreB": 127.88,
-    "week": 1,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-09-05",
-    "teamA": "Dulberger",
-    "teamB": "Seth",
-    "scoreA": 100.62,
-    "scoreB": 97.5,
     "week": 1,
     "round": null,
     "type": "Regular"
@@ -3390,17 +3489,6 @@
   {
     "season": 2024,
     "date": "2024-09-11",
-    "teamA": "Wei",
-    "teamB": "Dulberger",
-    "scoreA": 115.92,
-    "scoreB": 76.78,
-    "week": 2,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-09-11",
     "teamA": "Seth",
     "teamB": "Leah",
     "scoreA": 84.18,
@@ -3422,12 +3510,12 @@
   },
   {
     "season": 2024,
-    "date": "2024-09-18",
-    "teamA": "Joe",
-    "teamB": "Marian",
-    "scoreA": 105.86,
-    "scoreB": 103.82,
-    "week": 3,
+    "date": "2024-09-11",
+    "teamA": "Wei",
+    "teamB": "Dulberger",
+    "scoreA": 115.92,
+    "scoreB": 76.78,
+    "week": 2,
     "round": null,
     "type": "Regular"
   },
@@ -3438,6 +3526,17 @@
     "teamB": "Mino",
     "scoreA": 93.98,
     "scoreB": 110.48,
+    "week": 3,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2024,
+    "date": "2024-09-18",
+    "teamA": "Joe",
+    "teamB": "Marian",
+    "scoreA": 105.86,
+    "scoreB": 103.82,
     "week": 3,
     "round": null,
     "type": "Regular"
@@ -3467,17 +3566,6 @@
   {
     "season": 2024,
     "date": "2024-09-18",
-    "teamA": "Wei",
-    "teamB": "Seth",
-    "scoreA": 120.54,
-    "scoreB": 100.26,
-    "week": 3,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-09-18",
     "teamA": "Rico",
     "teamB": "Taylor",
     "scoreA": 102.68,
@@ -3488,12 +3576,12 @@
   },
   {
     "season": 2024,
-    "date": "2024-09-25",
-    "teamA": "Joe",
-    "teamB": "Rico",
-    "scoreA": 83.52,
-    "scoreB": 104.7,
-    "week": 4,
+    "date": "2024-09-18",
+    "teamA": "Wei",
+    "teamB": "Seth",
+    "scoreA": 120.54,
+    "scoreB": 100.26,
+    "week": 3,
     "round": null,
     "type": "Regular"
   },
@@ -3504,6 +3592,17 @@
     "teamB": "Leah",
     "scoreA": 114.74,
     "scoreB": 100.82,
+    "week": 4,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2024,
+    "date": "2024-09-25",
+    "teamA": "Joe",
+    "teamB": "Rico",
+    "scoreA": 83.52,
+    "scoreB": 104.7,
     "week": 4,
     "round": null,
     "type": "Regular"
@@ -3588,17 +3687,6 @@
   {
     "season": 2024,
     "date": "2024-10-02",
-    "teamA": "Wei",
-    "teamB": "Leah",
-    "scoreA": 120.74,
-    "scoreB": 106.44,
-    "week": 5,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-10-02",
     "teamA": "Mino",
     "teamB": "Seth",
     "scoreA": 157.2,
@@ -3614,6 +3702,17 @@
     "teamB": "Joe",
     "scoreA": 113.18,
     "scoreB": 124.12,
+    "week": 5,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2024,
+    "date": "2024-10-02",
+    "teamA": "Wei",
+    "teamB": "Leah",
+    "scoreA": 120.74,
+    "scoreB": 106.44,
     "week": 5,
     "round": null,
     "type": "Regular"
@@ -3687,17 +3786,6 @@
   {
     "season": 2024,
     "date": "2024-10-16",
-    "teamA": "Erin",
-    "teamB": "Marian",
-    "scoreA": 111.84,
-    "scoreB": 99.14,
-    "week": 7,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-10-16",
     "teamA": "Dulberger",
     "teamB": "Rico",
     "scoreA": 118.74,
@@ -3709,10 +3797,10 @@
   {
     "season": 2024,
     "date": "2024-10-16",
-    "teamA": "Leah",
-    "teamB": "Malcolm",
-    "scoreA": 71.48,
-    "scoreB": 105.48,
+    "teamA": "Erin",
+    "teamB": "Marian",
+    "scoreA": 111.84,
+    "scoreB": 99.14,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -3720,10 +3808,10 @@
   {
     "season": 2024,
     "date": "2024-10-16",
-    "teamA": "Wei",
-    "teamB": "Taylor",
-    "scoreA": 110.66,
-    "scoreB": 87.76,
+    "teamA": "Leah",
+    "teamB": "Malcolm",
+    "scoreA": 71.48,
+    "scoreB": 105.48,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -3746,6 +3834,17 @@
     "teamB": "Joe",
     "scoreA": 121.0,
     "scoreB": 113.94,
+    "week": 7,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2024,
+    "date": "2024-10-16",
+    "teamA": "Wei",
+    "teamB": "Taylor",
+    "scoreA": 110.66,
+    "scoreB": 87.76,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -3819,17 +3918,6 @@
   {
     "season": 2024,
     "date": "2024-10-30",
-    "teamA": "Erin",
-    "teamB": "Joe",
-    "scoreA": 112.1,
-    "scoreB": 160.56,
-    "week": 9,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-10-30",
     "teamA": "Dulberger",
     "teamB": "Taylor",
     "scoreA": 98.5,
@@ -3841,10 +3929,10 @@
   {
     "season": 2024,
     "date": "2024-10-30",
-    "teamA": "Leah",
-    "teamB": "Marian",
-    "scoreA": 127.7,
-    "scoreB": 104.24,
+    "teamA": "Erin",
+    "teamB": "Joe",
+    "scoreA": 112.1,
+    "scoreB": 160.56,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -3852,10 +3940,10 @@
   {
     "season": 2024,
     "date": "2024-10-30",
-    "teamA": "Wei",
-    "teamB": "Kylie",
-    "scoreA": 129.1,
-    "scoreB": 115.88,
+    "teamA": "Leah",
+    "teamB": "Marian",
+    "scoreA": 127.7,
+    "scoreB": 104.24,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -3878,6 +3966,17 @@
     "teamB": "Malcolm",
     "scoreA": 83.72,
     "scoreB": 156.28,
+    "week": 9,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2024,
+    "date": "2024-10-30",
+    "teamA": "Wei",
+    "teamB": "Kylie",
+    "scoreA": 129.1,
+    "scoreB": 115.88,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -3951,17 +4050,6 @@
   {
     "season": 2024,
     "date": "2024-11-13",
-    "teamA": "Erin",
-    "teamB": "Malcolm",
-    "scoreA": 119.94,
-    "scoreB": 120.74,
-    "week": 11,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-11-13",
     "teamA": "Dulberger",
     "teamB": "Kylie",
     "scoreA": 122.28,
@@ -3973,10 +4061,10 @@
   {
     "season": 2024,
     "date": "2024-11-13",
-    "teamA": "Leah",
-    "teamB": "Joe",
-    "scoreA": 79.66,
-    "scoreB": 135.64,
+    "teamA": "Erin",
+    "teamB": "Malcolm",
+    "scoreA": 119.94,
+    "scoreB": 120.74,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -3984,10 +4072,10 @@
   {
     "season": 2024,
     "date": "2024-11-13",
-    "teamA": "Wei",
-    "teamB": "Rico",
-    "scoreA": 165.86,
-    "scoreB": 139.48,
+    "teamA": "Leah",
+    "teamB": "Joe",
+    "scoreA": 79.66,
+    "scoreB": 135.64,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -4016,12 +4104,12 @@
   },
   {
     "season": 2024,
-    "date": "2024-11-20",
-    "teamA": "Erin",
-    "teamB": "Taylor",
-    "scoreA": 102.36,
-    "scoreB": 91.42,
-    "week": 12,
+    "date": "2024-11-13",
+    "teamA": "Wei",
+    "teamB": "Rico",
+    "scoreA": 165.86,
+    "scoreB": 139.48,
+    "week": 11,
     "round": null,
     "type": "Regular"
   },
@@ -4039,10 +4127,10 @@
   {
     "season": 2024,
     "date": "2024-11-20",
-    "teamA": "Leah",
-    "teamB": "Rico",
-    "scoreA": 106.2,
-    "scoreB": 143.22,
+    "teamA": "Erin",
+    "teamB": "Taylor",
+    "scoreA": 102.36,
+    "scoreB": 91.42,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -4050,10 +4138,10 @@
   {
     "season": 2024,
     "date": "2024-11-20",
-    "teamA": "Wei",
-    "teamB": "Malcolm",
-    "scoreA": 96.56,
-    "scoreB": 107.96,
+    "teamA": "Leah",
+    "teamB": "Rico",
+    "scoreA": 106.2,
+    "scoreB": 143.22,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -4076,6 +4164,17 @@
     "teamB": "Kylie",
     "scoreA": 104.96,
     "scoreB": 142.7,
+    "week": 12,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2024,
+    "date": "2024-11-20",
+    "teamA": "Wei",
+    "teamB": "Malcolm",
+    "scoreA": 96.56,
+    "scoreB": 107.96,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -4149,17 +4248,6 @@
   {
     "season": 2024,
     "date": "2024-12-04",
-    "teamA": "Erin",
-    "teamB": "Kylie",
-    "scoreA": 124.46,
-    "scoreB": 141.38,
-    "week": 14,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2024,
-    "date": "2024-12-04",
     "teamA": "Dulberger",
     "teamB": "Malcolm",
     "scoreA": 160.34,
@@ -4171,10 +4259,10 @@
   {
     "season": 2024,
     "date": "2024-12-04",
-    "teamA": "Leah",
-    "teamB": "Taylor",
-    "scoreA": 144.0,
-    "scoreB": 91.3,
+    "teamA": "Erin",
+    "teamB": "Kylie",
+    "scoreA": 124.46,
+    "scoreB": 141.38,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -4182,10 +4270,10 @@
   {
     "season": 2024,
     "date": "2024-12-04",
-    "teamA": "Wei",
-    "teamB": "Marian",
-    "scoreA": 123.02,
-    "scoreB": 88.46,
+    "teamA": "Leah",
+    "teamB": "Taylor",
+    "scoreA": 144.0,
+    "scoreB": 91.3,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -4214,6 +4302,17 @@
   },
   {
     "season": 2024,
+    "date": "2024-12-04",
+    "teamA": "Wei",
+    "teamB": "Marian",
+    "scoreA": 123.02,
+    "scoreB": 88.46,
+    "week": 14,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2024,
     "date": "2024-12-11",
     "teamA": "Kylie",
     "teamB": "Dulberger",
@@ -4235,6 +4334,50 @@
     "type": "Playoff"
   },
   {
+    "season": 2024,
+    "date": "2024-12-18",
+    "teamA": "Malcolm",
+    "teamB": "Dulberger",
+    "scoreA": 138.34,
+    "scoreB": 119.08,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2024,
+    "date": "2024-12-18",
+    "teamA": "Wei",
+    "teamB": "Mino",
+    "scoreA": 109.54,
+    "scoreB": 112.08,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2024,
+    "date": "2024-12-25",
+    "teamA": "Malcolm",
+    "teamB": "Mino",
+    "scoreA": 126.92,
+    "scoreB": 108.64,
+    "week": 17,
+    "round": "Championship",
+    "type": "Playoff"
+  },
+  {
+    "season": 2025,
+    "date": "2025-09-04",
+    "teamA": "Dulberger",
+    "teamB": "Seth",
+    "scoreA": 107.92,
+    "scoreB": 105.78,
+    "week": 1,
+    "round": null,
+    "type": "Regular"
+  },
+  {
     "season": 2025,
     "date": "2025-09-04",
     "teamA": "Erin",
@@ -4252,17 +4395,6 @@
     "teamB": "Kylie",
     "scoreA": 115.32,
     "scoreB": 116.96,
-    "week": 1,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-09-04",
-    "teamA": "Dulberger",
-    "teamB": "Seth",
-    "scoreA": 107.92,
-    "scoreB": 105.78,
     "week": 1,
     "round": null,
     "type": "Regular"
@@ -4336,17 +4468,6 @@
   {
     "season": 2025,
     "date": "2025-09-10",
-    "teamA": "Wei",
-    "teamB": "Dulberger",
-    "scoreA": 126.58,
-    "scoreB": 103.5,
-    "week": 2,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-09-10",
     "teamA": "Seth",
     "teamB": "Leah",
     "scoreA": 97.18,
@@ -4368,12 +4489,12 @@
   },
   {
     "season": 2025,
-    "date": "2025-09-17",
-    "teamA": "Joe",
-    "teamB": "Marian",
-    "scoreA": 132.4,
-    "scoreB": 69.02,
-    "week": 3,
+    "date": "2025-09-10",
+    "teamA": "Wei",
+    "teamB": "Dulberger",
+    "scoreA": 126.58,
+    "scoreB": 103.5,
+    "week": 2,
     "round": null,
     "type": "Regular"
   },
@@ -4384,6 +4505,17 @@
     "teamB": "Mino",
     "scoreA": 131.46,
     "scoreB": 101.42,
+    "week": 3,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2025,
+    "date": "2025-09-17",
+    "teamA": "Joe",
+    "teamB": "Marian",
+    "scoreA": 132.4,
+    "scoreB": 69.02,
     "week": 3,
     "round": null,
     "type": "Regular"
@@ -4413,17 +4545,6 @@
   {
     "season": 2025,
     "date": "2025-09-17",
-    "teamA": "Wei",
-    "teamB": "Seth",
-    "scoreA": 144.86,
-    "scoreB": 117.58,
-    "week": 3,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-09-17",
     "teamA": "Rico",
     "teamB": "Taylor",
     "scoreA": 116.14,
@@ -4434,12 +4555,12 @@
   },
   {
     "season": 2025,
-    "date": "2025-09-24",
-    "teamA": "Joe",
-    "teamB": "Rico",
-    "scoreA": 127.44,
-    "scoreB": 107.2,
-    "week": 4,
+    "date": "2025-09-17",
+    "teamA": "Wei",
+    "teamB": "Seth",
+    "scoreA": 144.86,
+    "scoreB": 117.58,
+    "week": 3,
     "round": null,
     "type": "Regular"
   },
@@ -4450,6 +4571,17 @@
     "teamB": "Leah",
     "scoreA": 136.8,
     "scoreB": 97.64,
+    "week": 4,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2025,
+    "date": "2025-09-24",
+    "teamA": "Joe",
+    "teamB": "Rico",
+    "scoreA": 127.44,
+    "scoreB": 107.2,
     "week": 4,
     "round": null,
     "type": "Regular"
@@ -4534,17 +4666,6 @@
   {
     "season": 2025,
     "date": "2025-10-01",
-    "teamA": "Wei",
-    "teamB": "Leah",
-    "scoreA": 133.52,
-    "scoreB": 124.94,
-    "week": 5,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-10-01",
     "teamA": "Mino",
     "teamB": "Seth",
     "scoreA": 126.02,
@@ -4560,6 +4681,17 @@
     "teamB": "Joe",
     "scoreA": 116.16,
     "scoreB": 115.94,
+    "week": 5,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2025,
+    "date": "2025-10-01",
+    "teamA": "Wei",
+    "teamB": "Leah",
+    "scoreA": 133.52,
+    "scoreB": 124.94,
     "week": 5,
     "round": null,
     "type": "Regular"
@@ -4633,17 +4765,6 @@
   {
     "season": 2025,
     "date": "2025-10-15",
-    "teamA": "Erin",
-    "teamB": "Marian",
-    "scoreA": 149.5,
-    "scoreB": 138.66,
-    "week": 7,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-10-15",
     "teamA": "Dulberger",
     "teamB": "Rico",
     "scoreA": 128.36,
@@ -4655,10 +4776,10 @@
   {
     "season": 2025,
     "date": "2025-10-15",
-    "teamA": "Leah",
-    "teamB": "Malcolm",
-    "scoreA": 115.98,
-    "scoreB": 137.86,
+    "teamA": "Erin",
+    "teamB": "Marian",
+    "scoreA": 149.5,
+    "scoreB": 138.66,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -4666,10 +4787,10 @@
   {
     "season": 2025,
     "date": "2025-10-15",
-    "teamA": "Wei",
-    "teamB": "Taylor",
-    "scoreA": 125.74,
-    "scoreB": 75.72,
+    "teamA": "Leah",
+    "teamB": "Malcolm",
+    "scoreA": 115.98,
+    "scoreB": 137.86,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -4692,6 +4813,17 @@
     "teamB": "Joe",
     "scoreA": 69.74,
     "scoreB": 123.34,
+    "week": 7,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2025,
+    "date": "2025-10-15",
+    "teamA": "Wei",
+    "teamB": "Taylor",
+    "scoreA": 125.74,
+    "scoreB": 75.72,
     "week": 7,
     "round": null,
     "type": "Regular"
@@ -4765,17 +4897,6 @@
   {
     "season": 2025,
     "date": "2025-10-29",
-    "teamA": "Erin",
-    "teamB": "Joe",
-    "scoreA": 121.0,
-    "scoreB": 113.74,
-    "week": 9,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-10-29",
     "teamA": "Dulberger",
     "teamB": "Taylor",
     "scoreA": 110.6,
@@ -4787,10 +4908,10 @@
   {
     "season": 2025,
     "date": "2025-10-29",
-    "teamA": "Leah",
-    "teamB": "Marian",
-    "scoreA": 100.16,
-    "scoreB": 115.12,
+    "teamA": "Erin",
+    "teamB": "Joe",
+    "scoreA": 121.0,
+    "scoreB": 113.74,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -4798,10 +4919,10 @@
   {
     "season": 2025,
     "date": "2025-10-29",
-    "teamA": "Wei",
-    "teamB": "Kylie",
-    "scoreA": 93.0,
-    "scoreB": 133.52,
+    "teamA": "Leah",
+    "teamB": "Marian",
+    "scoreA": 100.16,
+    "scoreB": 115.12,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -4824,6 +4945,17 @@
     "teamB": "Malcolm",
     "scoreA": 130.82,
     "scoreB": 131.3,
+    "week": 9,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2025,
+    "date": "2025-10-29",
+    "teamA": "Wei",
+    "teamB": "Kylie",
+    "scoreA": 93.0,
+    "scoreB": 133.52,
     "week": 9,
     "round": null,
     "type": "Regular"
@@ -4897,17 +5029,6 @@
   {
     "season": 2025,
     "date": "2025-11-12",
-    "teamA": "Erin",
-    "teamB": "Malcolm",
-    "scoreA": 96.44,
-    "scoreB": 122.92,
-    "week": 11,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-11-12",
     "teamA": "Dulberger",
     "teamB": "Kylie",
     "scoreA": 142.16,
@@ -4919,10 +5040,10 @@
   {
     "season": 2025,
     "date": "2025-11-12",
-    "teamA": "Leah",
-    "teamB": "Joe",
-    "scoreA": 113.64,
-    "scoreB": 136.32,
+    "teamA": "Erin",
+    "teamB": "Malcolm",
+    "scoreA": 96.44,
+    "scoreB": 122.92,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -4930,10 +5051,10 @@
   {
     "season": 2025,
     "date": "2025-11-12",
-    "teamA": "Wei",
-    "teamB": "Rico",
-    "scoreA": 101.14,
-    "scoreB": 97.1,
+    "teamA": "Leah",
+    "teamB": "Joe",
+    "scoreA": 113.64,
+    "scoreB": 136.32,
     "week": 11,
     "round": null,
     "type": "Regular"
@@ -4962,12 +5083,12 @@
   },
   {
     "season": 2025,
-    "date": "2025-11-19",
-    "teamA": "Erin",
-    "teamB": "Taylor",
-    "scoreA": 109.86,
-    "scoreB": 54.64,
-    "week": 12,
+    "date": "2025-11-12",
+    "teamA": "Wei",
+    "teamB": "Rico",
+    "scoreA": 101.14,
+    "scoreB": 97.1,
+    "week": 11,
     "round": null,
     "type": "Regular"
   },
@@ -4985,10 +5106,10 @@
   {
     "season": 2025,
     "date": "2025-11-19",
-    "teamA": "Leah",
-    "teamB": "Rico",
-    "scoreA": 151.86,
-    "scoreB": 129.96,
+    "teamA": "Erin",
+    "teamB": "Taylor",
+    "scoreA": 109.86,
+    "scoreB": 54.64,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -4996,10 +5117,10 @@
   {
     "season": 2025,
     "date": "2025-11-19",
-    "teamA": "Wei",
-    "teamB": "Malcolm",
-    "scoreA": 106.08,
-    "scoreB": 110.26,
+    "teamA": "Leah",
+    "teamB": "Rico",
+    "scoreA": 151.86,
+    "scoreB": 129.96,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -5022,6 +5143,17 @@
     "teamB": "Kylie",
     "scoreA": 63.92,
     "scoreB": 111.82,
+    "week": 12,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2025,
+    "date": "2025-11-19",
+    "teamA": "Wei",
+    "teamB": "Malcolm",
+    "scoreA": 106.08,
+    "scoreB": 110.26,
     "week": 12,
     "round": null,
     "type": "Regular"
@@ -5095,17 +5227,6 @@
   {
     "season": 2025,
     "date": "2025-12-03",
-    "teamA": "Erin",
-    "teamB": "Kylie",
-    "scoreA": 103.26,
-    "scoreB": 88.74,
-    "week": 14,
-    "round": null,
-    "type": "Regular"
-  },
-  {
-    "season": 2025,
-    "date": "2025-12-03",
     "teamA": "Dulberger",
     "teamB": "Malcolm",
     "scoreA": 100.64,
@@ -5117,10 +5238,10 @@
   {
     "season": 2025,
     "date": "2025-12-03",
-    "teamA": "Leah",
-    "teamB": "Taylor",
-    "scoreA": 134.38,
-    "scoreB": 108.78,
+    "teamA": "Erin",
+    "teamB": "Kylie",
+    "scoreA": 103.26,
+    "scoreB": 88.74,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -5128,10 +5249,10 @@
   {
     "season": 2025,
     "date": "2025-12-03",
-    "teamA": "Wei",
-    "teamB": "Marian",
-    "scoreA": 89.9,
-    "scoreB": 113.46,
+    "teamA": "Leah",
+    "teamB": "Taylor",
+    "scoreA": 134.38,
+    "scoreB": 108.78,
     "week": 14,
     "round": null,
     "type": "Regular"
@@ -5160,6 +5281,17 @@
   },
   {
     "season": 2025,
+    "date": "2025-12-03",
+    "teamA": "Wei",
+    "teamB": "Marian",
+    "scoreA": 89.9,
+    "scoreB": 113.46,
+    "week": 14,
+    "round": null,
+    "type": "Regular"
+  },
+  {
+    "season": 2025,
     "date": "2025-12-10",
     "teamA": "Joe",
     "teamB": "Wei",
@@ -5178,6 +5310,39 @@
     "scoreB": 149.52,
     "week": 15,
     "round": "Wild Card",
+    "type": "Playoff"
+  },
+  {
+    "season": 2025,
+    "date": "2025-12-17",
+    "teamA": "Dulberger",
+    "teamB": "Kylie",
+    "scoreA": 116.48,
+    "scoreB": 62.9,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2025,
+    "date": "2025-12-17",
+    "teamA": "Malcolm",
+    "teamB": "Wei",
+    "scoreA": 114.66,
+    "scoreB": 165.78,
+    "week": 16,
+    "round": "Semi Final",
+    "type": "Playoff"
+  },
+  {
+    "season": 2025,
+    "date": "2025-12-24",
+    "teamA": "Dulberger",
+    "teamB": "Wei",
+    "scoreA": 118.58,
+    "scoreB": 75.36,
+    "week": 17,
+    "round": "Championship",
     "type": "Playoff"
   }
 ]
