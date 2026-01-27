@@ -2165,7 +2165,7 @@ function renderSeasonRecap(team){
   const mkOutcome = (r)=>{
     const playoffGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isPlayoffGame(g));
     const saundersGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isSaundersGame(g));
-    const shotgunNote = Number.isFinite(+r.shotgun_starts) ? ` • Shotguns: ${r.shotgun_starts}` : "";
+    const shotgunNote = (r.shotgun_starts === null || r.shotgun_starts === undefined) ? "" : ` • Earned Shotguns 🍺: ${r.shotgun_starts}`;
     const playoffNarr = narrativeForGames(playoffGames);
     if(playoffNarr) return `${playoffNarr}${shotgunNote}`;
     const saundersNarr = narrativeForGames(saundersGames, "Last Place");
