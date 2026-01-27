@@ -2139,12 +2139,11 @@ function renderSeasonRecap(team){
   const mkOutcome = (r)=>{
     const playoffGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isPlayoffGame(g));
     const saundersGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isSaundersGame(g));
-    const finishText = Number.isFinite(+r.finish) ? `Finished ${r.finish}` : "Finished —";
     const playoffNarr = narrativeForGames(playoffGames);
-    if(playoffNarr) return `${playoffNarr}. ${finishText}`;
+    if(playoffNarr) return `${playoffNarr}`;
     const saundersNarr = narrativeForGames(saundersGames, "Last Place");
-    if(saundersNarr) return `${saundersNarr}. ${finishText}`;
-    return `Missed Playoffs. ${finishText}`;
+    if(saundersNarr) return `${saundersNarr}`;
+    return `🗑️ Missed Playoffs`;
   };
 
   tb.innerHTML = rows.map(r=>`
