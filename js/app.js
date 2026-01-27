@@ -1,5 +1,5 @@
 /* =========================================================
-   The Darling — history filters, highlights, dedupe & weeks
+   Viva La Collusion — history filters, highlights, dedupe & weeks
    + Asterisks, Rivalries (easter eggs)
    + Fun Facts, Crown Rain, Saunders Fog
    + Top 5 High/Low (skip 2014 playoffs), streak ranges
@@ -386,11 +386,11 @@ async function loadLeagueJSON(){
     try{
       rivalries = await rivRes.json();
       if (!Array.isArray(rivalries) || rivalries.length === 0) {
-        console.warn("[Darling] Rivalries.json missing or empty — rivalry callouts disabled.");
+        console.warn("[Viva La Collusion] Rivalries.json missing or empty — rivalry callouts disabled.");
         rivalries = [];
       }
     }catch{
-      console.warn("[Darling] Rivalries.json not found/parse error — rivalry callouts disabled.");
+      console.warn("[Viva La Collusion] Rivalries.json not found/parse error — rivalry callouts disabled.");
       rivalries = [];
     }
 
@@ -755,7 +755,7 @@ function renderTopHighlights(team){
     grid.innerHTML = `
       <div class="overview-chip">
         <h4>League view</h4>
-        <div class="big">Select a team to see Darlings & Last Place</div>
+        <div class="big">Select a team to see Viva La Collusion & Last Place</div>
         <div class="sub">Filters still work (e.g., Week 1). See Team Breakdown below.</div>
       </div>`;
     return;
@@ -784,7 +784,7 @@ function renderTopHighlights(team){
   `;
 
   grid.innerHTML = [
-    chip("Darlings", `${champYears.length}`, champYears.length ? `Years: ${champsDisplay.join(", ")}` : "—", "champs"),
+    chip("Viva La Collusion", `${champYears.length}`, champYears.length ? `Years: ${champsDisplay.join(", ")}` : "—", "champs"),
     chip("Last Place", `${sauYears.length}`, sauYears.length ? `Years: ${sauDisplay.join(", ")}` : "—", "sau"),
     chip("Regular-Season Titles", `${regYears.length}`, regYears.length ? `Years: ${regYears.join(", ")}` : "—", "regs"),
     chip("Avg Finish", nfmt(avgFinish, 2), avgFinishSeasons ? `Seasons: ${avgFinishSeasons}` : "—", "avg-finish"),
@@ -1079,7 +1079,7 @@ function renderLeagueSummaryTablesAllTeams(){
     return { team:r.team, rec:`${r.w}-${r.l}${r.t?'-'+r.t:''}`, pct: winPct, ppg, oppg };
   }).sort((a,b)=> b.pct - a.pct || b.ppg - a.ppg || a.team.localeCompare(b.team));
 
-  // Postseason aggregates (Darling=main playoffs, Saunders=saunders tourney)
+  // Postseason aggregates (Viva La Collusion=main playoffs, Saunders=saunders tourney)
   const ss = Array.isArray(seasonSummaries) ? seasonSummaries : [];
   const postByTeam = new Map();
   for (const r of ss){
@@ -1156,8 +1156,8 @@ function renderLeagueSummaryTablesAllTeams(){
         <table>
           <thead>
             <tr>
-              <th>Team</th><th>Darling Record</th><th>Byes</th><th>Championships</th>
-              <th>Darling PPG</th><th>Darling Opp PPG</th>
+              <th>Team</th><th>Viva La Collusion Record</th><th>Byes</th><th>Championships</th>
+              <th>Viva La Collusion PPG</th><th>Viva La Collusion Opp PPG</th>
               <th>Last Place Record</th><th>Saunders</th><th>Saunders PPG</th><th>Saunders Opp PPG</th>
             </tr>
           </thead>
