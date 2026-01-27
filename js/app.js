@@ -517,7 +517,7 @@ function renderSidebarPostseason(team){
   wrap.innerHTML = `
     <div class="pill">🏆 Champs: ${champs.length}${champs.length?` (${champs.join(", ")})`:""}</div>
     <div class="pill">🔥 Byes: ${byes.length}${byes.length?` (${byes.join(", ")})`:""}</div>
-    <div class="pill">🪦 Saunders: ${sauYears.length}${sauYears.length?` (${sauYears.join(", ")})`:""}</div>
+    <div class="pill">🪦 Last Place: ${sauYears.length}${sauYears.length?` (${sauYears.join(", ")})`:""}</div>
   `;
 }
 
@@ -755,7 +755,7 @@ function renderTopHighlights(team){
     grid.innerHTML = `
       <div class="overview-chip">
         <h4>League view</h4>
-        <div class="big">Select a team to see Darlings & Saunders</div>
+        <div class="big">Select a team to see Darlings & Last Place</div>
         <div class="sub">Filters still work (e.g., Week 1). See Team Breakdown below.</div>
       </div>`;
     return;
@@ -785,7 +785,7 @@ function renderTopHighlights(team){
 
   grid.innerHTML = [
     chip("Darlings", `${champYears.length}`, champYears.length ? `Years: ${champsDisplay.join(", ")}` : "—", "champs"),
-    chip("Saunders", `${sauYears.length}`, sauYears.length ? `Years: ${sauDisplay.join(", ")}` : "—", "sau"),
+    chip("Last Place", `${sauYears.length}`, sauYears.length ? `Years: ${sauDisplay.join(", ")}` : "—", "sau"),
     chip("Regular-Season Titles", `${regYears.length}`, regYears.length ? `Years: ${regYears.join(", ")}` : "—", "regs"),
     chip("Avg Finish", nfmt(avgFinish, 2), avgFinishSeasons ? `Seasons: ${avgFinishSeasons}` : "—", "avg-finish"),
     notes.length ? `<div class="overview-chip"><h4>Notes</h4><div class="sub">* ${notes.join(" • ")}</div></div>` : ""
@@ -836,8 +836,8 @@ function renderAggStats(team, games){
     stat('Reg Win %', pct(reg)),
     stat('Playoff Record', rec(ply)),
     stat('Playoff Win %', pct(ply)),
-    stat('Saunders Record', rec(sau)),
-    stat('Saunders Win %', pct(sau)),
+    stat('Last Place Record', rec(sau)),
+    stat('Last Place Win %', pct(sau)),
     stat('PPG', ppg.toFixed(2)),
     stat('OPPG', oppg.toFixed(2)),
     stat('Games', n),
@@ -868,9 +868,9 @@ function renderSeasonCallout(team){
     const bits=[];
     if(rec.champion) bits.push("🏆 Champion" + (champNote(team, onlySeason) ? "*" : ""));
     if(rec.bye) bits.push("🔥 Top-2 Seed");
-    if(rec.saunders) bits.push("🪦 Saunders" + (saundersNote(team, onlySeason) ? "*" : ""));
+    if(rec.saunders) bits.push("🪦 Last Place" + (saundersNote(team, onlySeason) ? "*" : ""));
     if(rec.playoff_wins||rec.playoff_losses||rec.playoff_ties) bits.push(`Playoffs: ${(rec.playoff_wins||0)}-${(rec.playoff_losses||0)}-${(rec.playoff_ties||0)}`);
-    if(rec.saunders_wins||rec.saunders_losses||rec.saunders_ties) bits.push(`Saunders: ${(rec.saunders_wins||0)}-${(rec.saunders_losses||0)}-${(rec.saunders_ties||0)}`);
+    if(rec.saunders_wins||rec.saunders_losses||rec.saunders_ties) bits.push(`Last Place: ${(rec.saunders_wins||0)}-${(rec.saunders_losses||0)}-${(rec.saunders_ties||0)}`);
     const record=`${rec.wins}-${rec.losses}-${rec.ties||0}`;
     const pct=fmtPct(rec.wins, rec.losses, rec.ties||0);
     const finish = Number.isFinite(+rec.finish) ? `${rec.finish}` : "—";
@@ -1158,7 +1158,7 @@ function renderLeagueSummaryTablesAllTeams(){
             <tr>
               <th>Team</th><th>Darling Record</th><th>Byes</th><th>Championships</th>
               <th>Darling PPG</th><th>Darling Opp PPG</th>
-              <th>Saunders Record</th><th>Saunders</th><th>Saunders PPG</th><th>Saunders Opp PPG</th>
+              <th>Last Place Record</th><th>Saunders</th><th>Saunders PPG</th><th>Saunders Opp PPG</th>
             </tr>
           </thead>
           <tbody>${
@@ -2142,7 +2142,7 @@ function renderSeasonRecap(team){
     const saundersGames = leagueGames.filter(g=>+g.season===+r.season && (g.teamA===team||g.teamB===team) && isSaundersGame(g));
     const playoffNarr = narrativeForGames(playoffGames);
     if(playoffNarr) return playoffNarr;
-    const saundersNarr = narrativeForGames(saundersGames, "Saunders");
+    const saundersNarr = narrativeForGames(saundersGames, "Last Place");
     if(saundersNarr) return saundersNarr;
     if (r.bye) return "Top-2 Seed";
     return "—";

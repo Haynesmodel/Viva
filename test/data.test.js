@@ -192,6 +192,7 @@ test('Regular-season games have empty playoff round', () => {
 
 test('Saunders is loser of Saunders Final (when present)', () => {
   const h2h = readJson(h2hPath);
+  if (!h2h.some(isSaunders)) return;
   const seasons = readJson(seasonPath);
   const saundersLoser = new Map();
   for (const g of h2h){
