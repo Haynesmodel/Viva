@@ -12,18 +12,18 @@ const startersTotal = 9;
 const DEFAULT_TEAM_FOR_RIVALRY = "Joe";
 
 const TEAM_PHOTOS = {
-  Dulberger: 'assets/Dulberger.jpeg',
-  Erin: 'assets/Erin.jpeg',
-  Joe: 'assets/Joe.jpeg',
-  Kylie: 'assets/Kylie.jpeg',
-  Leah: 'assets/Leah.jpeg',
-  Malcolm: 'assets/Malcolm.jpeg',
-  Marian: 'assets/Marian.jpeg',
-  Mino: 'assets/Mino.jpeg',
-  Rico: 'assets/Rico.jpeg',
-  Seth: 'assets/Seth.jpeg',
-  Taylor: 'assets/Taylor.jpeg',
-  Wei: 'assets/Wei.jpeg'
+  Dulberger: '../assets/Dulberger.jpeg',
+  Erin: '../assets/Erin.jpeg',
+  Joe: '../assets/Joe.jpeg',
+  Kylie: '../assets/Kylie.jpeg',
+  Leah: '../assets/Leah.jpeg',
+  Malcolm: '../assets/Malcolm.jpeg',
+  Marian: '../assets/Marian.jpeg',
+  Mino: '../assets/Mino.jpeg',
+  Rico: '../assets/Rico.jpeg',
+  Seth: '../assets/Seth.jpeg',
+  Taylor: '../assets/Taylor.jpeg',
+  Wei: '../assets/Wei.jpeg'
 };
 
 let leagueGames = [];      // assets/H2H.json
@@ -422,8 +422,8 @@ function showPage(id){
 }
 
 function headerImageForTeam(team){
-  if(team===ALL_TEAMS) return 'assets/LeaguePic.jpeg';
-  return TEAM_PHOTOS[team] || 'assets/LeaguePic.jpeg';
+  if(team===ALL_TEAMS) return '../assets/LeaguePic.jpeg';
+  return TEAM_PHOTOS[team] || '../assets/LeaguePic.jpeg';
 }
 
 /* ---------- Header banners row ---------- */
