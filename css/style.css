@@ -1,0 +1,215 @@
+:root{
+  --bg:#f6f7fb; --panel:#fff; --text:#111827; --muted:#6b7280; --border:#e5e7eb;
+  --row-alt:#fafbff; --accent:#2563eb; --header:#0f172a;
+  --win:#e9fbf0; --loss:#fff0f0; --tie:#f3f4f6;
+  --champ-accent:#f59e0b; --sau-accent:#8b5cf6; --reg-accent:#60a5fa;
+
+  --header-focus-y:60%;
+  --header-min-h:360px;
+}
+
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial;background:var(--bg);color:var(--text)}
+
+header{
+  padding:48px 16px 72px;
+  min-height: var(--header-min-h);
+  color:#fff;
+  background:url('../assets/LeagePic.jpeg') center var(--header-focus-y) / cover no-repeat;
+  position:relative;
+}
+header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35)}
+header .inner{position:relative;z-index:1;text-align:center;max-width:1100px;margin:0 auto}
+header h1{margin:0;font-size:38px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+header h2{margin:8px 0 0;font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.banners{margin-top:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.banner{padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.9);color:#111;backdrop-filter:blur(2px)}
+.banner.champ{background:#ffd700;color:#111}
+.banner.reg{background:#bfdbfe;color:#0c4a6e}
+
+@media (max-width:640px){ :root{ --header-focus-y:68%; --header-min-h:380px } }
+
+.tabs{display:flex;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:5}
+.tab{border:1px solid var(--border);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;font-weight:600}
+.tab.active{background:var(--header);color:#fff;border-color:var(--header)}
+
+main{padding:16px}
+.page{display:none}
+.page.visible{display:grid;grid-template-columns:3fr 1fr;gap:16px}
+#page-history.page.visible{grid-template-columns:1fr}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:16px}
+.card h3{margin:4px 0 10px;font-size:16px}
+
+/* Controls */
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.controls input,.controls select{padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:14px}
+.btn{border:1px solid var(--border);background:#fff;padding:6px 10px;border-radius:999px;font-size:13px;cursor:pointer}
+.btn:hover{background:#f3f4f6}
+.btn.primary{background:#16a34a;color:#fff;border-color:transparent}
+.btn.danger{background:#dc2626;color:#fff;border-color:transparent}
+.btn.reset{background:#111827;color:#fff}
+
+/* Dropdown checklists */
+.dropdown{position:relative}
+.dropdown-toggle{font-weight:600;display:flex;align-items:center;gap:6px}
+.count-text{color:var(--muted);font-weight:600}
+.dropdown-menu{
+  display:none;position:absolute;top:100%;left:0;z-index:20;background:#fff;
+  border:1px solid var(--border);border-radius:10px;padding:8px;box-shadow:0 12px 24px rgba(0,0,0,.12);
+  max-height:320px;overflow:auto;min-width:240px
+}
+.dropdown.open .dropdown-menu{display:block}
+.dropdown-menu .all-row{border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:6px}
+.dropdown-menu label{display:flex;align-items:center;gap:8px;font-size:13px;margin:2px 0;padding:6px 6px;border-radius:8px;cursor:pointer}
+.dropdown-menu label:hover{background:#f9fafb}
+.dropdown-menu input[type="checkbox"]{width:16px;height:16px;border:1px solid var(--border);border-radius:4px}
+.dropdown-menu .grid{display:flex;flex-direction:column}
+
+/* Tables */
+.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--header);color:#fff;padding:8px;text-align:left;white-space:nowrap}
+tbody td{padding:8px;border-top:1px solid var(--border)}
+tbody tr:nth-child(even){background:var(--row-alt)}
+.result-win{background:var(--win)!important}
+.result-loss{background:var(--loss)!important}
+.result-tie{background:var(--tie)!important}
+
+/* Postseason rows pop */
+.postseason{position:relative;box-shadow:inset 4px 0 0 0 var(--sau-accent)}
+.postseason td{font-weight:600}
+
+.muted{color:var(--muted)}
+
+/* Stats, callouts */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+.stat .label{font-size:12px;color:var(--muted)}
+.stat .value{font-size:16px;font-weight:700}
+.callout{margin-top:12px;padding:12px;border-radius:12px;background:#eef2ff;border:1px solid #c7d2fe;font-size:14px;font-weight:600}
+
+/* Callouts container */
+.callouts{display:flex;flex-direction:column;gap:8px;margin:8px 0 10px}
+
+/* Overview grid */
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.overview-chip{border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff}
+.overview-chip h4{margin:0 0 6px 0;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.overview-chip .big{font-size:18px;font-weight:800}
+.overview-chip .sub{font-size:12px;color:var(--muted);margin-top:4px}
+.overview-chip.champs{box-shadow:inset 0 0 0 2px var(--champ-accent)}
+.overview-chip.sau{box-shadow:inset 0 0 0 2px var(--sau-accent)}
+.overview-chip.regs{box-shadow:inset 0 0 0 2px var(--reg-accent)}
+
+/* Fun Facts layout */
+.fun-grid .stat{background:#fff}
+.fun-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-top:10px}
+.mini{background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px}
+.mini-title{font-size:13px;font-weight:700;margin:2px 4px 6px;color:#111827}
+.table-wrap.mini-table thead th{background:#1f2937}
+.table-wrap.mini-table tbody td{font-size:13px}
+
+/* Badges in tables */
+.score-cell{display:flex;align-items:center;gap:6px}
+.badge-emoji{font-size:16px;line-height:1}
+.badge-emoji.big{font-size:18px}
+
+/* FX overlays */
+#fxCrown{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:999;display:none}
+.crown{position:absolute;font-size:24px;animation:fall linear forwards;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2))}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:0}100%{transform:translateY(110vh) rotate(360deg);opacity:1}}
+#fxSaunders{position:fixed;inset:0;background:radial-gradient(70% 60% at 50% 30%, rgba(139,92,246,.25), rgba(139,92,246,.5));backdrop-filter:blur(1px);z-index:998;display:none;animation:fadeInOut 2s ease forwards}
+@keyframes fadeInOut{0%{opacity:0}10%{opacity:1}90%{opacity:.9}100%{opacity:0}}
+
+
+/* === Enhancements for Crowns, Turds, Fun Facts, Week-by-Week, and Season Narratives === */
+
+/* Crown + Turd badges */
+.badge-emoji {
+  font-size: 1.1rem;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.badge-emoji.big {
+  font-size: 1.4rem;
+}
+
+.badge-emoji[title*="Top score"] {
+  filter: drop-shadow(0 0 4px gold);
+}
+
+.badge-emoji[title*="Lowest score"] {
+  filter: drop-shadow(0 0 4px brown);
+}
+
+/* Fun Fact Tiles */
+#funFacts {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#funFacts .stat {
+  background: #f9fafb;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 4px;
+  flex: 1 1 150px;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+#funFacts .stat:hover {
+  transform: scale(1.05);
+  background: #fffbea;
+}
+
+#funFacts .label {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+#funFacts .value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* Week-by-Week Table Styling */
+#weekTable td.score-cell {
+  font-weight: bold;
+}
+
+#weekTable tr.result-win {
+  background: #e6ffed;
+}
+
+#weekTable tr.result-loss {
+  background: #ffe6e6;
+}
+
+#weekTable tr.result-tie {
+  background: #f2f2f2;
+}
+
+#weekTable tr.postseason td {
+  font-style: italic;
+  background: #f0f8ff;
+}
+
+/* Season Narratives */
+#seasonRecapTable td:last-child {
+  font-style: italic;
+  color: #333;
+}
+
+
+@media (max-width: 1200px){
+  #funFacts{ grid-template-columns: repeat(4, minmax(120px,1fr)); }
+}
+@media (max-width: 700px){
+  #funFacts{ grid-template-columns: repeat(2, minmax(120px,1fr)); }
+}
