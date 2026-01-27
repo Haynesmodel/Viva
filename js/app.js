@@ -1155,8 +1155,8 @@ function renderLeagueSummaryTablesAllTeams(){
         <table>
           <thead>
             <tr>
-              <th>Team</th><th>Viva La Collusion Record</th><th>Byes</th><th>Championships</th>
-              <th>Viva La Collusion PPG</th><th>Viva La Collusion Opp PPG</th>
+              <th>Team</th><th>Playoff Record</th><th>Byes</th><th>Championships</th>
+              <th>Playoff PPG</th><th>Playoff Opp PPG</th>
               <th>Last Place Record</th><th>Saunders</th><th>Saunders PPG</th><th>Saunders Opp PPG</th>
             </tr>
           </thead>
@@ -1764,6 +1764,7 @@ function renderFunFacts(team, games){
   let loss = null;
 
   const perGame = [];
+  const perGameHigh = [];
   const orderedAsc = games.slice().sort(byDateAsc);
 
   let lwLen=0, llLen=0;
@@ -1779,7 +1780,7 @@ function renderFunFacts(team, games){
   for(const g of orderedAsc){
     const s = sidesForTeam(g, team); if(!s) continue;
 
-    if(!isTwoWeek2014(g) && (!hi || s.pf > hi.pf)) hi = { pf:s.pf, pa:s.pa, date:g.date, opp:s.opp };
+    if(+g.season !== 2020 && !isTwoWeek2014(g) && (!hi || s.pf > hi.pf)) hi = { pf:s.pf, pa:s.pa, date:g.date, opp:s.opp };
 
     if(s.result==='W'){
       const margin = s.pf - s.pa;
@@ -1791,9 +1792,9 @@ function renderFunFacts(team, games){
     }
 
     if(!isTwoWeek2014(g)){
-      perGame.push({
-        pf:s.pf, pa:s.pa, date:g.date, opp:s.opp, season:+g.season, type:normType(g.type), g
-      });
+      const entry = { pf:s.pf, pa:s.pa, date:g.date, opp:s.opp, season:+g.season, type:normType(g.type), g };
+      perGame.push(entry);
+      if(+g.season !== 2020) perGameHigh.push(entry);
     }
 
     if(s.result==='T'){
@@ -1810,7 +1811,7 @@ function renderFunFacts(team, games){
   }
   finalizeCurrent();
 
-  const hi5 = perGame.slice().sort((a,b)=> b.pf - a.pf || new Date(b.date)-new Date(a.date)).slice(0,5);
+  const hi5 = perGameHigh.slice().sort((a,b)=> b.pf - a.pf || new Date(b.date)-new Date(a.date)).slice(0,5);
   const lo5 = perGame.slice().sort((a,b)=> a.pf - b.pf || new Date(a.date)-new Date(b.date)).slice(0,5);
 
   const { exp, act, luck } = luckSummary(team, games);
