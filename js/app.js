@@ -1819,7 +1819,7 @@ function renderFunFacts(team, games){
     if(!isTwoWeek2014(g)){
       const entry = { pf:s.pf, pa:s.pa, date:g.date, opp:s.opp, season:+g.season, type:normType(g.type), g };
       perGame.push(entry);
-      if(+g.season !== 2020) perGameHigh.push(entry);
+      if(+g.season !== 2020 || entry.type === 'regular') perGameHigh.push(entry);
     }
 
     if(s.result==='T'){
