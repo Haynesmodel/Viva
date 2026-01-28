@@ -33,6 +33,8 @@ let rivalries = [];        // assets/Rivalries.json
 
 const ALL_TEAMS = "__ALL__";
 let selectedTeam = "Joe";
+let headerRotateTimer = null;
+let headerRotateIndex = 0;
 
 let selectedSeasons = new Set();
 let selectedWeeks   = new Set();
@@ -422,6 +424,29 @@ function showPage(id){
   if(histPage) histPage.classList.add('visible');
 }
 
+function startHeaderRotation(){
+  stopHeaderRotation();
+  const teams = Object.keys(TEAM_PHOTOS);
+  if (!teams.length) return;
+  const headerEl = document.querySelector('header');
+  if (!headerEl) return;
+  headerRotateIndex = headerRotateIndex % teams.length;
+  const applyImage = () => {
+    const team = teams[headerRotateIndex % teams.length];
+    const img = TEAM_PHOTOS[team];
+    headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+    headerRotateIndex = (headerRotateIndex + 1) % teams.length;
+  };
+  applyImage();
+  headerRotateTimer = setInterval(applyImage, 4000);
+}
+function stopHeaderRotation(){
+  if (headerRotateTimer) {
+    clearInterval(headerRotateTimer);
+    headerRotateTimer = null;
+  }
+}
+
 function headerImageForTeam(team){
   if(team===ALL_TEAMS) return '../assets/LeaguePic.jpeg';
   return TEAM_PHOTOS[team] || '../assets/LeaguePic.jpeg';
@@ -444,11 +469,16 @@ function renderHeaderBannersForOwner(owner){
 function updateHeaderForTeam(team){
   try {
     const h2 = document.querySelector('header h2');
-    if (h2) h2.textContent = team;
+    if (h2) h2.textContent = (team === ALL_TEAMS) ? 'All Teams' : team;
     const headerEl = document.querySelector('header');
     if (headerEl) {
-      const img = headerImageForTeam(team);
-      headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+      if (team === ALL_TEAMS) {
+        startHeaderRotation();
+      } else {
+        stopHeaderRotation();
+        const img = headerImageForTeam(team);
+        headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+      }
     }
     renderHeaderBannersForOwner(team);
     document.title = team + ' — League History';
@@ -578,7 +608,7 @@ function buildHistoryControls(){
   const teamSelect=document.getElementById('teamSelect');
   const teams=teamOptions();
   teamSelect.innerHTML=teams.map(t=>`<option value="${t.value}">${t.label}</option>`).join("");
-  const defaultTeam = teams.find(t=>t.value==="Joe") ? "Joe" : teams[0].value;
+  const defaultTeam = teams.find(t=>t.value===ALL_TEAMS) ? ALL_TEAMS : teams[0].value;
   const urlTeam = (urlState.team && teams.some(t=>t.value===urlState.team)) ? urlState.team : null;
   teamSelect.value = urlTeam || defaultTeam;
   selectedTeam = teamSelect.value;
