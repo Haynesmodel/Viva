@@ -11,6 +11,7 @@
 const startersTotal = 9;
 const DEFAULT_TEAM_FOR_RIVALRY = "Joe";
 const EXCLUDED_TEAMS = new Set(["Chuck", "Julia"]);
+const SHOTGUN_NAME_OVERRIDES = { Dulberger: "Josh" };
 
 const TEAM_PHOTOS = {
   Dulberger: 'assets/Dulberger.jpeg',
@@ -43,6 +44,7 @@ let selectedWeeks   = new Set();
 let selectedOpponents = new Set();
 let selectedTypes = new Set();
 let selectedRounds = new Set();
+let currentPage = "history";
 
 let universe = { seasons: [], weeks: [], opponents: [], types: [], rounds: [] };
 
@@ -89,8 +91,10 @@ function parseUrlState(){
   const types = parseList('types');
   const rounds = parseList('rounds');
   const team = params.get('team') || null;
-  const hasAny = !!(team || (seasons&&seasons.length) || (weeks&&weeks.length) || (opps&&opps.length) || (types&&types.length) || (rounds&&rounds.length));
+  const page = params.get('page') || null;
+  const hasAny = !!(page || team || (seasons&&seasons.length) || (weeks&&weeks.length) || (opps&&opps.length) || (types&&types.length) || (rounds&&rounds.length));
   return {
+    page,
     team,
     seasons: seasons ? new Set(seasons) : null,
     weeks: weeks ? new Set(weeks) : null,
@@ -126,6 +130,7 @@ function setFacetSelections(containerId, prefix, valuesSet){
 function updateUrlFromState(){
   if(isApplyingUrlState) return;
   const params = new URLSearchParams();
+  if(currentPage === "shotguns") params.set("page","shotguns");
   if(selectedTeam && selectedTeam!==ALL_TEAMS) params.set('team', selectedTeam);
   const setIf = (key, set, uni)=>{ if(isRestrictive(set, uni)) params.set(key, [...set].join(',')); };
   setIf('seasons', selectedSeasons, universe.seasons);
@@ -424,6 +429,7 @@ function showPage(id){
   const histPage = document.getElementById('page-history');
   const shotBtn = document.getElementById('tabShotgunsBtn');
   const shotPage = document.getElementById('page-shotguns');
+  currentPage = id === 'shotguns' ? 'shotguns' : 'history';
   if (id === 'shotguns') {
     if (shotBtn) shotBtn.classList.add('active');
     if (shotPage) shotPage.classList.add('visible');
@@ -487,6 +493,10 @@ function headerImageForTeam(team){
   return TEAM_PHOTOS[team] || 'assets/LeaguePic.jpeg';
 }
 
+function shotgunDisplayName(owner){
+  return SHOTGUN_NAME_OVERRIDES[owner] || owner;
+}
+
 function renderShotgunsPage(){
   const owedEl = document.getElementById('shotgunOwedList');
   const teamsEl = document.getElementById('shotgunTeams');
@@ -501,7 +511,7 @@ function renderShotgunsPage(){
   }
   const owedChips = Array.from(byOwner.entries())
     .sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]))
-    .map(([owner, count]) => `<div class="banner">${owner}: ${count}</div>`);
+    .map(([owner, count]) => `<div class="banner">${shotgunDisplayName(owner)}: ${count}</div>`);
   owedEl.innerHTML = owedChips.join('') || '<div class="muted">No shotguns owed.</div>';
 
   const owners = Object.keys(TEAM_PHOTOS);
@@ -531,7 +541,7 @@ function renderShotgunsPage(){
     return `
       <div class="shotgun-card">
         <img src="${TEAM_PHOTOS[owner]}" alt="${owner}" />
-        <h4>${owner}</h4>
+        <h4>${shotgunDisplayName(owner)}</h4>
         <div class="shotgun-metrics">
           <div class="pill">Owed: ${owedCount}</div>
           <div class="pill">Completed: ${completedCount}</div>
@@ -598,11 +608,18 @@ function updateHeaderForTeam(team){
 window.addEventListener('DOMContentLoaded', async ()=>{
   await loadLeagueJSON();
 
+  const urlState = parseUrlState();
+  if (urlState.page === 'shotguns') {
+    showPage('shotguns');
+    renderShotgunsPage();
+  }
+
   // Tabs (History only)
   const histTab = document.getElementById('tabHistoryBtn');
   if (histTab) {
     histTab.addEventListener('click', ()=>{
       showPage('history');
+      updateUrlFromState();
       const teamSel = document.getElementById('teamSelect');
       if (teamSel && !teamSel.dataset.ready) {
         buildHistoryControls();
@@ -617,6 +634,7 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     shotTab.addEventListener('click', ()=>{
       showPage('shotguns');
       renderShotgunsPage();
+      updateUrlFromState();
     });
   }
 

@@ -237,3 +237,8 @@ tbody tr:nth-child(even){background:var(--row-alt)}
 .shotgun-list{list-style:none;padding:0;margin:0}
 .shotgun-list li{margin:4px 0}
 .shotgun-list button{padding:4px 8px;font-size:12px}
+
+.shotgun-layout{display:grid;grid-template-columns:minmax(240px,1fr) 2fr;gap:16px;align-items:start}
+#shotgunTeamsCard{grid-column:2}
+#shotgunOwedCard{grid-column:1}
+@media (max-width:900px){.shotgun-layout{grid-template-columns:1fr}#shotgunTeamsCard,#shotgunOwedCard{grid-column:auto}}

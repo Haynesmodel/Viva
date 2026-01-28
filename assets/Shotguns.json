@@ -427,7 +427,7 @@
     "week": null,
     "date": "2026-01-03",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Player: Tyreek Hill",
     "completed": true,
     "video_url": "assets/Shotguns/Joe/2026-01-03-2.mov"
   },
@@ -436,7 +436,7 @@
     "week": null,
     "date": "2025-12-18",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Player: Tyreek Hill",
     "completed": true,
     "video_url": "assets/Shotguns/Joe/2025-12-18.mov"
   },
@@ -445,7 +445,7 @@
     "week": null,
     "date": "2025-10-02",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Player: Saquon Barkley",
     "completed": true,
     "video_url": "assets/Shotguns/Joe/2025-10-02.mov"
   },
@@ -454,7 +454,7 @@
     "week": null,
     "date": "2025-12-18",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Player: Justin Jefferson",
     "completed": true,
     "video_url": "assets/Shotguns/Joe/2025-12-18-2.mov"
   },
@@ -463,7 +463,7 @@
     "week": null,
     "date": "2026-01-03",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Player: Saquon Barkley",
     "completed": true,
     "video_url": "assets/Shotguns/Joe/2026-01-03.mov"
   },
@@ -472,7 +472,7 @@
     "week": null,
     "date": "2025-11-04",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Player: Ja'Marr Chase",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-11-04-2.mov"
   },
@@ -481,7 +481,7 @@
     "week": null,
     "date": "2026-01-19",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2026-01-19.mov"
   },
@@ -490,7 +490,7 @@
     "week": null,
     "date": "2025-11-04",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-11-04.mov"
   },
@@ -499,7 +499,7 @@
     "week": null,
     "date": "2026-01-03",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2026-01-03-2.mov"
   },
@@ -508,7 +508,7 @@
     "week": null,
     "date": "2025-12-25",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-12-25.mov"
   },
@@ -517,7 +517,7 @@
     "week": null,
     "date": "2025-12-31",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-12-31.mov"
   },
@@ -526,7 +526,7 @@
     "week": null,
     "date": "2025-12-18",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-12-18.mov"
   },
@@ -535,7 +535,7 @@
     "week": null,
     "date": "2025-12-31",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-12-31-2.mov"
   },
@@ -544,7 +544,7 @@
     "week": null,
     "date": "2025-12-07",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-12-07.mov"
   },
@@ -553,7 +553,7 @@
     "week": null,
     "date": "2025-12-28",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-12-28.mov"
   },
@@ -562,7 +562,7 @@
     "week": null,
     "date": "2026-01-04",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2026-01-04.mov"
   },
@@ -571,7 +571,7 @@
     "week": null,
     "date": "2026-01-10",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2026-01-10.mov"
   },
@@ -580,7 +580,7 @@
     "week": null,
     "date": "2025-11-22",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-11-22.mov"
   },
@@ -589,7 +589,7 @@
     "week": null,
     "date": "2026-01-03",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2026-01-03.mov"
   },
@@ -598,7 +598,7 @@
     "week": null,
     "date": "2025-12-07",
     "due_date": "",
-    "cause": "Archive",
+    "cause": "Carryover",
     "completed": true,
     "video_url": "assets/Shotguns/Rico/2025-12-07-2.mov"
   },
