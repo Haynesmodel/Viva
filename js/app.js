@@ -1142,6 +1142,14 @@ function renderLeagueSummaryTablesAllTeams(){
       postByTeam.set(g.teamB, rec);
     }
   }
+  const shotgunsByTeam = new Map();
+  for (const r of ss){
+    if (!Number.isFinite(+r.shotgun_starts)) continue;
+    const cur = shotgunsByTeam.get(r.owner) || { team: r.owner, total: 0 };
+    cur.total += +r.shotgun_starts;
+    shotgunsByTeam.set(r.owner, cur);
+  }
+
   const postRows = Array.from(postByTeam.values()).filter(r=>!EXCLUDED_TEAMS.has(r.team)).map(r=>{
     const dPPG = r.dN ? (r.dPF/r.dN) : 0;
     const dOPPG = r.dN ? (r.dPA/r.dN) : 0;
@@ -1152,6 +1160,7 @@ function renderLeagueSummaryTablesAllTeams(){
       darlingRec: `${r.dW}-${r.dL}`,
       byes: r.byes,
       champs: r.champs,
+      shotguns: (shotgunsByTeam.get(r.team)?.total) || 0,
       dPPG, dOPPG,
       saundersRec: `${r.sW}-${r.sL}`,
       saundersTitles: r.saundersTitles,
@@ -1182,18 +1191,18 @@ function renderLeagueSummaryTablesAllTeams(){
         <table>
           <thead>
             <tr>
-              <th>Team</th><th>Playoff Record</th><th>Byes</th><th>Championships</th>
+              <th>Team</th><th>Playoff Record</th><th>Byes</th><th>Championships</th><th>Shotguns</th>
               <th>Playoff PPG</th><th>Playoff Opp PPG</th>
               <th>Last Place Record</th><th>Saunders</th><th>Saunders PPG</th><th>Saunders Opp PPG</th>
             </tr>
           </thead>
           <tbody>${
             postRows.map(r => `<tr>
-              <td>${r.team}</td><td>${r.darlingRec}</td><td>${r.byes}</td><td>${r.champs}</td>
+              <td>${r.team}</td><td>${r.darlingRec}</td><td>${r.byes}</td><td>${r.champs}</td><td>${r.shotguns}</td>
               <td>${n(r.dPPG,2)}</td><td>${n(r.dOPPG,2)}</td>
               <td>${r.saundersRec}</td><td>${r.saundersTitles}</td>
               <td>${n(r.sPPG,2)}</td><td>${n(r.sOPPG,2)}</td>
-            </tr>`).join("") || '<tr><td colspan="10" class="muted">—</td></tr>'
+            </tr>`).join("") || '<tr><td colspan="11" class="muted">—</td></tr>'
           }</tbody>
         </table>
       </div>

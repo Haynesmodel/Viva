@@ -617,7 +617,7 @@
     "bye": false,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 3
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -637,7 +637,7 @@
     "bye": false,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 7
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -657,7 +657,7 @@
     "bye": false,
     "wild_card": true,
     "saunders_bye": false,
-    "shotgun_starts": 8
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -677,7 +677,7 @@
     "bye": false,
     "wild_card": true,
     "saunders_bye": false,
-    "shotgun_starts": 3
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -697,7 +697,7 @@
     "bye": false,
     "wild_card": true,
     "saunders_bye": false,
-    "shotgun_starts": 1
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -717,7 +717,7 @@
     "bye": false,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 6
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -737,7 +737,7 @@
     "bye": true,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 2
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -757,7 +757,7 @@
     "bye": true,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 2
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -777,7 +777,7 @@
     "bye": false,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 6
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -797,7 +797,7 @@
     "bye": false,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 2
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -817,7 +817,7 @@
     "bye": false,
     "wild_card": true,
     "saunders_bye": false,
-    "shotgun_starts": 5
+    "shotgun_starts": null
   },
   {
     "season": 2023,
@@ -837,7 +837,7 @@
     "bye": false,
     "wild_card": false,
     "saunders_bye": false,
-    "shotgun_starts": 6
+    "shotgun_starts": null
   },
   {
     "season": 2024,
