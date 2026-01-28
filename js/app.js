@@ -430,15 +430,17 @@ function startHeaderRotation(){
   if (!teams.length) return;
   const headerEl = document.querySelector('header');
   if (!headerEl) return;
-  headerRotateIndex = headerRotateIndex % teams.length;
   const applyImage = () => {
-    const team = teams[headerRotateIndex % teams.length];
+    const team = teams[Math.floor(Math.random() * teams.length)];
     const img = TEAM_PHOTOS[team];
-    headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
-    headerRotateIndex = (headerRotateIndex + 1) % teams.length;
+    headerEl.classList.add('fading');
+    setTimeout(() => {
+      headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+      headerEl.classList.remove('fading');
+    }, 250);
   };
   applyImage();
-  headerRotateTimer = setInterval(applyImage, 4000);
+  headerRotateTimer = setInterval(applyImage, 8000);
 }
 function stopHeaderRotation(){
   if (headerRotateTimer) {
@@ -477,7 +479,11 @@ function updateHeaderForTeam(team){
       } else {
         stopHeaderRotation();
         const img = headerImageForTeam(team);
-        headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+        headerEl.classList.add('fading');
+        setTimeout(() => {
+          headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+          headerEl.classList.remove('fading');
+        }, 250);
       }
     }
     renderHeaderBannersForOwner(team);
