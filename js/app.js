@@ -521,10 +521,24 @@ function renderShotgunsPage(){
     const owner = item.owner || '—';
     byOwner.set(owner, (byOwner.get(owner) || 0) + 1);
   }
-  const owedChips = Array.from(byOwner.entries())
-    .sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]))
-    .map(([owner, count]) => `<div class="banner">${shotgunDisplayName(owner)}: ${count}</div>`);
-  owedEl.innerHTML = owedChips.join('') || '<div class="muted">No shotguns owed.</div>';
+  const owedRows = owed
+    .sort((a,b)=> String(b.due_date||'').localeCompare(String(a.due_date||'')) || String(b.date||'').localeCompare(String(a.date||'')))
+    .map(item => {
+      const owner = shotgunDisplayName(item.owner || '—');
+      const week = item.week ?? '—';
+      const cause = item.cause || '—';
+      const date = item.date || '—';
+      const due = item.due_date || '—';
+      return `<tr><td>${owner}</td><td>Week ${week}</td><td>${cause}</td><td>${date}</td><td>${due}</td></tr>`;
+    });
+  owedEl.innerHTML = owedRows.length ? `
+    <div class="table-wrap">
+      <table class="shotgun-owed-table">
+        <thead><tr><th>Owner</th><th>Week</th><th>Cause</th><th>Date</th><th>Due Date</th></tr></thead>
+        <tbody>${owedRows.join('')}</tbody>
+      </table>
+    </div>
+  ` : '<div class="muted">No shotguns owed.</div>';
 
   const owners = Object.keys(TEAM_PHOTOS);
   const completedByOwner = new Map();

@@ -226,8 +226,8 @@ tbody tr:nth-child(even){background:var(--row-alt)}
 
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:20;}
 .modal.hidden{display:none;}
-.modal-content{background:#fff;border-radius:12px;padding:16px;max-width:720px;width:90%;}
-.modal-content video{width:100%;height:auto;border-radius:8px;}
+.modal-content{background:#fff;border-radius:12px;padding:16px;max-width:900px;width:92%;max-height:85vh;overflow:auto;}
+.modal-content video{width:100%;height:auto;border-radius:8px;max-height:70vh;display:block;}
 
 .shotgun-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .shotgun-card{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
@@ -242,3 +242,10 @@ tbody tr:nth-child(even){background:var(--row-alt)}
 #shotgunTeamsCard{grid-column:2}
 #shotgunOwedCard{grid-column:1}
 @media (max-width:900px){.shotgun-layout{grid-template-columns:1fr}#shotgunTeamsCard,#shotgunOwedCard{grid-column:auto}}
+
+#page-shotguns{font-size:16px}
+#shotgunOwedCard h3,#shotgunTeamsCard h3{font-size:22px}
+.shotgun-card h4{font-size:18px}
+.shotgun-metrics .pill{font-size:14px}
+.shotgun-list button{font-size:13px}
+.shotgun-owed-table th,.shotgun-owed-table td{font-size:15px;padding:8px}
