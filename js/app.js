@@ -520,7 +520,13 @@ function renderShotgunsPage(){
     const completedCount = completedList.length;
     const past = completedList
       .sort((a,b)=> String(b.date||'').localeCompare(String(a.date||'')))
-      .map(i => `<li><button class="btn" data-video="${i.video_url}" data-owner="${owner}">${i.date || '—'}</button></li>`)
+      .map(i => {
+        const parts = [i.date || '—'];
+        if (i.week) parts.push(`Week ${i.week}`);
+        if (i.cause) parts.push(i.cause);
+        const label = parts.join(' • ');
+        return `<li><button class="btn" data-video="${i.video_url}" data-owner="${owner}">${label}</button></li>`;
+      })
       .join('') || '<li class="muted">—</li>';
     return `
       <div class="shotgun-card">
