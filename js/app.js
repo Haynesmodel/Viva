@@ -30,6 +30,7 @@ const TEAM_PHOTOS = {
 let leagueGames = [];      // assets/H2H.json
 let seasonSummaries = [];  // assets/SeasonSummary.json
 let rivalries = [];        // assets/Rivalries.json
+let shotgunItems = [];     // assets/Shotguns.json
 
 const ALL_TEAMS = "__ALL__";
 let selectedTeam = "Joe";
@@ -421,8 +422,15 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('visible'));
   const histBtn = document.getElementById('tabHistoryBtn');
   const histPage = document.getElementById('page-history');
-  if(histBtn) histBtn.classList.add('active');
-  if(histPage) histPage.classList.add('visible');
+  const shotBtn = document.getElementById('tabShotgunsBtn');
+  const shotPage = document.getElementById('page-shotguns');
+  if (id === 'shotguns') {
+    if (shotBtn) shotBtn.classList.add('active');
+    if (shotPage) shotPage.classList.add('visible');
+  } else {
+    if (histBtn) histBtn.classList.add('active');
+    if (histPage) histPage.classList.add('visible');
+  }
 }
 
 function startHeaderRotation(){
@@ -479,6 +487,74 @@ function headerImageForTeam(team){
   return TEAM_PHOTOS[team] || 'assets/LeaguePic.jpeg';
 }
 
+function renderShotgunsPage(){
+  const owedEl = document.getElementById('shotgunOwedList');
+  const teamsEl = document.getElementById('shotgunTeams');
+  if (!owedEl || !teamsEl) return;
+  const items = Array.isArray(shotgunItems) ? shotgunItems : [];
+
+  const owed = items.filter(i => i && i.completed === false);
+  const byOwner = new Map();
+  for (const item of owed){
+    const owner = item.owner || '—';
+    byOwner.set(owner, (byOwner.get(owner) || 0) + 1);
+  }
+  const owedChips = Array.from(byOwner.entries())
+    .sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]))
+    .map(([owner, count]) => `<div class="banner">${owner}: ${count}</div>`);
+  owedEl.innerHTML = owedChips.join('') || '<div class="muted">No shotguns owed.</div>';
+
+  const owners = Object.keys(TEAM_PHOTOS);
+  const completedByOwner = new Map();
+  for (const item of items){
+    if (!item || item.completed !== true) continue;
+    const owner = item.owner || '—';
+    const list = completedByOwner.get(owner) || [];
+    list.push(item);
+    completedByOwner.set(owner, list);
+  }
+
+  teamsEl.innerHTML = owners.map(owner => {
+    const owedCount = byOwner.get(owner) || 0;
+    const completedList = completedByOwner.get(owner) || [];
+    const completedCount = completedList.length;
+    const past = completedList
+      .sort((a,b)=> String(b.date||'').localeCompare(String(a.date||'')))
+      .map(i => `<li><button class="btn" data-video="${i.video_url}" data-owner="${owner}">${i.date || '—'}</button></li>`)
+      .join('') || '<li class="muted">—</li>';
+    return `
+      <div class="shotgun-card">
+        <img src="${TEAM_PHOTOS[owner]}" alt="${owner}" />
+        <h4>${owner}</h4>
+        <div class="shotgun-metrics">
+          <div class="pill">Owed: ${owedCount}</div>
+          <div class="pill">Completed: ${completedCount}</div>
+        </div>
+        <ul class="shotgun-list">${past}</ul>
+      </div>
+    `;
+  }).join('');
+
+  const modal = document.getElementById('shotgunModal');
+  const modalVideo = document.getElementById('shotgunModalVideo');
+  const modalClose = document.getElementById('shotgunModalClose');
+  if (modal && modalVideo && modalClose){
+    teamsEl.querySelectorAll('button[data-video]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-video');
+        if (!url) return;
+        modalVideo.src = url;
+        modal.classList.remove('hidden');
+      });
+    });
+    modalClose.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+    });
+  }
+}
+
 /* ---------- Header banners row ---------- */
 function renderHeaderBannersForOwner(owner){
   const el=document.getElementById('headerBanners'); if(!el) return;
@@ -527,6 +603,14 @@ window.addEventListener('DOMContentLoaded', async ()=>{
         teamSel.dataset.ready = '1';
       }
       renderHistory();
+    });
+  }
+
+  const shotTab = document.getElementById('tabShotgunsBtn');
+  if (shotTab) {
+    shotTab.addEventListener('click', ()=>{
+      showPage('shotguns');
+      renderShotgunsPage();
     });
   }
 

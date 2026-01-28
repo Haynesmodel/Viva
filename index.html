@@ -22,6 +22,7 @@
 
   <nav class="tabs">
     <button class="tab active" id="tabHistoryBtn">League History</button>
+    <button class="tab" id="tabShotgunsBtn">Shotguns</button>
   </nav>
 
   <main>
@@ -168,6 +169,26 @@
         </div>
       </div>
     </section>
+
+    <!-- SHOTGUNS PAGE -->
+    <section id="page-shotguns" class="page">
+      <div class="card">
+        <h3>Shotguns Owed</h3>
+        <div id="shotgunOwedList" class="banners"></div>
+      </div>
+
+      <div class="card">
+        <h3>Team Shotguns</h3>
+        <div id="shotgunTeams" class="shotgun-grid"></div>
+      </div>
+    </section>
+
+    <div id="shotgunModal" class="modal hidden">
+      <div class="modal-content">
+        <button id="shotgunModalClose" class="btn">Close</button>
+        <video id="shotgunModalVideo" controls></video>
+      </div>
+    </div>
   </main>
 
   <!-- FX layers -->
