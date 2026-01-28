@@ -420,6 +420,13 @@ async function loadLeagueJSON(){
     }
 
     renderHeaderBannersForOwner("Joe");
+    try {
+      const res = await fetch('assets/Shotguns.json');
+      shotgunItems = res.ok ? await res.json() : [];
+      if (!Array.isArray(shotgunItems)) shotgunItems = [];
+    } catch {
+      shotgunItems = [];
+    }
   }catch(e){ console.error("Failed to load league JSON", e); }
 }
 function showPage(id){
@@ -429,13 +436,18 @@ function showPage(id){
   const histPage = document.getElementById('page-history');
   const shotBtn = document.getElementById('tabShotgunsBtn');
   const shotPage = document.getElementById('page-shotguns');
+  const h2 = document.querySelector('header h2');
   currentPage = id === 'shotguns' ? 'shotguns' : 'history';
   if (id === 'shotguns') {
     if (shotBtn) shotBtn.classList.add('active');
     if (shotPage) shotPage.classList.add('visible');
+    if (h2) h2.textContent = 'Shotguns';
+    document.title = 'Shotguns — League History';
   } else {
     if (histBtn) histBtn.classList.add('active');
     if (histPage) histPage.classList.add('visible');
+    if (h2) h2.textContent = (selectedTeam === ALL_TEAMS) ? 'All Teams' : selectedTeam;
+    document.title = ((selectedTeam === ALL_TEAMS) ? 'All Teams' : selectedTeam) + ' — League History';
   }
 }
 
