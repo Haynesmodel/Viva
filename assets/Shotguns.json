@@ -29,20 +29,20 @@
   {
     "owner": "Leah",
     "week": null,
-    "date": "2025-10-26",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_2681.mov"
-  },
-  {
-    "owner": "Leah",
-    "week": null,
     "date": "2025-11-07",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_2736.mov"
+    "video_url": "assets/Shotguns/Leah/2025-11-07.mov"
+  },
+  {
+    "owner": "Leah",
+    "week": null,
+    "date": "2026-01-03",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Leah/2026-01-03-2.mov"
   },
   {
     "owner": "Leah",
@@ -51,16 +51,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_2269.mov"
+    "video_url": "assets/Shotguns/Leah/2025-09-14.mov"
   },
   {
     "owner": "Leah",
     "week": null,
-    "date": "2025-10-16",
+    "date": "2025-10-26",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_2568.mov"
+    "video_url": "assets/Shotguns/Leah/2025-10-26.mov"
   },
   {
     "owner": "Leah",
@@ -69,25 +69,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_2192.mov"
+    "video_url": "assets/Shotguns/Leah/2025-09-07.mov"
   },
   {
     "owner": "Leah",
     "week": null,
-    "date": "2026-01-03",
+    "date": "2025-10-16",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_3086.mov"
-  },
-  {
-    "owner": "Leah",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_3085.mov"
+    "video_url": "assets/Shotguns/Leah/2025-10-16.mov"
   },
   {
     "owner": "Leah",
@@ -96,25 +87,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/IMG_2405.mov"
+    "video_url": "assets/Shotguns/Leah/2025-10-02.mov"
   },
   {
-    "owner": "Mino",
+    "owner": "Leah",
     "week": null,
-    "date": "2025-12-18",
+    "date": "2026-01-03",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/IMG_1771.mov"
-  },
-  {
-    "owner": "Mino",
-    "week": null,
-    "date": "2025-10-30",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Mino/IMG_1488.mov"
+    "video_url": "assets/Shotguns/Leah/2026-01-03.mov"
   },
   {
     "owner": "Mino",
@@ -123,7 +105,25 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/IMG_1847.mov"
+    "video_url": "assets/Shotguns/Mino/2025-12-31.mov"
+  },
+  {
+    "owner": "Mino",
+    "week": null,
+    "date": "2025-12-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Mino/2025-12-18.mov"
+  },
+  {
+    "owner": "Mino",
+    "week": null,
+    "date": "2025-10-30",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Mino/2025-10-30.mov"
   },
   {
     "owner": "Mino",
@@ -132,7 +132,7 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/IMG_1717.mov"
+    "video_url": "assets/Shotguns/Mino/2025-12-04.mov"
   },
   {
     "owner": "Mino",
@@ -141,7 +141,25 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/IMG_1872.mov"
+    "video_url": "assets/Shotguns/Mino/2026-01-03.mov"
+  },
+  {
+    "owner": "Marian",
+    "week": null,
+    "date": "2025-10-02",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Marian/2025-10-02-2.mov"
+  },
+  {
+    "owner": "Marian",
+    "week": null,
+    "date": "2025-10-02",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Marian/2025-10-02-3.mov"
   },
   {
     "owner": "Marian",
@@ -150,7 +168,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/IMG_3239.mov"
+    "video_url": "assets/Shotguns/Marian/2025-10-09.mov"
+  },
+  {
+    "owner": "Marian",
+    "week": null,
+    "date": "2025-09-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Marian/2025-09-18-2.mov"
   },
   {
     "owner": "Marian",
@@ -159,7 +186,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/IMG_3210.mov"
+    "video_url": "assets/Shotguns/Marian/2025-10-02.mov"
+  },
+  {
+    "owner": "Marian",
+    "week": null,
+    "date": "2025-09-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Marian/2025-09-18.mov"
   },
   {
     "owner": "Marian",
@@ -168,70 +204,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/IMG_3574.mov"
-  },
-  {
-    "owner": "Marian",
-    "week": null,
-    "date": "2025-09-18",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Marian/IMG_3110.mov"
-  },
-  {
-    "owner": "Marian",
-    "week": null,
-    "date": "2025-09-18",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Marian/IMG_3111.mov"
-  },
-  {
-    "owner": "Marian",
-    "week": null,
-    "date": "2025-10-02",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Marian/C8E9D7D4-D32E-4E59-9293-FE5166FA58BD.mov"
-  },
-  {
-    "owner": "Marian",
-    "week": null,
-    "date": "2025-10-02",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Marian/IMG_3209.mov"
+    "video_url": "assets/Shotguns/Marian/2025-11-20.mov"
   },
   {
     "owner": "Dulberger",
     "week": null,
-    "date": "2025-12-18",
+    "date": "2026-01-03",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/IMG_1160.mov"
-  },
-  {
-    "owner": "Dulberger",
-    "week": null,
-    "date": "2025-10-30",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/RenderedVideo.mov"
-  },
-  {
-    "owner": "Dulberger",
-    "week": null,
-    "date": "2025-11-27",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/IMG_0913.mov"
+    "video_url": "assets/Shotguns/Dulberger/2026-01-03-2.mov"
   },
   {
     "owner": "Dulberger",
@@ -245,11 +227,38 @@
   {
     "owner": "Dulberger",
     "week": null,
-    "date": "2026-01-03",
+    "date": "2025-10-09",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/IMG_1301.mov"
+    "video_url": "assets/Shotguns/Dulberger/2025-10-09.mov"
+  },
+  {
+    "owner": "Dulberger",
+    "week": null,
+    "date": "2025-12-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Dulberger/2025-12-18.mov"
+  },
+  {
+    "owner": "Dulberger",
+    "week": null,
+    "date": "2025-10-30",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Dulberger/2025-10-30.mov"
+  },
+  {
+    "owner": "Dulberger",
+    "week": null,
+    "date": "2025-11-27",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Dulberger/2025-11-27.mov"
   },
   {
     "owner": "Dulberger",
@@ -258,34 +267,7 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/IMG_1298.mov"
-  },
-  {
-    "owner": "Dulberger",
-    "week": null,
-    "date": "2025-10-09",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/IMG_0539.mov"
-  },
-  {
-    "owner": "Malcolm",
-    "week": null,
-    "date": "2025-10-09",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Malcolm/IMG_7605.mov"
-  },
-  {
-    "owner": "Malcolm",
-    "week": null,
-    "date": "2025-12-07",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Malcolm/IMG_8057.mov"
+    "video_url": "assets/Shotguns/Dulberger/2026-01-03.mov"
   },
   {
     "owner": "Malcolm",
@@ -294,16 +276,43 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Malcolm/IMG_7691.mov"
+    "video_url": "assets/Shotguns/Malcolm/2025-10-23.mov"
+  },
+  {
+    "owner": "Malcolm",
+    "week": null,
+    "date": "2025-10-09",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Malcolm/2025-10-09.mov"
+  },
+  {
+    "owner": "Malcolm",
+    "week": null,
+    "date": "2025-12-07",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Malcolm/2025-12-07.mov"
   },
   {
     "owner": "Erin",
     "week": null,
-    "date": "2025-09-24",
+    "date": "2025-10-23",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/IMG_6742.mov"
+    "video_url": "assets/Shotguns/Erin/2025-10-23.mov"
+  },
+  {
+    "owner": "Erin",
+    "week": null,
+    "date": "2025-10-30",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Erin/2025-10-30.mov"
   },
   {
     "owner": "Erin",
@@ -312,7 +321,7 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/IMG_6966.mov"
+    "video_url": "assets/Shotguns/Erin/2025-10-16.mov"
   },
   {
     "owner": "Erin",
@@ -321,61 +330,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/IMG_3129.mov"
+    "video_url": "assets/Shotguns/Erin/2025-09-24.mov"
   },
   {
     "owner": "Erin",
     "week": null,
-    "date": "2025-10-23",
+    "date": "2025-09-24",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/IMG_7004.mov"
-  },
-  {
-    "owner": "Erin",
-    "week": null,
-    "date": "2025-10-30",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Erin/IMG_7069.mov"
-  },
-  {
-    "owner": "Seth",
-    "week": null,
-    "date": "2025-12-11",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9879.mov"
-  },
-  {
-    "owner": "Seth",
-    "week": null,
-    "date": "2025-12-18",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9894.mov"
-  },
-  {
-    "owner": "Seth",
-    "week": null,
-    "date": "2025-12-04",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9857.mov"
-  },
-  {
-    "owner": "Seth",
-    "week": null,
-    "date": "2025-10-30",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9762.mov"
+    "video_url": "assets/Shotguns/Erin/2025-09-24-2.mov"
   },
   {
     "owner": "Seth",
@@ -384,7 +348,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9798.mov"
+    "video_url": "assets/Shotguns/Seth/2025-11-13.mov"
+  },
+  {
+    "owner": "Seth",
+    "week": null,
+    "date": "2025-12-11",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Seth/2025-12-11-2.mov"
   },
   {
     "owner": "Seth",
@@ -393,7 +366,25 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9594.mov"
+    "video_url": "assets/Shotguns/Seth/2025-09-14.mov"
+  },
+  {
+    "owner": "Seth",
+    "week": null,
+    "date": "2025-12-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Seth/2025-12-18.mov"
+  },
+  {
+    "owner": "Seth",
+    "week": null,
+    "date": "2025-10-30",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Seth/2025-10-30.mov"
   },
   {
     "owner": "Seth",
@@ -402,16 +393,7 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9593.mov"
-  },
-  {
-    "owner": "Seth",
-    "week": null,
-    "date": "2025-12-11",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9871.mov"
+    "video_url": "assets/Shotguns/Seth/2025-09-13.mov"
   },
   {
     "owner": "Seth",
@@ -420,7 +402,34 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/IMG_9858.mov"
+    "video_url": "assets/Shotguns/Seth/2025-12-04.mov"
+  },
+  {
+    "owner": "Seth",
+    "week": null,
+    "date": "2025-12-11",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Seth/2025-12-11.mov"
+  },
+  {
+    "owner": "Seth",
+    "week": null,
+    "date": "2025-12-04",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Seth/2025-12-04-2.mov"
+  },
+  {
+    "owner": "Joe",
+    "week": null,
+    "date": "2026-01-03",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Joe/2026-01-03-2.mov"
   },
   {
     "owner": "Joe",
@@ -429,16 +438,7 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Joe/IMG_1919.mov"
-  },
-  {
-    "owner": "Joe",
-    "week": null,
-    "date": "2025-12-18",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Joe/MOV_4334.mov"
+    "video_url": "assets/Shotguns/Joe/2025-12-18.mov"
   },
   {
     "owner": "Joe",
@@ -447,106 +447,34 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Joe/IMG_1596.mov"
+    "video_url": "assets/Shotguns/Joe/2025-10-02.mov"
   },
   {
     "owner": "Joe",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Joe/IMG_1967.mov"
-  },
-  {
-    "owner": "Joe",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Joe/IMG_1966.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2025-11-04",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_9700.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2025-12-28",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0040.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0078.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2026-01-10",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0124.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2026-01-04",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0079.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2025-11-04",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_9704.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2025-11-22",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_9832.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2025-12-25",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0032.mov"
-  },
-  {
-    "owner": "Rico",
     "week": null,
     "date": "2025-12-18",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_9988.mov"
+    "video_url": "assets/Shotguns/Joe/2025-12-18-2.mov"
+  },
+  {
+    "owner": "Joe",
+    "week": null,
+    "date": "2026-01-03",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Joe/2026-01-03.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2025-11-04",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2025-11-04-2.mov"
   },
   {
     "owner": "Rico",
@@ -555,16 +483,34 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0165.mov"
+    "video_url": "assets/Shotguns/Rico/2026-01-19.mov"
   },
   {
     "owner": "Rico",
     "week": null,
-    "date": "2025-12-07",
+    "date": "2025-11-04",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_9899.mov"
+    "video_url": "assets/Shotguns/Rico/2025-11-04.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2026-01-03",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2026-01-03-2.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2025-12-25",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2025-12-25.mov"
   },
   {
     "owner": "Rico",
@@ -573,79 +519,88 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0062.mov"
+    "video_url": "assets/Shotguns/Rico/2025-12-31.mov"
   },
   {
     "owner": "Rico",
-    "week": null,
-    "date": "2025-12-31",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0060.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2025-12-07",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_9900.mov"
-  },
-  {
-    "owner": "Rico",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Rico/IMG_0073.mov"
-  },
-  {
-    "owner": "Kylie",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1823.mov"
-  },
-  {
-    "owner": "Kylie",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1822.mov"
-  },
-  {
-    "owner": "Kylie",
-    "week": null,
-    "date": "2025-10-30",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1405.mov"
-  },
-  {
-    "owner": "Kylie",
     "week": null,
     "date": "2025-12-18",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1606.mov"
+    "video_url": "assets/Shotguns/Rico/2025-12-18.mov"
   },
   {
-    "owner": "Kylie",
+    "owner": "Rico",
     "week": null,
-    "date": "2025-10-23",
+    "date": "2025-12-31",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1376.mov"
+    "video_url": "assets/Shotguns/Rico/2025-12-31-2.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2025-12-07",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2025-12-07.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2025-12-28",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2025-12-28.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2026-01-04",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2026-01-04.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2026-01-10",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2026-01-10.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2025-11-22",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2025-11-22.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2026-01-03",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2026-01-03.mov"
+  },
+  {
+    "owner": "Rico",
+    "week": null,
+    "date": "2025-12-07",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Rico/2025-12-07-2.mov"
   },
   {
     "owner": "Kylie",
@@ -654,25 +609,43 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1456.mov"
+    "video_url": "assets/Shotguns/Kylie/2025-11-13.mov"
   },
   {
     "owner": "Kylie",
     "week": null,
-    "date": "2025-10-12",
+    "date": "2025-10-23",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1331.mov"
+    "video_url": "assets/Shotguns/Kylie/2025-10-23.mov"
   },
   {
     "owner": "Kylie",
     "week": null,
-    "date": "2025-10-15",
+    "date": "2026-01-03",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1342.mov"
+    "video_url": "assets/Shotguns/Kylie/2026-01-03-2.mov"
+  },
+  {
+    "owner": "Kylie",
+    "week": null,
+    "date": "2025-12-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Kylie/2025-12-18.mov"
+  },
+  {
+    "owner": "Kylie",
+    "week": null,
+    "date": "2025-10-30",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Kylie/2025-10-30.mov"
   },
   {
     "owner": "Kylie",
@@ -681,7 +654,16 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1568.mov"
+    "video_url": "assets/Shotguns/Kylie/2025-12-04.mov"
+  },
+  {
+    "owner": "Kylie",
+    "week": null,
+    "date": "2025-10-15",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Kylie/2025-10-15.mov"
   },
   {
     "owner": "Kylie",
@@ -690,25 +672,52 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/IMG_1193.mov"
+    "video_url": "assets/Shotguns/Kylie/2025-09-30.mov"
+  },
+  {
+    "owner": "Kylie",
+    "week": null,
+    "date": "2025-10-12",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Kylie/2025-10-12.mov"
+  },
+  {
+    "owner": "Kylie",
+    "week": null,
+    "date": "2026-01-03",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Kylie/2026-01-03.mov"
   },
   {
     "owner": "Wei",
     "week": null,
-    "date": "2025-12-09",
+    "date": "2025-11-07",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6034.mov"
+    "video_url": "assets/Shotguns/Wei/2025-11-07.mov"
   },
   {
     "owner": "Wei",
     "week": null,
-    "date": "2025-12-06",
+    "date": "2025-12-11",
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6009.mov"
+    "video_url": "assets/Shotguns/Wei/2025-12-11-2.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-11-07",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-11-07-2.mov"
   },
   {
     "owner": "Wei",
@@ -717,115 +726,7 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6019.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2026-01-03",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6219.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-10-18",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/B7B41941-1952-46CA-A653-087108A82789.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-12-10",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6050.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-12-11",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6060.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-12-14",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6062.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-11-18",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_5754.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-10-17",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/10689CFF-53CE-4D18-9DE0-0F065B0890AA.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-12-11",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6059.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-11-07",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_5721.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-12-29",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_6200.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-11-07",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_5720.mov"
-  },
-  {
-    "owner": "Wei",
-    "week": null,
-    "date": "2025-11-22",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_5873.mov"
+    "video_url": "assets/Shotguns/Wei/2025-12-08.mov"
   },
   {
     "owner": "Wei",
@@ -834,7 +735,115 @@
     "due_date": "",
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/IMG_5697.mov"
+    "video_url": "assets/Shotguns/Wei/2025-10-31.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-10-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-10-18.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-12-09",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-12-09.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-10-17",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-10-17.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-12-06",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-12-06.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-12-10",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-12-10.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-12-11",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-12-11.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-12-29",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-12-29.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-12-14",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-12-14.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-11-22",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-11-22.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2026-01-03",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2026-01-03.mov"
+  },
+  {
+    "owner": "Wei",
+    "week": null,
+    "date": "2025-11-18",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Wei/2025-11-18.mov"
+  },
+  {
+    "owner": "Taylor",
+    "week": null,
+    "date": "2025-12-11",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Taylor/2025-12-11-2.mov"
   },
   {
     "owner": "Taylor",
@@ -847,29 +856,20 @@
   },
   {
     "owner": "Taylor",
+    "week": null,
+    "date": "2025-12-11",
+    "due_date": "",
+    "cause": "Archive",
+    "completed": true,
+    "video_url": "assets/Shotguns/Taylor/2025-12-11.mov"
+  },
+  {
+    "owner": "Taylor",
     "week": 3,
     "date": "2025-09-08",
     "due_date": "",
     "cause": "DavanteAdams",
     "completed": true,
     "video_url": "assets/Shotguns/Taylor/DavanteAdams-Week3-9-8-2025.mov"
-  },
-  {
-    "owner": "Taylor",
-    "week": null,
-    "date": "2025-12-11",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Taylor/IMG_7756.mov"
-  },
-  {
-    "owner": "Taylor",
-    "week": null,
-    "date": "2025-12-11",
-    "due_date": "",
-    "cause": "Archive",
-    "completed": true,
-    "video_url": "assets/Shotguns/Taylor/IMG_7757.mov"
   }
 ]
