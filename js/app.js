@@ -35,6 +35,7 @@ const ALL_TEAMS = "__ALL__";
 let selectedTeam = "Joe";
 let headerRotateTimer = null;
 let headerRotateIndex = 0;
+let headerBgToggle = false;
 
 let selectedSeasons = new Set();
 let selectedWeeks   = new Set();
@@ -433,11 +434,7 @@ function startHeaderRotation(){
   const applyImage = () => {
     const team = teams[Math.floor(Math.random() * teams.length)];
     const img = TEAM_PHOTOS[team];
-    headerEl.classList.add('fading');
-    setTimeout(() => {
-      headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
-      headerEl.classList.remove('fading');
-    }, 250);
+    setHeaderImage(img);
   };
   applyImage();
   headerRotateTimer = setInterval(applyImage, 8000);
@@ -447,6 +444,34 @@ function stopHeaderRotation(){
     clearInterval(headerRotateTimer);
     headerRotateTimer = null;
   }
+}
+
+function ensureHeaderLayers(){
+  const headerEl = document.querySelector('header');
+  if (!headerEl) return null;
+  let a = headerEl.querySelector('.header-bg.bg-a');
+  let b = headerEl.querySelector('.header-bg.bg-b');
+  if (!a || !b) {
+    a = document.createElement('div');
+    b = document.createElement('div');
+    a.className = 'header-bg bg-a';
+    b.className = 'header-bg bg-b is-hidden';
+    headerEl.prepend(a);
+    headerEl.prepend(b);
+  }
+  return { headerEl, a, b };
+}
+
+function setHeaderImage(img){
+  const layers = ensureHeaderLayers();
+  if (!layers) return;
+  const { a, b } = layers;
+  const show = headerBgToggle ? a : b;
+  const hide = headerBgToggle ? b : a;
+  show.style.backgroundImage = `url('${img}')`;
+  show.classList.remove('is-hidden');
+  hide.classList.add('is-hidden');
+  headerBgToggle = !headerBgToggle;
 }
 
 function headerImageForTeam(team){
@@ -481,7 +506,7 @@ function updateHeaderForTeam(team){
         const img = headerImageForTeam(team);
         headerEl.classList.add('fading');
         setTimeout(() => {
-          headerEl.style.setProperty('--header-bg-image', `url('${img}')`);
+          setHeaderImage(img);
           headerEl.classList.remove('fading');
         }, 250);
       }
