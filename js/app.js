@@ -131,7 +131,7 @@ function updateUrlFromState(){
   if(isApplyingUrlState) return;
   const params = new URLSearchParams();
   if(currentPage === "shotguns") params.set("page","shotguns");
-  if(selectedTeam && selectedTeam!==ALL_TEAMS) params.set('team', selectedTeam);
+  if(currentPage !== "shotguns" && selectedTeam && selectedTeam!==ALL_TEAMS) params.set('team', selectedTeam);
   const setIf = (key, set, uni)=>{ if(isRestrictive(set, uni)) params.set(key, [...set].join(',')); };
   setIf('seasons', selectedSeasons, universe.seasons);
   setIf('weeks', selectedWeeks, universe.weeks);
@@ -443,11 +443,14 @@ function showPage(id){
     if (shotPage) shotPage.classList.add('visible');
     if (h2) h2.textContent = 'Shotguns';
     document.title = 'Shotguns — League History';
+    startHeaderRotation();
   } else {
     if (histBtn) histBtn.classList.add('active');
     if (histPage) histPage.classList.add('visible');
     if (h2) h2.textContent = (selectedTeam === ALL_TEAMS) ? 'All Teams' : selectedTeam;
     document.title = ((selectedTeam === ALL_TEAMS) ? 'All Teams' : selectedTeam) + ' — League History';
+    if (selectedTeam === ALL_TEAMS) startHeaderRotation();
+    else stopHeaderRotation();
   }
 }
 
@@ -636,8 +639,10 @@ window.addEventListener('DOMContentLoaded', async ()=>{
 
   const urlState = parseUrlState();
   if (urlState.page === 'shotguns') {
+    selectedTeam = ALL_TEAMS;
     showPage('shotguns');
     renderShotgunsPage();
+    updateUrlFromState();
   }
 
   // Tabs (History only)
@@ -660,6 +665,7 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     shotTab.addEventListener('click', ()=>{
       showPage('shotguns');
       renderShotgunsPage();
+      selectedTeam = ALL_TEAMS;
       updateUrlFromState();
     });
   }
