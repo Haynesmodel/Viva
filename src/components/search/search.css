@@ -1,0 +1,4 @@
+.global-search-mount{display:flex}
+.search-trigger{display:inline-flex;align-items:center;gap:7px}
+.search-trigger:disabled{cursor:wait;opacity:.55}
+.history-games-query-summary:empty{display:none}

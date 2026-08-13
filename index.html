@@ -2,32 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Viva La Collusion</title>
+  <title>The Darling</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="assets/LeaguePic.jpeg" />
-  <!-- Your existing styles -->
-  <link rel="stylesheet" href="css/style.css" />
-  
-  <!-- Group Easter Eggs styles -->
-  <link rel="stylesheet" href="css/easter-eggs.css" />
+  <meta name="description" content="The Darling league history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
+  <meta property="og:title" content="The Darling" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://haynesmodel.github.io/Darling/" />
+  <meta property="og:description" content="League history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
+  <meta property="og:site_name" content="The Darling" />
+  <meta property="og:image" content="https://haynesmodel.github.io/Darling/assets/share/darling-default-card.png" />
+  <meta property="og:image:secure_url" content="https://haynesmodel.github.io/Darling/assets/share/darling-default-card.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Darling league site: history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Darling" />
+  <meta name="twitter:description" content="League history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
+  <meta name="twitter:image" content="https://haynesmodel.github.io/Darling/assets/share/darling-default-card.png" />
+  <meta name="twitter:image:alt" content="The Darling league site: history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
 </head>
 <body>
-  <header>
+  <div id="appShell">
+    <a class="skip-link" href="#mainContent">Skip to league content</a>
+  <header class="site-hero">
+    <picture class="site-hero-media" aria-hidden="true">
+      <source
+        type="image/avif"
+        srcset="assets/hero/league-480.avif 480w,
+                assets/hero/league-768.avif 768w,
+                assets/hero/league-1280.avif 1280w,
+                assets/hero/league-1920.avif 1920w"
+        sizes="100vw"
+      />
+      <source
+        type="image/webp"
+        srcset="assets/hero/league-480.webp 480w,
+                assets/hero/league-768.webp 768w,
+                assets/hero/league-1280.webp 1280w,
+                assets/hero/league-1920.webp 1920w"
+        sizes="100vw"
+      />
+      <img
+        src="assets/hero/league-1280.jpg"
+        srcset="assets/hero/league-480.jpg 480w,
+                assets/hero/league-768.jpg 768w,
+                assets/hero/league-1280.jpg 1280w,
+                assets/hero/league-1920.jpg 1920w"
+        sizes="100vw"
+        alt=""
+        decoding="async"
+        fetchpriority="high"
+      />
+    </picture>
+    <div class="site-hero-overlay"></div>
+    <div class="site-hero-toolbar">
+      <div id="dataFreshnessRoot"></div>
+      <div id="themeControls"></div>
+    </div>
     <div class="inner">
-      <h1>Viva La Collusion</h1>
-      <h2>Viva La Collusion</h2>
+      <h1>The Darling</h1>
+      <h2>The Darling</h2>
       <div class="banners" id="headerBanners"></div>
     </div>
   </header>
 
-  <nav class="tabs">
-    <button class="tab active" id="tabHistoryBtn">League History</button>
-    <button class="tab" id="tabShotgunsBtn">Shotguns</button>
+  <nav class="primary-nav" aria-label="Primary">
+    <div id="primaryNavigation" class="primary-navigation">
+      <a class="primary-nav-control active" id="tabPulseBtn" data-feature-id="pulse" href="./" aria-label="Home — League Pulse" aria-current="page">Home</a>
+      <a class="primary-nav-control" id="tabCurrentBtn" data-feature-id="current" href="?tab=current" aria-label="Season — Current Season">Season</a>
+      <details class="primary-nav-group" data-navigation-group="owners">
+        <summary class="primary-nav-control">
+          Owners<span class="visually-hidden" data-current-group-label></span>
+        </summary>
+        <div class="primary-nav-menu">
+          <a id="tabOwnerBtn" data-feature-id="owner" href="?tab=owner">
+            My Team<span class="visually-hidden" data-owner-preference-status>, not chosen</span>
+          </a>
+          <a id="tabTransactionsBtn" data-feature-id="transactions" href="?tab=transactions">Transactions</a>
+          <a id="tabHistoryBtn" data-feature-id="history" href="?tab=history">League History</a>
+          <a id="tabTrophyBtn" data-feature-id="trophy" href="?tab=trophy">Trophy Case</a>
+          <a id="tabDynastyBtn" data-feature-id="dynasty" href="?tab=dynasty">Dynasty Rankings</a>
+        </div>
+      </details>
+      <a
+        class="primary-nav-control primary-nav-rivalry"
+        id="tabRivalryBtn"
+        data-feature-id="rivalry"
+        href="?tab=rivalry"
+      >
+        <span class="primary-nav-wide-label" aria-hidden="true">Rivalries</span>
+        <span class="primary-nav-compact-label" aria-hidden="true">H2H</span>
+        <span class="visually-hidden">Rivalries — Head to Head</span>
+      </a>
+      <details class="primary-nav-group" data-navigation-group="tools">
+        <summary class="primary-nav-control">
+          Tools<span class="visually-hidden" data-current-group-label></span>
+        </summary>
+        <div class="primary-nav-menu primary-nav-menu-end">
+          <a id="tabDraftBtn" data-feature-id="draft" href="?tab=draft">Draft Spot</a>
+          <a id="tabGauntletBtn" data-feature-id="gauntlet" href="?tab=gauntlet">Historical Matchup</a>
+        </div>
+      </details>
+    </div>
+    <div id="globalSearchRoot" class="global-search-mount"></div>
   </nav>
 
-  <main>
-    <!-- HISTORY PAGE -->
-    <section id="page-history" class="page">
+  <main id="mainContent" tabindex="-1">
+    <div id="appStatus" class="status-banner status-loading" role="status" aria-live="polite">Loading league data...</div>
+    <section id="page-pulse" class="page visible" aria-labelledby="page-pulse-title">
+      <h2 id="page-pulse-title" class="visually-hidden">League Pulse</h2>
+      <div id="leaguePulseRoot"></div>
+    </section>
+
+    <section id="page-owner" class="page" aria-labelledby="page-owner-title" hidden>
+      <h2 id="page-owner-title">My Team</h2>
+      <div id="ownerHubRoot"></div>
+    </section>
+
+    <section id="page-transactions" class="page" aria-labelledby="page-transactions-title" hidden>
+      <h2 id="page-transactions-title" class="visually-hidden">Transactions</h2>
+      <div id="transactionHistoryRoot">
+        <div class="status-banner status-loading" role="status">Open Transactions to load player movement history.</div>
+      </div>
+    </section>
+
+    <section id="page-history" class="page" aria-labelledby="page-history-title" hidden>
+      <h2 id="page-history-title" class="visually-hidden">League History</h2>
       <div class="card">
         <div class="controls filters">
           <label>Team:
@@ -35,182 +136,233 @@
           </label>
 
           <div class="dropdown">
-            <button class="btn dropdown-toggle" data-target="seasonFilters">
+            <button type="button" class="btn dropdown-toggle" data-target="seasonFilters" aria-expanded="false" aria-controls="seasonFilters">
               Seasons <span class="count-text" id="seasonCountText">All</span> ▼
             </button>
-            <div class="dropdown-menu" id="seasonFilters"></div>
+            <div class="dropdown-menu" id="seasonFilters" aria-hidden="true" hidden></div>
           </div>
 
           <div class="dropdown">
-            <button class="btn dropdown-toggle" data-target="weekFilters">
+            <button type="button" class="btn dropdown-toggle" data-target="weekFilters" aria-expanded="false" aria-controls="weekFilters">
               Weeks <span class="count-text" id="weekCountText">All</span> ▼
             </button>
-            <div class="dropdown-menu" id="weekFilters"></div>
+            <div class="dropdown-menu" id="weekFilters" aria-hidden="true" hidden></div>
           </div>
 
           <div class="dropdown">
-            <button class="btn dropdown-toggle" data-target="oppFilters">
+            <button type="button" class="btn dropdown-toggle" data-target="oppFilters" aria-expanded="false" aria-controls="oppFilters">
               Opponents <span class="count-text" id="oppCountText">All</span> ▼
             </button>
-            <div class="dropdown-menu" id="oppFilters"></div>
+            <div class="dropdown-menu" id="oppFilters" aria-hidden="true" hidden></div>
           </div>
 
           <div class="dropdown">
-            <button class="btn dropdown-toggle" data-target="typeFilters">
+            <button type="button" class="btn dropdown-toggle" data-target="typeFilters" aria-expanded="false" aria-controls="typeFilters">
               Types <span class="count-text" id="typeCountText">All</span> ▼
             </button>
-            <div class="dropdown-menu" id="typeFilters"></div>
+            <div class="dropdown-menu" id="typeFilters" aria-hidden="true" hidden></div>
           </div>
 
           <div class="dropdown">
-            <button class="btn dropdown-toggle" data-target="roundFilters">
+            <button type="button" class="btn dropdown-toggle" data-target="roundFilters" aria-expanded="false" aria-controls="roundFilters">
               Rounds <span class="count-text" id="roundCountText">All</span> ▼
             </button>
-            <div class="dropdown-menu" id="roundFilters"></div>
+            <div class="dropdown-menu" id="roundFilters" aria-hidden="true" hidden></div>
           </div>
 
           <span style="flex:1"></span>
-          <button id="exportCsv" class="btn">Export CSV</button>
-          <button id="clearFilters" class="btn">Clear</button>
+          <button type="button" id="exportCsv" class="btn">Export CSV</button>
+          <button type="button" id="clearFilters" class="btn">Clear</button>
         </div>
       </div>
 
-      <div class="card" id="teamOverview">
-        <div id="teamOverviewGrid" class="overview-grid"></div>
-      </div>
-<div id="seasonCallout"></div>
-      </div>
+      <div id="historySectionNav"></div>
+      <details id="historyOverviewDisclosure" class="card feature-disclosure">
+        <summary>Owner Overview</summary>
+        <section id="teamOverview" class="feature-section-content">
+          <div id="teamOverviewGrid" class="overview-grid"></div>
+          <div id="seasonCallout"></div>
+        </section>
+      </details>
+      <details id="historyFunFactsDisclosure" class="card feature-disclosure">
+        <summary>Fun Facts</summary>
+        <section class="feature-section-content">
+          <div id="funFacts" class="stats-grid fun-grid"></div>
+          <div id="funLists" class="fun-lists"></div>
+        </section>
+      </details>
+      <details id="historyCurseDisclosure" class="card feature-disclosure">
+        <summary>Curse Tracker</summary>
+        <section id="curseTracker" class="feature-section-content">
+          <div class="section-heading">
+            <div id="curseSummary" class="muted"></div>
+          </div>
+          <div id="curseControls" class="controls filters"></div>
+          <div id="curseGrid" class="curse-grid"></div>
+        </section>
+      </details>
+      <details id="historyOpponentsDisclosure" class="card feature-disclosure">
+        <summary id="oppTableTitle">Opponent Breakdown</summary>
+        <section class="feature-section-content">
+          <div id="rivalGroupCallouts" class="callouts"></div>
+          <div id="oppTableRoot"></div>
+        </section>
+      </details>
+      <details id="historySeasonsDisclosure" class="card feature-disclosure">
+        <summary>Season Recap</summary>
+        <section class="feature-section-content">
+          <div id="seasonRecapTableRoot"></div>
+        </section>
+      </details>
+      <details id="historyWeeksDisclosure" class="card feature-disclosure">
+        <summary>Week-by-Week</summary>
+        <section class="feature-section-content">
+          <div id="weekTableRoot"></div>
+        </section>
+      </details>
+      <details id="historyGamesDisclosure" class="card feature-disclosure">
+        <summary>All Games</summary>
+        <section id="historyGamesCard" class="feature-section-content">
+          <p id="historyGamesQuerySummary" class="muted history-games-query-summary" aria-live="polite"></p>
+          <div id="historyGamesTableRoot"></div>
+        </section>
+      </details>
+    </section>
 
+    <section id="page-current" class="page" aria-labelledby="page-current-title" hidden>
+      <h2 id="page-current-title" class="visually-hidden">Current Season</h2>
       <div class="card">
-        <h3>Fun Facts</h3>
-        <div id="funFacts" class="stats-grid fun-grid"></div>
-        <div id="funLists" class="fun-lists"></div>
-      </div>
-
-      <div class="card">
-        <h3 id="oppTableTitle">Opponent Breakdown</h3>
-        <div id="rivalGroupCallouts" class="callouts"></div>
-        <div class="table-wrap">
-          <table id="oppTable">
-            <thead>
-              <tr>
-                <th id="oppFirstCol">Opponent</th>
-                <th>Record</th>
-                <th>Win %</th>
-                <th>PPG</th>
-                <th>OPPG</th>
-                <th>Games</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+        <div class="controls filters current-controls">
+          <label>Season:
+            <select id="currentSeasonSelect"></select>
+          </label>
+          <label>Week:
+            <select id="currentWeekSelect"></select>
+          </label>
+          <label>View:
+            <select id="currentViewSelect"></select>
+          </label>
+          <label>Owner:
+            <select id="currentOwnerSelect"></select>
+          </label>
+          <label>Projection:
+            <select id="currentProjectionSelect"></select>
+          </label>
         </div>
       </div>
 
-      <div class="card">
-        <h3>Season Recap</h3>
-        <div class="table-wrap">
-          <table id="seasonRecapTable">
-            <thead>
-              <tr>
-                <th>Season</th>
-                <th>Record</th>
-                <th>Win %</th>
-                <th>Finish</th>
-                <th>Outcome</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-      <!-- Week-by-Week Table -->
-      <div class="card">
-        <h3>Week-by-Week</h3>
-        <div class="table-wrap">
-          <table id="weekTable">
-            <thead>
-              <tr>
-                <th>Season</th>
-                <th>Week</th>
-                <th>Date</th>
-                <th>Opponent</th>
-                <th>Result</th>
-                <th>Score</th>
-                <th>XW</th>
-                <th>Type</th>
-                <th>Round</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
+      <section id="currentHero" class="card current-hero"></section>
+      <div id="currentSectionNav"></div>
+      <details id="currentRecapDisclosure" class="card feature-disclosure">
+        <summary>Season Recap</summary>
+        <section id="currentRecap" class="feature-section-content current-recap"></section>
+      </details>
+      <details id="currentPlayoffPictureDisclosure" class="card feature-disclosure">
+        <summary>Playoff Picture</summary>
+        <section id="currentPlayoffPicture" class="feature-section-content current-playoff-picture"></section>
+      </details>
+      <details id="currentWeekNeedsDisclosure" class="card feature-disclosure">
+        <summary>Owner Needs</summary>
+        <section id="currentWeekNeeds" class="feature-section-content current-week-needs"></section>
+      </details>
+      <details id="currentLiveMovementDisclosure" class="card feature-disclosure">
+        <summary>Live Movement</summary>
+        <section id="currentLiveMovement" class="feature-section-content current-live-movement"></section>
+      </details>
+      <details id="currentProjectedStandingsDisclosure" class="card feature-disclosure">
+        <summary>Projected Standings</summary>
+        <section id="currentProjectedStandings" class="feature-section-content current-projected-standings"></section>
+      </details>
+      <details id="currentMatchupsDisclosure" class="card feature-disclosure">
+        <summary>Matchups</summary>
+        <section id="currentMatchups" class="feature-section-content current-matchups"></section>
+      </details>
+      <details id="currentStandingsDisclosure" class="card feature-disclosure">
+        <summary>Standings</summary>
+        <section id="currentStandings" class="feature-section-content"></section>
+      </details>
+      <details id="currentTeamSnapshotsDisclosure" class="card feature-disclosure">
+        <summary>Owner Snapshots</summary>
+        <section id="currentTeamSnapshots" class="feature-section-content current-team-snapshots"></section>
+      </details>
+    </section>
 
-      <!-- All Games Table -->
-      <div class="card">
-        <h3>All Games</h3>
-        <div class="table-wrap">
-          <table id="historyGamesTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Opponent</th>
-                <th>Result</th>
-                <th>Score</th>
-                <th>Type</th>
-                <th>Round</th>
-                <th>Season</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-            
-        </div>
+    <section id="page-rivalry" class="page" aria-labelledby="page-rivalry-title" hidden>
+      <h2 id="page-rivalry-title" class="visually-hidden">Head to Head</h2>
+      <div id="rivalryRoot"></div>
+    </section>
+
+    <section id="page-trophy" class="page" aria-labelledby="page-trophy-title" hidden>
+      <h2 id="page-trophy-title" class="visually-hidden">Trophy Case</h2>
+      <div id="trophyRoot">
+        <div id="trophySectionNav"></div>
+        <details id="trophyHardwareDisclosure" class="card feature-disclosure"><summary>Hardware Shelf</summary><section class="feature-section-content"></section></details>
+        <details id="trophyRankDisclosure" class="card feature-disclosure"><summary>League Rank</summary><section class="feature-section-content"></section></details>
+        <details id="trophyCareerDisclosure" class="card feature-disclosure"><summary>Career Shape</summary><section class="feature-section-content"></section></details>
+        <details id="trophyMomentsDisclosure" class="card feature-disclosure"><summary>Highlights and Low Points</summary><section class="feature-section-content"></section></details>
+        <details id="trophyLedgerDisclosure" class="card feature-disclosure"><summary>Season Ledger</summary><section class="feature-section-content"></section></details>
       </div>
     </section>
 
-    <!-- SHOTGUNS PAGE -->
-    <section id="page-shotguns" class="page">
-      <div class="shotgun-layout">
-        <div class="card" id="shotgunOwedCard">
-          <h3>Shotguns Owed</h3>
-          <div id="shotgunOwedList" class="banners"></div>
-        </div>
+    <section id="page-dynasty" class="page" aria-labelledby="page-dynasty-title" hidden>
+      <h2 id="page-dynasty-title" class="visually-hidden">Dynasty Rankings</h2>
+      <div id="dynastyRoot"></div>
+    </section>
 
-        <div class="card" id="shotgunTeamsCard">
-          <h3>Team Shotguns</h3>
-          <div id="shotgunTeams" class="shotgun-grid"></div>
-        </div>
+    <section id="page-draft" class="page" aria-labelledby="page-draft-title" hidden>
+      <h2 id="page-draft-title" class="visually-hidden">Draft Spot</h2>
+      <div id="draftSpotRoot">
+        <div class="status-banner status-loading" role="status">Open Draft Spot to load its historical draft data.</div>
       </div>
     </section>
 
-    <div id="shotgunModal" class="modal hidden">
-      <div class="modal-content">
-        <button id="shotgunModalClose" class="btn">Close</button>
-        <video id="shotgunModalVideo" controls></video>
+    <section id="page-gauntlet" class="page" aria-labelledby="page-gauntlet-title" hidden>
+      <h2 id="page-gauntlet-title" class="visually-hidden">Historical Matchup</h2>
+      <div class="card gauntlet-card">
+        <h3>Historical Matchup</h3>
+        <div class="card-kicker">Compare two owner-seasons using the league's scoring history.</div>
+        <div id="gauntletControls"></div>
       </div>
-    </div>
+
+      <div id="gauntletSectionNav"></div>
+      <details id="gauntletMatchupDisclosure" class="card gauntlet-card feature-disclosure">
+        <summary>Matchup</summary>
+        <section class="feature-section-content">
+          <div id="gauntletMatchup"></div>
+          <div id="gauntletProbability"></div>
+        </section>
+      </details>
+      <details id="gauntletHistogramDisclosure" class="card gauntlet-card feature-disclosure">
+        <summary>Score Distribution</summary>
+        <section class="feature-section-content"><div id="gauntletHistogram"></div></section>
+      </details>
+      <details id="gauntletStatsDisclosure" class="card gauntlet-card feature-disclosure">
+        <summary>Key Stats</summary>
+        <section class="feature-section-content"><div id="gauntletStats"></div></section>
+      </details>
+      <details id="gauntletContextDisclosure" class="card gauntlet-card feature-disclosure">
+        <summary>Head to Head Context</summary>
+        <section class="feature-section-content"><div id="gauntletContext"></div></section>
+      </details>
+      <details id="gauntletCopyDisclosure" class="card gauntlet-card feature-disclosure">
+        <summary>Narrative and Copy</summary>
+        <section class="feature-section-content">
+          <p id="gauntletNarrative" class="gauntlet-narrative"></p>
+          <div class="gauntlet-copy-row">
+            <button type="button" id="gauntletCopyBtn" class="btn primary">Copy Result</button>
+          </div>
+          <textarea id="gauntletCopyText" class="gauntlet-copy-text" rows="8" readonly aria-label="Copyable gauntlet result"></textarea>
+        </section>
+      </details>
+    </section>
   </main>
 
-  <!-- FX layers -->
   <div id="fxCrown" class="fx-layer"></div>
   <div id="fxSaunders" class="fx-layer"></div>
   <div id="fxGroup" class="fx-layer"></div>
+  </div>
+  <div id="globalSearchPortal"></div>
 
-  <!-- Audio stubs -->
-  <audio id="snd-blue-bloods" preload="none"></audio>
-  <audio id="snd-butter-bowl" preload="none"></audio>
-  <audio id="snd-terps" preload="none"></audio>
-  <audio id="snd-commish" preload="none"></audio>
-  <audio id="snd-married" preload="none"></audio>
-  <audio id="snd-birthday" preload="none"></audio>
-  <audio id="snd-birds" preload="none"></audio>
-
-  <!-- Existing JS -->
-  <script src="js/app.js"></script>
-  
-  <!-- Group Easter Eggs script -->
-  <script src="js/easter-eggs.js"></script>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
