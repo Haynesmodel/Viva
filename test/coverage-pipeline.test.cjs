@@ -549,6 +549,38 @@ test('coverage policy reports global, per-file, changed-file, and expiry failure
   assert.ok(errors.some(error => error.includes('expired override')));
 });
 
+test('per-file overrides cannot weaken changed-file thresholds', () => {
+  const config = {
+    global: { lines: 0, statements: 0, functions: 0, branches: 0 },
+    perFile: { lines: 0, statements: 0, functions: 0, branches: 0 },
+    changedFiles: { lines: 80, statements: 80, functions: 75, branches: 70 },
+    overrides: {
+      'src/changed.js': {
+        thresholds: { lines: 0, statements: 0, functions: 0, branches: 0 },
+        reason: 'Per-file legacy floor',
+        owner: '@maintainer',
+        expires: '2026-12-31',
+      },
+    },
+    changedFileOverrides: {},
+  };
+  const errors = evaluateCoverage({
+    normalized: { total: summary(100), files: new Map([['src/changed.js', summary(40)]]) },
+    config,
+    changedFiles: ['src/changed.js'],
+    now: new Date('2026-07-22T00:00:00Z'),
+  });
+  assert.ok(errors.some(error => error.includes('changed-file src/changed.js: lines 40% is below required 80%')));
+  assert.ok(errors.some(error => error.includes('changed-file src/changed.js: functions 40% is below required 75%')));
+});
+
+test('explicit coverage overrides win over generated baseline collisions', () => {
+  const config = require('../coverage.config.cjs');
+  assert.equal(config.overrides['src/app/services/league-selectors.ts'].thresholds.lines, 62.5);
+  assert.equal(config.overrides['src/app/services/league-selectors.ts'].thresholds.functions, 50);
+  assert.ok(config.overrides['src/app/services/league-selectors.ts'].thresholds.lines > require('../coverage.viva-baseline.json').files['src/app/services/league-selectors.ts'].lines);
+});
+
 test('override metadata is required', () => {
   const errors = validateOverrides({
     'src/file.ts': { thresholds: {}, reason: '', owner: '', expires: 'soon' },

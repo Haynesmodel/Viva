@@ -54,6 +54,7 @@ function thresholdErrors(scope, summary, thresholds, file) {
 function evaluateCoverage({ normalized, config, changedFiles = [], now = new Date() }) {
   const errors = [
     ...validateOverrides(config.overrides, now),
+    ...validateOverrides(config.changedFileOverrides, now),
     ...thresholdErrors('global', normalized.total, config.global),
   ];
   for (const [file, summary] of normalized.files) {
@@ -66,7 +67,13 @@ function evaluateCoverage({ normalized, config, changedFiles = [], now = new Dat
       errors.push(`changed-file ${file}: missing from merged coverage report`);
       continue;
     }
-    const thresholds = config.overrides?.[file]?.thresholds || config.changedFiles;
+    // Per-file baselines must not weaken the changed-file policy. A reviewed
+    // changed-file floor is an explicit, separate exception that is merged on
+    // top of the required changed-file defaults.
+    const thresholds = {
+      ...config.changedFiles,
+      ...(config.changedFileOverrides?.[file]?.thresholds || {}),
+    };
     errors.push(...thresholdErrors('changed-file', summary, thresholds, file));
   }
   return errors;
@@ -103,7 +110,9 @@ function runCli(root = process.cwd(), options = {}) {
     const totals = METRICS.map(metric => `${metric} ${percent(normalized.total, metric)}%`).join(', ');
     console.log('Coverage gate passed');
     console.log(`Global: ${totals}`);
-    console.log(`Files checked: ${normalized.files.size} authored, ${Object.keys(config.overrides || {}).length} overrides`);
+    const overrideCount = Object.keys(config.overrides || {}).length
+      + Object.keys(config.changedFileOverrides || {}).length;
+    console.log(`Files checked: ${normalized.files.size} authored, ${overrideCount} overrides`);
     console.log(`Changed files checked: ${changedFiles.length}`);
     return 0;
   } catch (error) {

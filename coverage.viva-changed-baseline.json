@@ -1,18 +1,18 @@
 {
-  "description": "Stable reviewed floor: one whole percentage point below the minimum metric observed in local and exact-head hosted coverage runs on 2026-08-13. Ratchet upward with behavior-focused tests before expiry.",
+  "description": "Reviewed changed-file floors for the feature-parity snapshot: each metric is the required changed-file threshold unless the minimum local/exact-head hosted observation was lower, in which case it is floored one whole percentage point below that minimum. These separate, expiring floors cannot be lowered by per-file overrides.",
   "owner": "@Haynesmodel",
   "expires": "2026-10-22",
   "files": {
     "js/app-state-controller.js": {
-      "lines": 90,
-      "statements": 87,
-      "functions": 81,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 68
     },
     "js/current-season-renderers.js": {
-      "lines": 90,
-      "statements": 86,
-      "functions": 90,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 55
     },
     "js/easter-eggs.js": {
@@ -22,22 +22,22 @@
       "branches": 36
     },
     "js/facet-helpers.js": {
-      "lines": 88,
-      "statements": 89,
-      "functions": 94,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 55
     },
     "js/gauntlet-controls.js": {
-      "lines": 86,
+      "lines": 80,
       "statements": 77,
-      "functions": 81,
-      "branches": 71
+      "functions": 75,
+      "branches": 70
     },
     "js/gauntlet-data.js": {
       "lines": 76,
       "statements": 77,
-      "functions": 85,
-      "branches": 80
+      "functions": 75,
+      "branches": 70
     },
     "js/history-controls.js": {
       "lines": 65,
@@ -46,15 +46,15 @@
       "branches": 39
     },
     "js/history-renderers.js": {
-      "lines": 91,
-      "statements": 85,
-      "functions": 91,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 60
     },
     "js/shared/simulation-math.js": {
-      "lines": 96,
-      "statements": 92,
-      "functions": 99,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 61
     },
     "scripts/audit_built_assets.cjs": {
@@ -62,12 +62,6 @@
       "statements": 50,
       "functions": 49,
       "branches": 53
-    },
-    "scripts/check_coverage.js": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 99,
-      "branches": 0
     },
     "scripts/check_css_hygiene.cjs": {
       "lines": 0,
@@ -84,8 +78,8 @@
     "scripts/check_owner_images.cjs": {
       "lines": 64,
       "statements": 64,
-      "functions": 99,
-      "branches": 79
+      "functions": 75,
+      "branches": 70
     },
     "scripts/check_repo_hygiene.cjs": {
       "lines": 0,
@@ -96,20 +90,50 @@
     "scripts/check_viva_media.cjs": {
       "lines": 76,
       "statements": 76,
-      "functions": 82,
+      "functions": 75,
       "branches": 59
-    },
-    "scripts/ci_smoke.js": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 0,
-      "branches": 0
     },
     "scripts/compare_json.cjs": {
       "lines": 0,
       "statements": 0,
       "functions": 0,
       "branches": 0
+    },
+    "scripts/data/constants.cjs": {
+      "lines": 80,
+      "statements": 80,
+      "functions": 0,
+      "branches": 70
+    },
+    "scripts/data/derived-stats.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/data/manifest.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/data/media-validation.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/data/schema-validation.cjs": {
+      "lines": 33,
+      "statements": 33,
+      "functions": 0,
+      "branches": 70
+    },
+    "scripts/data/semantic-validation.cjs": {
+      "lines": 61,
+      "statements": 61,
+      "functions": 75,
+      "branches": 50
     },
     "scripts/generate_asset_manifest.cjs": {
       "lines": 0,
@@ -121,13 +145,13 @@
       "lines": 33,
       "statements": 33,
       "functions": 49,
-      "branches": 79
+      "branches": 70
     },
     "scripts/generate_asset_validators.cjs": {
       "lines": 36,
       "statements": 36,
-      "functions": 74,
-      "branches": 89
+      "functions": 75,
+      "branches": 70
     },
     "scripts/generate_derived_stats.cjs": {
       "lines": 0,
@@ -153,19 +177,7 @@
       "functions": 0,
       "branches": 0
     },
-    "scripts/run_tests_with_coverage.js": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 99,
-      "branches": 0
-    },
     "scripts/serve_static.cjs": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 0,
-      "branches": 0
-    },
-    "scripts/v8_coverage_report.js": {
       "lines": 0,
       "statements": 0,
       "functions": 0,
@@ -182,48 +194,6 @@
       "statements": 0,
       "functions": 0,
       "branches": 0
-    },
-    "scripts/data/constants.cjs": {
-      "lines": 93,
-      "statements": 93,
-      "functions": 0,
-      "branches": 99
-    },
-    "scripts/data/derived-stats.cjs": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 0,
-      "branches": 0
-    },
-    "scripts/data/manifest.cjs": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 0,
-      "branches": 0
-    },
-    "scripts/data/media-validation.cjs": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 0,
-      "branches": 0
-    },
-    "scripts/data/schema-validation.cjs": {
-      "lines": 33,
-      "statements": 33,
-      "functions": 0,
-      "branches": 99
-    },
-    "scripts/data/semantic-validation.cjs": {
-      "lines": 61,
-      "statements": 61,
-      "functions": 99,
-      "branches": 50
-    },
-    "src/main.tsx": {
-      "lines": 89,
-      "statements": 89,
-      "functions": 82,
-      "branches": 49
     },
     "src/accessibility/dropdown-checklist.ts": {
       "lines": 21,
@@ -256,16 +226,16 @@
       "branches": 62
     },
     "src/app/feature-utils.ts": {
-      "lines": 99,
-      "statements": 99,
-      "functions": 99,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 36
     },
     "src/app/router.ts": {
-      "lines": 95,
+      "lines": 80,
       "statements": 77,
-      "functions": 99,
-      "branches": 75
+      "functions": 75,
+      "branches": 70
     },
     "src/app/section-disclosure.ts": {
       "lines": 68,
@@ -286,39 +256,39 @@
       "branches": 39
     },
     "src/app/services/theme-context-service.ts": {
-      "lines": 81,
-      "statements": 81,
-      "functions": 99,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 58
     },
     "src/charting/chart-data.ts": {
-      "lines": 99,
-      "statements": 93,
-      "functions": 86,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 62
     },
     "src/charting/chart-theme.ts": {
-      "lines": 99,
-      "statements": 95,
-      "functions": 82,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 68
     },
     "src/charting/load-chart-runtime.ts": {
-      "lines": 95,
-      "statements": 89,
+      "lines": 80,
+      "statements": 80,
       "functions": 69,
-      "branches": 86
+      "branches": 70
     },
     "src/charting/plot-charts.ts": {
-      "lines": 94,
-      "statements": 91,
-      "functions": 89,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 65
     },
     "src/charting/plot-specs.ts": {
-      "lines": 99,
-      "statements": 94,
-      "functions": 88,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 67
     },
     "src/components/charts/DeferredChartCore.tsx": {
@@ -352,9 +322,9 @@
       "branches": 0
     },
     "src/components/search/SearchTrigger.tsx": {
-      "lines": 99,
-      "statements": 99,
-      "functions": 99,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 49
     },
     "src/components/tables/ColumnFilterMenu.tsx": {
@@ -472,9 +442,9 @@
       "branches": 35
     },
     "src/features/draft-spot/draft-spot-feature.ts": {
-      "lines": 89,
-      "statements": 81,
-      "functions": 74,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 68
     },
     "src/features/draft-spot/draft-spot-format.ts": {
@@ -496,7 +466,7 @@
       "branches": 0
     },
     "src/features/dynasty/DynastyControls.tsx": {
-      "lines": 89,
+      "lines": 80,
       "statements": 57,
       "functions": 45,
       "branches": 56
@@ -540,50 +510,56 @@
     "src/features/league-pulse/league-pulse-controller.ts": {
       "lines": 77,
       "statements": 67,
-      "functions": 74,
+      "functions": 75,
       "branches": 64
     },
     "src/features/league-pulse/league-pulse-model.ts": {
       "lines": 71,
       "statements": 69,
-      "functions": 76,
+      "functions": 75,
       "branches": 37
     },
     "src/features/league-pulse/league-recap-model.ts": {
-      "lines": 91,
-      "statements": 89,
-      "functions": 91,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 61
     },
     "src/features/owner-hub/owner-hub-model.ts": {
-      "lines": 94,
-      "statements": 87,
-      "functions": 99,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 66
     },
     "src/features/rivalry/RivalryPage.tsx": {
-      "lines": 93,
-      "statements": 83,
-      "functions": 89,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 50
     },
     "src/features/shotguns/shotguns-controller.ts": {
-      "lines": 90,
-      "statements": 79,
-      "functions": 86,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 59
     },
     "src/features/trophy/TrophyControls.tsx": {
       "lines": 65,
       "statements": 65,
       "functions": 65,
-      "branches": 99
+      "branches": 70
     },
     "src/features/trophy/trophy-controller.ts": {
       "lines": 70,
       "statements": 65,
       "functions": 72,
       "branches": 47
+    },
+    "src/main.tsx": {
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
+      "branches": 49
     },
     "src/search/search-actions.ts": {
       "lines": 69,
@@ -628,15 +604,15 @@
       "branches": 11
     },
     "src/share/share-card-builders.ts": {
-      "lines": 82,
-      "statements": 82,
-      "functions": 99,
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
       "branches": 65
     },
     "src/share/share-card-feature-adapters.ts": {
       "lines": 74,
       "statements": 66,
-      "functions": 79,
+      "functions": 75,
       "branches": 45
     },
     "src/share/share-card-runtime.ts": {
@@ -646,10 +622,64 @@
       "branches": 0
     },
     "src/share/share-card-spec.ts": {
-      "lines": 92,
+      "lines": 80,
       "statements": 76,
-      "functions": 99,
+      "functions": 75,
       "branches": 65
+    },
+    "src/tables/rows/current-standing-rows.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/tables/rows/draft-spot-rows.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/tables/rows/history-game-rows.ts": {
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
+      "branches": 56
+    },
+    "src/tables/rows/history-opponent-rows.ts": {
+      "lines": 70,
+      "statements": 65,
+      "functions": 49,
+      "branches": 47
+    },
+    "src/tables/rows/history-season-rows.ts": {
+      "lines": 9,
+      "statements": 9,
+      "functions": 49,
+      "branches": 0
+    },
+    "src/tables/rows/history-week-rows.ts": {
+      "lines": 11,
+      "statements": 11,
+      "functions": 49,
+      "branches": 0
+    },
+    "src/tables/rows/rivalry-game-rows.ts": {
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
+      "branches": 55
+    },
+    "src/tables/rows/rivalry-season-rows.ts": {
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
+      "branches": 36
+    },
+    "src/tables/rows/trophy-season-rows.ts": {
+      "lines": 80,
+      "statements": 80,
+      "functions": 75,
+      "branches": 50
     },
     "src/tables/table-filter-functions.ts": {
       "lines": 5,
@@ -681,65 +711,11 @@
       "functions": 3,
       "branches": 3
     },
-    "src/tables/rows/current-standing-rows.ts": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 0,
-      "branches": 0
-    },
-    "src/tables/rows/draft-spot-rows.ts": {
-      "lines": 0,
-      "statements": 0,
-      "functions": 0,
-      "branches": 0
-    },
-    "src/tables/rows/history-game-rows.ts": {
-      "lines": 99,
-      "statements": 99,
-      "functions": 99,
-      "branches": 56
-    },
-    "src/tables/rows/history-opponent-rows.ts": {
-      "lines": 70,
-      "statements": 65,
-      "functions": 49,
-      "branches": 47
-    },
-    "src/tables/rows/history-season-rows.ts": {
-      "lines": 9,
-      "statements": 9,
-      "functions": 49,
-      "branches": 0
-    },
-    "src/tables/rows/history-week-rows.ts": {
-      "lines": 11,
-      "statements": 11,
-      "functions": 49,
-      "branches": 0
-    },
-    "src/tables/rows/rivalry-game-rows.ts": {
-      "lines": 91,
-      "statements": 93,
-      "functions": 99,
-      "branches": 55
-    },
-    "src/tables/rows/rivalry-season-rows.ts": {
-      "lines": 99,
-      "statements": 99,
-      "functions": 99,
-      "branches": 36
-    },
-    "src/tables/rows/trophy-season-rows.ts": {
-      "lines": 99,
-      "statements": 99,
-      "functions": 99,
-      "branches": 50
-    },
     "src/theme/owner-themes.ts": {
-      "lines": 79,
+      "lines": 80,
       "statements": 76,
       "functions": 59,
-      "branches": 74
+      "branches": 70
     },
     "src/theme/theme-context.ts": {
       "lines": 0,
@@ -754,10 +730,10 @@
       "branches": 47
     },
     "src/viva/owners.ts": {
-      "lines": 84,
-      "statements": 79,
+      "lines": 80,
+      "statements": 80,
       "functions": 59,
-      "branches": 74
+      "branches": 70
     }
   }
 }
