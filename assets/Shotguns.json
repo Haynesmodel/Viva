@@ -380,6 +380,16 @@
     "media_key": "Erin/2025-09-24-2.mov"
   },
   {
+    "id": "shotgun-erin-img-7068-archive",
+    "owner": "Erin",
+    "week": null,
+    "date": "2025-10-30",
+    "due_date": null,
+    "cause": "Archive",
+    "completed": true,
+    "media_key": "Erin/IMG_7068.MOV"
+  },
+  {
     "id": "shotgun-seth-2025-11-13-archive-archive-38",
     "owner": "Seth",
     "week": null,
