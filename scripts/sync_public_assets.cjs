@@ -2,7 +2,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-function isDeployableAsset(sourceDir, filePath) {
+function configuredOwnerImageFiles(root) {
+  const source = fs.readFileSync(path.join(root, 'src', 'viva', 'owners.ts'), 'utf8');
+  return new Set([...source.matchAll(/\{ canonical:\s*'([^']+)'[^\n]*imageKey:\s*image\('([^']+)'\)/g)]
+    .map(match => `${path.basename(match[2])}.jpeg`));
+}
+
+function isDeployableAsset(sourceDir, filePath, options = {}) {
   const relPath = path.relative(sourceDir, filePath);
   if (!relPath) return true;
 
@@ -21,6 +27,8 @@ function isDeployableAsset(sourceDir, filePath) {
       normalizedRel.slice('trophy/'.length),
     );
   }
+
+  if (path.dirname(normalizedRel) === '.' && options.ownerImageFiles?.has(name)) return true;
 
   if (ext && ext !== '.json') return false;
   if (/\.(?:mov|mp4|m4v|webm|avi)$/i.test(name)) return false;
@@ -43,11 +51,12 @@ function syncPublicAssets(root = process.cwd()) {
 
   fs.mkdirSync(publicDir, { recursive: true });
   fs.rmSync(targetDir, { recursive: true, force: true });
+  const ownerImageFiles = configuredOwnerImageFiles(root);
   fs.cpSync(sourceDir, targetDir, {
     recursive: true,
     force: true,
     dereference: true,
-    filter: (filePath) => isDeployableAsset(sourceDir, filePath),
+    filter: (filePath) => isDeployableAsset(sourceDir, filePath, { ownerImageFiles }),
   });
 
   return targetDir;
@@ -69,6 +78,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  configuredOwnerImageFiles,
   isDeployableAsset,
   runCli,
   syncPublicAssets,

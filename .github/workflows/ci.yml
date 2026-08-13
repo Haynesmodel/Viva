@@ -124,6 +124,7 @@ jobs:
           test -f dist/index.html
           test -f dist/assets/asset-manifest.json
           test -f dist/.vite/manifest.json
+          node scripts/check_owner_images.cjs dist
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Run full Chromium preview suite
@@ -242,6 +243,7 @@ jobs:
           test -f dist/index.html
           test -f dist/assets/asset-manifest.json
           test -f dist/.vite/manifest.json
+          node scripts/check_owner_images.cjs dist
       - name: Install WebKit
         run: npx playwright install --with-deps webkit
       - name: Run focused WebKit smoke suite

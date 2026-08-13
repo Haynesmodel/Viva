@@ -100,6 +100,10 @@ def validate_candidate_team_count(summary: list[dict[str, Any]], current: dict[s
         current_owners = {str(team["owner"]) for team in current["teams"]}
         if len(current_owners) != expected:
             raise ValueError(f"season {season} CurrentSeason contains {len(current_owners)} unique teams; mapping requires exactly {expected}")
+        if current_owners != summary_owners:
+            missing = sorted(summary_owners - current_owners)
+            unexpected = sorted(current_owners - summary_owners)
+            raise ValueError(f"season {season} CurrentSeason owners do not match SeasonSummary; missing={missing}, unexpected={unexpected}")
 
 
 def resolve_owner(value: Any, aliases: dict[str, str], row: int, season: int) -> str:

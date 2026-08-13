@@ -73,6 +73,13 @@ class ImportVivaEspnTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not configured"):
             self.importer.validate_candidate_team_count(summary, None, {"seasons": {}}, 2026)
 
+    def test_current_season_roster_must_match_summary_owners(self):
+        mapping = {"seasons": {"2026": {"teams": 2}}}
+        summary = [{"season": 2026, "owner": "Joe"}, {"season": 2026, "owner": "Erin"}]
+        current = {"teams": [{"owner": "Joe"}, {"owner": "Dulberger"}]}
+        with self.assertRaisesRegex(ValueError, "do not match SeasonSummary"):
+            self.importer.validate_candidate_team_count(summary, current, mapping, 2026)
+
     def test_promotion_replaces_selected_season_without_truncating_existing_seasons(self):
         existing_games = [{"season": 2024, "id": "old"}, {"season": 2025, "id": "stale"}]
         incoming_games = [{"season": 2025, "id": "new"}]
