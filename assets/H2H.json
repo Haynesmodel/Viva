@@ -7,7 +7,7 @@
     "scoreA": 68.2,
     "scoreB": 130.24,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -18,7 +18,7 @@
     "scoreA": 143.7,
     "scoreB": 176.52,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -29,7 +29,7 @@
     "scoreA": 119.7,
     "scoreB": 139.94,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -40,7 +40,7 @@
     "scoreA": 124.6,
     "scoreB": 162.38,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -51,7 +51,7 @@
     "scoreA": 151.68,
     "scoreB": 68.5,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -62,7 +62,7 @@
     "scoreA": 152.82,
     "scoreB": 118.26,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -73,7 +73,7 @@
     "scoreA": 191.54,
     "scoreB": 113.38,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -84,7 +84,7 @@
     "scoreA": 157.6,
     "scoreB": 156.82,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -95,7 +95,7 @@
     "scoreA": 111.5,
     "scoreB": 148.1,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -106,7 +106,7 @@
     "scoreA": 148.18,
     "scoreB": 180.8,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -117,7 +117,7 @@
     "scoreA": 159.8,
     "scoreB": 126.18,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -128,7 +128,7 @@
     "scoreA": 86.36,
     "scoreB": 107.58,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -139,7 +139,7 @@
     "scoreA": 110.14,
     "scoreB": 97.98,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -150,7 +150,7 @@
     "scoreA": 126.5,
     "scoreB": 95.62,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -161,7 +161,7 @@
     "scoreA": 160.62,
     "scoreB": 159.02,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -172,7 +172,7 @@
     "scoreA": 115.7,
     "scoreB": 120.1,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -183,7 +183,7 @@
     "scoreA": 126.52,
     "scoreB": 101.16,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -194,7 +194,7 @@
     "scoreA": 149.08,
     "scoreB": 109.34,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -205,7 +205,7 @@
     "scoreA": 164.1,
     "scoreB": 106.9,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -216,7 +216,7 @@
     "scoreA": 134.34,
     "scoreB": 132.12,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -227,7 +227,7 @@
     "scoreA": 126.6,
     "scoreB": 89.28,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -238,7 +238,7 @@
     "scoreA": 87.58,
     "scoreB": 94.02,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -249,7 +249,7 @@
     "scoreA": 149.18,
     "scoreB": 142.92,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -257,10 +257,10 @@
     "date": "2020-10-14",
     "teamA": "Taylor",
     "teamB": "Wei",
-    "scoreA": 136.0,
+    "scoreA": 136,
     "scoreB": 94.54,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -271,7 +271,7 @@
     "scoreA": 78.16,
     "scoreB": 186.5,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -282,7 +282,7 @@
     "scoreA": 152.22,
     "scoreB": 107.58,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -293,7 +293,7 @@
     "scoreA": 151.9,
     "scoreB": 199.6,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -304,7 +304,7 @@
     "scoreA": 77.68,
     "scoreB": 154.82,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -315,7 +315,7 @@
     "scoreA": 128.14,
     "scoreB": 118.76,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -326,7 +326,7 @@
     "scoreA": 116.24,
     "scoreB": 128.64,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -337,7 +337,7 @@
     "scoreA": 108.92,
     "scoreB": 95.04,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -348,7 +348,7 @@
     "scoreA": 108.32,
     "scoreB": 174.42,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -359,7 +359,7 @@
     "scoreA": 148.44,
     "scoreB": 89.7,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -370,7 +370,7 @@
     "scoreA": 121.4,
     "scoreB": 133.74,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -381,7 +381,7 @@
     "scoreA": 124.7,
     "scoreB": 103.16,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -392,7 +392,7 @@
     "scoreA": 117.84,
     "scoreB": 146.18,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -403,7 +403,7 @@
     "scoreA": 97.02,
     "scoreB": 170.52,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -414,7 +414,7 @@
     "scoreA": 105.02,
     "scoreB": 115.82,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -425,7 +425,7 @@
     "scoreA": 97.36,
     "scoreB": 146.22,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -436,7 +436,7 @@
     "scoreA": 101.18,
     "scoreB": 93.3,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -447,7 +447,7 @@
     "scoreA": 111.34,
     "scoreB": 117.74,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -458,7 +458,7 @@
     "scoreA": 78.48,
     "scoreB": 129.62,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -469,7 +469,7 @@
     "scoreA": 106.54,
     "scoreB": 144.98,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -480,7 +480,7 @@
     "scoreA": 160.46,
     "scoreB": 147.78,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -491,7 +491,7 @@
     "scoreA": 108.04,
     "scoreB": 143.22,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -502,7 +502,7 @@
     "scoreA": 158.1,
     "scoreB": 83.26,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -513,7 +513,7 @@
     "scoreA": 91.1,
     "scoreB": 112.78,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -524,7 +524,7 @@
     "scoreA": 142.34,
     "scoreB": 137.48,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -535,7 +535,7 @@
     "scoreA": 127.02,
     "scoreB": 140.62,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -546,7 +546,7 @@
     "scoreA": 125.06,
     "scoreB": 84.1,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -557,7 +557,7 @@
     "scoreA": 105.3,
     "scoreB": 133.5,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -568,7 +568,7 @@
     "scoreA": 138.34,
     "scoreB": 88.16,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -612,7 +612,7 @@
     "scoreA": 136.76,
     "scoreB": 115.66,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -623,7 +623,7 @@
     "scoreA": 134.88,
     "scoreB": 119.08,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -634,7 +634,7 @@
     "scoreA": 153.46,
     "scoreB": 103.76,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -645,7 +645,7 @@
     "scoreA": 108.6,
     "scoreB": 150.56,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -656,7 +656,7 @@
     "scoreA": 107.88,
     "scoreB": 130.9,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -667,7 +667,7 @@
     "scoreA": 174.7,
     "scoreB": 109.62,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -678,7 +678,7 @@
     "scoreA": 129.46,
     "scoreB": 154.18,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -689,7 +689,7 @@
     "scoreA": 152.86,
     "scoreB": 122.4,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -700,7 +700,7 @@
     "scoreA": 154.2,
     "scoreB": 140.74,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -711,7 +711,7 @@
     "scoreA": 119.32,
     "scoreB": 113.72,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -722,7 +722,7 @@
     "scoreA": 132.14,
     "scoreB": 156.78,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -733,7 +733,7 @@
     "scoreA": 125.1,
     "scoreB": 83.64,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -744,7 +744,7 @@
     "scoreA": 114.08,
     "scoreB": 115.32,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -755,7 +755,7 @@
     "scoreA": 107.78,
     "scoreB": 111.34,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -766,7 +766,7 @@
     "scoreA": 141.94,
     "scoreB": 172.82,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -777,7 +777,7 @@
     "scoreA": 139.66,
     "scoreB": 81.84,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -788,7 +788,7 @@
     "scoreA": 118.12,
     "scoreB": 117.62,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -799,7 +799,7 @@
     "scoreA": 125.22,
     "scoreB": 92.16,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -810,7 +810,7 @@
     "scoreA": 113.68,
     "scoreB": 131.62,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -821,7 +821,7 @@
     "scoreA": 162.52,
     "scoreB": 132.98,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -832,7 +832,7 @@
     "scoreA": 151.56,
     "scoreB": 106.46,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -843,7 +843,7 @@
     "scoreA": 114.42,
     "scoreB": 82.38,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -854,7 +854,7 @@
     "scoreA": 188.58,
     "scoreB": 142.44,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -865,7 +865,7 @@
     "scoreA": 192.3,
     "scoreB": 119.18,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -876,7 +876,7 @@
     "scoreA": 154.72,
     "scoreB": 95.58,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -887,7 +887,7 @@
     "scoreA": 74.1,
     "scoreB": 101.68,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -898,7 +898,7 @@
     "scoreA": 132.74,
     "scoreB": 135.5,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -909,7 +909,7 @@
     "scoreA": 150.58,
     "scoreB": 141.72,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -920,7 +920,7 @@
     "scoreA": 147.98,
     "scoreB": 146.26,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -931,7 +931,7 @@
     "scoreA": 106.3,
     "scoreB": 100.5,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -942,7 +942,7 @@
     "scoreA": 108.24,
     "scoreB": 108.2,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -953,7 +953,7 @@
     "scoreA": 91.94,
     "scoreB": 101.22,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -964,7 +964,7 @@
     "scoreA": 102.44,
     "scoreB": 128.58,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -975,7 +975,7 @@
     "scoreA": 157.64,
     "scoreB": 131.64,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -986,7 +986,7 @@
     "scoreA": 127.36,
     "scoreB": 66.4,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -997,7 +997,7 @@
     "scoreA": 131.4,
     "scoreB": 115.16,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1008,7 +1008,7 @@
     "scoreA": 111.1,
     "scoreB": 154.56,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1019,7 +1019,7 @@
     "scoreA": 108.46,
     "scoreB": 93.1,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1030,7 +1030,7 @@
     "scoreA": 123.3,
     "scoreB": 95.82,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1041,7 +1041,7 @@
     "scoreA": 105.02,
     "scoreB": 101.06,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1052,7 +1052,7 @@
     "scoreA": 86.64,
     "scoreB": 116.96,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1063,7 +1063,7 @@
     "scoreA": 102.68,
     "scoreB": 88.42,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1074,7 +1074,7 @@
     "scoreA": 102.24,
     "scoreB": 112.44,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1085,7 +1085,7 @@
     "scoreA": 116.18,
     "scoreB": 108.26,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1096,7 +1096,7 @@
     "scoreA": 120.98,
     "scoreB": 110.74,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1107,7 +1107,7 @@
     "scoreA": 102.84,
     "scoreB": 140.34,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1118,7 +1118,7 @@
     "scoreA": 114.92,
     "scoreB": 82.36,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1129,7 +1129,7 @@
     "scoreA": 112.84,
     "scoreB": 93.6,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1140,7 +1140,7 @@
     "scoreA": 126.82,
     "scoreB": 140.02,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1151,7 +1151,7 @@
     "scoreA": 121.16,
     "scoreB": 50.52,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1162,7 +1162,7 @@
     "scoreA": 103.26,
     "scoreB": 111.32,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1173,7 +1173,7 @@
     "scoreA": 120.1,
     "scoreB": 88.9,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1184,7 +1184,7 @@
     "scoreA": 75.88,
     "scoreB": 155.66,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1195,7 +1195,7 @@
     "scoreA": 175.6,
     "scoreB": 136.62,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1206,7 +1206,7 @@
     "scoreA": 88.48,
     "scoreB": 170.18,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1217,7 +1217,7 @@
     "scoreA": 103.42,
     "scoreB": 95.12,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1228,7 +1228,7 @@
     "scoreA": 82.56,
     "scoreB": 123.1,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1239,7 +1239,7 @@
     "scoreA": 105.1,
     "scoreB": 50.68,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1250,7 +1250,7 @@
     "scoreA": 160.5,
     "scoreB": 88.84,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1261,7 +1261,7 @@
     "scoreA": 95.84,
     "scoreB": 140.92,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1272,7 +1272,7 @@
     "scoreA": 90.32,
     "scoreB": 89.14,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1283,7 +1283,7 @@
     "scoreA": 108.42,
     "scoreB": 140.18,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1294,7 +1294,7 @@
     "scoreA": 132.9,
     "scoreB": 133.2,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1305,7 +1305,7 @@
     "scoreA": 140.22,
     "scoreB": 109.62,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1316,7 +1316,7 @@
     "scoreA": 142.4,
     "scoreB": 155.16,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1327,7 +1327,7 @@
     "scoreA": 100.98,
     "scoreB": 72.38,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1338,7 +1338,7 @@
     "scoreA": 129.54,
     "scoreB": 137.52,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1349,7 +1349,7 @@
     "scoreA": 115.08,
     "scoreB": 99.52,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1360,7 +1360,7 @@
     "scoreA": 142.92,
     "scoreB": 146.44,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1371,7 +1371,7 @@
     "scoreA": 102.3,
     "scoreB": 170.92,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1437,7 +1437,7 @@
     "scoreA": 122.12,
     "scoreB": 125.4,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1448,7 +1448,7 @@
     "scoreA": 107.72,
     "scoreB": 149.62,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1459,7 +1459,7 @@
     "scoreA": 114.16,
     "scoreB": 124.7,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1470,7 +1470,7 @@
     "scoreA": 110.2,
     "scoreB": 131.38,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1481,7 +1481,7 @@
     "scoreA": 103.9,
     "scoreB": 121.7,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1492,7 +1492,7 @@
     "scoreA": 117.62,
     "scoreB": 101.68,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1503,7 +1503,7 @@
     "scoreA": 85.36,
     "scoreB": 95.96,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1514,7 +1514,7 @@
     "scoreA": 132.5,
     "scoreB": 194.98,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1525,7 +1525,7 @@
     "scoreA": 67.1,
     "scoreB": 134.36,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1536,7 +1536,7 @@
     "scoreA": 150.56,
     "scoreB": 110.68,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1547,7 +1547,7 @@
     "scoreA": 154.38,
     "scoreB": 102.08,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1558,7 +1558,7 @@
     "scoreA": 120.52,
     "scoreB": 113.92,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1569,7 +1569,7 @@
     "scoreA": 120.2,
     "scoreB": 89.96,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1580,7 +1580,7 @@
     "scoreA": 121.18,
     "scoreB": 84.34,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1591,7 +1591,7 @@
     "scoreA": 97.62,
     "scoreB": 101.7,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1602,7 +1602,7 @@
     "scoreA": 110.54,
     "scoreB": 85.78,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1610,10 +1610,10 @@
     "date": "2022-09-21",
     "teamA": "Rico",
     "teamB": "Taylor",
-    "scoreA": 115.0,
+    "scoreA": 115,
     "scoreB": 127.16,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1624,7 +1624,7 @@
     "scoreA": 127.22,
     "scoreB": 98.9,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1635,7 +1635,7 @@
     "scoreA": 112.36,
     "scoreB": 75.92,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1646,7 +1646,7 @@
     "scoreA": 140.4,
     "scoreB": 135.22,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1657,7 +1657,7 @@
     "scoreA": 124.16,
     "scoreB": 130.28,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1668,7 +1668,7 @@
     "scoreA": 150.1,
     "scoreB": 102.5,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1679,7 +1679,7 @@
     "scoreA": 127.28,
     "scoreB": 94.96,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1690,7 +1690,7 @@
     "scoreA": 127.84,
     "scoreB": 114.08,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1701,7 +1701,7 @@
     "scoreA": 119.18,
     "scoreB": 122.96,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1712,7 +1712,7 @@
     "scoreA": 147.34,
     "scoreB": 135.66,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1723,7 +1723,7 @@
     "scoreA": 128.44,
     "scoreB": 85.08,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1734,7 +1734,7 @@
     "scoreA": 98.66,
     "scoreB": 106.5,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1745,7 +1745,7 @@
     "scoreA": 156.4,
     "scoreB": 126.62,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1756,7 +1756,7 @@
     "scoreA": 138.44,
     "scoreB": 77.34,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1767,7 +1767,7 @@
     "scoreA": 95.32,
     "scoreB": 100.7,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1778,7 +1778,7 @@
     "scoreA": 89.72,
     "scoreB": 115.74,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1789,7 +1789,7 @@
     "scoreA": 99.92,
     "scoreB": 98.44,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1797,10 +1797,10 @@
     "date": "2022-10-12",
     "teamA": "Marian",
     "teamB": "Mino",
-    "scoreA": 128.0,
+    "scoreA": 128,
     "scoreB": 109.22,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1811,7 +1811,7 @@
     "scoreA": 103.46,
     "scoreB": 90.28,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1822,7 +1822,7 @@
     "scoreA": 117.38,
     "scoreB": 82.8,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1833,7 +1833,7 @@
     "scoreA": 127.22,
     "scoreB": 82.08,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1844,7 +1844,7 @@
     "scoreA": 135.24,
     "scoreB": 138.9,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1855,7 +1855,7 @@
     "scoreA": 103.8,
     "scoreB": 84.6,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1866,7 +1866,7 @@
     "scoreA": 102.22,
     "scoreB": 113.52,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1877,7 +1877,7 @@
     "scoreA": 88.46,
     "scoreB": 136.92,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1888,7 +1888,7 @@
     "scoreA": 113.02,
     "scoreB": 97.06,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1899,7 +1899,7 @@
     "scoreA": 119.9,
     "scoreB": 151.48,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1910,7 +1910,7 @@
     "scoreA": 130.8,
     "scoreB": 99.78,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1921,7 +1921,7 @@
     "scoreA": 109.2,
     "scoreB": 98.1,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1932,7 +1932,7 @@
     "scoreA": 117.78,
     "scoreB": 143.22,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1943,7 +1943,7 @@
     "scoreA": 168.12,
     "scoreB": 104.92,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1954,7 +1954,7 @@
     "scoreA": 164.74,
     "scoreB": 105.18,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1965,7 +1965,7 @@
     "scoreA": 70.92,
     "scoreB": 85.1,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1976,7 +1976,7 @@
     "scoreA": 118.84,
     "scoreB": 90.6,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1987,7 +1987,7 @@
     "scoreA": 78.5,
     "scoreB": 145.58,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -1998,7 +1998,7 @@
     "scoreA": 112.1,
     "scoreB": 124.3,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2009,7 +2009,7 @@
     "scoreA": 104.64,
     "scoreB": 100.5,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2020,7 +2020,7 @@
     "scoreA": 119.32,
     "scoreB": 159.54,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2031,7 +2031,7 @@
     "scoreA": 125.14,
     "scoreB": 115.08,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2042,7 +2042,7 @@
     "scoreA": 138.38,
     "scoreB": 144.2,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2053,7 +2053,7 @@
     "scoreA": 88.92,
     "scoreB": 107.28,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2064,7 +2064,7 @@
     "scoreA": 95.5,
     "scoreB": 77.5,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2075,7 +2075,7 @@
     "scoreA": 108.2,
     "scoreB": 53.7,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2086,7 +2086,7 @@
     "scoreA": 91.6,
     "scoreB": 116.46,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2097,7 +2097,7 @@
     "scoreA": 112.8,
     "scoreB": 84.02,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2108,7 +2108,7 @@
     "scoreA": 105.6,
     "scoreB": 136.52,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2119,7 +2119,7 @@
     "scoreA": 119.78,
     "scoreB": 131.7,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2130,7 +2130,7 @@
     "scoreA": 97.2,
     "scoreB": 82.68,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2141,7 +2141,7 @@
     "scoreA": 134.28,
     "scoreB": 135.24,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2152,7 +2152,7 @@
     "scoreA": 101.26,
     "scoreB": 105.74,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2163,7 +2163,7 @@
     "scoreA": 120.72,
     "scoreB": 135.76,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2174,7 +2174,7 @@
     "scoreA": 76.7,
     "scoreB": 101.64,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2185,7 +2185,7 @@
     "scoreA": 153.92,
     "scoreB": 157.72,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2196,7 +2196,7 @@
     "scoreA": 133.16,
     "scoreB": 101.56,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2207,7 +2207,7 @@
     "scoreA": 134.16,
     "scoreB": 110.2,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2218,7 +2218,7 @@
     "scoreA": 112.6,
     "scoreB": 108.64,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2229,7 +2229,7 @@
     "scoreA": 89.6,
     "scoreB": 101.68,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2240,7 +2240,7 @@
     "scoreA": 110.42,
     "scoreB": 153.34,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2251,7 +2251,7 @@
     "scoreA": 126.14,
     "scoreB": 127.78,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2262,7 +2262,7 @@
     "scoreA": 112.16,
     "scoreB": 123.64,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2273,7 +2273,7 @@
     "scoreA": 92.22,
     "scoreB": 123.9,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2284,7 +2284,7 @@
     "scoreA": 97.76,
     "scoreB": 71.3,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2295,7 +2295,7 @@
     "scoreA": 117.78,
     "scoreB": 80.62,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2306,7 +2306,7 @@
     "scoreA": 79.06,
     "scoreB": 95.48,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2317,7 +2317,7 @@
     "scoreA": 85.86,
     "scoreB": 55.36,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2328,7 +2328,7 @@
     "scoreA": 104.2,
     "scoreB": 114.58,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2339,7 +2339,7 @@
     "scoreA": 76.92,
     "scoreB": 119.68,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2350,7 +2350,7 @@
     "scoreA": 97.2,
     "scoreB": 111.4,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2370,7 +2370,7 @@
     "teamA": "Seth",
     "teamB": "Dulberger",
     "scoreA": 112.32,
-    "scoreB": 107.0,
+    "scoreB": 107,
     "week": 15,
     "round": "Wild Card",
     "type": "Playoff"
@@ -2416,7 +2416,7 @@
     "scoreA": 118.14,
     "scoreB": 82.86,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2427,7 +2427,7 @@
     "scoreA": 121.46,
     "scoreB": 112.26,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2438,7 +2438,7 @@
     "scoreA": 94.62,
     "scoreB": 97.04,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2449,7 +2449,7 @@
     "scoreA": 100.38,
     "scoreB": 95.26,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2460,7 +2460,7 @@
     "scoreA": 136.24,
     "scoreB": 92.26,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2471,7 +2471,7 @@
     "scoreA": 96.22,
     "scoreB": 95.84,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2482,7 +2482,7 @@
     "scoreA": 121.18,
     "scoreB": 119.44,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2491,9 +2491,9 @@
     "teamA": "Kylie",
     "teamB": "Rico",
     "scoreA": 149.56,
-    "scoreB": 76.0,
+    "scoreB": 76,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2504,7 +2504,7 @@
     "scoreA": 126.22,
     "scoreB": 132.94,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2515,7 +2515,7 @@
     "scoreA": 137.26,
     "scoreB": 138.24,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2526,7 +2526,7 @@
     "scoreA": 110.9,
     "scoreB": 120.08,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2537,7 +2537,7 @@
     "scoreA": 106.5,
     "scoreB": 93.04,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2548,7 +2548,7 @@
     "scoreA": 112.36,
     "scoreB": 144.16,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2559,7 +2559,7 @@
     "scoreA": 111.5,
     "scoreB": 120.86,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2570,7 +2570,7 @@
     "scoreA": 128.04,
     "scoreB": 139.98,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2581,7 +2581,7 @@
     "scoreA": 130.58,
     "scoreB": 133.52,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2592,7 +2592,7 @@
     "scoreA": 131.7,
     "scoreB": 113.36,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2603,7 +2603,7 @@
     "scoreA": 134.06,
     "scoreB": 110.38,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2614,7 +2614,7 @@
     "scoreA": 104.8,
     "scoreB": 118.92,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2625,7 +2625,7 @@
     "scoreA": 116.76,
     "scoreB": 96.68,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2636,7 +2636,7 @@
     "scoreA": 176.3,
     "scoreB": 104.54,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2647,7 +2647,7 @@
     "scoreA": 76.08,
     "scoreB": 58.42,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2658,7 +2658,7 @@
     "scoreA": 125.48,
     "scoreB": 98.7,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2669,7 +2669,7 @@
     "scoreA": 108.54,
     "scoreB": 140.64,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2680,7 +2680,7 @@
     "scoreA": 157.72,
     "scoreB": 129.86,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2691,7 +2691,7 @@
     "scoreA": 127.94,
     "scoreB": 80.28,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2702,7 +2702,7 @@
     "scoreA": 107.92,
     "scoreB": 166.96,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2713,7 +2713,7 @@
     "scoreA": 109.04,
     "scoreB": 92.56,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2724,7 +2724,7 @@
     "scoreA": 105.32,
     "scoreB": 95.72,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2735,7 +2735,7 @@
     "scoreA": 136.22,
     "scoreB": 90.98,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2746,7 +2746,7 @@
     "scoreA": 105.34,
     "scoreB": 106.92,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2757,7 +2757,7 @@
     "scoreA": 115.26,
     "scoreB": 104.04,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2768,7 +2768,7 @@
     "scoreA": 100.34,
     "scoreB": 119.44,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2779,7 +2779,7 @@
     "scoreA": 76.18,
     "scoreB": 153.84,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2790,7 +2790,7 @@
     "scoreA": 105.08,
     "scoreB": 118.24,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2801,7 +2801,7 @@
     "scoreA": 117.58,
     "scoreB": 112.92,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2812,7 +2812,7 @@
     "scoreA": 105.64,
     "scoreB": 89.66,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2823,7 +2823,7 @@
     "scoreA": 94.98,
     "scoreB": 112.94,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2834,7 +2834,7 @@
     "scoreA": 71.64,
     "scoreB": 138.46,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2845,7 +2845,7 @@
     "scoreA": 155.16,
     "scoreB": 125.7,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2856,7 +2856,7 @@
     "scoreA": 110.12,
     "scoreB": 114.4,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2867,7 +2867,7 @@
     "scoreA": 88.36,
     "scoreB": 100.06,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2878,7 +2878,7 @@
     "scoreA": 145.48,
     "scoreB": 109.98,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2889,7 +2889,7 @@
     "scoreA": 148.66,
     "scoreB": 113.98,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2898,9 +2898,9 @@
     "teamA": "Malcolm",
     "teamB": "Dulberger",
     "scoreA": 135.7,
-    "scoreB": 120.0,
+    "scoreB": 120,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2911,7 +2911,7 @@
     "scoreA": 159.66,
     "scoreB": 151.08,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2922,7 +2922,7 @@
     "scoreA": 104.12,
     "scoreB": 150.96,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2933,7 +2933,7 @@
     "scoreA": 106.66,
     "scoreB": 94.18,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2944,7 +2944,7 @@
     "scoreA": 122.7,
     "scoreB": 134.06,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2955,7 +2955,7 @@
     "scoreA": 93.38,
     "scoreB": 119.4,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2966,7 +2966,7 @@
     "scoreA": 95.74,
     "scoreB": 88.12,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2977,7 +2977,7 @@
     "scoreA": 99.78,
     "scoreB": 98.64,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2985,10 +2985,10 @@
     "date": "2023-11-01",
     "teamA": "Seth",
     "teamB": "Malcolm",
-    "scoreA": 127.0,
+    "scoreA": 127,
     "scoreB": 131.5,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -2999,7 +2999,7 @@
     "scoreA": 109.9,
     "scoreB": 98.02,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3010,7 +3010,7 @@
     "scoreA": 84.82,
     "scoreB": 82.68,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3019,9 +3019,9 @@
     "teamA": "Kylie",
     "teamB": "Leah",
     "scoreA": 122.68,
-    "scoreB": 123.0,
+    "scoreB": 123,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3030,9 +3030,9 @@
     "teamA": "Malcolm",
     "teamB": "Mino",
     "scoreA": 87.6,
-    "scoreB": 128.0,
+    "scoreB": 128,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3043,7 +3043,7 @@
     "scoreA": 119.98,
     "scoreB": 98.84,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3054,7 +3054,7 @@
     "scoreA": 118.12,
     "scoreB": 105.12,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3065,7 +3065,7 @@
     "scoreA": 116.56,
     "scoreB": 140.54,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3076,7 +3076,7 @@
     "scoreA": 115.14,
     "scoreB": 126.5,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3087,7 +3087,7 @@
     "scoreA": 128.76,
     "scoreB": 104.08,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3098,7 +3098,7 @@
     "scoreA": 104.52,
     "scoreB": 91.14,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3109,7 +3109,7 @@
     "scoreA": 130.76,
     "scoreB": 105.86,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3120,7 +3120,7 @@
     "scoreA": 121.54,
     "scoreB": 127.9,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3131,7 +3131,7 @@
     "scoreA": 67.64,
     "scoreB": 119.3,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3142,7 +3142,7 @@
     "scoreA": 111.06,
     "scoreB": 106.86,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3153,7 +3153,7 @@
     "scoreA": 125.48,
     "scoreB": 126.74,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3164,7 +3164,7 @@
     "scoreA": 120.6,
     "scoreB": 105.58,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3175,7 +3175,7 @@
     "scoreA": 124.54,
     "scoreB": 79.22,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3186,7 +3186,7 @@
     "scoreA": 123.12,
     "scoreB": 164.06,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3194,10 +3194,10 @@
     "date": "2023-11-22",
     "teamA": "Wei",
     "teamB": "Malcolm",
-    "scoreA": 105.0,
+    "scoreA": 105,
     "scoreB": 157.7,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3206,9 +3206,9 @@
     "teamA": "Joe",
     "teamB": "Seth",
     "scoreA": 128.08,
-    "scoreB": 122.0,
+    "scoreB": 122,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3219,7 +3219,7 @@
     "scoreA": 126.24,
     "scoreB": 128.42,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3230,7 +3230,7 @@
     "scoreA": 137.52,
     "scoreB": 131.46,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3241,7 +3241,7 @@
     "scoreA": 135.1,
     "scoreB": 103.28,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3252,7 +3252,7 @@
     "scoreA": 82.18,
     "scoreB": 109.96,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3263,7 +3263,7 @@
     "scoreA": 133.36,
     "scoreB": 122.78,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3274,7 +3274,7 @@
     "scoreA": 116.62,
     "scoreB": 112.38,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3285,7 +3285,7 @@
     "scoreA": 139.54,
     "scoreB": 132.82,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3296,7 +3296,7 @@
     "scoreA": 128.56,
     "scoreB": 125.94,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3307,7 +3307,7 @@
     "scoreA": 99.58,
     "scoreB": 130.66,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3318,7 +3318,7 @@
     "scoreA": 108.9,
     "scoreB": 64.14,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3329,7 +3329,7 @@
     "scoreA": 92.5,
     "scoreB": 127.6,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3395,7 +3395,7 @@
     "scoreA": 100.62,
     "scoreB": 97.5,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3406,7 +3406,7 @@
     "scoreA": 109.06,
     "scoreB": 84.92,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3417,7 +3417,7 @@
     "scoreA": 125.86,
     "scoreB": 127.88,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3428,7 +3428,7 @@
     "scoreA": 136.16,
     "scoreB": 124.64,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3439,7 +3439,7 @@
     "scoreA": 114.58,
     "scoreB": 102.14,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3450,7 +3450,7 @@
     "scoreA": 116.56,
     "scoreB": 131.28,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3461,7 +3461,7 @@
     "scoreA": 129.52,
     "scoreB": 139.94,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3472,7 +3472,7 @@
     "scoreA": 124.76,
     "scoreB": 101.64,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3483,7 +3483,7 @@
     "scoreA": 154.76,
     "scoreB": 127.94,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3494,7 +3494,7 @@
     "scoreA": 84.18,
     "scoreB": 107.56,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3505,7 +3505,7 @@
     "scoreA": 123.44,
     "scoreB": 93.2,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3516,7 +3516,7 @@
     "scoreA": 115.92,
     "scoreB": 76.78,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3527,7 +3527,7 @@
     "scoreA": 93.98,
     "scoreB": 110.48,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3538,7 +3538,7 @@
     "scoreA": 105.86,
     "scoreB": 103.82,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3549,7 +3549,7 @@
     "scoreA": 138.18,
     "scoreB": 113.66,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3560,7 +3560,7 @@
     "scoreA": 99.08,
     "scoreB": 124.22,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3571,7 +3571,7 @@
     "scoreA": 102.68,
     "scoreB": 133.06,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3582,7 +3582,7 @@
     "scoreA": 120.54,
     "scoreB": 100.26,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3593,7 +3593,7 @@
     "scoreA": 114.74,
     "scoreB": 100.82,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3604,7 +3604,7 @@
     "scoreA": 83.52,
     "scoreB": 104.7,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3612,10 +3612,10 @@
     "date": "2024-09-25",
     "teamA": "Kylie",
     "teamB": "Taylor",
-    "scoreA": 43.0,
+    "scoreA": 43,
     "scoreB": 131.44,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3626,7 +3626,7 @@
     "scoreA": 127.2,
     "scoreB": 134.6,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3637,7 +3637,7 @@
     "scoreA": 127.78,
     "scoreB": 145.82,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3648,7 +3648,7 @@
     "scoreA": 97.68,
     "scoreB": 161.26,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3659,7 +3659,7 @@
     "scoreA": 146.78,
     "scoreB": 143.52,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3670,7 +3670,7 @@
     "scoreA": 139.36,
     "scoreB": 100.66,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3681,7 +3681,7 @@
     "scoreA": 117.44,
     "scoreB": 81.34,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3692,7 +3692,7 @@
     "scoreA": 157.2,
     "scoreB": 73.46,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3703,7 +3703,7 @@
     "scoreA": 113.18,
     "scoreB": 124.12,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3714,7 +3714,7 @@
     "scoreA": 120.74,
     "scoreB": 106.44,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3725,7 +3725,7 @@
     "scoreA": 130.26,
     "scoreB": 127.42,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3736,7 +3736,7 @@
     "scoreA": 75.2,
     "scoreB": 115.32,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3747,7 +3747,7 @@
     "scoreA": 137.1,
     "scoreB": 109.56,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3758,7 +3758,7 @@
     "scoreA": 98.98,
     "scoreB": 83.16,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3767,9 +3767,9 @@
     "teamA": "Rico",
     "teamB": "Leah",
     "scoreA": 118.3,
-    "scoreB": 145.0,
+    "scoreB": 145,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3780,7 +3780,7 @@
     "scoreA": 113.62,
     "scoreB": 92.82,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3791,7 +3791,7 @@
     "scoreA": 118.74,
     "scoreB": 89.16,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3802,7 +3802,7 @@
     "scoreA": 111.84,
     "scoreB": 99.14,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3813,7 +3813,7 @@
     "scoreA": 71.48,
     "scoreB": 105.48,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3824,7 +3824,7 @@
     "scoreA": 129.8,
     "scoreB": 93.42,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3832,10 +3832,10 @@
     "date": "2024-10-16",
     "teamA": "Seth",
     "teamB": "Joe",
-    "scoreA": 121.0,
+    "scoreA": 121,
     "scoreB": 113.94,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3846,7 +3846,7 @@
     "scoreA": 110.66,
     "scoreB": 87.76,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3857,7 +3857,7 @@
     "scoreA": 121.94,
     "scoreB": 126.08,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3868,7 +3868,7 @@
     "scoreA": 153.44,
     "scoreB": 107.46,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3879,7 +3879,7 @@
     "scoreA": 163.14,
     "scoreB": 120.66,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3890,7 +3890,7 @@
     "scoreA": 107.4,
     "scoreB": 130.14,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3901,7 +3901,7 @@
     "scoreA": 181.68,
     "scoreB": 97.34,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3912,7 +3912,7 @@
     "scoreA": 128.76,
     "scoreB": 134.3,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3923,7 +3923,7 @@
     "scoreA": 98.5,
     "scoreB": 115.32,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3934,7 +3934,7 @@
     "scoreA": 112.1,
     "scoreB": 160.56,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3945,7 +3945,7 @@
     "scoreA": 127.7,
     "scoreB": 104.24,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3956,7 +3956,7 @@
     "scoreA": 83.66,
     "scoreB": 117.32,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3967,7 +3967,7 @@
     "scoreA": 83.72,
     "scoreB": 156.28,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3978,7 +3978,7 @@
     "scoreA": 129.1,
     "scoreB": 115.88,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -3989,7 +3989,7 @@
     "scoreA": 116.28,
     "scoreB": 119.18,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4000,7 +4000,7 @@
     "scoreA": 140.2,
     "scoreB": 99.22,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4011,7 +4011,7 @@
     "scoreA": 88.54,
     "scoreB": 165.24,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4020,9 +4020,9 @@
     "teamA": "Marian",
     "teamB": "Dulberger",
     "scoreA": 106.54,
-    "scoreB": 133.0,
+    "scoreB": 133,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4033,7 +4033,7 @@
     "scoreA": 73.4,
     "scoreB": 100.72,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4044,7 +4044,7 @@
     "scoreA": 77.22,
     "scoreB": 98.6,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4055,7 +4055,7 @@
     "scoreA": 122.28,
     "scoreB": 128.98,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4066,7 +4066,7 @@
     "scoreA": 119.94,
     "scoreB": 120.74,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4077,7 +4077,7 @@
     "scoreA": 79.66,
     "scoreB": 135.64,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4086,9 +4086,9 @@
     "teamA": "Mino",
     "teamB": "Taylor",
     "scoreA": 108.9,
-    "scoreB": 101.0,
+    "scoreB": 101,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4099,7 +4099,7 @@
     "scoreA": 97.84,
     "scoreB": 117.38,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4110,7 +4110,7 @@
     "scoreA": 165.86,
     "scoreB": 139.48,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4121,7 +4121,7 @@
     "scoreA": 140.48,
     "scoreB": 137.9,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4132,7 +4132,7 @@
     "scoreA": 102.36,
     "scoreB": 91.42,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4143,7 +4143,7 @@
     "scoreA": 106.2,
     "scoreB": 143.22,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4154,7 +4154,7 @@
     "scoreA": 90.4,
     "scoreB": 166.28,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4165,7 +4165,7 @@
     "scoreA": 104.96,
     "scoreB": 142.7,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4176,7 +4176,7 @@
     "scoreA": 96.56,
     "scoreB": 107.96,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4187,7 +4187,7 @@
     "scoreA": 118.44,
     "scoreB": 109.64,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4198,7 +4198,7 @@
     "scoreA": 125.52,
     "scoreB": 102.9,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4209,7 +4209,7 @@
     "scoreA": 136.34,
     "scoreB": 91.56,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4220,7 +4220,7 @@
     "scoreA": 148.68,
     "scoreB": 120.76,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4231,7 +4231,7 @@
     "scoreA": 102.56,
     "scoreB": 116.68,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4242,7 +4242,7 @@
     "scoreA": 115.02,
     "scoreB": 133.62,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4253,7 +4253,7 @@
     "scoreA": 160.34,
     "scoreB": 104.72,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4264,7 +4264,7 @@
     "scoreA": 124.46,
     "scoreB": 141.38,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4272,10 +4272,10 @@
     "date": "2024-12-04",
     "teamA": "Leah",
     "teamB": "Taylor",
-    "scoreA": 144.0,
+    "scoreA": 144,
     "scoreB": 91.3,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4286,7 +4286,7 @@
     "scoreA": 147.66,
     "scoreB": 124.22,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4297,7 +4297,7 @@
     "scoreA": 125.32,
     "scoreB": 141.8,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4308,7 +4308,7 @@
     "scoreA": 123.02,
     "scoreB": 88.46,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4374,7 +4374,7 @@
     "scoreA": 107.92,
     "scoreB": 105.78,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4385,7 +4385,7 @@
     "scoreA": 125.42,
     "scoreB": 135.72,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4396,7 +4396,7 @@
     "scoreA": 115.32,
     "scoreB": 116.96,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4407,7 +4407,7 @@
     "scoreA": 108.32,
     "scoreB": 102.48,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4418,7 +4418,7 @@
     "scoreA": 108.16,
     "scoreB": 92.74,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4429,7 +4429,7 @@
     "scoreA": 94.98,
     "scoreB": 92.82,
     "week": 1,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4440,7 +4440,7 @@
     "scoreA": 122.88,
     "scoreB": 126.4,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4451,7 +4451,7 @@
     "scoreA": 119.52,
     "scoreB": 120.64,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4462,7 +4462,7 @@
     "scoreA": 129.98,
     "scoreB": 129.4,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4473,7 +4473,7 @@
     "scoreA": 97.18,
     "scoreB": 102.74,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4484,7 +4484,7 @@
     "scoreA": 88.8,
     "scoreB": 117.34,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4495,7 +4495,7 @@
     "scoreA": 126.58,
     "scoreB": 103.5,
     "week": 2,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4506,7 +4506,7 @@
     "scoreA": 131.46,
     "scoreB": 101.42,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4517,7 +4517,7 @@
     "scoreA": 132.4,
     "scoreB": 69.02,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4528,7 +4528,7 @@
     "scoreA": 115.12,
     "scoreB": 110.3,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4539,7 +4539,7 @@
     "scoreA": 102.24,
     "scoreB": 108.32,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4550,7 +4550,7 @@
     "scoreA": 116.14,
     "scoreB": 122.42,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4561,7 +4561,7 @@
     "scoreA": 144.86,
     "scoreB": 117.58,
     "week": 3,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4572,7 +4572,7 @@
     "scoreA": 136.8,
     "scoreB": 97.64,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4583,7 +4583,7 @@
     "scoreA": 127.44,
     "scoreB": 107.2,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4594,7 +4594,7 @@
     "scoreA": 130.76,
     "scoreB": 132.06,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4605,7 +4605,7 @@
     "scoreA": 120.58,
     "scoreB": 115.82,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4614,9 +4614,9 @@
     "teamA": "Mino",
     "teamB": "Wei",
     "scoreA": 105.48,
-    "scoreB": 167.0,
+    "scoreB": 167,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4627,7 +4627,7 @@
     "scoreA": 132.54,
     "scoreB": 76.82,
     "week": 4,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4638,7 +4638,7 @@
     "scoreA": 111.04,
     "scoreB": 105.7,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4649,7 +4649,7 @@
     "scoreA": 115.78,
     "scoreB": 103.9,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4660,7 +4660,7 @@
     "scoreA": 84.02,
     "scoreB": 133.22,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4671,7 +4671,7 @@
     "scoreA": 126.02,
     "scoreB": 130.52,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4682,7 +4682,7 @@
     "scoreA": 116.16,
     "scoreB": 115.94,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4693,7 +4693,7 @@
     "scoreA": 133.52,
     "scoreB": 124.94,
     "week": 5,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4704,7 +4704,7 @@
     "scoreA": 104.94,
     "scoreB": 157.72,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4715,7 +4715,7 @@
     "scoreA": 159.3,
     "scoreB": 85.9,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4726,7 +4726,7 @@
     "scoreA": 108.34,
     "scoreB": 39.84,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4737,7 +4737,7 @@
     "scoreA": 107.36,
     "scoreB": 98.06,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4748,7 +4748,7 @@
     "scoreA": 140.32,
     "scoreB": 81.76,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4759,7 +4759,7 @@
     "scoreA": 125.74,
     "scoreB": 108.36,
     "week": 6,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4770,7 +4770,7 @@
     "scoreA": 128.36,
     "scoreB": 122.64,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4781,7 +4781,7 @@
     "scoreA": 149.5,
     "scoreB": 138.66,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4792,7 +4792,7 @@
     "scoreA": 115.98,
     "scoreB": 137.86,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4803,7 +4803,7 @@
     "scoreA": 121.64,
     "scoreB": 107.68,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4814,7 +4814,7 @@
     "scoreA": 69.74,
     "scoreB": 123.34,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4825,7 +4825,7 @@
     "scoreA": 125.74,
     "scoreB": 75.72,
     "week": 7,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4836,7 +4836,7 @@
     "scoreA": 120.32,
     "scoreB": 80.76,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4847,7 +4847,7 @@
     "scoreA": 113.12,
     "scoreB": 128.18,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4858,7 +4858,7 @@
     "scoreA": 119.92,
     "scoreB": 87.14,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4869,7 +4869,7 @@
     "scoreA": 123.1,
     "scoreB": 79.06,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4880,7 +4880,7 @@
     "scoreA": 144.12,
     "scoreB": 98.12,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4891,7 +4891,7 @@
     "scoreA": 74.18,
     "scoreB": 145.88,
     "week": 8,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4902,7 +4902,7 @@
     "scoreA": 110.6,
     "scoreB": 94.62,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4910,10 +4910,10 @@
     "date": "2025-10-29",
     "teamA": "Erin",
     "teamB": "Joe",
-    "scoreA": 121.0,
+    "scoreA": 121,
     "scoreB": 113.74,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4924,7 +4924,7 @@
     "scoreA": 100.16,
     "scoreB": 115.12,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4935,7 +4935,7 @@
     "scoreA": 160.86,
     "scoreB": 51.7,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4946,7 +4946,7 @@
     "scoreA": 130.82,
     "scoreB": 131.3,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4954,10 +4954,10 @@
     "date": "2025-10-29",
     "teamA": "Wei",
     "teamB": "Kylie",
-    "scoreA": 93.0,
+    "scoreA": 93,
     "scoreB": 133.52,
     "week": 9,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4968,7 +4968,7 @@
     "scoreA": 168.58,
     "scoreB": 118.9,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4979,7 +4979,7 @@
     "scoreA": 94.64,
     "scoreB": 102.5,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -4990,7 +4990,7 @@
     "scoreA": 104.06,
     "scoreB": 125.14,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5001,7 +5001,7 @@
     "scoreA": 101.24,
     "scoreB": 120.42,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5012,7 +5012,7 @@
     "scoreA": 85.82,
     "scoreB": 120.2,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5023,7 +5023,7 @@
     "scoreA": 89.04,
     "scoreB": 85.42,
     "week": 10,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5034,7 +5034,7 @@
     "scoreA": 142.16,
     "scoreB": 125.98,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5045,7 +5045,7 @@
     "scoreA": 96.44,
     "scoreB": 122.92,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5056,7 +5056,7 @@
     "scoreA": 113.64,
     "scoreB": 136.32,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5067,7 +5067,7 @@
     "scoreA": 118.62,
     "scoreB": 74.22,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5078,7 +5078,7 @@
     "scoreA": 106.8,
     "scoreB": 76.06,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5089,7 +5089,7 @@
     "scoreA": 101.14,
     "scoreB": 97.1,
     "week": 11,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5100,7 +5100,7 @@
     "scoreA": 132.76,
     "scoreB": 141.34,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5111,7 +5111,7 @@
     "scoreA": 109.86,
     "scoreB": 54.64,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5122,7 +5122,7 @@
     "scoreA": 151.86,
     "scoreB": 129.96,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5133,7 +5133,7 @@
     "scoreA": 117.52,
     "scoreB": 139.72,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5144,7 +5144,7 @@
     "scoreA": 63.92,
     "scoreB": 111.82,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5155,7 +5155,7 @@
     "scoreA": 106.08,
     "scoreB": 110.26,
     "week": 12,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5166,7 +5166,7 @@
     "scoreA": 109.94,
     "scoreB": 76.24,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5177,7 +5177,7 @@
     "scoreA": 116.72,
     "scoreB": 62.64,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5188,7 +5188,7 @@
     "scoreA": 120.8,
     "scoreB": 88.88,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5199,7 +5199,7 @@
     "scoreA": 138.26,
     "scoreB": 107.44,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5210,7 +5210,7 @@
     "scoreA": 114.3,
     "scoreB": 150.42,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5221,7 +5221,7 @@
     "scoreA": 103.56,
     "scoreB": 116.84,
     "week": 13,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5232,7 +5232,7 @@
     "scoreA": 100.64,
     "scoreB": 114.34,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5243,7 +5243,7 @@
     "scoreA": 103.26,
     "scoreB": 88.74,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5254,7 +5254,7 @@
     "scoreA": 134.38,
     "scoreB": 108.78,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5263,9 +5263,9 @@
     "teamA": "Mino",
     "teamB": "Joe",
     "scoreA": 119.26,
-    "scoreB": 95.0,
+    "scoreB": 95,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5276,7 +5276,7 @@
     "scoreA": 93.84,
     "scoreB": 75.2,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {
@@ -5287,7 +5287,7 @@
     "scoreA": 89.9,
     "scoreB": 113.46,
     "week": 14,
-    "round": null,
+    "round": "",
     "type": "Regular"
   },
   {

@@ -1,0 +1,21 @@
+{
+  "correlations": {
+    "draft_percentile_finish_score": 0.0,
+    "draft_percentile_points_z": 0.0,
+    "pick_finish": 0.0
+  },
+  "generated_at": "2026-07-16T00:00:00Z",
+  "generator_version": 1,
+  "owner_recommendations": [],
+  "pick_summary": [],
+  "rows": [],
+  "schema_version": 1,
+  "season_range": {
+    "end": null,
+    "start": null
+  },
+  "source": "SeasonSummary.json",
+  "source_sha256": "sha256:7f6c7606d9347830937b6d017edf18171147591d33b57bfb60b4bddc1c9e1c0d",
+  "team_seasons": 0,
+  "zone_summary": []
+}

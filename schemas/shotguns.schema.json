@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viva.example/schemas/shotguns.schema.json",
+  "title": "Viva Shotguns",
+  "description": "Validated Viva shotgun obligations and completed media references.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "owner", "week", "date", "due_date", "cause", "completed", "media_key"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1, "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "owner": { "$ref": "common.schema.json#/$defs/owner" },
+      "week": { "type": ["integer", "null"], "minimum": 1, "maximum": 25 },
+      "date": { "$ref": "common.schema.json#/$defs/date" },
+      "due_date": { "type": ["string", "null"], "format": "date" },
+      "cause": { "type": "string", "minLength": 1, "pattern": "\\S" },
+      "completed": { "type": "boolean" },
+      "media_key": { "type": ["string", "null"], "minLength": 1, "pattern": "^[A-Za-z0-9._/-]+$" }
+    },
+    "allOf": [
+      { "if": { "properties": { "completed": { "const": true } } }, "then": { "required": ["media_key"], "properties": { "media_key": { "type": "string" } } } },
+      { "if": { "properties": { "completed": { "const": false } } }, "then": { "properties": { "media_key": { "type": "null" } } } }
+    ]
+  }
+}

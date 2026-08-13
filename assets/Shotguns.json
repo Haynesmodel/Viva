@@ -1,875 +1,982 @@
 [
   {
+    "id": "shotgun-taylor-2025-12-18-15-player-sean-combs-0",
     "owner": "Taylor",
     "week": 15,
     "date": "2025-12-18",
     "due_date": "2025-12-25",
     "cause": "Player: Sean Combs",
     "completed": false,
-    "video_url": ""
+    "media_key": null
   },
   {
+    "id": "shotgun-taylor-2025-12-26-16-carryover-1",
     "owner": "Taylor",
     "week": 16,
     "date": "2025-12-26",
     "due_date": "2026-01-01",
     "cause": "Carryover",
     "completed": false,
-    "video_url": ""
+    "media_key": null
   },
   {
+    "id": "shotgun-dulberger-2025-12-26-16-player-aaron-hernandez-2",
     "owner": "Dulberger",
     "week": 16,
     "date": "2025-12-26",
     "due_date": "2026-01-01",
     "cause": "Player: Aaron Hernandez",
     "completed": false,
-    "video_url": ""
+    "media_key": null
   },
   {
+    "id": "shotgun-leah-2025-11-07-archive-archive-3",
     "owner": "Leah",
     "week": null,
     "date": "2025-11-07",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2025-11-07.mov"
+    "media_key": "Leah/2025-11-07.mov"
   },
   {
+    "id": "shotgun-leah-2026-01-03-archive-archive-4",
     "owner": "Leah",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2026-01-03-2.mov"
+    "media_key": "Leah/2026-01-03-2.mov"
   },
   {
+    "id": "shotgun-leah-2025-09-14-archive-archive-5",
     "owner": "Leah",
     "week": null,
     "date": "2025-09-14",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2025-09-14.mov"
+    "media_key": "Leah/2025-09-14.mov"
   },
   {
+    "id": "shotgun-leah-2025-10-26-archive-archive-6",
     "owner": "Leah",
     "week": null,
     "date": "2025-10-26",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2025-10-26.mov"
+    "media_key": "Leah/2025-10-26.mov"
   },
   {
+    "id": "shotgun-leah-2025-09-07-archive-archive-7",
     "owner": "Leah",
     "week": null,
     "date": "2025-09-07",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2025-09-07.mov"
+    "media_key": "Leah/2025-09-07.mov"
   },
   {
+    "id": "shotgun-leah-2025-10-16-archive-archive-8",
     "owner": "Leah",
     "week": null,
     "date": "2025-10-16",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2025-10-16.mov"
+    "media_key": "Leah/2025-10-16.mov"
   },
   {
+    "id": "shotgun-leah-2025-10-02-archive-archive-9",
     "owner": "Leah",
     "week": null,
     "date": "2025-10-02",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2025-10-02.mov"
+    "media_key": "Leah/2025-10-02.mov"
   },
   {
+    "id": "shotgun-leah-2026-01-03-archive-archive-10",
     "owner": "Leah",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Leah/2026-01-03.mov"
+    "media_key": "Leah/2026-01-03.mov"
   },
   {
+    "id": "shotgun-mino-2025-12-31-archive-archive-11",
     "owner": "Mino",
     "week": null,
     "date": "2025-12-31",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/2025-12-31.mov"
+    "media_key": "Mino/2025-12-31.mov"
   },
   {
+    "id": "shotgun-mino-2025-12-18-archive-archive-12",
     "owner": "Mino",
     "week": null,
     "date": "2025-12-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/2025-12-18.mov"
+    "media_key": "Mino/2025-12-18.mov"
   },
   {
+    "id": "shotgun-mino-2025-10-30-archive-archive-13",
     "owner": "Mino",
     "week": null,
     "date": "2025-10-30",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/2025-10-30.mov"
+    "media_key": "Mino/2025-10-30.mov"
   },
   {
+    "id": "shotgun-mino-2025-12-04-archive-archive-14",
     "owner": "Mino",
     "week": null,
     "date": "2025-12-04",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/2025-12-04.mov"
+    "media_key": "Mino/2025-12-04.mov"
   },
   {
+    "id": "shotgun-mino-2026-01-03-archive-archive-15",
     "owner": "Mino",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Mino/2026-01-03.mov"
+    "media_key": "Mino/2026-01-03.mov"
   },
   {
+    "id": "shotgun-marian-2025-10-02-archive-archive-16",
     "owner": "Marian",
     "week": null,
     "date": "2025-10-02",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/2025-10-02-2.mov"
+    "media_key": "Marian/2025-10-02-2.mov"
   },
   {
+    "id": "shotgun-marian-2025-10-02-archive-archive-17",
     "owner": "Marian",
     "week": null,
     "date": "2025-10-02",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/2025-10-02-3.mov"
+    "media_key": "Marian/2025-10-02-3.mov"
   },
   {
+    "id": "shotgun-marian-2025-10-09-archive-archive-18",
     "owner": "Marian",
     "week": null,
     "date": "2025-10-09",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/2025-10-09.mov"
+    "media_key": "Marian/2025-10-09.mov"
   },
   {
+    "id": "shotgun-marian-2025-09-18-archive-archive-19",
     "owner": "Marian",
     "week": null,
     "date": "2025-09-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/2025-09-18-2.mov"
+    "media_key": "Marian/2025-09-18-2.mov"
   },
   {
+    "id": "shotgun-marian-2025-10-02-archive-archive-20",
     "owner": "Marian",
     "week": null,
     "date": "2025-10-02",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/2025-10-02.mov"
+    "media_key": "Marian/2025-10-02.mov"
   },
   {
+    "id": "shotgun-marian-2025-09-18-archive-archive-21",
     "owner": "Marian",
     "week": null,
     "date": "2025-09-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/2025-09-18.mov"
+    "media_key": "Marian/2025-09-18.mov"
   },
   {
+    "id": "shotgun-marian-2025-11-20-archive-archive-22",
     "owner": "Marian",
     "week": null,
     "date": "2025-11-20",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Marian/2025-11-20.mov"
+    "media_key": "Marian/2025-11-20.mov"
   },
   {
+    "id": "shotgun-dulberger-2026-01-03-archive-archive-23",
     "owner": "Dulberger",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/2026-01-03-2.mov"
+    "media_key": "Dulberger/2026-01-03-2.mov"
   },
   {
+    "id": "shotgun-dulberger-2025-09-29-6-carryover-24",
     "owner": "Dulberger",
     "week": 6,
     "date": "2025-09-29",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/Carryover-Week6-9-29-2025.mov"
+    "media_key": "Dulberger/Carryover-Week6-9-29-2025.mov"
   },
   {
+    "id": "shotgun-dulberger-2025-10-09-archive-archive-25",
     "owner": "Dulberger",
     "week": null,
     "date": "2025-10-09",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/2025-10-09.mov"
+    "media_key": "Dulberger/2025-10-09.mov"
   },
   {
+    "id": "shotgun-dulberger-2025-12-18-archive-archive-26",
     "owner": "Dulberger",
     "week": null,
     "date": "2025-12-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/2025-12-18.mov"
+    "media_key": "Dulberger/2025-12-18.mov"
   },
   {
+    "id": "shotgun-dulberger-2025-10-30-archive-archive-27",
     "owner": "Dulberger",
     "week": null,
     "date": "2025-10-30",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/2025-10-30.mov"
+    "media_key": "Dulberger/2025-10-30.mov"
   },
   {
+    "id": "shotgun-dulberger-2025-11-27-archive-archive-28",
     "owner": "Dulberger",
     "week": null,
     "date": "2025-11-27",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/2025-11-27.mov"
+    "media_key": "Dulberger/2025-11-27.mov"
   },
   {
+    "id": "shotgun-dulberger-2026-01-03-archive-archive-29",
     "owner": "Dulberger",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Dulberger/2026-01-03.mov"
+    "media_key": "Dulberger/2026-01-03.mov"
   },
   {
+    "id": "shotgun-malcolm-2025-10-23-archive-archive-30",
     "owner": "Malcolm",
     "week": null,
     "date": "2025-10-23",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Malcolm/2025-10-23.mov"
+    "media_key": "Malcolm/2025-10-23.mov"
   },
   {
+    "id": "shotgun-malcolm-2025-10-09-archive-archive-31",
     "owner": "Malcolm",
     "week": null,
     "date": "2025-10-09",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Malcolm/2025-10-09.mov"
+    "media_key": "Malcolm/2025-10-09.mov"
   },
   {
+    "id": "shotgun-malcolm-2025-12-07-archive-archive-32",
     "owner": "Malcolm",
     "week": null,
     "date": "2025-12-07",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Malcolm/2025-12-07.mov"
+    "media_key": "Malcolm/2025-12-07.mov"
   },
   {
+    "id": "shotgun-erin-2025-10-23-archive-archive-33",
     "owner": "Erin",
     "week": null,
     "date": "2025-10-23",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/2025-10-23.mov"
+    "media_key": "Erin/2025-10-23.mov"
   },
   {
+    "id": "shotgun-erin-2025-10-30-archive-archive-34",
     "owner": "Erin",
     "week": null,
     "date": "2025-10-30",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/2025-10-30.mov"
+    "media_key": "Erin/2025-10-30.mov"
   },
   {
+    "id": "shotgun-erin-2025-10-16-archive-archive-35",
     "owner": "Erin",
     "week": null,
     "date": "2025-10-16",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/2025-10-16.mov"
+    "media_key": "Erin/2025-10-16.mov"
   },
   {
+    "id": "shotgun-erin-2025-09-24-archive-archive-36",
     "owner": "Erin",
     "week": null,
     "date": "2025-09-24",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/2025-09-24.mov"
+    "media_key": "Erin/2025-09-24.mov"
   },
   {
+    "id": "shotgun-erin-2025-09-24-archive-archive-37",
     "owner": "Erin",
     "week": null,
     "date": "2025-09-24",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Erin/2025-09-24-2.mov"
+    "media_key": "Erin/2025-09-24-2.mov"
   },
   {
+    "id": "shotgun-erin-img-7068-archive",
+    "owner": "Erin",
+    "week": null,
+    "date": "2025-10-30",
+    "due_date": null,
+    "cause": "Archive",
+    "completed": true,
+    "media_key": "Erin/IMG_7068.MOV"
+  },
+  {
+    "id": "shotgun-seth-2025-11-13-archive-archive-38",
     "owner": "Seth",
     "week": null,
     "date": "2025-11-13",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-11-13.mov"
+    "media_key": "Seth/2025-11-13.mov"
   },
   {
+    "id": "shotgun-seth-2025-12-11-archive-archive-39",
     "owner": "Seth",
     "week": null,
     "date": "2025-12-11",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-12-11-2.mov"
+    "media_key": "Seth/2025-12-11-2.mov"
   },
   {
+    "id": "shotgun-seth-2025-09-14-archive-archive-40",
     "owner": "Seth",
     "week": null,
     "date": "2025-09-14",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-09-14.mov"
+    "media_key": "Seth/2025-09-14.mov"
   },
   {
+    "id": "shotgun-seth-2025-12-18-archive-archive-41",
     "owner": "Seth",
     "week": null,
     "date": "2025-12-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-12-18.mov"
+    "media_key": "Seth/2025-12-18.mov"
   },
   {
+    "id": "shotgun-seth-2025-10-30-archive-archive-42",
     "owner": "Seth",
     "week": null,
     "date": "2025-10-30",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-10-30.mov"
+    "media_key": "Seth/2025-10-30.mov"
   },
   {
+    "id": "shotgun-seth-2025-09-13-archive-archive-43",
     "owner": "Seth",
     "week": null,
     "date": "2025-09-13",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-09-13.mov"
+    "media_key": "Seth/2025-09-13.mov"
   },
   {
+    "id": "shotgun-seth-2025-12-04-archive-archive-44",
     "owner": "Seth",
     "week": null,
     "date": "2025-12-04",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-12-04.mov"
+    "media_key": "Seth/2025-12-04.mov"
   },
   {
+    "id": "shotgun-seth-2025-12-11-archive-archive-45",
     "owner": "Seth",
     "week": null,
     "date": "2025-12-11",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-12-11.mov"
+    "media_key": "Seth/2025-12-11.mov"
   },
   {
+    "id": "shotgun-seth-2025-12-04-archive-archive-46",
     "owner": "Seth",
     "week": null,
     "date": "2025-12-04",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Seth/2025-12-04-2.mov"
+    "media_key": "Seth/2025-12-04-2.mov"
   },
   {
+    "id": "shotgun-joe-2026-01-03-archive-player-tyreek-hill-47",
     "owner": "Joe",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Player: Tyreek Hill",
     "completed": true,
-    "video_url": "assets/Shotguns/Joe/2026-01-03-2.mov"
+    "media_key": "Joe/2026-01-03-2.mov"
   },
   {
+    "id": "shotgun-joe-2025-12-18-archive-player-tyreek-hill-48",
     "owner": "Joe",
     "week": null,
     "date": "2025-12-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Player: Tyreek Hill",
     "completed": true,
-    "video_url": "assets/Shotguns/Joe/2025-12-18.mov"
+    "media_key": "Joe/2025-12-18.mov"
   },
   {
+    "id": "shotgun-joe-2025-10-02-archive-player-saquon-barkley-49",
     "owner": "Joe",
     "week": null,
     "date": "2025-10-02",
-    "due_date": "",
+    "due_date": null,
     "cause": "Player: Saquon Barkley",
     "completed": true,
-    "video_url": "assets/Shotguns/Joe/2025-10-02.mov"
+    "media_key": "Joe/2025-10-02.mov"
   },
   {
+    "id": "shotgun-joe-2025-12-18-archive-player-justin-jefferson-50",
     "owner": "Joe",
     "week": null,
     "date": "2025-12-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Player: Justin Jefferson",
     "completed": true,
-    "video_url": "assets/Shotguns/Joe/2025-12-18-2.mov"
+    "media_key": "Joe/2025-12-18-2.mov"
   },
   {
+    "id": "shotgun-joe-2026-01-03-archive-player-saquon-barkley-51",
     "owner": "Joe",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Player: Saquon Barkley",
     "completed": true,
-    "video_url": "assets/Shotguns/Joe/2026-01-03.mov"
+    "media_key": "Joe/2026-01-03.mov"
   },
   {
+    "id": "shotgun-rico-2025-11-04-archive-player-ja-marr-chase-52",
     "owner": "Rico",
     "week": null,
     "date": "2025-11-04",
-    "due_date": "",
+    "due_date": null,
     "cause": "Player: Ja'Marr Chase",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-11-04-2.mov"
+    "media_key": "Rico/2025-11-04-2.mov"
   },
   {
+    "id": "shotgun-rico-2026-01-19-archive-carryover-53",
     "owner": "Rico",
     "week": null,
     "date": "2026-01-19",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2026-01-19.mov"
+    "media_key": "Rico/2026-01-19.mov"
   },
   {
+    "id": "shotgun-rico-2025-11-04-archive-carryover-54",
     "owner": "Rico",
     "week": null,
     "date": "2025-11-04",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-11-04.mov"
+    "media_key": "Rico/2025-11-04.mov"
   },
   {
+    "id": "shotgun-rico-2026-01-03-archive-carryover-55",
     "owner": "Rico",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2026-01-03-2.mov"
+    "media_key": "Rico/2026-01-03-2.mov"
   },
   {
+    "id": "shotgun-rico-2025-12-25-archive-carryover-56",
     "owner": "Rico",
     "week": null,
     "date": "2025-12-25",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-12-25.mov"
+    "media_key": "Rico/2025-12-25.mov"
   },
   {
+    "id": "shotgun-rico-2025-12-31-archive-carryover-57",
     "owner": "Rico",
     "week": null,
     "date": "2025-12-31",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-12-31.mov"
+    "media_key": "Rico/2025-12-31.mov"
   },
   {
+    "id": "shotgun-rico-2025-12-18-archive-carryover-58",
     "owner": "Rico",
     "week": null,
     "date": "2025-12-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-12-18.mov"
+    "media_key": "Rico/2025-12-18.mov"
   },
   {
+    "id": "shotgun-rico-2025-12-31-archive-carryover-59",
     "owner": "Rico",
     "week": null,
     "date": "2025-12-31",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-12-31-2.mov"
+    "media_key": "Rico/2025-12-31-2.mov"
   },
   {
+    "id": "shotgun-rico-2025-12-07-archive-carryover-60",
     "owner": "Rico",
     "week": null,
     "date": "2025-12-07",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-12-07.mov"
+    "media_key": "Rico/2025-12-07.mov"
   },
   {
+    "id": "shotgun-rico-2025-12-28-archive-carryover-61",
     "owner": "Rico",
     "week": null,
     "date": "2025-12-28",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-12-28.mov"
+    "media_key": "Rico/2025-12-28.mov"
   },
   {
+    "id": "shotgun-rico-2026-01-04-archive-carryover-62",
     "owner": "Rico",
     "week": null,
     "date": "2026-01-04",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2026-01-04.mov"
+    "media_key": "Rico/2026-01-04.mov"
   },
   {
+    "id": "shotgun-rico-2026-01-10-archive-carryover-63",
     "owner": "Rico",
     "week": null,
     "date": "2026-01-10",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2026-01-10.mov"
+    "media_key": "Rico/2026-01-10.mov"
   },
   {
+    "id": "shotgun-rico-2025-11-22-archive-carryover-64",
     "owner": "Rico",
     "week": null,
     "date": "2025-11-22",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-11-22.mov"
+    "media_key": "Rico/2025-11-22.mov"
   },
   {
+    "id": "shotgun-rico-2026-01-03-archive-carryover-65",
     "owner": "Rico",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2026-01-03.mov"
+    "media_key": "Rico/2026-01-03.mov"
   },
   {
+    "id": "shotgun-rico-2025-12-07-archive-carryover-66",
     "owner": "Rico",
     "week": null,
     "date": "2025-12-07",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Rico/2025-12-07-2.mov"
+    "media_key": "Rico/2025-12-07-2.mov"
   },
   {
+    "id": "shotgun-kylie-2025-11-13-archive-archive-67",
     "owner": "Kylie",
     "week": null,
     "date": "2025-11-13",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-11-13.mov"
+    "media_key": "Kylie/2025-11-13.mov"
   },
   {
+    "id": "shotgun-kylie-2025-10-23-archive-archive-68",
     "owner": "Kylie",
     "week": null,
     "date": "2025-10-23",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-10-23.mov"
+    "media_key": "Kylie/2025-10-23.mov"
   },
   {
+    "id": "shotgun-kylie-2026-01-03-archive-archive-69",
     "owner": "Kylie",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2026-01-03-2.mov"
+    "media_key": "Kylie/2026-01-03-2.mov"
   },
   {
+    "id": "shotgun-kylie-2025-12-18-archive-archive-70",
     "owner": "Kylie",
     "week": null,
     "date": "2025-12-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-12-18.mov"
+    "media_key": "Kylie/2025-12-18.mov"
   },
   {
+    "id": "shotgun-kylie-2025-10-30-archive-archive-71",
     "owner": "Kylie",
     "week": null,
     "date": "2025-10-30",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-10-30.mov"
+    "media_key": "Kylie/2025-10-30.mov"
   },
   {
+    "id": "shotgun-kylie-2025-12-04-archive-archive-72",
     "owner": "Kylie",
     "week": null,
     "date": "2025-12-04",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-12-04.mov"
+    "media_key": "Kylie/2025-12-04.mov"
   },
   {
+    "id": "shotgun-kylie-2025-10-15-archive-archive-73",
     "owner": "Kylie",
     "week": null,
     "date": "2025-10-15",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-10-15.mov"
+    "media_key": "Kylie/2025-10-15.mov"
   },
   {
+    "id": "shotgun-kylie-2025-09-30-archive-archive-74",
     "owner": "Kylie",
     "week": null,
     "date": "2025-09-30",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-09-30.mov"
+    "media_key": "Kylie/2025-09-30.mov"
   },
   {
+    "id": "shotgun-kylie-2025-10-12-archive-archive-75",
     "owner": "Kylie",
     "week": null,
     "date": "2025-10-12",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2025-10-12.mov"
+    "media_key": "Kylie/2025-10-12.mov"
   },
   {
+    "id": "shotgun-kylie-2026-01-03-archive-archive-76",
     "owner": "Kylie",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Kylie/2026-01-03.mov"
+    "media_key": "Kylie/2026-01-03.mov"
   },
   {
+    "id": "shotgun-wei-2025-11-07-archive-archive-77",
     "owner": "Wei",
     "week": null,
     "date": "2025-11-07",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-11-07.mov"
+    "media_key": "Wei/2025-11-07.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-11-archive-archive-78",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-11",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-11-2.mov"
+    "media_key": "Wei/2025-12-11-2.mov"
   },
   {
+    "id": "shotgun-wei-2025-11-07-archive-archive-79",
     "owner": "Wei",
     "week": null,
     "date": "2025-11-07",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-11-07-2.mov"
+    "media_key": "Wei/2025-11-07-2.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-08-archive-archive-80",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-08",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-08.mov"
+    "media_key": "Wei/2025-12-08.mov"
   },
   {
+    "id": "shotgun-wei-2025-10-31-archive-archive-81",
     "owner": "Wei",
     "week": null,
     "date": "2025-10-31",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-10-31.mov"
+    "media_key": "Wei/2025-10-31.mov"
   },
   {
+    "id": "shotgun-wei-2025-10-18-archive-archive-82",
     "owner": "Wei",
     "week": null,
     "date": "2025-10-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-10-18.mov"
+    "media_key": "Wei/2025-10-18.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-09-archive-archive-83",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-09",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-09.mov"
+    "media_key": "Wei/2025-12-09.mov"
   },
   {
+    "id": "shotgun-wei-2025-10-17-archive-archive-84",
     "owner": "Wei",
     "week": null,
     "date": "2025-10-17",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-10-17.mov"
+    "media_key": "Wei/2025-10-17.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-06-archive-archive-85",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-06",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-06.mov"
+    "media_key": "Wei/2025-12-06.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-10-archive-archive-86",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-10",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-10.mov"
+    "media_key": "Wei/2025-12-10.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-11-archive-archive-87",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-11",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-11.mov"
+    "media_key": "Wei/2025-12-11.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-29-archive-archive-88",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-29",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-29.mov"
+    "media_key": "Wei/2025-12-29.mov"
   },
   {
+    "id": "shotgun-wei-2025-12-14-archive-archive-89",
     "owner": "Wei",
     "week": null,
     "date": "2025-12-14",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-12-14.mov"
+    "media_key": "Wei/2025-12-14.mov"
   },
   {
+    "id": "shotgun-wei-2025-11-22-archive-archive-90",
     "owner": "Wei",
     "week": null,
     "date": "2025-11-22",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-11-22.mov"
+    "media_key": "Wei/2025-11-22.mov"
   },
   {
+    "id": "shotgun-wei-2026-01-03-archive-archive-91",
     "owner": "Wei",
     "week": null,
     "date": "2026-01-03",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2026-01-03.mov"
+    "media_key": "Wei/2026-01-03.mov"
   },
   {
+    "id": "shotgun-wei-2025-11-18-archive-archive-92",
     "owner": "Wei",
     "week": null,
     "date": "2025-11-18",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Wei/2025-11-18.mov"
+    "media_key": "Wei/2025-11-18.mov"
   },
   {
+    "id": "shotgun-taylor-2025-12-11-archive-archive-93",
     "owner": "Taylor",
     "week": null,
     "date": "2025-12-11",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Taylor/2025-12-11-2.mov"
+    "media_key": "Taylor/2025-12-11-2.mov"
   },
   {
+    "id": "shotgun-taylor-2025-09-22-5-carryover-94",
     "owner": "Taylor",
     "week": 5,
     "date": "2025-09-22",
-    "due_date": "",
+    "due_date": null,
     "cause": "Carryover",
     "completed": true,
-    "video_url": "assets/Shotguns/Taylor/Carryover-Week5-9-22-2025.mov"
+    "media_key": "Taylor/Carryover-Week5-9-22-2025.mov"
   },
   {
+    "id": "shotgun-taylor-2025-12-11-archive-archive-95",
     "owner": "Taylor",
     "week": null,
     "date": "2025-12-11",
-    "due_date": "",
+    "due_date": null,
     "cause": "Archive",
     "completed": true,
-    "video_url": "assets/Shotguns/Taylor/2025-12-11.mov"
+    "media_key": "Taylor/2025-12-11.mov"
   },
   {
+    "id": "shotgun-taylor-2025-09-08-3-davanteadams-96",
     "owner": "Taylor",
     "week": 3,
     "date": "2025-09-08",
-    "due_date": "",
+    "due_date": null,
     "cause": "DavanteAdams",
     "completed": true,
-    "video_url": "assets/Shotguns/Taylor/DavanteAdams-Week3-9-8-2025.mov"
+    "media_key": "Taylor/DavanteAdams-Week3-9-8-2025.mov"
   }
 ]

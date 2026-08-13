@@ -1,0 +1,116 @@
+#!/usr/bin/env node
+const fs = require('node:fs');
+const path = require('node:path');
+const standaloneCode = require('ajv/dist/standalone').default;
+const esbuild = require('esbuild');
+const { GENERATED_ASSETS } = require('./data/constants.cjs');
+const { createAjv, schemaId } = require('./data/schema-validation.cjs');
+
+function outputRootFromArgs(argv) {
+  const index = argv.indexOf('--output-root');
+  return index >= 0 ? path.resolve(argv[index + 1]) : process.cwd();
+}
+
+function specializeFormatRuntime(standaloneModule) {
+  const specialized = standaloneModule.replaceAll(
+    'require("ajv-formats/dist/formats")',
+    'require("./scripts/data/standalone-formats.cjs")',
+  );
+  if (specialized.includes('ajv-formats/dist/formats')) {
+    throw new Error('Generated validators still reference the full ajv-formats runtime');
+  }
+  return specialized;
+}
+
+function compactValidatorErrors(standaloneModule) {
+  const compacted = standaloneModule.replace(
+    /,schemaPath:"(?:\\.|[^"])*",keyword:"[^"]+",params:\{(?:"(?:\\.|[^"])*"|[^{}])*\}/g,
+    '',
+  );
+  if (compacted.includes('schemaPath:') || compacted.includes('keyword:') || compacted.includes('params:')) {
+    throw new Error('Generated validators contain an unsupported error-object shape');
+  }
+  return compacted;
+}
+
+function generateAssetValidators({ sourceRoot = process.cwd(), outputRoot = sourceRoot } = {}) {
+  const ajv = createAjv(sourceRoot, {
+    loopEnum: 0,
+    loopRequired: 0,
+    messages: false,
+    code: { esm: true, source: true, optimize: 3 },
+  });
+  const ajvStandaloneModule = standaloneCode(ajv, {
+    validateH2H: schemaId('h2h.schema.json'),
+    validateSeasonSummary: schemaId('season-summary.schema.json'),
+    validateRivalries: schemaId('rivalries.schema.json'),
+    validateCurrentSeason: schemaId('current-season.schema.json'),
+    validateShotguns: schemaId('shotguns.schema.json'),
+    validateDraftSpot: schemaId('draft-spot.schema.json'),
+    validateDerivedStats: schemaId('derived-stats.schema.json'),
+    validateAssetManifest: schemaId('asset-manifest.schema.json'),
+  });
+  const standaloneModule = specializeFormatRuntime(compactValidatorErrors(ajvStandaloneModule));
+  const moduleCode = esbuild.buildSync({
+    stdin: {
+      contents: standaloneModule,
+      loader: 'js',
+      resolveDir: sourceRoot,
+      sourcefile: 'asset-validator-runtime.mjs',
+    },
+    bundle: true,
+    platform: 'browser',
+    format: 'esm',
+    target: 'es2022',
+    write: false,
+    legalComments: 'none',
+  }).outputFiles[0].text;
+  const wrappers = `
+
+import type { AssetManifest, CurrentSeasonData, DerivedStats, DraftSpot, H2HGame, RivalryDefinition, SeasonSummaryRow, ShotgunRecord } from './asset-types';
+
+export function isH2H(value: unknown): value is H2HGame[] { return validateH2H(value) as boolean; }
+export function isSeasonSummary(value: unknown): value is SeasonSummaryRow[] { return validateSeasonSummary(value) as boolean; }
+export function isRivalries(value: unknown): value is RivalryDefinition[] { return validateRivalries(value) as boolean; }
+export function isCurrentSeason(value: unknown): value is CurrentSeasonData { return validateCurrentSeason(value) as boolean; }
+export function isShotguns(value: unknown): value is ShotgunRecord[] { return validateShotguns(value) as boolean; }
+export function isDraftSpot(value: unknown): value is DraftSpot { return validateDraftSpot(value) as boolean; }
+export function isDerivedStats(value: unknown): value is DerivedStats { return validateDerivedStats(value) as boolean; }
+export function isAssetManifest(value: unknown): value is AssetManifest { return validateAssetManifest(value) as boolean; }
+
+export type ValidatorName = 'H2H' | 'SeasonSummary' | 'Rivalries' | 'CurrentSeason' | 'Shotguns' | 'DraftSpot' | 'DerivedStats' | 'AssetManifest';
+export function getValidatorErrors(name: ValidatorName): Array<{ instancePath?: string; message?: string }> | null {
+  const validators = { H2H: validateH2H, SeasonSummary: validateSeasonSummary, Rivalries: validateRivalries, CurrentSeason: validateCurrentSeason, Shotguns: validateShotguns, DraftSpot: validateDraftSpot, DerivedStats: validateDerivedStats, AssetManifest: validateAssetManifest };
+  return (validators[name] as any).errors || null;
+}
+
+export function formatValidatorErrors(assetPath: string, errors: Array<{ instancePath?: string; message?: string }> | null | undefined): string {
+  const error = errors?.[0];
+  if (!error) return \`\${assetPath}: schema validation failed\`;
+  const location = error.instancePath ? error.instancePath.replace(/^\\//, '').replaceAll('/', '.') : 'root';
+  return \`\${assetPath}: field "\${location}": \${error.message || 'schema validation failed'}\`;
+}
+`;
+  const outputPath = path.join(outputRoot, GENERATED_ASSETS.AssetValidators.path);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, `// This file is generated by scripts/generate_asset_validators.cjs. Do not edit manually.\n// @ts-nocheck\n${moduleCode.trim()}${wrappers}`);
+
+  return outputPath;
+}
+
+if (require.main === module) {
+  try {
+    const output = generateAssetValidators({ outputRoot: outputRootFromArgs(process.argv.slice(2)) });
+    console.log(`Generated ${path.relative(process.cwd(), output)}`);
+  } catch (error) {
+    console.error(error.message || error);
+    process.exit(1);
+  }
+}
+
+module.exports = {
+  generateAssetValidators,
+  compactValidatorErrors,
+  outputRootFromArgs,
+  specializeFormatRuntime,
+};

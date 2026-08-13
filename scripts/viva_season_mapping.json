@@ -1,0 +1,26 @@
+{
+  "owners": {
+    "Dulberger": ["Dulberger", "Josh"],
+    "Erin": ["Erin"],
+    "Joe": ["Joe"],
+    "Kylie": ["Kylie"],
+    "Leah": ["Leah"],
+    "Malcolm": ["Malcolm"],
+    "Marian": ["Marian"],
+    "Mino": ["Mino"],
+    "Rico": ["Rico"],
+    "Seth": ["Seth"],
+    "Taylor": ["Taylor"],
+    "Wei": ["Wei"],
+    "Chuck": ["Chuck"],
+    "Julia": ["Julia"]
+  },
+  "seasons": {
+    "2020": { "teams": 8 },
+    "2021": { "teams": 10 },
+    "2022": { "teams": 12 },
+    "2023": { "teams": 12 },
+    "2024": { "teams": 12 },
+    "2025": { "teams": 12 }
+  }
+}

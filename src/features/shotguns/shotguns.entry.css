@@ -1,0 +1,14 @@
+@layer features {
+  .shotgun-summary { display: grid; gap: var(--space-2); margin-block-end: var(--space-4); }
+  .shotgun-summary p { margin: 0; }
+  .shotgun-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .shotgun-card { border: 1px solid var(--border); border-radius: var(--radius-panel); display: grid; gap: var(--space-2); padding: var(--space-3); }
+  .shotgun-card p, .shotgun-card h3 { margin: 0; }
+  .shotgun-card-header { align-items: center; display: flex; gap: var(--space-2); }
+  .shotgun-card-header img { border-radius: 50%; height: 3rem; object-fit: cover; width: 3rem; }
+  .shotgun-play { justify-self: start; }
+  dialog.shotgun-dialog { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-panel); color: var(--text); max-width: min(90vw, 60rem); padding: var(--space-4); }
+  dialog.shotgun-dialog::backdrop { background: color-mix(in srgb, var(--text) 70%, transparent); }
+  .shotgun-dialog video { display: block; max-height: 75vh; max-width: 100%; }
+  .shotgun-dialog-actions { display: flex; justify-content: flex-end; margin-block-end: var(--space-2); }
+}
