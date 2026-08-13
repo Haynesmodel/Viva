@@ -83,7 +83,7 @@ test('share generator and public sync CLIs report success and failure without hi
   };
   try {
     fs.mkdirSync(path.join(directory, 'src/viva'), { recursive: true });
-    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), "export const VIVA_OWNERS = [{ canonical: 'Test', imageKey: null }];\n");
+    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), "export const VIVA_OWNERS = [{ canonical: 'Test', imageKey: 'assets/Test.jpeg' }];\n");
     assert.equal(await runGeneratorCli({ root: directory, args: [], logger }), 0);
     assert.equal(await runGeneratorCli({ root: directory, args: ['--check'], logger }), 0);
     assert.equal(runSyncCli(directory, logger), 0);
@@ -151,6 +151,8 @@ test('owner image contract fails closed when the typed source is malformed or re
     assert.throws(() => configuredOwnerImages(directory), /Could not compile Viva owner contract|image is not defined/);
     fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), 'export const VIVA_OWNERS = [];\n');
     assert.throws(() => configuredOwnerImages(directory), /contains no owners/);
+    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), "export const VIVA_OWNERS = [{ canonical: 'Joe', imageKey: null }];\n");
+    assert.throws(() => configuredOwnerImages(directory), /contains no configured owner images/);
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }

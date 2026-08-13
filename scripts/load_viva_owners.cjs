@@ -47,7 +47,7 @@ function ownerImageAssetPath(owner) {
 }
 
 function configuredOwnerImages(root = process.cwd()) {
-  return loadVivaOwners(root)
+  const images = loadVivaOwners(root)
     .map(owner => {
       const sourcePath = ownerImageAssetPath(owner);
       return sourcePath === null
@@ -55,6 +55,8 @@ function configuredOwnerImages(root = process.cwd()) {
         : { owner: owner.canonical, imageKey: owner.imageKey, sourcePath };
     })
     .filter(Boolean);
+  if (images.length === 0) throw new Error('Viva owner contract contains no configured owner images');
+  return images;
 }
 
 module.exports = { configuredOwnerImages, loadVivaOwners, ownerImageAssetPath };
