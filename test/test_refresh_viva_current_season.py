@@ -1,5 +1,6 @@
 import importlib.util
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -58,6 +59,13 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
         self.assertEqual(result["games"][1]["status"], "scheduled")
         self.assertIsNone(result["games"][1]["scoreA"])
         self.assertEqual(result["games"][0]["date"], "2026-06-06")
+
+    def test_generated_snapshot_passes_repository_candidate_validation(self):
+        result = self.refresher.build_current_season(self.payload(), self.mapping(), 2026, "2026-06-08T00:00:00Z")
+        with tempfile.TemporaryDirectory() as directory:
+            candidate = Path(directory) / "CurrentSeason.json"
+            self.refresher.atomic_write(candidate, result)
+            self.refresher.validate_candidate(candidate)
 
     def test_requires_verified_current_season_rule_configuration(self):
         mapping = self.mapping()
