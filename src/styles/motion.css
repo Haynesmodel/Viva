@@ -28,13 +28,13 @@
    .egg-terps{background:rgba(230,0,0,.7)}
    .egg-butter-bowl{background:rgba(160,82,45,.75)}
    .clinch-stamp{font-size:72px;font-weight:900;color:#fff;text-shadow:0 0 10px #f87171,0 0 20px #f87171}
-   
+
    /* Persistent backdrop */
    .egg-backdrop{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
    body.group-active main, body.group-active header, body.group-active .page { position:relative; z-index:2; }
    .float{position:absolute;bottom:-40px;animation:float-up 6s linear infinite;opacity:.85}
    @keyframes float-up{to{transform:translateY(-110vh) rotate(10deg);opacity:0}}
-   
+
    /* Backdrop themes (distinct gradients per group) */
    .bg-the-jews{background:linear-gradient(180deg, rgba(0,115,230,.18), rgba(255,255,255,.12))}
    .bg-churchill-baseball{background:linear-gradient(180deg, rgba(34,139,34,.18), rgba(0,0,0,.1))}
