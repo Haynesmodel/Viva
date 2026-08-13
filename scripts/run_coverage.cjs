@@ -33,7 +33,14 @@ function coverageRunId(environment, now) {
 
 async function runCoverage({ root, run, environment, now }) {
   cleanCoverageDirectory(root);
-  const sharedEnv = { CI: '1', VITE_BASE_PATH: '/', PLAYWRIGHT_BASE_PATH: '/' };
+  const sharedEnv = {
+    CI: '1',
+    VITE_BASE_PATH: '/',
+    PLAYWRIGHT_BASE_PATH: '/',
+    ...(environment.VITE_VIVA_MEDIA_BASE_URL
+      ? { VITE_VIVA_MEDIA_BASE_URL: environment.VITE_VIVA_MEDIA_BASE_URL }
+      : {}),
+  };
   const c8Binary = localBinary(root, 'c8', process.platform);
   const playwrightBinary = localBinary(root, 'playwright', process.platform);
 

@@ -22,7 +22,7 @@ test('Shotguns renders the preserved record states without loading video bytes',
   });
   await page.goto('/?tab=shotguns');
   await expect(page.locator('#shotgunsRoot')).toContainText('3 owed');
-  await expect(page.locator('#shotgunsRoot')).toContainText('94 completed');
+  await expect(page.locator('#shotgunsRoot')).toContainText('95 completed');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   expect(videoRequests).toEqual([]);
 });

@@ -781,7 +781,10 @@ test('coverage orchestrator enables instrumentation only for Chromium', async ()
     const calls = [];
     await runCoverage({
       root,
-      environment: { GITHUB_RUN_ID: 'fixture-run' },
+      environment: {
+        GITHUB_RUN_ID: 'fixture-run',
+        VITE_VIVA_MEDIA_BASE_URL: 'https://media.example.test',
+      },
       now: 123,
       run: async (...args) => calls.push(args),
     });
@@ -795,6 +798,7 @@ test('coverage orchestrator enables instrumentation only for Chromium', async ()
     ]);
     assert.equal(calls[2][3].env.COLLECT_COVERAGE, '1');
     assert.equal(calls[2][3].env.COVERAGE_RUN_ID, 'fixture-run');
+    assert.equal(calls[2][3].env.VITE_VIVA_MEDIA_BASE_URL, 'https://media.example.test');
     assert.ok(calls.filter(call => call[3].env.COLLECT_COVERAGE).length === 1);
     assert.ok(calls.every(call => call[3].cwd === root));
   });
