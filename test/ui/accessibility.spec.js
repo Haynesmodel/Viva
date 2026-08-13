@@ -13,10 +13,10 @@ async function waitForApp(page) {
   await expect(page.locator('#appStatus')).toBeHidden({ timeout: 15_000 });
 }
 
-test('every Viva route is axe-clean', async ({ page }) => {
-  await page.goto('/');
-  await waitForApp(page);
-  for (const route of routes) {
+for (const route of routes) {
+  test(`Viva ${route} route is axe-clean`, async ({ page }) => {
+    await page.goto('/');
+    await waitForApp(page);
     if (route !== 'pulse') {
       const group = ['owner', 'history', 'trophy', 'dynasty', 'shotguns'].includes(route) ? 'owners' : ['draft', 'gauntlet'].includes(route) ? 'tools' : null;
       if (group) await page.locator(`details[data-navigation-group="${group}"] > summary`).click();
@@ -25,8 +25,8 @@ test('every Viva route is axe-clean', async ({ page }) => {
     await expect(page.locator(`#page-${route}`)).toBeVisible();
     await expect(page.locator(`#page-${route}`)).toHaveAttribute('data-feature-state', 'ready');
     await analyze(page, route);
-  }
-});
+  });
+}
 
 test('theme controls remain accessible across light, dark, and system modes', async ({ page }) => {
   await page.goto('/?tab=history');
