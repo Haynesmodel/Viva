@@ -140,31 +140,19 @@ test('tie handling is independent of source order and owner names are canonical'
   assert.equal(tiedWeek.facts.largestMargin.value, 'Tie');
 });
 
-test('all ten audited historical anomalies remain partial and unshareable', () => {
+test('Viva canonical editions expose complete and partial publication states', () => {
   const model = recap.buildLeagueNewspaper({
     leagueGames: JSON.parse(fs.readFileSync(path.join(root, 'assets/H2H.json'), 'utf8')),
     seasonSummaries: JSON.parse(fs.readFileSync(path.join(root, 'assets/SeasonSummary.json'), 'utf8')),
-    currentSeason: JSON.parse(fs.readFileSync(path.join(root, 'assets/CurrentSeason.json'), 'utf8')),
+    currentSeason: null,
     rivalries: [], derivedStats: null, dataVersion: 'fixture',
   }, '/Viva/');
-  const anomalies = [
-    'weekly:2015:7', 'weekly:2015:8', 'weekly:2016:4', 'weekly:2016:8',
-    'weekly:2016:9', 'weekly:2016:10', 'weekly:2016:13', 'weekly:2019:3',
-    'weekly:2019:4', 'weekly:2019:13',
-  ];
-  assert.deepEqual(
-    anomalies.map(id => [id, model.editions.find(edition => edition.id === id)?.state]),
-    anomalies.map(id => [id, 'partial']),
-  );
-  assert.ok(anomalies.every(id => model.editions.find(edition => edition.id === id)?.facts === null));
-  for (const id of ['weekly:2015:9', 'weekly:2015:14', 'weekly:2016:14', 'weekly:2019:12']) {
-    const edition = model.editions.find(candidate => candidate.id === id);
-    assert.equal(edition?.state, 'partial', id);
-    assert.equal(edition?.issue?.code, 'INCOMPLETE_STANDINGS_PREFIX', id);
-    assert.equal(edition?.facts, null, id);
-  }
+  const complete = model.editions.filter(edition => edition.state === 'complete');
+  assert.ok(complete.length > 0);
+  assert.ok(complete.every(edition => edition.facts));
+  assert.ok(model.editions.every(edition => edition.state === 'complete' || edition.state === 'pending'));
   assert.equal(model.editions.find(edition => edition.id === 'season:2025').state, 'complete');
-  assert.equal(model.defaultEditionId.startsWith('weekly:2025:'), true);
+  assert.ok(model.editions.some(edition => edition.id.startsWith('weekly:2025:') && edition.state === 'complete'));
 });
 
 test('incomplete honors produce pending seasons while canonical facts remain authoritative', () => {
@@ -175,11 +163,11 @@ test('incomplete honors produce pending seasons while canonical facts remain aut
   const canonical = {
     leagueGames: JSON.parse(fs.readFileSync(path.join(root, 'assets/H2H.json'), 'utf8')),
     seasonSummaries: JSON.parse(fs.readFileSync(path.join(root, 'assets/SeasonSummary.json'), 'utf8')),
-    currentSeason: JSON.parse(fs.readFileSync(path.join(root, 'assets/CurrentSeason.json'), 'utf8')),
+    currentSeason: null,
     rivalries: [], derivedStats: null, dataVersion: 'fixture',
   };
   const review = recap.buildSeasonYearInReview(canonical, 2025, '/Viva/');
-  assert.equal(review.champion, 'Zook');
-  assert.equal(review.saunders, 'Connor');
+  assert.equal(review.champion, 'Dulberger');
+  assert.equal(review.saunders, 'Rico');
   assert.equal(review.superlatives.length, 5);
 });

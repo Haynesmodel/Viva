@@ -4,21 +4,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 function selectTestFiles(root = process.cwd()) {
   const testDir = path.join(root, 'test');
-  const excluded = new Set([
-    'current-season-odds.test.js',
-    'data-freshness.test.cjs',
-    'draft-spot-model.test.cjs',
-    'league-pulse-model.test.cjs',
-    'league-recap-model.test.cjs',
-    'owner-hub-model.test.cjs',
-    'season-presentation.test.cjs',
-    'share-card-spec.test.cjs',
-    'theme-system.test.cjs',
-    'trophy-model.test.js',
-  ]);
   return fs.readdirSync(testDir)
     .filter(file => /\.test\.(js|cjs)$/.test(file))
-    .filter(file => file !== 'data.test.js' && !excluded.has(file))
+    .filter(file => file !== 'data.test.js')
     .map(file => path.join('test', file))
     .sort();
 }

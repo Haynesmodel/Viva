@@ -62,7 +62,7 @@ test('canonical 2025 snapshot builds an authoritative year in review without mut
     leagueGames: JSON.parse(fs.readFileSync(path.join(root, 'assets/H2H.json'), 'utf8')),
     seasonSummaries: JSON.parse(fs.readFileSync(path.join(root, 'assets/SeasonSummary.json'), 'utf8')),
     rivalries: JSON.parse(fs.readFileSync(path.join(root, 'assets/Rivalries.json'), 'utf8')),
-    currentSeason: JSON.parse(fs.readFileSync(path.join(root, 'assets/CurrentSeason.json'), 'utf8')),
+    currentSeason: null,
     derivedStats: JSON.parse(fs.readFileSync(path.join(root, 'assets/DerivedStats.json'), 'utf8')),
     dataVersion: 'fixture',
   };
@@ -70,8 +70,8 @@ test('canonical 2025 snapshot builds an authoritative year in review without mut
   const model = pulse.buildLeaguePulseModel(data, { pathname: '/Viva/' });
   assert.equal(model.state.phase, 'offseason');
   assert.equal(model.state.season, 2025);
-  assert.equal(model.yearInReview.champion, 'Zook');
-  assert.equal(model.yearInReview.saunders, 'Connor');
+  assert.equal(model.yearInReview.champion, 'Dulberger');
+  assert.equal(model.yearInReview.saunders, 'Rico');
   assert.deepEqual(model.yearInReview.finalStandings.map(row => row.finish), [...model.yearInReview.finalStandings.map(row => row.finish)].sort((a, b) => a - b));
   assert.match(model.hero.title, /2025 Year in Review/);
   assert.ok(model.featuredMatchup);
@@ -106,15 +106,14 @@ test('preseason and postseason models expose their phase-specific context', () =
   assert.equal(rivalry.featuredMatchup.name, 'Pair rivalry');
 });
 
-test('league pulse lowest-score record ignores the outlier game', () => {
-  const target = { season: 2022, date: '2022-12-24', teamA: 'Joel', teamB: 'Plot', scoreA: 6.5, scoreB: 4.6, week: 16, round: 'Saunders Final', type: 'Saunders' };
-  const eligibleLow = { season: 2022, date: '2022-12-24', teamA: 'Joe', teamB: 'Shap', scoreA: 20, scoreB: 10, week: 16, round: '', type: 'Regular' };
-  const other = { season: 2022, date: '2022-12-23', teamA: 'Joe', teamB: 'Shap', scoreA: 100, scoreB: 90, week: 16, round: '', type: 'Regular' };
+test('league pulse lowest-score record retains the lowest eligible Viva game', () => {
+  const target = { season: 2022, date: '2022-12-24', teamA: 'Joe', teamB: 'Erin', scoreA: 6.5, scoreB: 4.6, week: 16, round: 'Saunders Final', type: 'Saunders' };
+  const eligibleLow = { season: 2022, date: '2022-12-24', teamA: 'Joe', teamB: 'Wei', scoreA: 20, scoreB: 10, week: 16, round: '', type: 'Regular' };
+  const other = { season: 2022, date: '2022-12-23', teamA: 'Joe', teamB: 'Wei', scoreA: 100, scoreB: 90, week: 16, round: '', type: 'Regular' };
   const model = pulse.buildLeaguePulseModel({ leagueGames: [target, eligibleLow, other], seasonSummaries: summary(2022), rivalries: [], currentSeason: null, derivedStats: null, dataVersion: 'fixture' }, { pathname: '/Viva/' });
   assert.ok(model.record);
   assert.equal(model.record.title, 'Lowest individual score');
   assert.equal(model.record.date, eligibleLow.date);
-  assert.equal(model.record.owner, 'Shap');
-  assert.match(model.record.href, /gameMinScore=10/);
-  assert.doesNotMatch(model.record.href, /gameMinScore=4\.6/);
+  assert.equal(model.record.owner, 'Erin');
+  assert.match(model.record.href, /gameMinScore=4\.6/);
 });

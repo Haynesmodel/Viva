@@ -76,6 +76,8 @@ function showPage(id, doc) {
 
 function headerBannerHtml(owner, seasonSummaries) {
   const computeRegularSeasonChampYearsFn = coreFn('computeRegularSeasonChampYears');
+  const configuredNames = Array.isArray(globalThis.VIVA_OWNER_NAMES) ? new Set(globalThis.VIVA_OWNER_NAMES) : null;
+  if (configuredNames && owner && !configuredNames.has(owner)) return '';
   const rows = seasonSummaries.filter(r => r.owner === owner);
   const champYears = rows.filter(r => r.champion).map(r => r.season).sort((a, b) => a - b);
   const regYears = computeRegularSeasonChampYearsFn(owner, seasonSummaries);

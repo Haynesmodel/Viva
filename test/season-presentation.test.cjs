@@ -149,9 +149,9 @@ test('canonical recap identifies 2025 honors and standings', () => {
   const leagueGames = JSON.parse(fs.readFileSync(path.join(root, 'assets/H2H.json'), 'utf8'));
   const recap = domain.resolveSeasonRecap({ season: 2025, seasonSummaries, leagueGames });
   assert.equal(recap.complete, true);
-  assert.equal(recap.champion, 'Zook');
-  assert.equal(recap.runnerUp, 'Singer');
-  assert.equal(recap.saunders, 'Connor');
+  assert.equal(recap.champion, 'Dulberger');
+  assert.equal(recap.runnerUp, 'Wei');
+  assert.equal(recap.saunders, 'Rico');
   assert.ok(recap.finalStandings.length);
 });
 

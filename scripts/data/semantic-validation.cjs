@@ -1,6 +1,17 @@
 const path = require('node:path');
 const { canonicalJson, readJson } = require('./canonical-json.cjs');
 
+function vivaOwnerContract(root) {
+  const source = require('node:fs').readFileSync(path.join(root, 'src/viva/owners.ts'), 'utf8');
+  const owners = new Map();
+  const pattern = /canonical:\s*'([^']+)'[\s\S]*?active:\s*(true|false),\s*shotgunDisplayName:[\s\S]*?historicalExclusion:\s*(true|false)/g;
+  for (const match of source.matchAll(pattern)) {
+    owners.set(match[1], { active: match[2] === 'true', historicalExclusion: match[3] === 'true' });
+  }
+  if (!owners.size) throw new Error('Could not load Viva owner contract from src/viva/owners.ts');
+  return owners;
+}
+
 function canonicalGameKey(game) {
   const teams = [game.teamA, game.teamB].sort((a, b) => a.localeCompare(b));
   return [game.season, game.week, teams[0], teams[1], game.type, game.round || ''].join('|');
@@ -29,6 +40,7 @@ function validateSemanticBundle(bundle, opts = {}) {
   const rivalries = bundle.Rivalries || [];
   const current = bundle.CurrentSeason || null;
   const shotguns = bundle.Shotguns || [];
+  const configuredOwners = vivaOwnerContract(root);
   const currentOwners = new Set((current?.teams || []).map(team => team.owner));
   const summaryOwners = new Set(summaries.map(row => row.owner));
   const summaryKeys = new Set(summaries.map(row => `${row.season}|${row.owner}`));
@@ -44,6 +56,7 @@ function validateSemanticBundle(bundle, opts = {}) {
       seenGames.set(recordKey, index);
     }
     for (const owner of [game.teamA, game.teamB]) {
+      if (!configuredOwners.has(owner)) report('OWNER_UNCONFIGURED', location, `${game.season}|${owner}`, `${owner} is not present in src/viva/owners.ts`);
       const documentedCurrentSeasonCase = current && game.season === current.season && currentOwners.has(owner);
       if (!summaryKeys.has(`${game.season}|${owner}`) && !documentedCurrentSeasonCase) {
         report('H2H_UNKNOWN_TEAM_SEASON', location, `${game.season}|${owner}`, `${owner} has no SeasonSummary row for ${game.season}`);
@@ -55,6 +68,7 @@ function validateSemanticBundle(bundle, opts = {}) {
   const summarySeen = new Set();
   summaries.forEach((row, index) => {
     const key = `${row.season}|${row.owner}`;
+    if (!configuredOwners.has(row.owner)) report('OWNER_UNCONFIGURED', `assets/SeasonSummary.json row ${index}`, key, `${row.owner} is not present in src/viva/owners.ts`);
     if (summarySeen.has(key)) report('SUMMARY_DUPLICATE_TEAM_SEASON', `assets/SeasonSummary.json row ${index}`, key, `duplicate owner-season ${key}`);
     summarySeen.add(key);
     if (!summariesBySeason.has(row.season)) summariesBySeason.set(row.season, []);
@@ -117,6 +131,7 @@ function validateSemanticBundle(bundle, opts = {}) {
     if (rivalrySlugs.has(rivalry.slug)) report('RIVALRY_DUPLICATE_SLUG', location, rivalry.slug, `duplicate slug ${rivalry.slug}`);
     rivalrySlugs.add(rivalry.slug);
     for (const owner of rivalry.members) {
+      if (!configuredOwners.has(owner)) report('OWNER_UNCONFIGURED', location, `${rivalry.slug}|${owner}`, `${owner} is not present in src/viva/owners.ts`);
       if (!summaryOwners.has(owner)) report('RIVALRY_UNKNOWN_OWNER', location, `${rivalry.slug}|${owner}`, `unknown owner ${owner}`);
     }
     if (rivalry.type === 'pair') {
@@ -132,6 +147,7 @@ function validateSemanticBundle(bundle, opts = {}) {
     const location = `assets/Shotguns.json row ${index}`;
     if (shotgunIds.has(shotgun.id)) report('SHOTGUN_DUPLICATE_ID', location, shotgun.id, `duplicate Shotguns id ${shotgun.id}`);
     shotgunIds.add(shotgun.id);
+    if (!configuredOwners.has(shotgun.owner)) report('OWNER_UNCONFIGURED', location, `${shotgun.id}|${shotgun.owner}`, `${shotgun.owner} is not present in src/viva/owners.ts`);
     if (!summaryOwners.has(shotgun.owner)) report('SHOTGUN_UNKNOWN_OWNER', location, `${shotgun.id}|${shotgun.owner}`, `unknown owner ${shotgun.owner}`);
     if (shotgun.completed && !shotgun.media_key) report('SHOTGUN_MEDIA_KEY_MISSING', location, shotgun.id, 'completed records require media_key');
     if (!shotgun.completed && shotgun.media_key !== null) report('SHOTGUN_OWED_MEDIA_KEY', location, shotgun.id, 'owed records cannot carry a media key');
@@ -141,6 +157,7 @@ function validateSemanticBundle(bundle, opts = {}) {
     const ownerByRoster = new Map();
     currentOwners.clear();
     for (const team of current.teams) {
+      if (!configuredOwners.has(team.owner)) report('OWNER_UNCONFIGURED', 'assets/CurrentSeason.json teams', team.owner, `${team.owner} is not present in src/viva/owners.ts`);
       if (ownerByRoster.has(team.roster_id)) report('CURRENT_DUPLICATE_ROSTER', 'assets/CurrentSeason.json teams', `${team.roster_id}`, `duplicate roster_id ${team.roster_id}`);
       if (currentOwners.has(team.owner)) report('CURRENT_DUPLICATE_OWNER', 'assets/CurrentSeason.json teams', team.owner, `duplicate owner ${team.owner}`);
       ownerByRoster.set(team.roster_id, team.owner);

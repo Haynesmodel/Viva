@@ -7,7 +7,11 @@ const { pathToFileURL } = require('node:url');
 const esbuild = require('esbuild');
 
 const root = path.join(__dirname, '..');
-const canonicalCurrent = JSON.parse(fs.readFileSync(path.join(root, 'assets/CurrentSeason.json'), 'utf8'));
+const canonicalCurrent = {
+  season: 2025,
+  generated_at: '2026-07-01T00:00:00.000Z',
+  games: [{ status: 'final', scoreA: 100, scoreB: 90 }],
+};
 const summaries = JSON.parse(fs.readFileSync(path.join(root, 'assets/SeasonSummary.json'), 'utf8'));
 let tempDir;
 let freshness;

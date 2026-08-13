@@ -29,7 +29,7 @@ function card(row: ShotgunRecord): string {
 export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let active = false;
-  let rows: ShotgunRecord[] = [];
+  let rows: ShotgunRecord[] | null = null;
   let root: HTMLElement | null = null;
   let dialog: HTMLDialogElement | null = null;
   let video: HTMLVideoElement | null = null;
@@ -44,10 +44,19 @@ export function createFeatureController(): VivaFeatureController {
 
   const render = () => {
     if (!root) return;
+    if (rows === null) {
+      root.innerHTML = '<p class="status-banner status-warning" role="status">Shotguns data is unavailable. The rest of Viva remains available.</p>';
+      return;
+    }
     const owed = rows.filter(row => !row.completed).sort((a, b) => String(b.due_date || '').localeCompare(String(a.due_date || '')));
     const completed = rows.filter(row => row.completed).sort((a, b) => b.date.localeCompare(a.date));
     const owners = [...new Set(rows.map(row => row.owner))].sort();
-    root.innerHTML = `<div class="shotgun-summary"><p>${owed.length} owed · ${completed.length} completed · ${rows.length} total</p>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning" role="status">Shotgun media is not configured for this deployment. All records remain available.</p>' : ''}</div><section class="card"><h3>Shotguns Owed</h3>${owed.length ? `<div class="table-wrap"><table><thead><tr><th>Owner</th><th>Week</th><th>Cause</th><th>Date</th><th>Due</th></tr></thead><tbody>${owed.map(row => `<tr><td>${escapeHtml(vivaShotgunDisplayName(row.owner))}</td><td>${escapeHtml(row.week ?? '—')}</td><td>${escapeHtml(row.cause)}</td><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.due_date || '—')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No shotguns owed.</p>'}</section><section class="card"><h3>Completed Shotguns</h3><div class="shotgun-grid">${owners.flatMap(owner => completed.filter(row => row.owner === owner)).map(card).join('') || '<p class="muted">No completed Shotguns available.</p>'}</div></section>`;
+    const ownerRows = owners.map(owner => {
+      const ownerOwed = owed.filter(row => row.owner === owner).length;
+      const ownerCompleted = completed.filter(row => row.owner === owner).length;
+      return `<tr><th scope="row">${escapeHtml(vivaShotgunDisplayName(owner))}</th><td>${ownerOwed}</td><td>${ownerCompleted}</td><td>${ownerOwed + ownerCompleted}</td></tr>`;
+    }).join('');
+    root.innerHTML = `<div class="shotgun-summary"><p>${owed.length} owed · ${completed.length} completed · ${rows.length} total</p>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning" role="status">Shotgun media is not configured for this deployment. All records remain available.</p>' : ''}<p id="shotgunMediaStatus" role="status" aria-live="polite"></p></div><section class="card"><h3>Shotguns by owner</h3><div class="table-wrap" tabindex="0" aria-label="Shotguns by owner"><table><thead><tr><th scope="col">Owner</th><th scope="col">Owed</th><th scope="col">Completed</th><th scope="col">Total</th></tr></thead><tbody>${ownerRows}</tbody></table></div></section><section class="card"><h3>Shotguns Owed</h3>${owed.length ? `<div class="table-wrap" tabindex="0" aria-label="Shotguns owed"><table><thead><tr><th scope="col">Owner</th><th scope="col">Week</th><th scope="col">Cause</th><th scope="col">Date</th><th scope="col">Due</th></tr></thead><tbody>${owed.map(row => `<tr><td>${escapeHtml(vivaShotgunDisplayName(row.owner))}</td><td>${escapeHtml(row.week ?? '—')}</td><td>${escapeHtml(row.cause)}</td><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.due_date || '—')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No shotguns owed.</p>'}</section><section class="card"><h3>Completed Shotguns</h3><div class="shotgun-grid">${owners.flatMap(owner => completed.filter(row => row.owner === owner)).map(card).join('') || '<p class="muted">No completed Shotguns available.</p>'}</div></section>`;
     root.querySelectorAll<HTMLButtonElement>('.shotgun-play').forEach(button => button.addEventListener('click', () => {
       const row = rows.find(candidate => candidate.id === button.dataset.shotgunId);
       const source = row?.media_key ? mediaUrl(row.media_key) : null;
@@ -55,7 +64,10 @@ export function createFeatureController(): VivaFeatureController {
       lastFocused = button;
       video.src = source;
       dialog.showModal();
-      void video.play().catch(() => {});
+      void video.play().catch(() => {
+        const status = root?.querySelector<HTMLElement>('#shotgunMediaStatus');
+        if (status) status.textContent = 'This clip could not be played. Check the media origin and try again.';
+      });
     }));
   };
 
@@ -70,10 +82,14 @@ export function createFeatureController(): VivaFeatureController {
       dialog.querySelector('[data-shotgun-close]')?.addEventListener('click', closeDialog);
       dialog.addEventListener('cancel', event => { event.preventDefault(); closeDialog(); });
       dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
+      video.addEventListener('error', () => {
+        const status = root?.querySelector<HTMLElement>('#shotgunMediaStatus');
+        if (status) status.textContent = 'This clip could not be loaded. The rest of the Shotguns archive remains available.';
+      });
     },
     activate(input: FeatureActivation) {
       active = !input.signal.aborted;
-      rows = normalizeRows(context.data.shotguns);
+      rows = context.data.shotguns === null ? null : normalizeRows(context.data.shotguns);
       context.header.feature('Shotguns', null, 'Shotguns — Viva');
       context.theme.league();
       render();

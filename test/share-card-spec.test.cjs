@@ -190,7 +190,7 @@ test('every complete canonical League Newspaper edition builds a share-ready car
   const data = {
     leagueGames: JSON.parse(fs.readFileSync(path.join(root, 'assets/H2H.json'), 'utf8')),
     seasonSummaries: JSON.parse(fs.readFileSync(path.join(root, 'assets/SeasonSummary.json'), 'utf8')),
-    currentSeason: JSON.parse(fs.readFileSync(path.join(root, 'assets/CurrentSeason.json'), 'utf8')),
+    currentSeason: null,
     rivalries: [],
     derivedStats: null,
     dataVersion: 'fixture',
@@ -204,24 +204,24 @@ test('every complete canonical League Newspaper edition builds a share-ready car
     results.filter(([, result]) => !result?.ok).map(([id, result]) => [id, result?.code || 'NO_RESULT']),
     [],
   );
-  for (const id of ['weekly:2025:9', 'weekly:2017:10', 'weekly:2015:1']) {
+  for (const id of ['weekly:2025:9', 'weekly:2020:1']) {
     assert.equal(results.find(([editionId]) => editionId === id)?.[1]?.ok, true, id);
   }
-  const season2015 = results.find(([editionId]) => editionId === 'season:2015')?.[1];
-  assert.equal(season2015?.ok, true);
-  assert.deepEqual(season2015.spec.metrics.slice(0, 2), [
-    { label: 'Champion', value: 'Zook', detail: '148.3 points' },
-    { label: 'Runner-up', value: 'Zubs', detail: '111.5 points' },
+  const season2025 = results.find(([editionId]) => editionId === 'season:2025')?.[1];
+  assert.equal(season2025?.ok, true);
+  assert.deepEqual(season2025.spec.metrics.slice(0, 2), [
+    { label: 'Champion', value: 'Dulberger', detail: '118.58 points' },
+    { label: 'Runner-up', value: 'Wei', detail: '75.36 points' },
   ]);
-  assert.match(season2015.spec.altText, /Champion: Zook, 148\.3 points\. Runner-up: Zubs, 111\.5 points/);
-  const seasonSvg = share.renderShareCardSvg(season2015.spec);
+  assert.match(season2025.spec.altText, /Champion: Dulberger, 118\.58 points\. Runner-up: Wei, 75\.36 points/);
+  const seasonSvg = share.renderShareCardSvg(season2025.spec);
   const metricCells = [...seasonSvg.matchAll(/<g>.*?<\/g>/g)].map(match => match[0]);
   const championCell = metricCells.find(cell => cell.includes('>Champion<'));
   const runnerUpCell = metricCells.find(cell => cell.includes('>Runner-up<'));
-  assert.match(championCell, />Zook<.*>148\.3 points</);
-  assert.doesNotMatch(championCell, /111\.5/);
-  assert.match(runnerUpCell, />Zubs<.*>111\.5 points</);
-  assert.doesNotMatch(runnerUpCell, /148\.3/);
+  assert.match(championCell, />Dulberger<.*>118\.58 points</);
+  assert.doesNotMatch(championCell, /75\.36/);
+  assert.match(runnerUpCell, />Wei<.*>75\.36 points</);
+  assert.doesNotMatch(runnerUpCell, /118\.58/);
 });
 
 test('Dynasty cards bind to the selected owner and disclose partial coverage', () => {

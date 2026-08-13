@@ -86,10 +86,10 @@ test('theme context derives owner, rivalry, and postseason modes', async () => {
     accentKind: 'league',
     seasonMode: 'regular',
   });
-  assert.deepEqual(mod.buildRivalryThemeContext('Joe', 'Joel'), {
+  assert.deepEqual(mod.buildRivalryThemeContext('Joe', 'Erin'), {
     accentKind: 'rivalry',
     rivalryA: 'Joe',
-    rivalryB: 'Joel',
+    rivalryB: 'Erin',
     seasonMode: 'regular',
   });
   assert.equal(mod.seasonModeFromLabels(['Regular', 'Saunders Final']), 'saunders');
@@ -140,10 +140,10 @@ test('theme runtime persists choices and reacts to app context', async () => {
   assert.equal(storage.getItem('viva.colorScheme'), 'dark');
   assert.equal(stub.document.documentElement.dataset.colorScheme, 'dark');
 
-  runtime.applyAppContext({ accentKind: 'rivalry', rivalryA: 'Joe', rivalryB: 'Joel', seasonMode: 'postseason' });
+  runtime.applyAppContext({ accentKind: 'rivalry', rivalryA: 'Joe', rivalryB: 'Malcolm', seasonMode: 'postseason' });
   assert.equal(stub.document.documentElement.dataset.accentTheme, 'rivalry');
   assert.equal(stub.document.documentElement.dataset.rivalryA, 'Joe');
-  assert.equal(stub.document.documentElement.dataset.rivalryB, 'Joel');
+  assert.equal(stub.document.documentElement.dataset.rivalryB, 'Malcolm');
   assert.equal(stub.props['--owner-a-primary'], '#2563eb');
   assert.equal(stub.props['--owner-b-primary'], '#b45309');
   assert.equal(listeners.length, 1);

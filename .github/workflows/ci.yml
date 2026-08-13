@@ -23,6 +23,8 @@ jobs:
     env:
       CI: '1'
       VITE_BASE_PATH: /Viva/
+      VITE_VIVA_MEDIA_BASE_URL: ${{ vars.VIVA_MEDIA_BASE_URL }}
+      REQUIRE_VIVA_MEDIA_CONFIG: '1'
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -38,6 +40,8 @@ jobs:
       - name: Audit dependencies
         id: audit
         run: npm audit --audit-level=moderate
+      - name: Validate reviewed external media origin
+        run: npm run check:viva-media-config
       - name: Run quality, unit, and data checks
         id: unit_data
         run: npm run test:unit

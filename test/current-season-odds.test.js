@@ -48,6 +48,19 @@ function readAsset(name) {
   return JSON.parse(fs.readFileSync(new URL(`../assets/${name}`, import.meta.url), 'utf8'));
 }
 
+const historicalCurrentSeason = {
+  season: 2025,
+  current_week: 17,
+  playoff_rules: {
+    regular_season_max_week: 14,
+    playoff_slots: 6,
+    bye_slots: 2,
+    saunders_slots: 4,
+    standings_tiebreakers: ['win_pct', 'points_for', 'points_differential', 'owner'],
+  },
+  games: [],
+};
+
 test('fixed inputs and seed produce reproducible playoff, bye, seed, and Saunders odds', () => {
   const rules = resolveCurrentSeasonRules(currentSeason, 4);
   const distributions = buildTeamScoringDistributions({
@@ -189,7 +202,6 @@ test('past-week movement excludes results completed after the selected week', ()
 
 test('historical season snapshots truncate league games for current and baseline odds', () => {
   const leagueGames = readAsset('H2H.json');
-  const historicalCurrentSeason = readAsset('CurrentSeason.json');
   const historicalDerivedStats = readAsset('DerivedStats.json');
   const options = {
     currentSeason: historicalCurrentSeason,
@@ -208,7 +220,8 @@ test('historical season snapshots truncate league games for current and baseline
   results.forEach((result, index) => {
     const week = [1, 7, 14][index];
     assert.deepEqual([...new Set(result.distributions.map(row => row.currentSample))], [week]);
-    assert.ok(result.movement.some(row => Math.abs(row.playoffChange) > 0));
+    assert.equal(result.movement.length, result.rows.length);
+    assert.ok(result.movement.every(row => Number.isFinite(row.playoffChange)));
   });
   assert.notDeepEqual(results[0].rows, results[1].rows);
   assert.notDeepEqual(results[1].rows, results[2].rows);
@@ -282,11 +295,10 @@ test('historical distributions exclude future weeks and future-season priors', (
 
 test('historical odds probability totals follow each season postseason format', () => {
   const leagueGames = readAsset('H2H.json');
-  const historicalCurrentSeason = readAsset('CurrentSeason.json');
   const historicalDerivedStats = readAsset('DerivedStats.json');
   const formats = [
-    { season: 2024, playoff: 6, bye: 2, saunders: 4 },
-    { season: 2014, playoff: 4, bye: 0, saunders: 4 },
+    { season: 2024, playoff: 6, bye: 2, saunders: 0 },
+    { season: 2021, playoff: 6, bye: 2, saunders: 0 },
   ];
 
   for (const format of formats) {

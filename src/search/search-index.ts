@@ -1,6 +1,7 @@
 import { buildIntentDocument } from './search-actions';
 import { normalizeSearchText } from './search-normalize';
 import type { SearchDocument, SearchHydrationData } from './search-types';
+import { resolveVivaOwner } from '../viva/owners';
 
 export interface BuiltSearchIndex {
   documents: SearchDocument[];
@@ -14,7 +15,7 @@ export function buildSearchIndex(data: SearchHydrationData): BuiltSearchIndex {
     ...data.seasonSummaries.map(row => row.owner),
     ...data.leagueGames.flatMap(game => [game.teamA, game.teamB]),
     ...(data.currentSeason?.teams?.map(team => team.owner) || []),
-  ])].filter(Boolean).sort((a, b) => a.localeCompare(b));
+  ])].filter(owner => resolveVivaOwner(owner)?.active).sort((a, b) => a.localeCompare(b));
   const seasons = [...new Set(data.seasonSummaries.map(row => Number(row.season)))].sort((a, b) => b - a);
   const ownerAliases = new Map<string, string[]>();
   owners.forEach(owner => {

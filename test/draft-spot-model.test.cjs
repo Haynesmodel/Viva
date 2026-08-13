@@ -7,7 +7,37 @@ const { pathToFileURL } = require('node:url');
 const esbuild = require('esbuild');
 
 const root = path.join(__dirname, '..');
-const asset = JSON.parse(fs.readFileSync(path.join(root, 'assets/DraftSpot.json'), 'utf8'));
+const owners = ['Joe', 'Erin', 'Wei', 'Malcolm', 'Kylie', 'Marian', 'Mino', 'Leah', 'Taylor', 'Seth', 'Rico', 'Dulberger'];
+function draftRow(season, owner, draftPick, teamCount, finish) {
+  const zoneKey = draftPick <= 3 ? 'early' : draftPick <= 7 ? 'middle' : 'late';
+  return {
+    season, owner, draft_pick: draftPick, team_count: teamCount,
+    zone_key: zoneKey, zone: zoneKey === 'early' ? 'Early (1-3)' : zoneKey === 'middle' ? 'Middle (4-7)' : 'Late (8+)',
+    wins: 10 - finish, losses: finish - 1, ties: 0, finish,
+    points_for: 1400 - finish * 10, points_against: 1300 + finish * 5,
+    champion: finish === 1, saunders: finish === 12, made_playoffs: finish <= 6, top_three: finish <= 3,
+    win_pct: (10 - finish) / 10, finish_score: (13 - finish) / 12,
+    draft_percentile: (draftPick - 1) / (teamCount - 1), points_rank: finish,
+    points_score: (13 - finish) / 12, points_z: (6 - finish) / 3, wins_above_avg: 5 - finish / 2,
+  };
+}
+const rows = [];
+for (let season = 2017; season <= 2025; season += 1) {
+  rows.push(draftRow(season, 'Joe', 10, 10, (season - 2017) % 9 + 1));
+}
+for (let index = 0; index < 83; index += 1) {
+  const season = 2017 + (index % 9);
+  const owner = owners[(index % (owners.length - 1)) + 1];
+  const draftPick = index === 0 ? 12 : index < 20 ? [8, 9, 11, 13, 14][index % 5] : (index % 7) + 1;
+  const teamCount = index === 0 ? 12 : 12;
+  rows.push(draftRow(season, owner, draftPick, teamCount, (index % 12) + 1));
+}
+const asset = {
+  schema_version: 1, generator_version: 1, source: 'SeasonSummary.json', source_sha256: 'sha256:fixture',
+  generated_at: '2026-07-16T00:00:00Z', season_range: { start: 2017, end: 2025 }, team_seasons: rows.length,
+  correlations: { pick_finish: 0, draft_percentile_finish_score: 0, draft_percentile_points_z: 0 },
+  rows, pick_summary: [], zone_summary: [], owner_recommendations: [],
+};
 let temp;
 let model;
 let page;

@@ -7,11 +7,16 @@ function coreFn(name) {
   return fn;
 }
 
+function configuredOwnerNames() {
+  return Array.isArray(globalThis.VIVA_OWNER_NAMES) ? new Set(globalThis.VIVA_OWNER_NAMES) : null;
+}
+
 function teamOptions(seasonSummaries, leagueGames, allTeams = '__ALL__') {
   const uniqueFn = coreFn('unique');
   const ts = uniqueFn(seasonSummaries.map(r => r.owner));
   const tg = uniqueFn(leagueGames.flatMap(g => [g.teamA, g.teamB]));
-  const teams = uniqueFn([...ts, ...tg]).sort();
+  const configured = configuredOwnerNames();
+  const teams = uniqueFn([...ts, ...tg]).filter(team => !configured || configured.has(team)).sort();
   return [{ value: allTeams, label: 'All Teams (League)' }, ...teams.map(t => ({ value: t, label: t }))];
 }
 
@@ -25,7 +30,8 @@ function weekOptions(derivedWeeksSet) {
 }
 
 function opponentOptions(leagueGames, team, allTeams = '__ALL__') {
-  const allTeamsList = coreFn('unique')(leagueGames.flatMap(g => [g.teamA, g.teamB])).sort();
+  const configured = configuredOwnerNames();
+  const allTeamsList = coreFn('unique')(leagueGames.flatMap(g => [g.teamA, g.teamB])).filter(team => !configured || configured.has(team)).sort();
   if (team === allTeams) return allTeamsList;
   return allTeamsList.filter(o => o !== team);
 }

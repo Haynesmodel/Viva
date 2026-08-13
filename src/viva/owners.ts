@@ -81,3 +81,5 @@ export function vivaShotgunDisplayName(owner: unknown): string {
 export function vivaTitleNote(owner: unknown, kind: 'champion' | 'saunders', season: number | string): string | null {
   return resolveVivaOwner(owner)?.titleNotes[`${kind === 'champion' ? 'champ' : 'saunders'}:${season}`] || null;
 }
+
+(globalThis as any).VIVA_OWNER_NAMES = vivaOwnerNames();

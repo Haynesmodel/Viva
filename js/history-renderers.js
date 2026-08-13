@@ -392,14 +392,14 @@ function topHighlightsHtml(team, opts = {}) {
   if (vm.isLeagueView) {
     return `
     <div class="overview-chip">
-      <h4>League view</h4>
+      <h3>League view</h3>
       <div class="big">Select a team to see Championships &amp; Saunders</div>
       <div class="sub">Filters still work (e.g., Week 1). See Team Breakdown below.</div>
     </div>`;
   }
   const chip = (title, main, sub = '', extraClass = '') => `
   <div class="overview-chip ${extraClass}">
-    <h4>${esc(title)}</h4>
+    <h3>${esc(title)}</h3>
     ${main ? `<div class="big">${esc(main)}</div>` : ''}
     ${sub ? `<div class="sub">${esc(sub)}</div>` : ''}
   </div>
