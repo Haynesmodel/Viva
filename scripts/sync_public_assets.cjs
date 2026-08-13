@@ -1,12 +1,7 @@
 /* Copy generated JSON source assets into Vite's public directory before dev/build. */
 const fs = require('node:fs');
 const path = require('node:path');
-
-function configuredOwnerImageFiles(root) {
-  const source = fs.readFileSync(path.join(root, 'src', 'viva', 'owners.ts'), 'utf8');
-  return new Set([...source.matchAll(/\{ canonical:\s*'([^']+)'[^\n]*imageKey:\s*image\('([^']+)'\)/g)]
-    .map(match => `${path.basename(match[2])}.jpeg`));
-}
+const { configuredOwnerImages } = require('./load_viva_owners.cjs');
 
 function isDeployableAsset(sourceDir, filePath, options = {}) {
   const relPath = path.relative(sourceDir, filePath);
@@ -28,7 +23,7 @@ function isDeployableAsset(sourceDir, filePath, options = {}) {
     );
   }
 
-  if (path.dirname(normalizedRel) === '.' && options.ownerImageFiles?.has(name)) return true;
+  if (options.ownerImageFiles?.has(normalizedRel)) return true;
 
   if (ext && ext !== '.json') return false;
   if (/\.(?:mov|mp4|m4v|webm|avi)$/i.test(name)) return false;
@@ -51,7 +46,7 @@ function syncPublicAssets(root = process.cwd()) {
 
   fs.mkdirSync(publicDir, { recursive: true });
   fs.rmSync(targetDir, { recursive: true, force: true });
-  const ownerImageFiles = configuredOwnerImageFiles(root);
+  const ownerImageFiles = new Set(configuredOwnerImages(root).map(({ sourcePath }) => sourcePath));
   fs.cpSync(sourceDir, targetDir, {
     recursive: true,
     force: true,
@@ -78,7 +73,6 @@ if (require.main === module) {
 }
 
 module.exports = {
-  configuredOwnerImageFiles,
   isDeployableAsset,
   runCli,
   syncPublicAssets,

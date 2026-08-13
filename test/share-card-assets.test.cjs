@@ -16,11 +16,10 @@ const {
 } = require('../scripts/generate_share_card_assets.cjs');
 const { auditBuiltAssets, SHARE_CARD_MAX_BYTES } = require('../scripts/audit_built_assets.cjs');
 const {
-  configuredOwnerImageFiles,
   isDeployableAsset,
   runCli: runSyncCli,
 } = require('../scripts/sync_public_assets.cjs');
-const { checkOwnerImages } = require('../scripts/check_owner_images.cjs');
+const { checkOwnerImages, configuredOwnerImages } = require('../scripts/check_owner_images.cjs');
 
 function fixture() {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-share-assets-'));
@@ -84,7 +83,7 @@ test('share generator and public sync CLIs report success and failure without hi
   };
   try {
     fs.mkdirSync(path.join(directory, 'src/viva'), { recursive: true });
-    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), "{ canonical: 'Test', imageKey: null }\n");
+    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), "export const VIVA_OWNERS = [{ canonical: 'Test', imageKey: null }];\n");
     assert.equal(await runGeneratorCli({ root: directory, args: [], logger }), 0);
     assert.equal(await runGeneratorCli({ root: directory, args: ['--check'], logger }), 0);
     assert.equal(runSyncCli(directory, logger), 0);
@@ -112,16 +111,46 @@ test('owner image allowlist and production artifact check follow the typed owner
     fs.mkdirSync(path.join(directory, 'src/viva'), { recursive: true });
     fs.mkdirSync(path.join(directory, 'assets'), { recursive: true });
     fs.mkdirSync(path.join(directory, 'dist/assets'), { recursive: true });
-    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), "{ canonical: 'Joe', imageKey: image('Joe') }\n{ canonical: 'Erin', imageKey: null }\n");
+    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), `
+      const image = (name) => 'assets/' + name + '.jpeg';
+      export const VIVA_OWNERS = [
+        {
+          canonical: 'Joe',
+          imageKey: image(
+            'Joe',
+          ),
+        },
+        {
+          canonical: 'Erin',
+          imageKey: null,
+        },
+      ];
+    `);
     fs.writeFileSync(path.join(directory, 'assets/Joe.jpeg'), 'owner');
     fs.writeFileSync(path.join(directory, 'assets/ignored.jpeg'), 'ignored');
     fs.writeFileSync(path.join(directory, 'dist/assets/Joe.jpeg'), 'owner');
-    assert.deepEqual([...configuredOwnerImageFiles(directory)], ['Joe.jpeg']);
+    assert.deepEqual(configuredOwnerImages(directory), [{ owner: 'Joe', imageKey: 'assets/Joe.jpeg', sourcePath: 'Joe.jpeg' }]);
     assert.equal(isDeployableAsset(path.join(directory, 'assets'), path.join(directory, 'assets/Joe.jpeg'), { ownerImageFiles: new Set(['Joe.jpeg']) }), true);
     assert.equal(isDeployableAsset(path.join(directory, 'assets'), path.join(directory, 'assets/ignored.jpeg'), { ownerImageFiles: new Set(['Joe.jpeg']) }), false);
+    assert.equal(runSyncCli(directory, { log() {}, error() {} }), 0);
+    assert.equal(fs.existsSync(path.join(directory, 'public/assets/Joe.jpeg')), true);
+    assert.equal(fs.existsSync(path.join(directory, 'public/assets/ignored.jpeg')), false);
     assert.deepEqual(checkOwnerImages(directory), []);
     fs.rmSync(path.join(directory, 'dist/assets/Joe.jpeg'));
     assert.match(checkOwnerImages(directory).join('\n'), /Missing deployed owner image for Joe/);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test('owner image contract fails closed when the typed source is malformed or reformatted', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-owner-contract-'));
+  try {
+    fs.mkdirSync(path.join(directory, 'src/viva'), { recursive: true });
+    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), "export const VIVA_OWNERS = [{ canonical: 'Joe', imageKey: image('Joe') }];\n");
+    assert.throws(() => configuredOwnerImages(directory), /Could not compile Viva owner contract|image is not defined/);
+    fs.writeFileSync(path.join(directory, 'src/viva/owners.ts'), 'export const VIVA_OWNERS = [];\n');
+    assert.throws(() => configuredOwnerImages(directory), /contains no owners/);
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }
