@@ -6,6 +6,7 @@ const correctedBaseline = thresholds => ({
 });
 const vivaBaseline = require('./coverage.viva-baseline.json');
 const vivaChangedBaseline = require('./coverage.viva-changed-baseline.json');
+const COVERAGE_METRICS = ['lines', 'statements', 'functions', 'branches'];
 
 const explicitOverrides = {
   'js/easter-eggs.js': correctedBaseline({ lines: 28.84, statements: 25, functions: 20, branches: 13.79 }),
@@ -32,6 +33,21 @@ const vivaOverrides = Object.fromEntries(
     }]),
 );
 
+function mergeThresholds(generated, explicit) {
+  return Object.fromEntries(COVERAGE_METRICS.map(metric => [
+    metric,
+    Math.max(Number(generated?.[metric]) || 0, Number(explicit?.[metric]) || 0),
+  ]));
+}
+
+const mergedOverrides = { ...vivaOverrides };
+for (const [file, override] of Object.entries(explicitOverrides)) {
+  mergedOverrides[file] = {
+    ...override,
+    thresholds: mergeThresholds(vivaBaseline.files[file], override.thresholds),
+  };
+}
+
 const changedFileOverrides = Object.fromEntries(
   Object.entries(vivaChangedBaseline.files).map(([file, thresholds]) => [file, {
     thresholds,
@@ -45,8 +61,12 @@ module.exports = {
   global: { lines: 75, statements: 75, functions: 65, branches: 60 },
   perFile: { lines: 60, statements: 60, functions: 50, branches: 50 },
   changedFiles: { lines: 80, statements: 80, functions: 75, branches: 70 },
-  // Generated floors are applied first; explicit legacy thresholds always win.
-  overrides: { ...vivaOverrides, ...explicitOverrides },
+  // Generated floors are applied first; explicit values can ratchet individual
+  // metrics upward but can never lower a generated floor.
+  overrides: mergedOverrides,
+  // Exposed for the coverage-policy regression tests so every collision is
+  // checked when an explicit override is added or changed.
+  explicitOverrides,
   // These are separate from per-file overrides so a legacy per-file floor can
   // never weaken changed-file enforcement accidentally.
   changedFileOverrides,

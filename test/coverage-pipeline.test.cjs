@@ -576,9 +576,19 @@ test('per-file overrides cannot weaken changed-file thresholds', () => {
 
 test('explicit coverage overrides win over generated baseline collisions', () => {
   const config = require('../coverage.config.cjs');
-  assert.equal(config.overrides['src/app/services/league-selectors.ts'].thresholds.lines, 62.5);
-  assert.equal(config.overrides['src/app/services/league-selectors.ts'].thresholds.functions, 50);
-  assert.ok(config.overrides['src/app/services/league-selectors.ts'].thresholds.lines > require('../coverage.viva-baseline.json').files['src/app/services/league-selectors.ts'].lines);
+  const generated = require('../coverage.viva-baseline.json').files;
+  for (const [file, explicit] of Object.entries(config.explicitOverrides)) {
+    assert.ok(generated[file], `${file} must collide with a generated baseline`);
+    for (const metric of ['lines', 'statements', 'functions', 'branches']) {
+      assert.equal(
+        config.overrides[file].thresholds[metric],
+        Math.max(generated[file][metric], explicit.thresholds[metric]),
+        `${file} ${metric} must retain the stronger threshold`,
+      );
+    }
+  }
+  assert.equal(config.overrides['js/easter-eggs.js'].thresholds.lines, 47);
+  assert.equal(config.overrides['js/easter-eggs.js'].thresholds.functions, 49);
 });
 
 test('override metadata is required', () => {
