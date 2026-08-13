@@ -11,6 +11,7 @@ import {
   type DraftZoneKey,
 } from './draft-spot-types';
 import type { DraftSpot } from '../../data/generated/asset-types';
+import { vivaOwnerIsSelectable } from '../../viva/owners.ts';
 
 export const DEFAULT_DRAFT_STATE: DraftSpotState = {
   owner: DRAFT_ALL_OWNERS,
@@ -42,7 +43,7 @@ export function draftSeasons(asset: DraftSpot): number[] {
 }
 
 export function draftOwners(asset: DraftSpot): string[] {
-  return [...new Set(asset.rows.map(row => row.owner))].sort((a, b) => a.localeCompare(b));
+  return [...new Set(asset.rows.map(row => row.owner).filter(vivaOwnerIsSelectable))].sort((a, b) => a.localeCompare(b));
 }
 
 export function draftPicks(asset: DraftSpot): number[] {

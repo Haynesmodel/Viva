@@ -3,16 +3,19 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { validateMediaBaseUrl } = require('./check_viva_media_config.cjs');
 
-function mediaFiles(root) {
+function scanVideoFiles(source) {
   const result = [];
   const visit = directory => fs.readdirSync(directory, { withFileTypes: true }).forEach(entry => {
     const file = path.join(directory, entry.name);
     if (entry.isDirectory()) visit(file);
     else if (/\.(?:mov|mp4|m4v|webm|avi)$/i.test(entry.name)) result.push(file);
   });
-  const source = path.join(root, 'assets', 'Shotguns');
   if (fs.existsSync(source)) visit(source);
   return result;
+}
+
+function mediaFiles(root) {
+  return scanVideoFiles(path.join(root, 'assets', 'Shotguns'));
 }
 
 function mediaUrl(baseUrl, key) {
@@ -43,21 +46,23 @@ async function check(root = process.cwd(), options = {}) {
   keys.filter(key => !localKeys.includes(key)).forEach(key => errors.push(`Shotguns media key is missing from preserved local clips: ${key}`));
   const mediaConfig = validateMediaBaseUrl(options.mediaBaseUrl || process.env.VITE_VIVA_MEDIA_BASE_URL);
   const requireRemote = options.requireRemote ?? process.env.REQUIRE_VIVA_MEDIA_AUDIT === '1';
+  const probeFn = options.probe || probe;
   if (!mediaConfig.ok) {
     const message = `Shotguns CDN reachability audit deferred: ${mediaConfig.reason}`;
     if (requireRemote) errors.push(message);
     else warnings.push(message);
   } else {
-    for (const key of localKeys) {
+    const probeKeys = [...new Set([...localKeys, ...keys])].sort();
+    for (const key of probeKeys) {
       try {
-        await probe(mediaUrl(mediaConfig.value, key));
+        await probeFn(mediaUrl(mediaConfig.value, key));
       } catch (error) {
         errors.push(`Shotguns media URL is unreachable: ${key} (${error.message})`);
       }
     }
   }
   const dist = path.join(root, 'dist');
-  const distVideos = dist && fs.existsSync(dist) ? mediaFiles(dist) : [];
+  const distVideos = dist && fs.existsSync(dist) ? scanVideoFiles(dist) : [];
   if (distVideos.length) errors.push(`dist contains ${distVideos.length} video files`);
   return { errors, warnings, expectedKeys: localKeys.length, referencedKeys: keys.length, localMediaFiles: localKeys.length, distVideos: distVideos.length };
 }
@@ -69,4 +74,4 @@ if (require.main === module) check().then(result => {
   process.exitCode = result.errors.length ? 1 : 0;
 }).catch(error => { console.error(error.message || error); process.exitCode = 1; });
 
-module.exports = { check, mediaFiles, mediaUrl, probe };
+module.exports = { check, mediaFiles, mediaUrl, probe, scanVideoFiles };

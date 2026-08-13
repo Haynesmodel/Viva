@@ -20,7 +20,7 @@ import {
   type OwnerPreferenceService,
   type OwnerPreferenceSnapshot,
 } from './services/owner-preference-service';
-import { resolveVivaOwner } from '../viva/owners';
+import { vivaOwnerIsSelectable } from '../viva/owners';
 
 export interface BootstrapOptions {
   tableRuntime: VivaTableRuntime;
@@ -44,7 +44,7 @@ export function canonicalOwners(data: Pick<AppContext['data'], 'seasonSummaries'
     ...data.seasonSummaries.map(row => row.owner),
     ...data.leagueGames.flatMap(game => [game.teamA, game.teamB]),
     ...(data.currentSeason?.teams.map(team => team.owner) || []),
-  ].filter(owner => resolveVivaOwner(owner)?.active));
+  ].filter(vivaOwnerIsSelectable));
 }
 
 function updateOwnerDestination(doc: Document, win: Window, snapshot: OwnerPreferenceSnapshot): void {

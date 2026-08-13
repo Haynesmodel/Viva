@@ -128,7 +128,8 @@ function ownersForSeason(leagueGames = [], seasonSummaries = [], season = latest
     if (game.teamA) owners.add(game.teamA);
     if (game.teamB) owners.add(game.teamB);
   }
-  return [...owners].sort((a, b) => a.localeCompare(b));
+  const configured = Array.isArray(globalThis.VIVA_OWNER_NAMES) ? new Set(globalThis.VIVA_OWNER_NAMES) : null;
+  return [...owners].filter(owner => !configured || configured.has(owner)).sort((a, b) => a.localeCompare(b));
 }
 
 function emptyStanding(owner, season) {

@@ -41,13 +41,17 @@ jobs:
         id: audit
         run: npm audit --audit-level=moderate
       - name: Validate reviewed external media origin
-        run: npm run check:viva-media-config
+        run: |
+          test -n "$VITE_VIVA_MEDIA_BASE_URL"
+          npm run check:viva-media-config
       - name: Run quality, unit, and data checks
         id: unit_data
         run: npm run test:unit
       - name: Build and audit production site
         id: build
-        run: npm run build
+        run: |
+          test -n "$VITE_VIVA_MEDIA_BASE_URL"
+          npm run build
       - name: Audit preserved Shotguns media and CDN reachability
         run: npm run check:viva-media
       - name: Record bundle-budget result

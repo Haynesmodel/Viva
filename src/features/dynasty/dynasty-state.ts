@@ -1,12 +1,13 @@
 import type { SeasonSummaryRow } from '../../data/generated/asset-types';
 import { ALL_DYNASTY_TEAMS, type DynastyMode, type DynastyState } from './dynasty-types.ts';
+import { vivaOwnerIsSelectable } from '../../viva/owners.ts';
 export { ALL_DYNASTY_TEAMS };
 
 const finite = (value: unknown): number | null => { const n = Number(value); return Number.isFinite(n) ? n : null; };
 const dynastyModes = new Set<DynastyMode>(['calculator', 'rolling-3', 'rolling-5', 'selected-range', 'all-time']);
 const isDynastyMode = (value: unknown): value is DynastyMode => dynastyModes.has(String(value) as DynastyMode);
 export function availableDynastySeasons(rows: readonly Pick<SeasonSummaryRow, 'season'>[]): number[] { return [...new Set(rows.map(row => row.season).filter(Number.isFinite))].sort((a, b) => a - b); }
-export function availableDynastyOwners(rows: readonly Pick<SeasonSummaryRow, 'owner'>[]): string[] { return [...new Set(rows.map(row => row.owner).filter(Boolean))].sort((a, b) => a.localeCompare(b)); }
+export function availableDynastyOwners(rows: readonly Pick<SeasonSummaryRow, 'owner'>[]): string[] { return [...new Set(rows.map(row => row.owner).filter(vivaOwnerIsSelectable))].sort((a, b) => a.localeCompare(b)); }
 export function normalizeDynastyRange(input: { availableSeasons: readonly number[]; startSeason?: unknown; endSeason?: unknown; requestedStartSeason?: unknown; requestedEndSeason?: unknown; windowSize?: number }): Pick<DynastyState, 'startSeason' | 'endSeason' | 'requestedStartSeason' | 'requestedEndSeason'> {
   const seasons = [...input.availableSeasons].filter(Number.isFinite).sort((a, b) => a - b); const latestStart = seasons[Math.max(0, seasons.length - (input.windowSize || 3))] ?? null; const defaultEnd = seasons.at(-1) ?? null;
   const requestedStart = finite(input.requestedStartSeason) ?? finite(input.startSeason) ?? latestStart; const requestedEnd = finite(input.requestedEndSeason) ?? finite(input.endSeason) ?? defaultEnd;

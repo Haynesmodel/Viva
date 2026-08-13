@@ -15,6 +15,10 @@ function docOrDefault(doc) {
   return doc || (typeof document !== 'undefined' ? document : null);
 }
 
+function selectableOwner(owner) {
+  return !Array.isArray(globalThis.VIVA_OWNER_NAMES) || globalThis.VIVA_OWNER_NAMES.includes(owner);
+}
+
 function availableSeasons(leagueGames = [], seasonSummaries = [], currentSeason = null) {
   return [...new Set([
     Number(currentSeason?.season),
@@ -36,7 +40,7 @@ function availableOwners(leagueGames = [], seasonSummaries = [], currentSeason =
     if (game.teamA) owners.add(game.teamA);
     if (game.teamB) owners.add(game.teamB);
   }
-  return [...owners].sort((a, b) => a.localeCompare(b));
+  return [...owners].filter(selectableOwner).sort((a, b) => a.localeCompare(b));
 }
 
 function renderOptions(values, selectedValue) {

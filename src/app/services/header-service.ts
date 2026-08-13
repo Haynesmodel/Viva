@@ -11,16 +11,25 @@ function updateOwnerIdentity(owner: string | null, doc: Document): void {
   if (!identity || !image || !fallback) return;
   identity.hidden = !config;
   fallback.textContent = config ? config.displayName : '';
-  fallback.classList.toggle('visually-hidden', Boolean(source));
-  fallback.setAttribute('aria-hidden', source ? 'true' : 'false');
+  const showFallback = () => {
+    fallback.classList.remove('visually-hidden');
+    fallback.setAttribute('aria-hidden', 'false');
+    image.hidden = true;
+    image.alt = '';
+  };
   if (source) {
+    fallback.classList.add('visually-hidden');
+    fallback.setAttribute('aria-hidden', 'true');
+    image.onerror = showFallback;
     image.src = source.src;
     image.alt = source.alt;
     image.hidden = false;
   } else {
+    image.onerror = null;
     image.removeAttribute('src');
     image.alt = '';
     image.hidden = true;
+    showFallback();
   }
 }
 

@@ -8,7 +8,10 @@ function docOrDefault(doc) {
 }
 
 function ownerOptions(teamSeasons) {
-  return [...new Set(teamSeasons.map(teamSeason => teamSeason.owner))].sort((a, b) => a.localeCompare(b));
+  const configured = Array.isArray(globalThis.VIVA_OWNER_NAMES) ? new Set(globalThis.VIVA_OWNER_NAMES) : null;
+  return [...new Set(teamSeasons.map(teamSeason => teamSeason.owner))]
+    .filter(owner => !configured || configured.has(owner))
+    .sort((a, b) => a.localeCompare(b));
 }
 
 function seasonOptionsForOwner(teamSeasons, owner) {

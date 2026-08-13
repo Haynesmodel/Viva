@@ -84,6 +84,24 @@ def owner_map(mapping: dict[str, Any]) -> dict[str, str]:
     return result
 
 
+def expected_team_count(mapping: dict[str, Any], season: int) -> int:
+    configured = mapping.get("seasons", {}).get(str(season))
+    if not isinstance(configured, dict) or not isinstance(configured.get("teams"), int) or configured["teams"] < 2:
+        raise ValueError(f"season {season} is not configured with a valid team count in mapping.seasons")
+    return configured["teams"]
+
+
+def validate_candidate_team_count(summary: list[dict[str, Any]], current: dict[str, Any] | None, mapping: dict[str, Any], season: int) -> None:
+    expected = expected_team_count(mapping, season)
+    summary_owners = {str(row["owner"]) for row in summary}
+    if len(summary_owners) != expected:
+        raise ValueError(f"season {season} summary contains {len(summary_owners)} unique owners; mapping requires exactly {expected}")
+    if current is not None:
+        current_owners = {str(team["owner"]) for team in current["teams"]}
+        if len(current_owners) != expected:
+            raise ValueError(f"season {season} CurrentSeason contains {len(current_owners)} unique teams; mapping requires exactly {expected}")
+
+
 def resolve_owner(value: Any, aliases: dict[str, str], row: int, season: int) -> str:
     key = str(value or "").strip().casefold()
     if key not in aliases:
@@ -279,7 +297,24 @@ def write_candidate(output_dir: Path, games: list[dict[str, Any]], summary: list
         atomic_write(output_dir / "CurrentSeason.json", current)
 
 
-def validate_staged_bundle(root: Path, output_dir: Path, current: dict[str, Any] | None) -> None:
+def validate_staged_bundle(root: Path, output_dir: Path, current: dict[str, Any] | None, full_snapshot: bool) -> None:
+    candidate_paths = [output_dir / "H2H.json", output_dir / "SeasonSummary.json"]
+    if current is not None:
+        candidate_paths.append(output_dir / "CurrentSeason.json")
+    candidate_command = [
+        "node",
+        str(root / "scripts" / "validate_candidate.cjs"),
+        "--root", str(root),
+        "--candidate",
+        *sum((["--asset", str(path)] for path in candidate_paths), []),
+    ]
+    candidate_result = subprocess.run(candidate_command, capture_output=True, text=True, check=False)
+    if candidate_result.returncode:
+        detail = (candidate_result.stdout + candidate_result.stderr).strip()
+        raise ValueError(f"season candidate failed schema/semantic validation: {detail}")
+    if not full_snapshot:
+        return
+
     staged_current = output_dir / "CurrentSeason.json" if current is not None else root / "assets" / "CurrentSeason.json"
     paths = [
         output_dir / "H2H.json",
@@ -340,6 +375,7 @@ def main() -> int:
     if current_raw is not None:
         reject_private(current_raw, "current-season")
     normalized_current = normalize_current_season(current_raw, aliases, args.season) if current_raw else None
+    validate_candidate_team_count(normalized_summary, normalized_current, mapping, args.season)
     existing_games = load_json(root / "assets/H2H.json") if args.promote else []
     existing_summary = load_json(root / "assets/SeasonSummary.json") if args.promote else []
     existing_current = load_json(root / "assets/CurrentSeason.json") if args.promote and (root / "assets/CurrentSeason.json").exists() else None
@@ -349,10 +385,20 @@ def main() -> int:
         if normalized_current is None:
             normalized_current = existing_current
     validate_full_snapshot(normalized_games, normalized_summary, normalized_current)
-    write_candidate(output_dir, normalized_games, normalized_summary, normalized_current)
-    validate_staged_bundle(root, output_dir, normalized_current)
-    if args.promote:
-        promote_candidate(root, output_dir, normalized_current)
+    stage_dir = output_dir
+    temporary_stage = None
+    canonical_assets = (root / "assets").resolve()
+    if args.promote and (stage_dir == canonical_assets or canonical_assets in stage_dir.parents):
+        temporary_stage = tempfile.TemporaryDirectory(prefix=".viva-import-", dir=root)
+        stage_dir = Path(temporary_stage.name)
+    try:
+        write_candidate(stage_dir, normalized_games, normalized_summary, normalized_current)
+        validate_staged_bundle(root, stage_dir, normalized_current, args.promote)
+        if args.promote:
+            promote_candidate(root, stage_dir, normalized_current)
+    finally:
+        if temporary_stage is not None:
+            temporary_stage.cleanup()
     print(f"Wrote candidate {args.output_dir} ({len(normalized_games)} games, {len(normalized_summary)} summary rows{', CurrentSeason' if normalized_current else ''})")
     return 0
 

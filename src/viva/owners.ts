@@ -62,7 +62,14 @@ export function canonicalVivaOwner(value: unknown, source?: string, season?: num
 }
 
 export function vivaOwnerNames(options: { includeInactive?: boolean } = {}): string[] {
-  return VIVA_OWNERS.filter(owner => options.includeInactive || owner.active).map(owner => owner.canonical);
+  return VIVA_OWNERS
+    .filter(owner => !owner.historicalExclusion && (options.includeInactive || owner.active))
+    .map(owner => owner.canonical);
+}
+
+export function vivaOwnerIsSelectable(value: unknown): boolean {
+  const owner = resolveVivaOwner(value);
+  return Boolean(owner?.active && !owner.historicalExclusion);
 }
 
 export function vivaOwnerTheme(owner: unknown): OwnerTheme | null {

@@ -8,13 +8,13 @@ import { mountTrophyCard } from '../../share/share-card-feature-adapters';
 import { TrophyPage } from './TrophyPage';
 import { buildTrophyCaseViewModel } from './trophy-model';
 import { registerTrophyTables } from './trophy-tables';
-import { resolveVivaOwner } from '../../viva/owners';
+import { vivaOwnerIsSelectable } from '../../viva/owners';
 
 function availableOwners(context: AppContext): string[] {
   return [...new Set([
     ...context.data.seasonSummaries.map(row => row.owner),
     ...context.data.leagueGames.flatMap(game => [game.teamA, game.teamB]),
-  ])].filter(owner => resolveVivaOwner(owner)?.active).sort((a, b) => a.localeCompare(b));
+  ])].filter(vivaOwnerIsSelectable).sort((a, b) => a.localeCompare(b));
 }
 
 export function createFeatureController(): VivaFeatureController {

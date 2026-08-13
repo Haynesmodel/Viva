@@ -14,6 +14,10 @@ function docOrDefault(doc) {
   return doc || (typeof document !== 'undefined' ? document : null);
 }
 
+function selectableOwner(owner) {
+  return !Array.isArray(globalThis.VIVA_OWNER_NAMES) || globalThis.VIVA_OWNER_NAMES.includes(owner);
+}
+
 function isFiniteNumber(value) {
   return value !== null && value !== undefined && value !== '' && Number.isFinite(+value);
 }
@@ -853,7 +857,7 @@ function buildCurseTrackerModel(leagueGames, seasonSummaries, opts = {}) {
     seasonAggregatesByOwner,
     cards,
     completedSeasons,
-    owners: uniqueSorted((seasonSummaries || []).map(row => row.owner)),
+    owners: uniqueSorted((seasonSummaries || []).map(row => row.owner).filter(selectableOwner)),
   };
 }
 
@@ -868,7 +872,7 @@ function buildCurseTrackerControls({
   if (!root) return null;
   const container = root.getElementById('curseControls');
   if (!container) return null;
-  const owners = uniqueSorted((seasonSummaries || []).map(row => row.owner));
+  const owners = uniqueSorted((seasonSummaries || []).map(row => row.owner).filter(selectableOwner));
   if (!container.dataset.ready) {
     container.innerHTML = `
       <label>Owner
