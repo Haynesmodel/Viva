@@ -23,6 +23,7 @@ test('every Viva route is axe-clean', async ({ page }) => {
       await page.locator(buttons[route]).click();
     }
     await expect(page.locator(`#page-${route}`)).toBeVisible();
+    await expect(page.locator(`#page-${route}`)).toHaveAttribute('data-feature-state', 'ready');
     await analyze(page, route);
   }
 });
@@ -34,6 +35,7 @@ test('theme controls remain accessible across light, dark, and system modes', as
     const control = page.locator(`[data-theme-preference="${preference}"]`);
     await control.click();
     await expect(control).toHaveAttribute('aria-pressed', 'true');
+    await page.waitForTimeout(350);
     await analyze(page, preference);
   }
 });
@@ -50,4 +52,19 @@ test('Viva remains usable at 320px and 200 percent zoom', async ({ page }) => {
   await page.evaluate(() => { document.documentElement.style.zoom = '2'; });
   await expect.poll(() => page.evaluate(() => document.querySelector('#mainContent')?.getBoundingClientRect().width || 0)).toBeGreaterThan(0);
   await analyze(page, 'shotguns-200-percent');
+});
+
+test('Shotguns announces modal playback failures and restores focus', async ({ page }) => {
+  await page.addInitScript(() => {
+    HTMLMediaElement.prototype.play = () => Promise.reject(new Error('blocked in test'));
+  });
+  await page.goto('/?tab=shotguns');
+  await waitForApp(page);
+  const play = page.locator('.shotgun-play').first();
+  await expect(play).toBeEnabled();
+  await play.click();
+  await expect(page.locator('#shotgunDialog')).toBeVisible();
+  await expect(page.locator('#shotgunMediaStatus')).toContainText('could not be played');
+  await page.locator('[data-shotgun-close]').click();
+  await expect(play).toBeFocused();
 });

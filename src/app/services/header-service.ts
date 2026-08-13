@@ -12,6 +12,7 @@ function updateOwnerIdentity(owner: string | null, doc: Document): void {
   identity.hidden = !config;
   fallback.textContent = config ? config.displayName : '';
   fallback.classList.toggle('visually-hidden', Boolean(source));
+  fallback.setAttribute('aria-hidden', source ? 'true' : 'false');
   if (source) {
     image.src = source.src;
     image.alt = source.alt;

@@ -29,6 +29,10 @@ class ImportVivaEspnTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.importer.strict_bool("maybe", "flag")
 
+    def test_owner_map_rejects_ambiguous_aliases(self):
+        with self.assertRaisesRegex(ValueError, "both 'Joe' and 'Erin'"):
+            self.importer.owner_map({"owners": {"Joe": ["same"], "Erin": ["same"]}})
+
     def test_summary_preserves_boolean_literals_and_optional_draft_pick(self):
         rows = self.importer.normalize_summary([{
             "season": 2026, "owner": "Joe", "champion": "false", "saunders": "0", "bye": "true",
@@ -37,6 +41,28 @@ class ImportVivaEspnTest(unittest.TestCase):
         self.assertFalse(rows[0]["champion"])
         self.assertTrue(rows[0]["bye"])
         self.assertEqual(rows[0]["draft_pick"], 3)
+
+        without_pick = self.importer.normalize_summary([{"season": 2026, "owner": "Erin"}], self.aliases, 2026)[0]
+        self.assertNotIn("draft_pick", without_pick)
+
+    def test_current_season_rejects_unsupported_status(self):
+        with self.assertRaisesRegex(ValueError, "unsupported status"):
+            self.importer.normalize_current_season({
+                "season": 2026,
+                "teams": [{"roster_id": 1, "owner": "Joe"}, {"roster_id": 2, "owner": "Erin"}],
+                "games": [{"teamA": "Joe", "teamB": "Erin", "date": "2026-01-01", "week": 1, "status": "unknown", "matchup_id": 1, "rosterA": 1, "rosterB": 2}],
+                "regular_season_max_week": 14,
+                "max_week": 17,
+                "playoff_rules": {"playoff_slots": 2, "standings_tiebreakers": ["win_pct"]},
+                "update_context": {"cutoff_date": "2026-01-01"},
+            }, self.aliases, 2026)
+
+    def test_candidate_output_cannot_target_tracked_assets_without_promotion(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            assets = root / "assets"
+            with self.assertRaisesRegex(ValueError, "inside canonical assets"):
+                self.importer.resolve_output_dir(root, assets, False)
 
     def test_promotion_replaces_selected_season_without_truncating_existing_seasons(self):
         existing_games = [{"season": 2024, "id": "old"}, {"season": 2025, "id": "stale"}]

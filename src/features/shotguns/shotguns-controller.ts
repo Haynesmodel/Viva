@@ -33,6 +33,7 @@ export function createFeatureController(): VivaFeatureController {
   let root: HTMLElement | null = null;
   let dialog: HTMLDialogElement | null = null;
   let video: HTMLVideoElement | null = null;
+  let mediaStatus: HTMLElement | null = null;
   let lastFocused: HTMLElement | null = null;
 
   const closeDialog = () => {
@@ -56,17 +57,17 @@ export function createFeatureController(): VivaFeatureController {
       const ownerCompleted = completed.filter(row => row.owner === owner).length;
       return `<tr><th scope="row">${escapeHtml(vivaShotgunDisplayName(owner))}</th><td>${ownerOwed}</td><td>${ownerCompleted}</td><td>${ownerOwed + ownerCompleted}</td></tr>`;
     }).join('');
-    root.innerHTML = `<div class="shotgun-summary"><p>${owed.length} owed · ${completed.length} completed · ${rows.length} total</p>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning" role="status">Shotgun media is not configured for this deployment. All records remain available.</p>' : ''}<p id="shotgunMediaStatus" role="status" aria-live="polite"></p></div><section class="card"><h3>Shotguns by owner</h3><div class="table-wrap" tabindex="0" aria-label="Shotguns by owner"><table><thead><tr><th scope="col">Owner</th><th scope="col">Owed</th><th scope="col">Completed</th><th scope="col">Total</th></tr></thead><tbody>${ownerRows}</tbody></table></div></section><section class="card"><h3>Shotguns Owed</h3>${owed.length ? `<div class="table-wrap" tabindex="0" aria-label="Shotguns owed"><table><thead><tr><th scope="col">Owner</th><th scope="col">Week</th><th scope="col">Cause</th><th scope="col">Date</th><th scope="col">Due</th></tr></thead><tbody>${owed.map(row => `<tr><td>${escapeHtml(vivaShotgunDisplayName(row.owner))}</td><td>${escapeHtml(row.week ?? '—')}</td><td>${escapeHtml(row.cause)}</td><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.due_date || '—')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No shotguns owed.</p>'}</section><section class="card"><h3>Completed Shotguns</h3><div class="shotgun-grid">${owners.flatMap(owner => completed.filter(row => row.owner === owner)).map(card).join('') || '<p class="muted">No completed Shotguns available.</p>'}</div></section>`;
+    root.innerHTML = `<div class="shotgun-summary"><p>${owed.length} owed · ${completed.length} completed · ${rows.length} total</p>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning" role="status">Shotgun media is not configured for this deployment. All records remain available.</p>' : ''}</div><section class="card"><h3>Shotguns by owner</h3><div class="table-wrap" tabindex="0" aria-label="Shotguns by owner"><table><thead><tr><th scope="col">Owner</th><th scope="col">Owed</th><th scope="col">Completed</th><th scope="col">Total</th></tr></thead><tbody>${ownerRows}</tbody></table></div></section><section class="card"><h3>Shotguns Owed</h3>${owed.length ? `<div class="table-wrap" tabindex="0" aria-label="Shotguns owed"><table><thead><tr><th scope="col">Owner</th><th scope="col">Week</th><th scope="col">Cause</th><th scope="col">Date</th><th scope="col">Due</th></tr></thead><tbody>${owed.map(row => `<tr><td>${escapeHtml(vivaShotgunDisplayName(row.owner))}</td><td>${escapeHtml(row.week ?? '—')}</td><td>${escapeHtml(row.cause)}</td><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.due_date || '—')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No shotguns owed.</p>'}</section><section class="card"><h3>Completed Shotguns</h3><div class="shotgun-grid">${owners.flatMap(owner => completed.filter(row => row.owner === owner)).map(card).join('') || '<p class="muted">No completed Shotguns available.</p>'}</div></section>`;
     root.querySelectorAll<HTMLButtonElement>('.shotgun-play').forEach(button => button.addEventListener('click', () => {
-      const row = rows.find(candidate => candidate.id === button.dataset.shotgunId);
+      const row = rows.find(candidate => candidate.id === button.getAttribute('data-shotgun-id'));
       const source = row?.media_key ? mediaUrl(row.media_key) : null;
       if (!row || !source || !dialog || !video) return;
       lastFocused = button;
+      if (mediaStatus) mediaStatus.textContent = '';
       video.src = source;
       dialog.showModal();
       void video.play().catch(() => {
-        const status = root?.querySelector<HTMLElement>('#shotgunMediaStatus');
-        if (status) status.textContent = 'This clip could not be played. Check the media origin and try again.';
+        if (mediaStatus) mediaStatus.textContent = 'This clip could not be played. Check the media origin and try again.';
       });
     }));
   };
@@ -78,13 +79,13 @@ export function createFeatureController(): VivaFeatureController {
       root = context.document.getElementById('shotgunsRoot');
       dialog = context.document.getElementById('shotgunDialog') as HTMLDialogElement | null;
       video = context.document.getElementById('shotgunVideo') as HTMLVideoElement | null;
+      mediaStatus = context.document.getElementById('shotgunMediaStatus');
       if (!root || !dialog || !video) throw new Error('Shotguns feature roots missing');
       dialog.querySelector('[data-shotgun-close]')?.addEventListener('click', closeDialog);
       dialog.addEventListener('cancel', event => { event.preventDefault(); closeDialog(); });
       dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
       video.addEventListener('error', () => {
-        const status = root?.querySelector<HTMLElement>('#shotgunMediaStatus');
-        if (status) status.textContent = 'This clip could not be loaded. The rest of the Shotguns archive remains available.';
+        if (mediaStatus) mediaStatus.textContent = 'This clip could not be loaded. The rest of the Shotguns archive remains available.';
       });
     },
     activate(input: FeatureActivation) {
@@ -95,6 +96,6 @@ export function createFeatureController(): VivaFeatureController {
       render();
     },
     deactivate() { active = false; closeDialog(); },
-    dispose() { active = false; closeDialog(); root?.replaceChildren(); root = null; },
+    dispose() { active = false; closeDialog(); root?.replaceChildren(); root = null; mediaStatus = null; },
   };
 }

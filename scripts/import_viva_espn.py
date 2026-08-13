@@ -12,6 +12,7 @@ import datetime as dt
 import json
 import math
 import re
+import subprocess
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -74,7 +75,12 @@ def owner_map(mapping: dict[str, Any]) -> dict[str, str]:
     result: dict[str, str] = {}
     for canonical, aliases in mapping.get("owners", {}).items():
         for alias in [canonical, *aliases]:
-            result[str(alias).strip().casefold()] = str(canonical).strip()
+            key = str(alias).strip().casefold()
+            owner = str(canonical).strip()
+            existing = result.get(key)
+            if existing is not None and existing != owner:
+                raise ValueError(f"ambiguous owner alias {alias!r}: maps to both {existing!r} and {owner!r}")
+            result[key] = owner
     return result
 
 
@@ -141,7 +147,8 @@ def normalize_summary(rows: list[dict[str, Any]], aliases: dict[str, str], seaso
             elif field == "bagels_earned":
                 normalized[field] = None if row.get(field) is None else finite_number(row.get(field), f"summary row {index} {field}")
             elif field == "draft_pick":
-                normalized[field] = None if row.get(field) is None else int(row.get(field))
+                if row.get(field) is not None:
+                    normalized[field] = int(row.get(field))
             else:
                 normalized[field] = int(row.get(field, 0)) if field in ("wins", "losses", "ties", "finish", "playoff_wins", "playoff_losses", "saunders_wins", "saunders_losses") else finite_number(row.get(field, 0), f"summary row {index} {field}")
         output.append(normalized)
@@ -168,6 +175,9 @@ def normalize_current_season(value: dict[str, Any], aliases: dict[str, str], sea
         team_b = resolve_owner(row.get("teamB", row.get("team_b")), aliases, index, season)
         if team_a == team_b:
             raise ValueError(f"current-season self-matchup at source row {index}")
+        status = str(row.get("status") or "scheduled")
+        if status not in {"scheduled", "live", "final"}:
+            raise ValueError(f"current-season row {index} has unsupported status {status!r}")
         games.append({
             "season": season,
             "date": iso_date(row.get("date"), f"current-season row {index} date"),
@@ -178,7 +188,7 @@ def normalize_current_season(value: dict[str, Any], aliases: dict[str, str], sea
             "week": int(row["week"]),
             "round": str(row.get("round") or ""),
             "type": game_type(row),
-            "status": str(row.get("status") or "scheduled"),
+            "status": status,
             "matchup_id": int(row["matchup_id"]),
             "rosterA": int(row["rosterA"]),
             "rosterB": int(row["rosterB"]),
@@ -253,17 +263,48 @@ def merge_promoted_season(existing: list[dict[str, Any]], incoming: list[dict[st
     return [row for row in existing if int(row.get("season")) != season] + incoming
 
 
-def write_candidate(root: Path, output_dir: Path, games: list[dict[str, Any]], summary: list[dict[str, Any]], current: dict[str, Any] | None, promote: bool, season: int) -> None:
+def resolve_output_dir(root: Path, output_dir: Path, promote: bool) -> Path:
+    resolved = output_dir.expanduser().resolve()
+    canonical_assets = (root / "assets").resolve()
+    if not promote and (resolved == canonical_assets or canonical_assets in resolved.parents):
+        raise ValueError(f"candidate output directory cannot be inside canonical assets without --promote: {resolved}")
+    return resolved
+
+
+def write_candidate(output_dir: Path, games: list[dict[str, Any]], summary: list[dict[str, Any]], current: dict[str, Any] | None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     atomic_write(output_dir / "H2H.json", games)
     atomic_write(output_dir / "SeasonSummary.json", summary)
     if current is not None:
         atomic_write(output_dir / "CurrentSeason.json", current)
-    if promote:
-        atomic_write(root / "assets/H2H.json", games)
-        atomic_write(root / "assets/SeasonSummary.json", summary)
-        if current is not None:
-            atomic_write(root / "assets/CurrentSeason.json", current)
+
+
+def validate_staged_bundle(root: Path, output_dir: Path, current: dict[str, Any] | None) -> None:
+    staged_current = output_dir / "CurrentSeason.json" if current is not None else root / "assets" / "CurrentSeason.json"
+    paths = [
+        output_dir / "H2H.json",
+        output_dir / "SeasonSummary.json",
+        root / "assets" / "Rivalries.json",
+        staged_current,
+        root / "assets" / "Shotguns.json",
+    ]
+    command = [
+        "node",
+        str(root / "scripts" / "validate_candidate.cjs"),
+        "--root", str(root),
+        *sum((["--asset", str(path)] for path in paths), []),
+    ]
+    result = subprocess.run(command, capture_output=True, text=True, check=False)
+    if result.returncode:
+        detail = (result.stdout + result.stderr).strip()
+        raise ValueError(f"staged candidate failed schema/semantic validation: {detail}")
+
+
+def promote_candidate(root: Path, output_dir: Path, current: dict[str, Any] | None) -> None:
+    atomic_write(root / "assets" / "H2H.json", load_json(output_dir / "H2H.json"))
+    atomic_write(root / "assets" / "SeasonSummary.json", load_json(output_dir / "SeasonSummary.json"))
+    if current is not None:
+        atomic_write(root / "assets" / "CurrentSeason.json", load_json(output_dir / "CurrentSeason.json"))
 
 
 def main() -> int:
@@ -276,6 +317,8 @@ def main() -> int:
     parser.add_argument("--current-season", type=Path, help="Optional manual CurrentSeason candidate JSON")
     parser.add_argument("--promote", action="store_true")
     args = parser.parse_args()
+    root = Path(__file__).resolve().parents[1]
+    output_dir = resolve_output_dir(root, args.output_dir, args.promote)
     raw = load_json(args.input)
     reject_private(raw)
     mapping = load_json(args.mapping)
@@ -297,14 +340,19 @@ def main() -> int:
     if current_raw is not None:
         reject_private(current_raw, "current-season")
     normalized_current = normalize_current_season(current_raw, aliases, args.season) if current_raw else None
-    root = Path(__file__).resolve().parents[1]
     existing_games = load_json(root / "assets/H2H.json") if args.promote else []
     existing_summary = load_json(root / "assets/SeasonSummary.json") if args.promote else []
+    existing_current = load_json(root / "assets/CurrentSeason.json") if args.promote and (root / "assets/CurrentSeason.json").exists() else None
     if args.promote:
         normalized_games = merge_promoted_season(existing_games, normalized_games, args.season)
         normalized_summary = merge_promoted_season(existing_summary, normalized_summary, args.season)
+        if normalized_current is None:
+            normalized_current = existing_current
     validate_full_snapshot(normalized_games, normalized_summary, normalized_current)
-    write_candidate(root, args.output_dir, normalized_games, normalized_summary, normalized_current, args.promote, args.season)
+    write_candidate(output_dir, normalized_games, normalized_summary, normalized_current)
+    validate_staged_bundle(root, output_dir, normalized_current)
+    if args.promote:
+        promote_candidate(root, output_dir, normalized_current)
     print(f"Wrote candidate {args.output_dir} ({len(normalized_games)} games, {len(normalized_summary)} summary rows{', CurrentSeason' if normalized_current else ''})")
     return 0
 

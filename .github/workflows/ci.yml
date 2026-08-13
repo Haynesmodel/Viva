@@ -48,6 +48,8 @@ jobs:
       - name: Build and audit production site
         id: build
         run: npm run build
+      - name: Audit preserved Shotguns media and CDN reachability
+        run: npm run check:viva-media
       - name: Record bundle-budget result
         id: bundle_budget
         if: ${{ always() && hashFiles('dist/.vite/manifest.json') != '' }}
