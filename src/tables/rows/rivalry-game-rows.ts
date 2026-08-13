@@ -1,6 +1,6 @@
-import type { DarlingTableRow, TableContext } from '../table-types';
+import type { VivaTableRow, TableContext } from '../table-types';
 
-export function adaptRivalryGameRows(rows: unknown[], context: TableContext = {}): DarlingTableRow[] {
+export function adaptRivalryGameRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   const chronological = rows.slice().sort((a: any, b: any) => String(a.date).localeCompare(String(b.date)));
   const running = new Map<string, string>();
   let wins = 0;

@@ -2,14 +2,14 @@ import './command-palette.entry.css';
 
 import { createPortal } from 'preact/compat';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import type { DarlingSearchRuntime, SearchResult } from '../../search/search-types';
+import type { VivaSearchRuntime, SearchResult } from '../../search/search-types';
 import { focusableElements } from '../../accessibility/focus';
 import SearchResultRow from './SearchResultRow';
 
 interface CommandPaletteProps {
   open: boolean;
   portal: any;
-  runtime: DarlingSearchRuntime;
+  runtime: VivaSearchRuntime;
   onClose(): void;
 }
 
@@ -100,7 +100,7 @@ export default function CommandPalette({ open, portal, runtime, onClose }: Comma
       >
         <div class="search-dialog-header">
           <div class="search-dialog-heading">
-            <h2 id="global-search-title">Search The Darling</h2>
+            <h2 id="global-search-title">Search The Viva</h2>
             <button type="button" class="search-close" aria-label="Close search" onClick={onClose}>×</button>
           </div>
           <label class="search-input-wrap">

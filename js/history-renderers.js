@@ -45,7 +45,7 @@ function buildTopHighlightsViewModel(team, opts = {}) {
       chips: [
         {
           title: 'League view',
-          main: 'Select a team to see Darlings & Saunders',
+          main: 'Select a team to see Championships & Saunders',
           sub: 'Filters still work (e.g., Week 1). See Team Breakdown below.',
         },
       ],
@@ -67,7 +67,7 @@ function buildTopHighlightsViewModel(team, opts = {}) {
   return {
     isLeagueView: false,
     chips: [
-      { title: 'Darlings', main: `${champYears.length}`, sub: champYears.length ? `Years: ${champsDisplay.join(', ')}` : '\u2014' },
+      { title: 'Championships', main: `${champYears.length}`, sub: champYears.length ? `Years: ${champsDisplay.join(', ')}` : '\u2014' },
       { title: 'Saunders', main: `${sauYears.length}`, sub: sauYears.length ? `Years: ${sauDisplay.join(', ')}` : '\u2014' },
       { title: 'Regular-Season Titles', main: `${regYears.length}`, sub: regYears.length ? `Years: ${regYears.join(', ')}` : '\u2014' },
       { title: 'Avg Finish', main: nfmtFn(avgFinishValue, 2), sub: avgFinish.length ? `Seasons: ${avgFinish.length}` : '\u2014' },
@@ -393,7 +393,7 @@ function topHighlightsHtml(team, opts = {}) {
     return `
     <div class="overview-chip">
       <h4>League view</h4>
-      <div class="big">Select a team to see Darlings &amp; Saunders</div>
+      <div class="big">Select a team to see Championships &amp; Saunders</div>
       <div class="sub">Filters still work (e.g., Week 1). See Team Breakdown below.</div>
     </div>`;
   }
@@ -410,7 +410,7 @@ function topHighlightsHtml(team, opts = {}) {
       chipTile.title,
       chipTile.kind === 'notes' ? '' : (chipTile.main || '\u2014'),
       chipTile.sub || '\u2014',
-      chipTile.title === 'Darlings' ? 'champs' : chipTile.title === 'Saunders' ? 'sau' : chipTile.title === 'Regular-Season Titles' ? 'regs' : chipTile.title === 'Avg Finish' ? 'avg-finish' : ''
+      chipTile.title === 'Championships' ? 'champs' : chipTile.title === 'Saunders' ? 'sau' : chipTile.title === 'Regular-Season Titles' ? 'regs' : chipTile.title === 'Avg Finish' ? 'avg-finish' : ''
     )),
   ].join('');
 }
@@ -470,7 +470,7 @@ function exactSetMatch(members, selectedOpponents, selfTeam = null) {
 
 function isFxEligible(rivalry) {
   const t = (rivalry.type || 'group').toLowerCase();
-  return t === 'group' || (t === 'pair' && rivalry.slug && (rivalry.slug === 'nuss-rishi' || rivalry.slug === 'singer-nuss'));
+  return t === 'group' || t === 'pair';
 }
 
 function aggregateVsOpps(team, games, members) {

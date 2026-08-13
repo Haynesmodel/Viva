@@ -33,7 +33,7 @@ function game(overrides = {}) {
 
 function current(games, overrides = {}) {
   return {
-    source: 'fixture', league_id: 'fixture', season: 2026,
+    source: 'fixture', league_key: 'fixture', season: 2026,
     generated_at: '2026-09-07T12:00:00Z', current_week: 1,
     regular_season_max_week: 14, max_week: 17, weeks_fetched: [1],
     playoff_rules: { regular_season_max_week: 14, playoff_slots: 1, bye_slots: 0, saunders_slots: 1, standings_tiebreakers: ['win_pct'] },
@@ -48,7 +48,7 @@ test.before(async () => {
     ? path.join(root, 'coverage')
     : os.tmpdir();
   fs.mkdirSync(tempRoot, { recursive: true });
-  temp = fs.mkdtempSync(path.join(tempRoot, 'darling-season-domain-'));
+  temp = fs.mkdtempSync(path.join(tempRoot, 'viva-season-domain-'));
   await esbuild.build({
     entryPoints: [
       path.join(root, 'src/data/season-presentation.ts'),

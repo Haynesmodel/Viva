@@ -11,7 +11,7 @@ const SCHEMA_FILES = Object.freeze([
   'season-summary.schema.json',
   'rivalries.schema.json',
   'current-season.schema.json',
-  'transaction-history.schema.json',
+  'shotguns.schema.json',
   'draft-spot.schema.json',
   'derived-stats.schema.json',
   'asset-manifest.schema.json',
@@ -36,7 +36,7 @@ function createAjv(root = process.cwd(), opts = {}) {
 }
 
 function schemaId(file) {
-  return `https://darling.example/schemas/${file}`;
+  return `https://viva.example/schemas/${file}`;
 }
 
 function describeError(assetPath, error) {

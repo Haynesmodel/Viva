@@ -60,7 +60,7 @@ export function buildShareCard(
     dataVersion: facts.dataVersion,
     altText: facts.altText,
     accent: facts.accent || accents[kind],
-    filename: `darling-${kind}-${safeId(facts.id)}.png`,
+    filename: `viva-${kind}-${safeId(facts.id)}.png`,
   };
   return validateShareCardSpec(spec, environment);
 }

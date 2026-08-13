@@ -1,6 +1,6 @@
 import type { AppContext, AppRoute } from './app-types';
 
-export const FEATURE_IDS = ['pulse', 'owner', 'transactions', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet'] as const;
+export const FEATURE_IDS = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet', 'shotguns'] as const;
 export type FeatureId = typeof FEATURE_IDS[number];
 
 export interface FeatureActivation {
@@ -10,7 +10,7 @@ export interface FeatureActivation {
   reason: 'bootstrap' | 'tab' | 'popstate' | 'search' | 'retry';
 }
 
-export interface DarlingFeatureController {
+export interface VivaFeatureController {
   readonly id: FeatureId;
   mount(context: AppContext): void | Promise<void>;
   activate(input: FeatureActivation): void | Promise<void>;
@@ -18,6 +18,6 @@ export interface DarlingFeatureController {
   dispose?(): void | Promise<void>;
 }
 
-export interface DarlingFeatureModule {
-  createFeatureController(): DarlingFeatureController;
+export interface VivaFeatureModule {
+  createFeatureController(): VivaFeatureController;
 }

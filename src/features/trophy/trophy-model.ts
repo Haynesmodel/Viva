@@ -315,7 +315,7 @@ function topStatHighlights(view: { owner: string; leagueRanks: TrophyLeagueRanks
   const owner = view.owner;
   const metrics = view.leagueRanks.metrics;
   const keys: Array<[TrophyMetricKey, string, string | null, TrophyRankMetric]> = [
-    ['championships', 'Darlings', 'trophy', metrics.championships],
+    ['championships', 'Championships', 'trophy', metrics.championships],
     ['regularTitles', 'Regular Titles', 'medal', metrics.regularTitles],
     ['weeklyCrowns', 'Weekly Crowns', 'medal', metrics.weeklyCrowns],
     ['playoffWins', 'Playoff Wins', 'football', metrics.playoffWins],
@@ -720,7 +720,7 @@ function computeOwnerIdentity(ownerProfile: TrophyOwnerCareerProfile, leagueRank
   })();
 
   const summaryParts: string[] = [];
-  if (champCount > 0) summaryParts.push(`${champCount} Darlings`);
+  if (champCount > 0) summaryParts.push(`${champCount} Championships`);
   if (regularTitleCount > 0) summaryParts.push(`${regularTitleCount} regular-season titles`);
   if (top2Seeds > 0) summaryParts.push(`${top2Seeds} byes`);
   if (weeklyCrowns > 0) summaryParts.push(`${weeklyCrowns} weekly crowns`);
@@ -749,7 +749,7 @@ function buildHeroView(ownerProfile: TrophyOwnerCareerProfile, identity: TrophyI
   const record = `${regularRecordString(ownerProfile)} (${recordPct})`;
   const highlights = topStatHighlights({ owner: ownerProfile.owner, leagueRanks });
   const bestAchievement = ownerProfile.counts.championships > 0
-    ? `${joinYears(ownerProfile.years.champions)} Darling`
+    ? `${joinYears(ownerProfile.years.champions)} Viva`
     : ownerProfile.counts.regularTitles > 0
       ? `${joinYears(ownerProfile.years.regularTitles)} regular-season title`
       : ownerProfile.bestPFSeason
@@ -774,7 +774,7 @@ function buildHeroView(ownerProfile: TrophyOwnerCareerProfile, identity: TrophyI
     best: bestAchievement,
     worst: worstScar,
     rankContext: [
-      championshipRank !== null ? `Darlings #${championshipRank}` : null,
+      championshipRank !== null ? `Championships #${championshipRank}` : null,
       regularTitleRank !== null ? `Regular titles #${regularTitleRank}` : null,
       weeklyRank !== null ? `Weekly crowns #${weeklyRank}` : null,
     ].filter((value): value is string => value !== null).join(' | '),
@@ -785,7 +785,7 @@ function computeHardwareShelf(ownerProfile: TrophyOwnerCareerProfile, leagueRank
   const rankMap = leagueRanks.byOwner.get(ownerProfile.owner);
   const items = [
     {
-      label: 'Darlings',
+      label: 'Championships',
       count: ownerProfile.counts.championships,
       years: ownerProfile.years.champions,
       rank: rankMap?.championships.rank ?? null,

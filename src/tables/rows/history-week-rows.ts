@@ -1,6 +1,6 @@
-import type { DarlingTableRow, TableContext } from '../table-types';
+import type { VivaTableRow, TableContext } from '../table-types';
 
-export function adaptHistoryWeekRows(rows: unknown[], context: TableContext = {}): DarlingTableRow[] {
+export function adaptHistoryWeekRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   return rows.map((input, index) => {
     const row = input as Record<string, any>;
     const pf = Number(row.pf) || 0;

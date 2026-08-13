@@ -1,5 +1,5 @@
 import type { LoadedLeagueAssets } from '../data/load-league-assets';
-import type { DarlingTableRuntime } from '../tables/table-types';
+import type { VivaTableRuntime } from '../tables/table-types';
 import type { FeatureId } from './feature-contract';
 import type { DataFreshnessRuntime } from '../components/data-freshness/DataFreshnessBadge';
 import type { OwnerPreferenceService } from './services/owner-preference-service';
@@ -55,7 +55,7 @@ export interface AppContext {
   readonly header: HeaderService;
   readonly theme: ThemeContextService;
   readonly status: FeatureStatusService;
-  readonly tables: DarlingTableRuntime;
+  readonly tables: VivaTableRuntime;
   readonly freshness: DataFreshnessRuntime;
   readonly ownerPreference: OwnerPreferenceService;
   readonly diagnostics: AppDiagnostics;

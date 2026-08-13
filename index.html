@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Darling</title>
+  <title>Viva</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="The Darling league history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
-  <meta property="og:title" content="The Darling" />
+  <meta name="description" content="Viva league history, current season, rivalries, trophies, Dynasty, Draft Spot, Shotguns, and weekly recaps." />
+  <meta property="og:title" content="Viva" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://haynesmodel.github.io/Darling/" />
-  <meta property="og:description" content="League history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
-  <meta property="og:site_name" content="The Darling" />
-  <meta property="og:image" content="https://haynesmodel.github.io/Darling/assets/share/darling-default-card.png" />
-  <meta property="og:image:secure_url" content="https://haynesmodel.github.io/Darling/assets/share/darling-default-card.png" />
+  <meta property="og:url" content="https://haynesmodel.github.io/Viva/" />
+  <meta property="og:description" content="Viva league history, current season, rivalries, trophies, Dynasty, Draft Spot, Shotguns, and weekly recaps." />
+  <meta property="og:site_name" content="Viva" />
+  <meta property="og:image" content="https://haynesmodel.github.io/Viva/assets/share/viva-default-card.png" />
+  <meta property="og:image:secure_url" content="https://haynesmodel.github.io/Viva/assets/share/viva-default-card.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="The Darling league site: history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
+  <meta property="og:image:alt" content="Viva league history and Shotguns." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Darling" />
-  <meta name="twitter:description" content="League history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
-  <meta name="twitter:image" content="https://haynesmodel.github.io/Darling/assets/share/darling-default-card.png" />
-  <meta name="twitter:image:alt" content="The Darling league site: history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps." />
+  <meta name="twitter:title" content="Viva" />
+  <meta name="twitter:description" content="Viva league history and Shotguns." />
+  <meta name="twitter:image" content="https://haynesmodel.github.io/Viva/assets/share/viva-default-card.png" />
+  <meta name="twitter:image:alt" content="Viva league history and Shotguns." />
 </head>
 <body>
   <div id="appShell">
@@ -61,8 +61,8 @@
       <div id="themeControls"></div>
     </div>
     <div class="inner">
-      <h1>The Darling</h1>
-      <h2>The Darling</h2>
+      <h1>Viva</h1>
+      <h2>Viva</h2>
       <div class="banners" id="headerBanners"></div>
     </div>
   </header>
@@ -79,7 +79,7 @@
           <a id="tabOwnerBtn" data-feature-id="owner" href="?tab=owner">
             My Team<span class="visually-hidden" data-owner-preference-status>, not chosen</span>
           </a>
-          <a id="tabTransactionsBtn" data-feature-id="transactions" href="?tab=transactions">Transactions</a>
+          <a id="tabShotgunsBtn" data-feature-id="shotguns" href="?tab=shotguns">Shotguns</a>
           <a id="tabHistoryBtn" data-feature-id="history" href="?tab=history">League History</a>
           <a id="tabTrophyBtn" data-feature-id="trophy" href="?tab=trophy">Trophy Case</a>
           <a id="tabDynastyBtn" data-feature-id="dynasty" href="?tab=dynasty">Dynasty Rankings</a>
@@ -120,11 +120,9 @@
       <div id="ownerHubRoot"></div>
     </section>
 
-    <section id="page-transactions" class="page" aria-labelledby="page-transactions-title" hidden>
-      <h2 id="page-transactions-title" class="visually-hidden">Transactions</h2>
-      <div id="transactionHistoryRoot">
-        <div class="status-banner status-loading" role="status">Open Transactions to load player movement history.</div>
-      </div>
+    <section id="page-shotguns" class="page" aria-labelledby="page-shotguns-title" hidden>
+      <h2 id="page-shotguns-title" class="visually-hidden">Shotguns</h2>
+      <div id="shotgunsRoot"><div class="status-banner status-loading" role="status">Open Shotguns to load the Viva archive.</div></div>
     </section>
 
     <section id="page-history" class="page" aria-labelledby="page-history-title" hidden>
@@ -356,6 +354,12 @@
       </details>
     </section>
   </main>
+
+  <dialog id="shotgunDialog" class="shotgun-dialog" aria-labelledby="shotgunDialogTitle">
+    <div class="shotgun-dialog-actions"><button type="button" class="btn" data-shotgun-close>Close</button></div>
+    <h2 id="shotgunDialogTitle" class="visually-hidden">Shotgun video</h2>
+    <video id="shotgunVideo" controls preload="none"></video>
+  </dialog>
 
   <div id="fxCrown" class="fx-layer"></div>
   <div id="fxSaunders" class="fx-layer"></div>

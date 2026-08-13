@@ -1,11 +1,11 @@
 import './owner-hub.entry.css';
 import { h, render } from 'preact';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { OwnerHubPage } from './OwnerHubPage';
 import { buildOwnerHubModel } from './owner-hub-model';
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let root: HTMLElement | null = null;
   let activeSignal: AbortSignal | null = null;

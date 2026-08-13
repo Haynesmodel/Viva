@@ -7,7 +7,7 @@ const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
 async function loadTsModule(entry) {
-  const outDir = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-theme-test-'));
+  const outDir = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-theme-test-'));
   const outfile = path.join(outDir, `${path.basename(entry, path.extname(entry))}.mjs`);
   await esbuild.build({
     entryPoints: [path.join(process.cwd(), entry)],
@@ -122,7 +122,7 @@ test('theme runtime persists choices and reacts to app context', async () => {
   const stub = createDocumentStub();
   const storage = createStorage();
   const listeners = [];
-  const runtime = mod.createDarlingThemeRuntime({
+  const runtime = mod.createVivaThemeRuntime({
     document: stub.document,
     window: {
       localStorage: storage,
@@ -137,7 +137,7 @@ test('theme runtime persists choices and reacts to app context', async () => {
   });
 
   runtime.setColorSchemePreference('dark');
-  assert.equal(storage.getItem('darling.colorScheme'), 'dark');
+  assert.equal(storage.getItem('viva.colorScheme'), 'dark');
   assert.equal(stub.document.documentElement.dataset.colorScheme, 'dark');
 
   runtime.applyAppContext({ accentKind: 'rivalry', rivalryA: 'Joe', rivalryB: 'Joel', seasonMode: 'postseason' });

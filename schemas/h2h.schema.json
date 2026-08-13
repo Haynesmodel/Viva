@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://darling.example/schemas/h2h.schema.json",
+  "$id": "https://viva.example/schemas/h2h.schema.json",
   "title": "H2H game history",
   "description": "The authoritative historical matchup array.",
   "type": "array",

@@ -1,7 +1,7 @@
 import './dynasty.entry.css';
 import { h, render } from 'preact';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { createSectionDisclosure, type SectionDisclosureController } from '../../app/section-disclosure';
 import { mountDynastyCard } from '../../share/share-card-feature-adapters';
 import type { ShareCardActionController } from '../../share/share-card-actions';
@@ -22,7 +22,7 @@ const disclosureSpecs: readonly DisclosureSpec[] = [
 
 function aggregateRows(value: readonly unknown[]): Record<string, unknown>[] { return value.filter((row): row is Record<string, unknown> => Boolean(row && typeof row === 'object' && !Array.isArray(row))); }
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let root: HTMLElement | null = null;
   let activeSignal: AbortSignal | null = null;

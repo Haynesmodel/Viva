@@ -12,7 +12,7 @@ import {
   renderCurrentTeamSnapshots,
 } from '../../../js/current-season-renderers.js';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { createSectionDisclosure, type SectionDisclosureController } from '../../app/section-disclosure';
 import { seasonModeFromLabels } from '../../app/feature-utils';
 import {
@@ -27,7 +27,7 @@ import {
 } from '../../share/share-card-actions';
 import { mountCurrentMatchupCards } from '../../share/share-card-feature-adapters';
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let state: any = null;
   let activeSignal: AbortSignal | null = null;

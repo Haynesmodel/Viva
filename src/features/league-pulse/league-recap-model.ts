@@ -328,7 +328,7 @@ function seasonEdition(data: PulseModelData, pathname: string, season: number): 
     { label: 'Saunders winner', value: review.saunders, detail: 'Saunders Bowl' },
     ...review.superlatives.slice(0, 1),
   ];
-  return { ...base, state: 'complete', headline: `${review.champion} wins the ${season} Darling`, statusLabel: 'Final', facts: review, highlights, issue: null };
+  return { ...base, state: 'complete', headline: `${review.champion} wins the ${season} Viva championship`, statusLabel: 'Final', facts: review, highlights, issue: null };
 }
 
 export function buildLeagueNewspaper(data: PulseModelData, pathname: string): LeagueNewspaperModel {

@@ -34,7 +34,7 @@ function finalizingAt(generatedAt) {
 }
 
 test.before(async () => {
-  tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-freshness-'));
+  tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-freshness-'));
   const freshnessOutput = path.join(tempDir, 'freshness.mjs');
   const runtimeOutput = path.join(tempDir, 'freshness-runtime.mjs');
   await Promise.all([

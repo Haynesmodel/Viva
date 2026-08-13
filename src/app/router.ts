@@ -11,7 +11,7 @@ export function normalizeFeatureId(value: unknown): FeatureId {
 export function inferFeatureId(route: ReturnType<typeof parseUrlState>): FeatureId {
   if (route.tab !== null && route.tab !== undefined) return normalizeFeatureId(route.tab);
   if (route.hasOwner) return 'owner';
-  if (route.hasTransactions) return 'transactions';
+  if (route.hasShotguns) return 'shotguns';
   if (route.hasRivalry) return 'rivalry';
   if (route.hasCurrent || route.focus === 'standings' || route.focus === 'playoff-picture') return 'current';
   if (route.hasTrophy) return 'trophy';

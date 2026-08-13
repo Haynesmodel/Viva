@@ -3,7 +3,7 @@ import InteractiveTable from '../components/tables/InteractiveTable';
 import './table.entry.css';
 import { readSavedViews, tableContextsMatch } from './table-saved-views';
 import type {
-  DarlingTableRuntime,
+  VivaTableRuntime,
   SavedTableView,
   TableContext,
   TableId,
@@ -14,7 +14,7 @@ import type {
 
 const pendingSavedViews = new Map<TableId, SavedTableView>();
 
-export function createTableRuntime(): DarlingTableRuntime {
+export function createTableRuntime(): VivaTableRuntime {
   const registrations = new Map<TableId, { definition: TableRegistryEntry; adapter: TableRowAdapter }>();
   const registration = (tableId: TableId) => {
     const found = registrations.get(tableId);

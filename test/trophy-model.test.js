@@ -68,7 +68,7 @@ test('Trophy view model is pure and typed at the feature boundary', () => {
   assert.equal(view.careerShape.rows[0].season, 2024);
   assert.equal(view.seasonLedger[0].record, '8-4-0');
   assert.deepEqual(view.hardwareShelf.map(item => item.state), ['empty', 'earned', 'empty', 'earned', 'earned', 'empty', 'empty', 'empty']);
-  assert.equal(view.hardwareShelf.find(item => item.label === 'Darlings')?.context, 'Still chasing the first one');
+  assert.equal(view.hardwareShelf.find(item => item.label === 'Championships')?.context, 'Still chasing the first one');
   assert.equal(view.hardwareShelf.find(item => item.label === 'Wild cards')?.context, 'Back-door playoff appearances');
 });
 
@@ -330,7 +330,7 @@ test('Trophy hardware shelf preserves the semantic tone mapping for each card fa
   assert.deepEqual(
     shelf.map(({ label, tone }) => [label, tone]),
     [
-      ['Darlings', 'gold'],
+      ['Championships', 'gold'],
       ['Regular-season titles', 'gold'],
       ['Byes', 'neutral'],
       ['Wild cards', 'neutral'],

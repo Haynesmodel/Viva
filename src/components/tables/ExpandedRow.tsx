@@ -1,7 +1,7 @@
-import type { DarlingTableRow } from '../../tables/table-types';
+import type { VivaTableRow } from '../../tables/table-types';
 
 interface ExpandedRowProps {
-  row: DarlingTableRow;
+  row: VivaTableRow;
   colSpan: number;
   detailId: string;
 }

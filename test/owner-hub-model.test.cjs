@@ -67,7 +67,7 @@ function data(overrides = {}) {
 test('builds deterministic historical cards and encoded explicit deep links', () => {
   const model = ownerHub.buildOwnerHubModel(data(), {
     owner: 'A&B + C/Δ',
-    pathname: '/Darling/',
+    pathname: '/Viva/',
   });
   assert.equal(model.identity.completedSeasons, 3);
   assert.equal(model.legacy.championships, 1);
@@ -89,14 +89,14 @@ test('scheduled current matchup has no false 0-0 result and aliases stay owner-s
     regular_season_max_week: 14,
     playoff_rules: { regular_season_max_week: 14 },
     teams: [
-      { owner: 'A&B + C/Δ', display_name: 'Display <img>', sleeper_team_name: 'Team & Co' },
-      { owner: 'Beta', display_name: 'Beta', sleeper_team_name: 'Beta' },
+      { owner: 'A&B + C/Δ', display_name: 'Display <img>', source_team_name: 'Team & Co' },
+      { owner: 'Beta', display_name: 'Beta', source_team_name: 'Beta' },
     ],
     games: [game(2026, 1, 'A&B + C/Δ', 'Beta', null, null, { status: 'scheduled', matchup_id: 1 })],
   };
   const model = ownerHub.buildOwnerHubModel(data({ currentSeason }), {
     owner: 'A&B + C/Δ',
-    pathname: '/Darling/',
+    pathname: '/Viva/',
   });
   assert.equal(model.identity.displayName, 'Display <img>');
   assert.equal(model.identity.teamName, 'Team & Co');
@@ -111,14 +111,14 @@ test('offseason data uses the latest completed season instead of a stale week ca
     regular_season_max_week: 14,
     playoff_rules: { regular_season_max_week: 14 },
     teams: [
-      { owner: 'A&B + C/Δ', display_name: 'Display', sleeper_team_name: '' },
-      { owner: 'Beta', display_name: 'Beta', sleeper_team_name: '' },
+      { owner: 'A&B + C/Δ', display_name: 'Display', source_team_name: '' },
+      { owner: 'Beta', display_name: 'Beta', source_team_name: '' },
     ],
     games: [game(2025, 17, 'A&B + C/Δ', 'Beta', 101, 99, { status: 'final', matchup_id: 1, type: 'Playoff' })],
   };
   const model = ownerHub.buildOwnerHubModel(data({ currentSeason }), {
     owner: 'A&B + C/Δ',
-    pathname: '/Darling/',
+    pathname: '/Viva/',
   });
   assert.equal(model.rightNow.heading, '2025 season');
   assert.match(model.rightNow.summary, /Finished No\. 2/);
@@ -130,7 +130,7 @@ test('current-only and history-only inputs degrade cards independently', () => {
     current_week: 1,
     regular_season_max_week: 14,
     playoff_rules: { regular_season_max_week: 14 },
-    teams: [{ owner: 'Expansion', display_name: 'Expansion', sleeper_team_name: '' }, { owner: 'Beta', display_name: 'Beta', sleeper_team_name: '' }],
+    teams: [{ owner: 'Expansion', display_name: 'Expansion', source_team_name: '' }, { owner: 'Beta', display_name: 'Beta', source_team_name: '' }],
     games: [game(2026, 1, 'Expansion', 'Beta', null, null, { status: 'scheduled', matchup_id: 1 })],
   };
   const model = ownerHub.buildOwnerHubModel(data({
@@ -153,8 +153,8 @@ test('live and final current matchups expose score, standings, and opponent fall
     regular_season_max_week: 14,
     playoff_rules: { regular_season_max_week: 14 },
     teams: [
-      { owner: 'A&B + C/Δ', display_name: 'A&B + C/Δ', sleeper_team_name: 'A&B + C/Δ' },
-      { owner: 'Beta', display_name: 'Beta', sleeper_team_name: '' },
+      { owner: 'A&B + C/Δ', display_name: 'A&B + C/Δ', source_team_name: 'A&B + C/Δ' },
+      { owner: 'Beta', display_name: 'Beta', source_team_name: '' },
     ],
     games: [
       game(2026, 1, 'A&B + C/Δ', 'Beta', 120, 90, { status: 'final', matchup_id: 2 }),

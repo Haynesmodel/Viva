@@ -52,13 +52,13 @@ function showPage(id, doc) {
   if (!root) return;
   if (
     typeof window !== 'undefined'
-    && window.darlingAccessibility?.syncPageState
+    && window.vivaAccessibility?.syncPageState
     && root === document
   ) {
-    window.darlingAccessibility.syncPageState(id);
+    window.vivaAccessibility.syncPageState(id);
     return;
   }
-  const resolvedId = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet'].includes(id)
+  const resolvedId = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet', 'shotguns'].includes(id)
     ? id
     : 'pulse';
   root.querySelectorAll('[data-feature-id]').forEach((destination) => {

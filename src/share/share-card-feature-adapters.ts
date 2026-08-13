@@ -241,7 +241,7 @@ export function mountTrophyCard(host: HTMLElement | null, view: TrophyShareFacts
           detail: recordParts ? `${recordParts[2]} wins` : undefined,
         },
         { label: 'League rank', value: rank || '—' },
-        { label: 'Darlings', value: String(hardware.get('Darlings') || 0) },
+        { label: 'Championships', value: String(hardware.get('Championships') || 0) },
         { label: 'Saunders titles', value: String(hardware.get('Saunders titles') || 0) },
       ],
       canonicalPath,

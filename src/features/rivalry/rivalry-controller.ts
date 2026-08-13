@@ -1,7 +1,7 @@
 import './rivalry.entry.css';
 import { h, render } from 'preact';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { ALL_TEAMS } from '../../app/feature-utils';
 import { createSectionDisclosure, type SectionDisclosureController } from '../../app/section-disclosure';
 import type { ShareCardActionController } from '../../share/share-card-actions';
@@ -12,7 +12,7 @@ import { availableRivalryTeams, buildPairOptions, normalizeRivalryScope, resolve
 import { registerRivalryTables } from './rivalry-tables';
 import type { RivalryGame, RivalryState, RivalryViewModel } from './rivalry-types';
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let root: HTMLElement | null = null;
   let state: RivalryState = { teamA: '', teamB: '', scope: 'allTime' };

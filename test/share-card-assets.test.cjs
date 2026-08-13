@@ -6,7 +6,7 @@ const path = require('node:path');
 const sharp = require('sharp');
 
 const root = path.join(__dirname, '..');
-const sourceCard = path.join(root, 'assets/share/darling-default-card.png');
+const sourceCard = path.join(root, 'assets/share/viva-default-card.png');
 const {
   decodePortableText,
   generateShareCardAssets,
@@ -21,9 +21,9 @@ const {
 } = require('../scripts/sync_public_assets.cjs');
 
 function fixture() {
-  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-share-assets-'));
-  const source = path.join(directory, 'assets/share/darling-default-card.png');
-  const built = path.join(directory, 'dist/assets/share/darling-default-card.png');
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-share-assets-'));
+  const source = path.join(directory, 'assets/share/viva-default-card.png');
+  const built = path.join(directory, 'dist/assets/share/viva-default-card.png');
   fs.mkdirSync(path.dirname(source), { recursive: true });
   fs.mkdirSync(path.dirname(built), { recursive: true });
   fs.copyFileSync(sourceCard, source);
@@ -35,7 +35,7 @@ function fixture() {
 }
 
 test('default card generation is deterministic and drift detection fails closed', async () => {
-  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-share-generate-'));
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-share-generate-'));
   try {
     const output = path.join(directory, 'card.png');
     const generated = await generateShareCardAssets(root, { output });
@@ -51,7 +51,7 @@ test('default card generation is deterministic and drift detection fails closed'
 });
 
 test('portable default-card text is platform-independent and fails closed', () => {
-  assert.equal(decodePortableText('&lt;Darling&gt; &quot;2014–present&quot; &apos;ok&apos;'), '<DARLING> "2014-PRESENT" \'OK\'');
+  assert.equal(decodePortableText('&lt;Viva&gt; &quot;2014–present&quot; &apos;ok&apos;'), '<VIVA> "2014-PRESENT" \'OK\'');
   assert.equal(decodePortableText('&amp;lt;'), '&LT;');
   const style = { size: 16, scale: 2, fill: '#fff', spacing: 1 };
   const start = portableTextPath('AB', 20, 40, style);
@@ -74,7 +74,7 @@ test('portable default-card text is platform-independent and fails closed', () =
 });
 
 test('share generator and public sync CLIs report success and failure without hidden writes', async () => {
-  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-share-cli-'));
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-share-cli-'));
   const messages = [];
   const logger = {
     log: message => messages.push(String(message)),
@@ -84,11 +84,11 @@ test('share generator and public sync CLIs report success and failure without hi
     assert.equal(await runGeneratorCli({ root: directory, args: [], logger }), 0);
     assert.equal(await runGeneratorCli({ root: directory, args: ['--check'], logger }), 0);
     assert.equal(runSyncCli(directory, logger), 0);
-    assert.ok(messages.some(message => message.includes('Generated assets/share/darling-default-card.png')));
+    assert.ok(messages.some(message => message.includes('Generated assets/share/viva-default-card.png')));
     assert.ok(messages.some(message => message.includes('Default share card is current')));
     assert.ok(messages.some(message => message.includes('Synced assets to public/assets')));
 
-    const missing = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-share-cli-missing-'));
+    const missing = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-share-cli-missing-'));
     try {
       assert.equal(await runGeneratorCli({ root: missing, args: ['--check'], logger }), 1);
       assert.equal(runSyncCli(missing, logger), 1);
@@ -113,11 +113,11 @@ test('committed card is a bounded exact 1200x630 PNG', async () => {
 
 test('share media allowlist accepts exactly one normalized path', () => {
   const assets = path.join(root, 'assets');
-  assert.equal(isDeployableAsset(assets, path.join(assets, 'share/darling-default-card.png')), true);
+  assert.equal(isDeployableAsset(assets, path.join(assets, 'share/viva-default-card.png')), true);
   for (const relative of [
-    'share/darling-default-card.jpg',
+    'share/viva-default-card.jpg',
     'share/other.png',
-    'share/nested/darling-default-card.png',
+    'share/nested/viva-default-card.png',
   ]) assert.equal(isDeployableAsset(assets, path.join(assets, relative)), false, relative);
 });
 
@@ -149,11 +149,11 @@ test('built audit catches missing, mismatched, oversized, invalid, and wrong-siz
 
 test('root metadata uses the absolute Open Graph and Twitter contract', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  const image = 'https://haynesmodel.github.io/Darling/assets/share/darling-default-card.png';
+  const image = 'https://haynesmodel.github.io/Viva/assets/share/viva-default-card.png';
   for (const fragment of [
-    'property="og:title" content="The Darling"',
+    'property="og:title" content="Viva"',
     'property="og:type" content="website"',
-    'property="og:url" content="https://haynesmodel.github.io/Darling/"',
+    'property="og:url" content="https://haynesmodel.github.io/Viva/"',
     `property="og:image" content="${image}"`,
     `property="og:image:secure_url" content="${image}"`,
     'property="og:image:type" content="image/png"',

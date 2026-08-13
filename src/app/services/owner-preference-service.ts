@@ -1,4 +1,4 @@
-export const FAVORITE_OWNER_STORAGE_KEY = 'darling.favoriteOwner.v1';
+export const FAVORITE_OWNER_STORAGE_KEY = 'viva.favoriteOwner.v1';
 
 export interface OwnerPreferenceSnapshot {
   readonly owner: string | null;

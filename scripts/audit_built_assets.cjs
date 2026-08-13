@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { TextDecoder } = require('node:util');
 const { sha256Json } = require('./data/canonical-json.cjs');
-const SHARE_CARD_PATH = path.join('assets', 'share', 'darling-default-card.png');
+const SHARE_CARD_PATH = path.join('assets', 'share', 'viva-default-card.png');
 const SHARE_CARD_MAX_BYTES = 250000;
 
 function readUtf8Json(filePath) {

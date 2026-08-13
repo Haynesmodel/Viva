@@ -60,7 +60,7 @@ const {
 } = require('../scripts/summarize_ci.cjs');
 
 function withTempRepo(callback) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-coverage-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-coverage-'));
   fs.mkdirSync(path.join(root, 'src'), { recursive: true });
   fs.mkdirSync(path.join(root, 'js'), { recursive: true });
   fs.mkdirSync(path.join(root, 'scripts'), { recursive: true });
@@ -72,7 +72,7 @@ function withTempRepo(callback) {
 }
 
 async function withTempRepoAsync(callback) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-coverage-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-coverage-'));
   fs.mkdirSync(path.join(root, 'src'), { recursive: true });
   fs.mkdirSync(path.join(root, 'js'), { recursive: true });
   fs.mkdirSync(path.join(root, 'scripts'), { recursive: true });
@@ -441,7 +441,7 @@ test('malformed, missing, and outside-repository maps fail clearly', () => {
     fs.writeFileSync(inside, 'export const inside = true;\n');
     assert.equal(normalizeCoveragePath(root, pathToFileURL(inside).href), fs.realpathSync.native(inside));
     assert.throws(() => normalizeCoveragePath(root, path.join(root, '..', 'outside.js')), /outside repository/);
-    const outside = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-outside-'));
+    const outside = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-outside-'));
     try {
       const outsideFile = path.join(outside, 'outside.js');
       const link = path.join(root, 'src', 'linked.js');
@@ -642,7 +642,7 @@ test('process runner reports success, exit failures, startup failures, and seque
     /failed with exit code 3/,
   );
   await assert.rejects(
-    runCommand('missing child', path.join(os.tmpdir(), 'missing-darling-command'), []),
+    runCommand('missing child', path.join(os.tmpdir(), 'missing-viva-command'), []),
     /could not start/,
   );
   await runSequence([
@@ -718,7 +718,7 @@ test('local CI orchestrator sets CI and builds exactly once', async () => {
   ]);
   assert.equal(calls.filter(call => call[2].includes('build')).length, 1);
   assert.ok(calls.every(call => call[3].env.CI === '1'));
-  assert.equal(calls[2][3].env.VITE_BASE_PATH, '/Darling/');
+  assert.equal(calls[2][3].env.VITE_BASE_PATH, '/Viva/');
   assert.equal(calls[0][1], npmCommand);
   const errors = [];
   const originalError = console.error;

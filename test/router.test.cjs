@@ -10,7 +10,7 @@ let temp;
 let router;
 
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-router-'));
+  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-router-'));
   await esbuild.build({ entryPoints: [path.join(__dirname, '../src/app/router.ts')], outfile: path.join(temp, 'router.js'), bundle: true, platform: 'node', format: 'esm', target: 'node20', logLevel: 'silent' });
   router = await import(`${pathToFileURL(path.join(temp, 'router.js')).href}?${Date.now()}`);
 });
@@ -26,7 +26,7 @@ test('route inference preserves implicit legacy URLs and defaults only bare stat
     ['?tab=owner', 'owner'], ['?owner=Joe', 'owner'], ['?tab=trophy&owner=Joe', 'trophy'],
   ];
   for (const [search, expected] of cases) {
-    const service = router.createNavigationService({ location: { pathname: '/Darling/', search }, history: { replaceState() {} } });
+    const service = router.createNavigationService({ location: { pathname: '/Viva/', search }, history: { replaceState() {} } });
     assert.equal(service.parse(search).tab, expected, search || 'bare');
   }
 });

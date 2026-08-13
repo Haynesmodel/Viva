@@ -34,17 +34,17 @@ async function readOptionalArrayJson(fetchFn, path, logger = console) {
   try {
     const res = await fetchFn(path);
     if (!responseOk(res)) {
-      logger.warn(`[Darling] ${path} missing - optional data disabled.`);
+      logger.warn(`[Viva] ${path} missing - optional data disabled.`);
       return [];
     }
     const data = await res.json();
     if (!Array.isArray(data) || data.length === 0) {
-      logger.warn(`[Darling] ${path} missing or empty - optional data disabled.`);
+      logger.warn(`[Viva] ${path} missing or empty - optional data disabled.`);
       return [];
     }
     return data;
   } catch {
-    logger.warn(`[Darling] ${path} not found/parse error - optional data disabled.`);
+    logger.warn(`[Viva] ${path} not found/parse error - optional data disabled.`);
     return [];
   }
 }
@@ -53,24 +53,24 @@ async function readOptionalObjectJson(fetchFn, path, logger = console) {
   try {
     const res = await fetchFn(path);
     if (!responseOk(res)) {
-      logger.warn(`[Darling] ${path} missing - optional data disabled.`);
+      logger.warn(`[Viva] ${path} missing - optional data disabled.`);
       return null;
     }
     const data = await res.json();
     if (!data || typeof data !== 'object' || Array.isArray(data)) {
-      logger.warn(`[Darling] ${path} missing or invalid - optional data disabled.`);
+      logger.warn(`[Viva] ${path} missing or invalid - optional data disabled.`);
       return null;
     }
     return data;
   } catch {
-    logger.warn(`[Darling] ${path} not found/parse error - optional data disabled.`);
+    logger.warn(`[Viva] ${path} not found/parse error - optional data disabled.`);
     return null;
   }
 }
 
 async function loadLeagueAssets(opts = {}) {
-  if (!opts.forceLegacy && !opts.paths && !opts.fetchFn && typeof globalThis.darlingDataLoader === 'function') {
-    return globalThis.darlingDataLoader({ logger: opts.logger || console });
+  if (!opts.forceLegacy && !opts.paths && !opts.fetchFn && typeof globalThis.vivaDataLoader === 'function') {
+    return globalThis.vivaDataLoader({ logger: opts.logger || console });
   }
   const fetchFn = opts.fetchFn || globalThis.fetch;
   if (typeof fetchFn !== 'function') {

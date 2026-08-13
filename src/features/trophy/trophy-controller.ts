@@ -1,7 +1,7 @@
 import './trophy.entry.css';
 import { h, render } from 'preact';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { createSectionDisclosure, type SectionDisclosureController } from '../../app/section-disclosure';
 import type { ShareCardActionController } from '../../share/share-card-actions';
 import { mountTrophyCard } from '../../share/share-card-feature-adapters';
@@ -16,7 +16,7 @@ function availableOwners(context: AppContext): string[] {
   ])].filter(Boolean).sort((a, b) => a.localeCompare(b));
 }
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let root: HTMLElement | null = null;
   let selectedOwner = '';

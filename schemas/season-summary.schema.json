@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://darling.example/schemas/season-summary.schema.json",
+  "$id": "https://viva.example/schemas/season-summary.schema.json",
   "title": "Season summary",
   "description": "One finalized standings and outcomes row per owner and season.",
   "type": "array",

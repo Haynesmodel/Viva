@@ -885,7 +885,7 @@ def build_pdf(rows: list[Row], figures: list[Path]) -> None:
     story = [
         Paragraph("Draft Spot vs Season Results", title),
         Paragraph(
-            f"The Darling league, {seasons[0]}-{seasons[-1]} draft boards with populated pick data ({len(rows)} team-seasons).",
+            f"The Viva league, {seasons[0]}-{seasons[-1]} draft boards with populated pick data ({len(rows)} team-seasons).",
             ParagraphStyle("Subtitle", parent=body, fontSize=11.5, leading=15, textColor=colors.HexColor(MUTED)),
         ),
         Spacer(1, 0.1 * inch),
@@ -1032,7 +1032,7 @@ def build_pdf(rows: list[Row], figures: list[Path]) -> None:
         canvas_obj.saveState()
         canvas_obj.setFont("Helvetica", 7.5)
         canvas_obj.setFillColor(colors.HexColor(MUTED))
-        canvas_obj.drawString(0.55 * inch, 0.25 * inch, "Draft Spot Analysis | The Darling")
+        canvas_obj.drawString(0.55 * inch, 0.25 * inch, "Draft Spot Analysis | Viva")
         canvas_obj.drawRightString(7.95 * inch, 0.25 * inch, f"Page {doc_obj.page}")
         canvas_obj.restoreState()
 

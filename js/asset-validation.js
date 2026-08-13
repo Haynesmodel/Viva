@@ -13,7 +13,7 @@
  *   playoff_losses, saunders_wins, saunders_losses, points_for?, points_against?,
  *   bagels_earned?, draft_pick?, bye?, champion?, saunders?, saunders_bye?, wild_card?
  * - `assets/Rivalries.json`: name, members[], type?, slug?, note?
- * - `assets/CurrentSeason.json`: source, league_id, season, generated_at, current_week?,
+ * - `assets/CurrentSeason.json`: source, league_key, season, generated_at, current_week?,
  *   games[] where each game is H2H-like plus status? and nullable scores for scheduled matchups.
  */
 

@@ -61,7 +61,7 @@ export function syncPageState(id: string, root: Document = document): void {
   const dialogsToClose = [...root.querySelectorAll<HTMLDialogElement>('dialog[open]')]
     .filter(dialog => !activePanel?.contains(dialog));
   dialogsToClose.forEach(dialog => {
-    const request = new CustomEvent('darling:dialog-navigation-close', {
+    const request = new CustomEvent('viva:dialog-navigation-close', {
       bubbles: true,
       cancelable: true,
       detail: { nextPage: resolvedId },

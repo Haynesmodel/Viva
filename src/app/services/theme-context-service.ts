@@ -7,7 +7,7 @@ function cleanOwner(owner?: string | null): string | undefined {
 
 export function createThemeContextService(win: Window): ThemeContextService {
   const apply = (context: Record<string, unknown>) => {
-    const runtime = win.darlingTheme as any;
+    const runtime = win.vivaTheme as any;
     if (runtime?.applyAppContext) {
       runtime.applyAppContext(context);
       return;

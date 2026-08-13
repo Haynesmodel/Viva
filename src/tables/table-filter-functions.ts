@@ -1,4 +1,4 @@
-import type { DarlingTableRow } from './table-types';
+import type { VivaTableRow } from './table-types';
 
 export interface NumberRangeValue {
   min?: number | null;
@@ -43,19 +43,19 @@ export function parseScore(value: unknown): number {
   return match ? Number(match[0]) : Number.NaN;
 }
 
-export function isPostseason(row: DarlingTableRow): boolean {
+export function isPostseason(row: VivaTableRow): boolean {
   return String(row.type ?? '').toLocaleLowerCase() !== 'regular';
 }
 
-export function isSaunders(row: DarlingTableRow): boolean {
+export function isSaunders(row: VivaTableRow): boolean {
   return `${row.type ?? ''} ${row.round ?? ''}`.toLocaleLowerCase().includes('saunders');
 }
 
-export function isCloseGame(row: DarlingTableRow, threshold = 5): boolean {
+export function isCloseGame(row: VivaTableRow, threshold = 5): boolean {
   return Math.abs(Number(row.margin)) <= threshold;
 }
 
-export function isBlowout(row: DarlingTableRow, threshold = 29): boolean {
+export function isBlowout(row: VivaTableRow, threshold = 29): boolean {
   return Math.abs(Number(row.margin)) >= threshold;
 }
 

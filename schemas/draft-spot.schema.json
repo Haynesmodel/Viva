@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://darling.example/schemas/draft-spot.schema.json",
+  "$id": "https://viva.example/schemas/draft-spot.schema.json",
   "title": "DraftSpot",
   "description": "Deterministic draft-position observations generated from SeasonSummary.",
   "type": "object",

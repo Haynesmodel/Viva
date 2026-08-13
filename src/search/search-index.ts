@@ -18,21 +18,18 @@ export function buildSearchIndex(data: SearchHydrationData): BuiltSearchIndex {
   const seasons = [...new Set(data.seasonSummaries.map(row => Number(row.season)))].sort((a, b) => b - a);
   const ownerAliases = new Map<string, string[]>();
   owners.forEach(owner => {
-    const sleeperTeam = data.currentSeason?.teams?.find(team => team.owner === owner);
+    const sourceTeam = data.currentSeason?.teams?.find(team => team.owner === owner);
     ownerAliases.set(owner, [
       owner,
-      sleeperTeam?.display_name,
-      sleeperTeam?.sleeper_team_name,
+      sourceTeam?.display_name,
+      sourceTeam?.source_team_name,
     ].filter(Boolean).map(value => normalizeSearchText(value)));
   });
 
   const documents: SearchDocument[] = [];
   const add = (document: SearchDocument | null) => { if (document) documents.push(document); };
-  ['pulse', 'owner', 'transactions', 'history', 'current', 'playoff-picture', 'trophy', 'dynasty', 'draft', 'gauntlet'].forEach(feature => {
+  ['pulse', 'owner', 'history', 'current', 'playoff-picture', 'trophy', 'dynasty', 'draft', 'gauntlet', 'shotguns'].forEach(feature => {
     add(buildIntentDocument({ kind: 'feature', feature: feature as never }, data));
-  });
-  (['trades', 'waivers', 'players', 'owners', 'draft'] as const).forEach(view => {
-    add(buildIntentDocument({ kind: 'transaction-view', view }, data));
   });
   ['theme-system', 'theme-light', 'theme-dark', 'export-history'].forEach(command => {
     add(buildIntentDocument({ kind: 'command', command: command as never }, data));
@@ -47,7 +44,6 @@ export function buildSearchIndex(data: SearchHydrationData): BuiltSearchIndex {
     add(buildIntentDocument({ kind: 'feature', feature: 'trophy', owner }, data));
     add(buildIntentDocument({ kind: 'feature', feature: 'dynasty', owner }, data));
     add(buildIntentDocument({ kind: 'draft-owner', owner }, data));
-    add(buildIntentDocument({ kind: 'transaction-view', view: 'owners', owner }, data));
   });
   Array.from({ length: 12 }, (_, index) => index + 1)
     .forEach(pick => add(buildIntentDocument({ kind: 'draft-pick', pick }, data)));

@@ -936,7 +936,7 @@ function validate24(data, { instancePath = "", parentData, parentDataProperty, r
 }
 validate24.evaluated = { "items": true, "dynamicProps": false, "dynamicItems": false };
 var validateRivalries = validate27;
-var schema56 = { "title": "RivalryDefinition", "type": "object", "additionalProperties": false, "required": ["slug", "name", "type", "members"], "properties": { "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }, "name": { "type": "string", "minLength": 1, "pattern": "\\S" }, "type": { "enum": ["pair", "group"] }, "members": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/owner" } }, "note": { "type": "string" } } };
+var schema56 = { "title": "RivalryDefinition", "type": "object", "additionalProperties": false, "required": ["slug", "name", "type", "members"], "properties": { "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }, "name": { "type": "string", "minLength": 1, "pattern": "\\S" }, "type": { "enum": ["pair", "group"] }, "members": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/owner" } }, "note": { "type": "string" } } };
 var pattern7 = new RegExp("^[a-z0-9]+(?:-[a-z0-9]+)*$", "u");
 function validate28(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
@@ -1046,7 +1046,7 @@ function validate28(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.members !== void 0) {
       let data3 = data.members;
       if (Array.isArray(data3)) {
-        if (data3.length < 2) {
+        if (data3.length < 1) {
           const err8 = { instancePath: instancePath + "/members" };
           if (vErrors === null) {
             vErrors = [err8];
@@ -1172,10 +1172,9 @@ function validate27(data, { instancePath = "", parentData, parentDataProperty, r
 }
 validate27.evaluated = { "items": true, "dynamicProps": false, "dynamicItems": false };
 var validateCurrentSeason = validate30;
-var schema58 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://darling.example/schemas/current-season.schema.json", "title": "Current season data", "description": "Sleeper update context, current team map, rules, and matchups.", "type": "object", "additionalProperties": false, "required": ["source", "league_id", "season", "generated_at", "current_week", "regular_season_max_week", "playoff_rules", "update_context", "max_week", "weeks_fetched", "teams", "games"], "properties": { "source": { "type": "string", "minLength": 1 }, "league_id": { "type": "string", "pattern": "^[0-9]+$" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "generated_at": { "type": "string", "format": "date-time" }, "current_week": { "type": ["integer", "null"], "minimum": 1, "maximum": 25 }, "regular_season_max_week": { "$ref": "common.schema.json#/$defs/week" }, "max_week": { "$ref": "common.schema.json#/$defs/week" }, "weeks_fetched": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/week" } }, "playoff_rules": { "type": "object", "additionalProperties": false, "required": ["regular_season_max_week", "playoff_slots", "bye_slots", "standings_tiebreakers", "saunders_slots"], "properties": { "regular_season_max_week": { "$ref": "common.schema.json#/$defs/week" }, "playoff_slots": { "type": "integer", "minimum": 1 }, "bye_slots": { "type": "integer", "minimum": 0 }, "saunders_slots": { "type": "integer", "minimum": 0 }, "standings_tiebreakers": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } } } }, "update_context": { "type": "object", "additionalProperties": false, "required": ["mode", "cutoff_date", "contains_live_scores", "contains_projected_scores"], "properties": { "mode": { "type": "string", "minLength": 1 }, "cutoff_date": { "$ref": "common.schema.json#/$defs/date" }, "contains_live_scores": { "type": "boolean" }, "contains_projected_scores": { "type": "boolean" } } }, "teams": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/team" } }, "games": { "type": "array", "items": { "$ref": "#/$defs/game" } } }, "$defs": { "team": { "title": "CurrentSeasonTeam", "type": "object", "additionalProperties": false, "required": ["roster_id", "owner", "display_name", "sleeper_team_name"], "properties": { "roster_id": { "type": "integer", "minimum": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "display_name": { "type": "string", "minLength": 1 }, "sleeper_team_name": { "type": "string" } } }, "game": { "title": "CurrentSeasonGame", "type": "object", "additionalProperties": false, "required": ["season", "date", "teamA", "teamB", "scoreA", "scoreB", "week", "round", "type", "status", "matchup_id", "rosterA", "rosterB"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "date": { "$ref": "common.schema.json#/$defs/date" }, "teamA": { "$ref": "common.schema.json#/$defs/owner" }, "teamB": { "$ref": "common.schema.json#/$defs/owner" }, "scoreA": { "$ref": "common.schema.json#/$defs/nullableScore" }, "scoreB": { "$ref": "common.schema.json#/$defs/nullableScore" }, "week": { "$ref": "common.schema.json#/$defs/week" }, "round": { "type": "string" }, "type": { "$ref": "common.schema.json#/$defs/gameType" }, "status": { "enum": ["scheduled", "live", "final"] }, "matchup_id": { "type": "integer", "minimum": 1 }, "rosterA": { "type": "integer", "minimum": 1 }, "rosterB": { "type": "integer", "minimum": 1 } } } } };
-var pattern10 = new RegExp("^[0-9]+$", "u");
+var schema58 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://viva.example/schemas/current-season.schema.json", "title": "Current season data", "description": "Manual ESPN update context, current team map, rules, and matchups.", "type": "object", "additionalProperties": false, "required": ["source", "league_key", "season", "generated_at", "current_week", "regular_season_max_week", "playoff_rules", "update_context", "max_week", "weeks_fetched", "teams", "games"], "properties": { "source": { "type": "string", "minLength": 1 }, "league_key": { "type": "string", "minLength": 1 }, "season": { "$ref": "common.schema.json#/$defs/season" }, "generated_at": { "type": "string", "format": "date-time" }, "current_week": { "type": ["integer", "null"], "minimum": 1, "maximum": 25 }, "regular_season_max_week": { "$ref": "common.schema.json#/$defs/week" }, "max_week": { "$ref": "common.schema.json#/$defs/week" }, "weeks_fetched": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/week" } }, "playoff_rules": { "type": "object", "additionalProperties": false, "required": ["regular_season_max_week", "playoff_slots", "bye_slots", "standings_tiebreakers", "saunders_slots"], "properties": { "regular_season_max_week": { "$ref": "common.schema.json#/$defs/week" }, "playoff_slots": { "type": "integer", "minimum": 1 }, "bye_slots": { "type": "integer", "minimum": 0 }, "saunders_slots": { "type": "integer", "minimum": 0 }, "standings_tiebreakers": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } } } }, "update_context": { "type": "object", "additionalProperties": false, "required": ["mode", "cutoff_date", "contains_live_scores", "contains_projected_scores"], "properties": { "mode": { "type": "string", "minLength": 1 }, "cutoff_date": { "$ref": "common.schema.json#/$defs/date" }, "contains_live_scores": { "type": "boolean" }, "contains_projected_scores": { "type": "boolean" } } }, "teams": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/team" } }, "games": { "type": "array", "items": { "$ref": "#/$defs/game" } } }, "$defs": { "team": { "title": "CurrentSeasonTeam", "type": "object", "additionalProperties": false, "required": ["roster_id", "owner", "display_name", "source_team_name"], "properties": { "roster_id": { "type": "integer", "minimum": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "display_name": { "type": "string", "minLength": 1 }, "source_team_name": { "type": "string" } } }, "game": { "title": "CurrentSeasonGame", "type": "object", "additionalProperties": false, "required": ["season", "date", "teamA", "teamB", "scoreA", "scoreB", "week", "round", "type", "status", "matchup_id", "rosterA", "rosterB"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "date": { "$ref": "common.schema.json#/$defs/date" }, "teamA": { "$ref": "common.schema.json#/$defs/owner" }, "teamB": { "$ref": "common.schema.json#/$defs/owner" }, "scoreA": { "$ref": "common.schema.json#/$defs/nullableScore" }, "scoreB": { "$ref": "common.schema.json#/$defs/nullableScore" }, "week": { "$ref": "common.schema.json#/$defs/week" }, "round": { "type": "string" }, "type": { "$ref": "common.schema.json#/$defs/gameType" }, "status": { "enum": ["scheduled", "live", "final"] }, "matchup_id": { "type": "integer", "minimum": 1 }, "rosterA": { "type": "integer", "minimum": 1 }, "rosterB": { "type": "integer", "minimum": 1 } } } } };
 var formats2 = require_standalone_formats().fullFormats["date-time"];
-var schema65 = { "title": "CurrentSeasonTeam", "type": "object", "additionalProperties": false, "required": ["roster_id", "owner", "display_name", "sleeper_team_name"], "properties": { "roster_id": { "type": "integer", "minimum": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "display_name": { "type": "string", "minLength": 1 }, "sleeper_team_name": { "type": "string" } } };
+var schema65 = { "title": "CurrentSeasonTeam", "type": "object", "additionalProperties": false, "required": ["roster_id", "owner", "display_name", "source_team_name"], "properties": { "roster_id": { "type": "integer", "minimum": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "display_name": { "type": "string", "minLength": 1 }, "source_team_name": { "type": "string" } } };
 function validate31(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
@@ -1199,7 +1198,7 @@ function validate31(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!(key0 === "roster_id" || key0 === "owner" || key0 === "display_name" || key0 === "sleeper_team_name")) {
+      if (!(key0 === "roster_id" || key0 === "owner" || key0 === "display_name" || key0 === "source_team_name")) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -1285,9 +1284,9 @@ function validate31(data, { instancePath = "", parentData, parentDataProperty, r
         errors++;
       }
     }
-    if (data.sleeper_team_name !== void 0) {
-      if (typeof data.sleeper_team_name !== "string") {
-        const err9 = { instancePath: instancePath + "/sleeper_team_name" };
+    if (data.source_team_name !== void 0) {
+      if (typeof data.source_team_name !== "string") {
+        const err9 = { instancePath: instancePath + "/source_team_name" };
         if (vErrors === null) {
           vErrors = [err9];
         } else {
@@ -1724,11 +1723,11 @@ function validate30(data, { instancePath = "", parentData, parentDataProperty, r
         errors++;
       }
     }
-    if (data.league_id !== void 0) {
-      let data1 = data.league_id;
+    if (data.league_key !== void 0) {
+      let data1 = data.league_key;
       if (typeof data1 === "string") {
-        if (!pattern10.test(data1)) {
-          const err4 = { instancePath: instancePath + "/league_id" };
+        if (func4(data1) < 1) {
+          const err4 = { instancePath: instancePath + "/league_key" };
           if (vErrors === null) {
             vErrors = [err4];
           } else {
@@ -1737,7 +1736,7 @@ function validate30(data, { instancePath = "", parentData, parentDataProperty, r
           errors++;
         }
       } else {
-        const err5 = { instancePath: instancePath + "/league_id" };
+        const err5 = { instancePath: instancePath + "/league_key" };
         if (vErrors === null) {
           vErrors = [err5];
         } else {
@@ -2327,16 +2326,427 @@ function validate30(data, { instancePath = "", parentData, parentDataProperty, r
   return errors === 0;
 }
 validate30.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var validateDraftSpot = validate35;
-var schema76 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://darling.example/schemas/draft-spot.schema.json", "title": "DraftSpot", "description": "Deterministic draft-position observations generated from SeasonSummary.", "type": "object", "additionalProperties": false, "required": ["schema_version", "generator_version", "source", "source_sha256", "generated_at", "season_range", "team_seasons", "correlations", "rows", "pick_summary", "zone_summary", "owner_recommendations"], "properties": { "schema_version": { "const": 1 }, "generator_version": { "const": 1 }, "source": { "const": "SeasonSummary.json" }, "source_sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "generated_at": { "type": "string", "format": "date-time" }, "season_range": { "type": "object", "additionalProperties": false, "required": ["start", "end"], "properties": { "start": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "end": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 } } }, "team_seasons": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "correlations": { "type": "object", "additionalProperties": false, "required": ["pick_finish", "draft_percentile_finish_score", "draft_percentile_points_z"], "properties": { "pick_finish": { "type": "number", "minimum": -1, "maximum": 1 }, "draft_percentile_finish_score": { "type": "number", "minimum": -1, "maximum": 1 }, "draft_percentile_points_z": { "type": "number", "minimum": -1, "maximum": 1 } } }, "rows": { "type": "array", "items": { "$ref": "#/$defs/row" } }, "pick_summary": { "type": "array", "items": { "$ref": "#/$defs/pickSummary" } }, "zone_summary": { "type": "array", "items": { "$ref": "#/$defs/zoneSummary" } }, "owner_recommendations": { "type": "array", "items": { "$ref": "#/$defs/ownerRecommendation" } } }, "$defs": { "rate": { "type": "number", "minimum": 0, "maximum": 1 }, "zoneKey": { "enum": ["early", "middle", "late"] }, "zoneLabel": { "enum": ["Early (1-3)", "Middle (4-7)", "Late (8+)"] }, "row": { "title": "DraftSpotRow", "type": "object", "additionalProperties": false, "required": ["season", "owner", "draft_pick", "team_count", "zone_key", "zone", "wins", "losses", "ties", "finish", "points_for", "points_against", "champion", "saunders", "made_playoffs", "top_three", "win_pct", "finish_score", "draft_percentile", "points_rank", "points_score", "points_z", "wins_above_avg"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "team_count": { "type": "integer", "minimum": 2, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "wins": { "type": "number", "minimum": 0 }, "losses": { "type": "number", "minimum": 0 }, "ties": { "type": "number", "minimum": 0 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_for": { "type": "number", "minimum": 0 }, "points_against": { "type": "number", "minimum": 0 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" }, "top_three": { "type": "boolean" }, "win_pct": { "$ref": "#/$defs/rate" }, "finish_score": { "$ref": "#/$defs/rate" }, "draft_percentile": { "$ref": "#/$defs/rate" }, "points_rank": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_score": { "$ref": "#/$defs/rate" }, "points_z": { "type": "number" }, "wins_above_avg": { "type": "number" } } }, "baseSummary": { "type": "object", "properties": { "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "avg_finish": { "type": "number", "minimum": 0, "maximum": 24 }, "avg_finish_score": { "$ref": "#/$defs/rate" }, "avg_wins_above_avg": { "type": "number" }, "avg_points_z": { "type": "number" }, "top_three_rate": { "$ref": "#/$defs/rate" }, "playoff_rate": { "$ref": "#/$defs/rate" }, "champion_rate": { "$ref": "#/$defs/rate" }, "saunders_rate": { "$ref": "#/$defs/rate" } } }, "pickSummary": { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["draft_pick", "n", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "championships", "champion_rate", "saunders_count", "saunders_rate"], "properties": { "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "n": true, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "champion_rate": true, "saunders_count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_rate": true } }] }, "zoneSummary": { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["zone_key", "zone", "n", "avg_pick", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "champion_rate", "saunders_rate"], "properties": { "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "n": true, "avg_pick": { "type": "number", "minimum": 1, "maximum": 24 }, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "champion_rate": true, "saunders_rate": true } }] }, "recommendationGroup": { "type": "object", "additionalProperties": true, "required": ["label", "n", "avg_finish", "avg_finish_score", "playoffs", "top_three", "titles", "saunders"], "properties": { "label": { "type": "string", "minLength": 1 }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "avg_finish": { "type": "number", "minimum": 0, "maximum": 24 }, "avg_finish_score": { "$ref": "#/$defs/rate" }, "playoffs": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "top_three": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" } } }, "ownerRecommendation": { "title": "DraftSpotOwnerRecommendation", "type": "object", "additionalProperties": false, "required": ["owner", "target", "recommendation", "caution", "best_pick", "best_zone", "history", "confidence"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "target": { "type": "string", "minLength": 1 }, "recommendation": { "type": "string", "minLength": 1 }, "caution": { "type": "string", "minLength": 1 }, "best_pick": { "$ref": "#/$defs/recommendationGroup" }, "best_zone": { "$ref": "#/$defs/recommendationGroup" }, "history": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["season", "draft_pick", "finish", "champion", "saunders", "made_playoffs"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" } } } }, "confidence": { "enum": ["strong", "medium", "small", "league-wide fallback"] } } } } };
-var pattern14 = new RegExp("^sha256:[a-f0-9]{64}$", "u");
-var schema79 = { "title": "DraftSpotRow", "type": "object", "additionalProperties": false, "required": ["season", "owner", "draft_pick", "team_count", "zone_key", "zone", "wins", "losses", "ties", "finish", "points_for", "points_against", "champion", "saunders", "made_playoffs", "top_three", "win_pct", "finish_score", "draft_percentile", "points_rank", "points_score", "points_z", "wins_above_avg"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "team_count": { "type": "integer", "minimum": 2, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "wins": { "type": "number", "minimum": 0 }, "losses": { "type": "number", "minimum": 0 }, "ties": { "type": "number", "minimum": 0 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_for": { "type": "number", "minimum": 0 }, "points_against": { "type": "number", "minimum": 0 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" }, "top_three": { "type": "boolean" }, "win_pct": { "$ref": "#/$defs/rate" }, "finish_score": { "$ref": "#/$defs/rate" }, "draft_percentile": { "$ref": "#/$defs/rate" }, "points_rank": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_score": { "$ref": "#/$defs/rate" }, "points_z": { "type": "number" }, "wins_above_avg": { "type": "number" } } };
-var schema82 = { "enum": ["early", "middle", "late"] };
-var schema83 = { "enum": ["Early (1-3)", "Middle (4-7)", "Late (8+)"] };
-function validate36(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+var validateShotguns = validate35;
+var schema76 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://viva.example/schemas/shotguns.schema.json", "title": "Viva Shotguns", "description": "Validated Viva shotgun obligations and completed media references.", "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["id", "owner", "week", "date", "due_date", "cause", "completed", "media_key"], "properties": { "id": { "type": "string", "minLength": 1, "pattern": "^[a-z0-9][a-z0-9-]*$" }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "week": { "type": ["integer", "null"], "minimum": 1, "maximum": 25 }, "date": { "$ref": "common.schema.json#/$defs/date" }, "due_date": { "type": ["string", "null"], "format": "date" }, "cause": { "type": "string", "minLength": 1, "pattern": "\\S" }, "completed": { "type": "boolean" }, "media_key": { "type": ["string", "null"], "minLength": 1, "pattern": "^[A-Za-z0-9._/-]+$" } }, "allOf": [{ "if": { "properties": { "completed": { "const": true } } }, "then": { "required": ["media_key"], "properties": { "media_key": { "type": "string" } } } }, { "if": { "properties": { "completed": { "const": false } } }, "then": { "properties": { "media_key": { "type": "null" } } } }] } };
+var pattern13 = new RegExp("^[a-z0-9][a-z0-9-]*$", "u");
+var pattern16 = new RegExp("^[A-Za-z0-9._/-]+$", "u");
+function validate35(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+  ;
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate36.evaluated;
+  const evaluated0 = validate35.evaluated;
+  if (evaluated0.dynamicProps) {
+    evaluated0.props = void 0;
+  }
+  if (evaluated0.dynamicItems) {
+    evaluated0.items = void 0;
+  }
+  if (Array.isArray(data)) {
+    const len0 = data.length;
+    for (let i0 = 0; i0 < len0; i0++) {
+      let data0 = data[i0];
+      const _errs4 = errors;
+      let valid3 = true;
+      const _errs5 = errors;
+      if (data0 && typeof data0 == "object" && !Array.isArray(data0)) {
+        if (data0.completed !== void 0) {
+          if (true !== data0.completed) {
+            const err0 = {};
+            if (vErrors === null) {
+              vErrors = [err0];
+            } else {
+              vErrors.push(err0);
+            }
+            errors++;
+          }
+        }
+      }
+      var _valid0 = _errs5 === errors;
+      errors = _errs4;
+      if (vErrors !== null) {
+        if (_errs4) {
+          vErrors.length = _errs4;
+        } else {
+          vErrors = null;
+        }
+      }
+      if (_valid0) {
+        const _errs7 = errors;
+        if (data0 && typeof data0 == "object" && !Array.isArray(data0)) {
+          for (const prop0 of schema76.items.allOf[0].then.required) {
+            if (data0[prop0] === void 0) {
+              const err1 = { instancePath: instancePath + "/" + i0 };
+              if (vErrors === null) {
+                vErrors = [err1];
+              } else {
+                vErrors.push(err1);
+              }
+              errors++;
+            }
+          }
+          if (data0.media_key !== void 0) {
+            if (typeof data0.media_key !== "string") {
+              const err2 = { instancePath: instancePath + "/" + i0 + "/media_key" };
+              if (vErrors === null) {
+                vErrors = [err2];
+              } else {
+                vErrors.push(err2);
+              }
+              errors++;
+            }
+          }
+        }
+        var _valid0 = _errs7 === errors;
+        valid3 = _valid0;
+        if (valid3) {
+          var props0 = {};
+          props0.media_key = true;
+          props0.completed = true;
+        }
+      }
+      if (!valid3) {
+        const err3 = { instancePath: instancePath + "/" + i0 };
+        if (vErrors === null) {
+          vErrors = [err3];
+        } else {
+          vErrors.push(err3);
+        }
+        errors++;
+      }
+      const _errs11 = errors;
+      let valid6 = true;
+      const _errs12 = errors;
+      if (data0 && typeof data0 == "object" && !Array.isArray(data0)) {
+        if (data0.completed !== void 0) {
+          if (false !== data0.completed) {
+            const err4 = {};
+            if (vErrors === null) {
+              vErrors = [err4];
+            } else {
+              vErrors.push(err4);
+            }
+            errors++;
+          }
+        }
+      }
+      var _valid1 = _errs12 === errors;
+      errors = _errs11;
+      if (vErrors !== null) {
+        if (_errs11) {
+          vErrors.length = _errs11;
+        } else {
+          vErrors = null;
+        }
+      }
+      if (_valid1) {
+        const _errs14 = errors;
+        if (data0 && typeof data0 == "object" && !Array.isArray(data0)) {
+          if (data0.media_key !== void 0) {
+            if (data0.media_key !== null) {
+              const err5 = { instancePath: instancePath + "/" + i0 + "/media_key" };
+              if (vErrors === null) {
+                vErrors = [err5];
+              } else {
+                vErrors.push(err5);
+              }
+              errors++;
+            }
+          }
+        }
+        var _valid1 = _errs14 === errors;
+        valid6 = _valid1;
+        if (valid6) {
+          var props1 = {};
+          props1.media_key = true;
+          props1.completed = true;
+        }
+      }
+      if (!valid6) {
+        const err6 = { instancePath: instancePath + "/" + i0 };
+        if (vErrors === null) {
+          vErrors = [err6];
+        } else {
+          vErrors.push(err6);
+        }
+        errors++;
+      }
+      if (props0 !== true && props1 !== void 0) {
+        if (props1 === true) {
+          props0 = true;
+        } else {
+          props0 = props0 || {};
+          Object.assign(props0, props1);
+        }
+      }
+      if (data0 && typeof data0 == "object" && !Array.isArray(data0)) {
+        for (const prop1 of schema76.items.required) {
+          if (data0[prop1] === void 0) {
+            const err7 = { instancePath: instancePath + "/" + i0 };
+            if (vErrors === null) {
+              vErrors = [err7];
+            } else {
+              vErrors.push(err7);
+            }
+            errors++;
+          }
+        }
+        for (const key0 in data0) {
+          if (!(key0 === "id" || key0 === "owner" || key0 === "week" || key0 === "date" || key0 === "due_date" || key0 === "cause" || key0 === "completed" || key0 === "media_key")) {
+            const err8 = { instancePath: instancePath + "/" + i0 };
+            if (vErrors === null) {
+              vErrors = [err8];
+            } else {
+              vErrors.push(err8);
+            }
+            errors++;
+          }
+        }
+        if (data0.id !== void 0) {
+          let data5 = data0.id;
+          if (typeof data5 === "string") {
+            if (func4(data5) < 1) {
+              const err9 = { instancePath: instancePath + "/" + i0 + "/id" };
+              if (vErrors === null) {
+                vErrors = [err9];
+              } else {
+                vErrors.push(err9);
+              }
+              errors++;
+            }
+            if (!pattern13.test(data5)) {
+              const err10 = { instancePath: instancePath + "/" + i0 + "/id" };
+              if (vErrors === null) {
+                vErrors = [err10];
+              } else {
+                vErrors.push(err10);
+              }
+              errors++;
+            }
+          } else {
+            const err11 = { instancePath: instancePath + "/" + i0 + "/id" };
+            if (vErrors === null) {
+              vErrors = [err11];
+            } else {
+              vErrors.push(err11);
+            }
+            errors++;
+          }
+        }
+        if (data0.owner !== void 0) {
+          let data6 = data0.owner;
+          if (typeof data6 === "string") {
+            if (func4(data6) < 1) {
+              const err12 = { instancePath: instancePath + "/" + i0 + "/owner" };
+              if (vErrors === null) {
+                vErrors = [err12];
+              } else {
+                vErrors.push(err12);
+              }
+              errors++;
+            }
+            if (!pattern4.test(data6)) {
+              const err13 = { instancePath: instancePath + "/" + i0 + "/owner" };
+              if (vErrors === null) {
+                vErrors = [err13];
+              } else {
+                vErrors.push(err13);
+              }
+              errors++;
+            }
+          } else {
+            const err14 = { instancePath: instancePath + "/" + i0 + "/owner" };
+            if (vErrors === null) {
+              vErrors = [err14];
+            } else {
+              vErrors.push(err14);
+            }
+            errors++;
+          }
+        }
+        if (data0.week !== void 0) {
+          let data7 = data0.week;
+          if (!(typeof data7 == "number" && (!(data7 % 1) && !isNaN(data7)) && isFinite(data7)) && data7 !== null) {
+            const err15 = { instancePath: instancePath + "/" + i0 + "/week" };
+            if (vErrors === null) {
+              vErrors = [err15];
+            } else {
+              vErrors.push(err15);
+            }
+            errors++;
+          }
+          if (typeof data7 == "number" && isFinite(data7)) {
+            if (data7 > 25 || isNaN(data7)) {
+              const err16 = { instancePath: instancePath + "/" + i0 + "/week" };
+              if (vErrors === null) {
+                vErrors = [err16];
+              } else {
+                vErrors.push(err16);
+              }
+              errors++;
+            }
+            if (data7 < 1 || isNaN(data7)) {
+              const err17 = { instancePath: instancePath + "/" + i0 + "/week" };
+              if (vErrors === null) {
+                vErrors = [err17];
+              } else {
+                vErrors.push(err17);
+              }
+              errors++;
+            }
+          }
+        }
+        if (data0.date !== void 0) {
+          let data8 = data0.date;
+          if (typeof data8 === "string") {
+            if (!formats0.validate(data8)) {
+              const err18 = { instancePath: instancePath + "/" + i0 + "/date" };
+              if (vErrors === null) {
+                vErrors = [err18];
+              } else {
+                vErrors.push(err18);
+              }
+              errors++;
+            }
+          } else {
+            const err19 = { instancePath: instancePath + "/" + i0 + "/date" };
+            if (vErrors === null) {
+              vErrors = [err19];
+            } else {
+              vErrors.push(err19);
+            }
+            errors++;
+          }
+        }
+        if (data0.due_date !== void 0) {
+          let data9 = data0.due_date;
+          if (typeof data9 !== "string" && data9 !== null) {
+            const err20 = { instancePath: instancePath + "/" + i0 + "/due_date" };
+            if (vErrors === null) {
+              vErrors = [err20];
+            } else {
+              vErrors.push(err20);
+            }
+            errors++;
+          }
+          if (typeof data9 === "string") {
+            if (!formats0.validate(data9)) {
+              const err21 = { instancePath: instancePath + "/" + i0 + "/due_date" };
+              if (vErrors === null) {
+                vErrors = [err21];
+              } else {
+                vErrors.push(err21);
+              }
+              errors++;
+            }
+          }
+        }
+        if (data0.cause !== void 0) {
+          let data10 = data0.cause;
+          if (typeof data10 === "string") {
+            if (func4(data10) < 1) {
+              const err22 = { instancePath: instancePath + "/" + i0 + "/cause" };
+              if (vErrors === null) {
+                vErrors = [err22];
+              } else {
+                vErrors.push(err22);
+              }
+              errors++;
+            }
+            if (!pattern4.test(data10)) {
+              const err23 = { instancePath: instancePath + "/" + i0 + "/cause" };
+              if (vErrors === null) {
+                vErrors = [err23];
+              } else {
+                vErrors.push(err23);
+              }
+              errors++;
+            }
+          } else {
+            const err24 = { instancePath: instancePath + "/" + i0 + "/cause" };
+            if (vErrors === null) {
+              vErrors = [err24];
+            } else {
+              vErrors.push(err24);
+            }
+            errors++;
+          }
+        }
+        if (data0.completed !== void 0) {
+          if (typeof data0.completed !== "boolean") {
+            const err25 = { instancePath: instancePath + "/" + i0 + "/completed" };
+            if (vErrors === null) {
+              vErrors = [err25];
+            } else {
+              vErrors.push(err25);
+            }
+            errors++;
+          }
+        }
+        if (data0.media_key !== void 0) {
+          let data12 = data0.media_key;
+          if (typeof data12 !== "string" && data12 !== null) {
+            const err26 = { instancePath: instancePath + "/" + i0 + "/media_key" };
+            if (vErrors === null) {
+              vErrors = [err26];
+            } else {
+              vErrors.push(err26);
+            }
+            errors++;
+          }
+          if (typeof data12 === "string") {
+            if (func4(data12) < 1) {
+              const err27 = { instancePath: instancePath + "/" + i0 + "/media_key" };
+              if (vErrors === null) {
+                vErrors = [err27];
+              } else {
+                vErrors.push(err27);
+              }
+              errors++;
+            }
+            if (!pattern16.test(data12)) {
+              const err28 = { instancePath: instancePath + "/" + i0 + "/media_key" };
+              if (vErrors === null) {
+                vErrors = [err28];
+              } else {
+                vErrors.push(err28);
+              }
+              errors++;
+            }
+          }
+        }
+      } else {
+        const err29 = { instancePath: instancePath + "/" + i0 };
+        if (vErrors === null) {
+          vErrors = [err29];
+        } else {
+          vErrors.push(err29);
+        }
+        errors++;
+      }
+    }
+  } else {
+    const err30 = { instancePath };
+    if (vErrors === null) {
+      vErrors = [err30];
+    } else {
+      vErrors.push(err30);
+    }
+    errors++;
+  }
+  validate35.errors = vErrors;
+  return errors === 0;
+}
+validate35.evaluated = { "items": true, "dynamicProps": false, "dynamicItems": false };
+var validateDraftSpot = validate36;
+var schema79 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://viva.example/schemas/draft-spot.schema.json", "title": "DraftSpot", "description": "Deterministic draft-position observations generated from SeasonSummary.", "type": "object", "additionalProperties": false, "required": ["schema_version", "generator_version", "source", "source_sha256", "generated_at", "season_range", "team_seasons", "correlations", "rows", "pick_summary", "zone_summary", "owner_recommendations"], "properties": { "schema_version": { "const": 1 }, "generator_version": { "const": 1 }, "source": { "const": "SeasonSummary.json" }, "source_sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "generated_at": { "type": "string", "format": "date-time" }, "season_range": { "type": "object", "additionalProperties": false, "required": ["start", "end"], "properties": { "start": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "end": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 } } }, "team_seasons": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "correlations": { "type": "object", "additionalProperties": false, "required": ["pick_finish", "draft_percentile_finish_score", "draft_percentile_points_z"], "properties": { "pick_finish": { "type": "number", "minimum": -1, "maximum": 1 }, "draft_percentile_finish_score": { "type": "number", "minimum": -1, "maximum": 1 }, "draft_percentile_points_z": { "type": "number", "minimum": -1, "maximum": 1 } } }, "rows": { "type": "array", "items": { "$ref": "#/$defs/row" } }, "pick_summary": { "type": "array", "items": { "$ref": "#/$defs/pickSummary" } }, "zone_summary": { "type": "array", "items": { "$ref": "#/$defs/zoneSummary" } }, "owner_recommendations": { "type": "array", "items": { "$ref": "#/$defs/ownerRecommendation" } } }, "$defs": { "rate": { "type": "number", "minimum": 0, "maximum": 1 }, "zoneKey": { "enum": ["early", "middle", "late"] }, "zoneLabel": { "enum": ["Early (1-3)", "Middle (4-7)", "Late (8+)"] }, "row": { "title": "DraftSpotRow", "type": "object", "additionalProperties": false, "required": ["season", "owner", "draft_pick", "team_count", "zone_key", "zone", "wins", "losses", "ties", "finish", "points_for", "points_against", "champion", "saunders", "made_playoffs", "top_three", "win_pct", "finish_score", "draft_percentile", "points_rank", "points_score", "points_z", "wins_above_avg"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "team_count": { "type": "integer", "minimum": 2, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "wins": { "type": "number", "minimum": 0 }, "losses": { "type": "number", "minimum": 0 }, "ties": { "type": "number", "minimum": 0 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_for": { "type": "number", "minimum": 0 }, "points_against": { "type": "number", "minimum": 0 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" }, "top_three": { "type": "boolean" }, "win_pct": { "$ref": "#/$defs/rate" }, "finish_score": { "$ref": "#/$defs/rate" }, "draft_percentile": { "$ref": "#/$defs/rate" }, "points_rank": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_score": { "$ref": "#/$defs/rate" }, "points_z": { "type": "number" }, "wins_above_avg": { "type": "number" } } }, "baseSummary": { "type": "object", "properties": { "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "avg_finish": { "type": "number", "minimum": 0, "maximum": 24 }, "avg_finish_score": { "$ref": "#/$defs/rate" }, "avg_wins_above_avg": { "type": "number" }, "avg_points_z": { "type": "number" }, "top_three_rate": { "$ref": "#/$defs/rate" }, "playoff_rate": { "$ref": "#/$defs/rate" }, "champion_rate": { "$ref": "#/$defs/rate" }, "saunders_rate": { "$ref": "#/$defs/rate" } } }, "pickSummary": { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["draft_pick", "n", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "championships", "champion_rate", "saunders_count", "saunders_rate"], "properties": { "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "n": true, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "champion_rate": true, "saunders_count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_rate": true } }] }, "zoneSummary": { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["zone_key", "zone", "n", "avg_pick", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "champion_rate", "saunders_rate"], "properties": { "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "n": true, "avg_pick": { "type": "number", "minimum": 1, "maximum": 24 }, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "champion_rate": true, "saunders_rate": true } }] }, "recommendationGroup": { "type": "object", "additionalProperties": true, "required": ["label", "n", "avg_finish", "avg_finish_score", "playoffs", "top_three", "titles", "saunders"], "properties": { "label": { "type": "string", "minLength": 1 }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "avg_finish": { "type": "number", "minimum": 0, "maximum": 24 }, "avg_finish_score": { "$ref": "#/$defs/rate" }, "playoffs": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "top_three": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" } } }, "ownerRecommendation": { "title": "DraftSpotOwnerRecommendation", "type": "object", "additionalProperties": false, "required": ["owner", "target", "recommendation", "caution", "best_pick", "best_zone", "history", "confidence"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "target": { "type": "string", "minLength": 1 }, "recommendation": { "type": "string", "minLength": 1 }, "caution": { "type": "string", "minLength": 1 }, "best_pick": { "$ref": "#/$defs/recommendationGroup" }, "best_zone": { "$ref": "#/$defs/recommendationGroup" }, "history": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["season", "draft_pick", "finish", "champion", "saunders", "made_playoffs"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" } } } }, "confidence": { "enum": ["strong", "medium", "small", "league-wide fallback"] } } } } };
+var pattern17 = new RegExp("^sha256:[a-f0-9]{64}$", "u");
+var schema82 = { "title": "DraftSpotRow", "type": "object", "additionalProperties": false, "required": ["season", "owner", "draft_pick", "team_count", "zone_key", "zone", "wins", "losses", "ties", "finish", "points_for", "points_against", "champion", "saunders", "made_playoffs", "top_three", "win_pct", "finish_score", "draft_percentile", "points_rank", "points_score", "points_z", "wins_above_avg"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "team_count": { "type": "integer", "minimum": 2, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "wins": { "type": "number", "minimum": 0 }, "losses": { "type": "number", "minimum": 0 }, "ties": { "type": "number", "minimum": 0 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_for": { "type": "number", "minimum": 0 }, "points_against": { "type": "number", "minimum": 0 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" }, "top_three": { "type": "boolean" }, "win_pct": { "$ref": "#/$defs/rate" }, "finish_score": { "$ref": "#/$defs/rate" }, "draft_percentile": { "$ref": "#/$defs/rate" }, "points_rank": { "type": "integer", "minimum": 1, "maximum": 24 }, "points_score": { "$ref": "#/$defs/rate" }, "points_z": { "type": "number" }, "wins_above_avg": { "type": "number" } } };
+var schema85 = { "enum": ["early", "middle", "late"] };
+var schema86 = { "enum": ["Early (1-3)", "Middle (4-7)", "Late (8+)"] };
+function validate37(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+  let vErrors = null;
+  let errors = 0;
+  const evaluated0 = validate37.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -2344,7 +2754,7 @@ function validate36(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema79.required) {
+    for (const prop0 of schema82.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -2356,7 +2766,7 @@ function validate36(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema79.properties, key0)) {
+      if (!func3.call(schema82.properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -2496,7 +2906,7 @@ function validate36(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.zone_key !== void 0) {
       let valid4;
       valid4 = false;
-      for (const v0 of schema82.enum) {
+      for (const v0 of schema85.enum) {
         if (func0(data.zone_key, v0)) {
           valid4 = true;
           break;
@@ -2515,7 +2925,7 @@ function validate36(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.zone !== void 0) {
       let valid6;
       valid6 = false;
-      for (const v1 of schema83.enum) {
+      for (const v1 of schema86.enum) {
         if (func0(data.zone, v1)) {
           valid6 = true;
           break;
@@ -2906,15 +3316,15 @@ function validate36(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate36.errors = vErrors;
+  validate37.errors = vErrors;
   return errors === 0;
 }
-validate36.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema88 = { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["draft_pick", "n", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "championships", "champion_rate", "saunders_count", "saunders_rate"], "properties": { "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "n": true, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "champion_rate": true, "saunders_count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_rate": true } }] };
-function validate39(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate37.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema91 = { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["draft_pick", "n", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "championships", "champion_rate", "saunders_count", "saunders_rate"], "properties": { "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "n": true, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "champion_rate": true, "saunders_count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_rate": true } }] };
+function validate40(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate39.evaluated;
+  const evaluated0 = validate40.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -3164,26 +3574,26 @@ function validate39(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate39.errors = vErrors;
+  validate40.errors = vErrors;
   return errors === 0;
 }
-validate39.evaluated = { "props": { "n": true, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "champion_rate": true, "saunders_rate": true }, "dynamicProps": false, "dynamicItems": false };
-function validate38(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate40.evaluated = { "props": { "n": true, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "champion_rate": true, "saunders_rate": true }, "dynamicProps": false, "dynamicItems": false };
+function validate39(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate38.evaluated;
+  const evaluated0 = validate39.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
   if (evaluated0.dynamicItems) {
     evaluated0.items = void 0;
   }
-  if (!validate39(data, { instancePath, parentData, parentDataProperty, rootData, dynamicAnchors })) {
-    vErrors = vErrors === null ? validate39.errors : vErrors.concat(validate39.errors);
+  if (!validate40(data, { instancePath, parentData, parentDataProperty, rootData, dynamicAnchors })) {
+    vErrors = vErrors === null ? validate40.errors : vErrors.concat(validate40.errors);
     errors = vErrors.length;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema88.allOf[1].required) {
+    for (const prop0 of schema91.allOf[1].required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -3195,7 +3605,7 @@ function validate38(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema88.allOf[1].properties, key0)) {
+      if (!func3.call(schema91.allOf[1].properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -3292,27 +3702,27 @@ function validate38(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate38.errors = vErrors;
+  validate39.errors = vErrors;
   return errors === 0;
 }
-validate38.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema98 = { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["zone_key", "zone", "n", "avg_pick", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "champion_rate", "saunders_rate"], "properties": { "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "n": true, "avg_pick": { "type": "number", "minimum": 1, "maximum": 24 }, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "champion_rate": true, "saunders_rate": true } }] };
-function validate42(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate39.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema101 = { "allOf": [{ "$ref": "#/$defs/baseSummary" }, { "type": "object", "additionalProperties": false, "required": ["zone_key", "zone", "n", "avg_pick", "avg_finish", "avg_finish_score", "avg_wins_above_avg", "avg_points_z", "top_three_rate", "playoff_rate", "champion_rate", "saunders_rate"], "properties": { "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" }, "n": true, "avg_pick": { "type": "number", "minimum": 1, "maximum": 24 }, "avg_finish": true, "avg_finish_score": true, "avg_wins_above_avg": true, "avg_points_z": true, "top_three_rate": true, "playoff_rate": true, "champion_rate": true, "saunders_rate": true } }] };
+function validate43(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate42.evaluated;
+  const evaluated0 = validate43.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
   if (evaluated0.dynamicItems) {
     evaluated0.items = void 0;
   }
-  if (!validate39(data, { instancePath, parentData, parentDataProperty, rootData, dynamicAnchors })) {
-    vErrors = vErrors === null ? validate39.errors : vErrors.concat(validate39.errors);
+  if (!validate40(data, { instancePath, parentData, parentDataProperty, rootData, dynamicAnchors })) {
+    vErrors = vErrors === null ? validate40.errors : vErrors.concat(validate40.errors);
     errors = vErrors.length;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema98.allOf[1].required) {
+    for (const prop0 of schema101.allOf[1].required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -3324,7 +3734,7 @@ function validate42(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema98.allOf[1].properties, key0)) {
+      if (!func3.call(schema101.allOf[1].properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -3337,7 +3747,7 @@ function validate42(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.zone_key !== void 0) {
       let valid3;
       valid3 = false;
-      for (const v0 of schema82.enum) {
+      for (const v0 of schema85.enum) {
         if (func0(data.zone_key, v0)) {
           valid3 = true;
           break;
@@ -3356,7 +3766,7 @@ function validate42(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.zone !== void 0) {
       let valid5;
       valid5 = false;
-      for (const v1 of schema83.enum) {
+      for (const v1 of schema86.enum) {
         if (func0(data.zone, v1)) {
           valid5 = true;
           break;
@@ -3412,16 +3822,16 @@ function validate42(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate42.errors = vErrors;
+  validate43.errors = vErrors;
   return errors === 0;
 }
-validate42.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema101 = { "title": "DraftSpotOwnerRecommendation", "type": "object", "additionalProperties": false, "required": ["owner", "target", "recommendation", "caution", "best_pick", "best_zone", "history", "confidence"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "target": { "type": "string", "minLength": 1 }, "recommendation": { "type": "string", "minLength": 1 }, "caution": { "type": "string", "minLength": 1 }, "best_pick": { "$ref": "#/$defs/recommendationGroup" }, "best_zone": { "$ref": "#/$defs/recommendationGroup" }, "history": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["season", "draft_pick", "finish", "champion", "saunders", "made_playoffs"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" } } } }, "confidence": { "enum": ["strong", "medium", "small", "league-wide fallback"] } } };
-var schema103 = { "type": "object", "additionalProperties": true, "required": ["label", "n", "avg_finish", "avg_finish_score", "playoffs", "top_three", "titles", "saunders"], "properties": { "label": { "type": "string", "minLength": 1 }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "avg_finish": { "type": "number", "minimum": 0, "maximum": 24 }, "avg_finish_score": { "$ref": "#/$defs/rate" }, "playoffs": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "top_three": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" } } };
-function validate46(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate43.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema104 = { "title": "DraftSpotOwnerRecommendation", "type": "object", "additionalProperties": false, "required": ["owner", "target", "recommendation", "caution", "best_pick", "best_zone", "history", "confidence"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "target": { "type": "string", "minLength": 1 }, "recommendation": { "type": "string", "minLength": 1 }, "caution": { "type": "string", "minLength": 1 }, "best_pick": { "$ref": "#/$defs/recommendationGroup" }, "best_zone": { "$ref": "#/$defs/recommendationGroup" }, "history": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["season", "draft_pick", "finish", "champion", "saunders", "made_playoffs"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "finish": { "type": "integer", "minimum": 1, "maximum": 24 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "made_playoffs": { "type": "boolean" } } } }, "confidence": { "enum": ["strong", "medium", "small", "league-wide fallback"] } } };
+var schema106 = { "type": "object", "additionalProperties": true, "required": ["label", "n", "avg_finish", "avg_finish_score", "playoffs", "top_three", "titles", "saunders"], "properties": { "label": { "type": "string", "minLength": 1 }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "avg_finish": { "type": "number", "minimum": 0, "maximum": 24 }, "avg_finish_score": { "$ref": "#/$defs/rate" }, "playoffs": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "top_three": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "draft_pick": { "type": "integer", "minimum": 1, "maximum": 24 }, "zone_key": { "$ref": "#/$defs/zoneKey" }, "zone": { "$ref": "#/$defs/zoneLabel" } } };
+function validate47(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate46.evaluated;
+  const evaluated0 = validate47.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -3429,7 +3839,7 @@ function validate46(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema103.required) {
+    for (const prop0 of schema106.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -3674,7 +4084,7 @@ function validate46(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.zone_key !== void 0) {
       let valid8;
       valid8 = false;
-      for (const v0 of schema82.enum) {
+      for (const v0 of schema85.enum) {
         if (func0(data.zone_key, v0)) {
           valid8 = true;
           break;
@@ -3693,7 +4103,7 @@ function validate46(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.zone !== void 0) {
       let valid10;
       valid10 = false;
-      for (const v1 of schema83.enum) {
+      for (const v1 of schema86.enum) {
         if (func0(data.zone, v1)) {
           valid10 = true;
           break;
@@ -3718,14 +4128,14 @@ function validate46(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate46.errors = vErrors;
+  validate47.errors = vErrors;
   return errors === 0;
 }
-validate46.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-function validate45(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate47.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+function validate46(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate45.evaluated;
+  const evaluated0 = validate46.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -3733,7 +4143,7 @@ function validate45(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema101.required) {
+    for (const prop0 of schema104.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -3853,14 +4263,14 @@ function validate45(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     if (data.best_pick !== void 0) {
-      if (!validate46(data.best_pick, { instancePath: instancePath + "/best_pick", parentData: data, parentDataProperty: "best_pick", rootData, dynamicAnchors })) {
-        vErrors = vErrors === null ? validate46.errors : vErrors.concat(validate46.errors);
+      if (!validate47(data.best_pick, { instancePath: instancePath + "/best_pick", parentData: data, parentDataProperty: "best_pick", rootData, dynamicAnchors })) {
+        vErrors = vErrors === null ? validate47.errors : vErrors.concat(validate47.errors);
         errors = vErrors.length;
       }
     }
     if (data.best_zone !== void 0) {
-      if (!validate46(data.best_zone, { instancePath: instancePath + "/best_zone", parentData: data, parentDataProperty: "best_zone", rootData, dynamicAnchors })) {
-        vErrors = vErrors === null ? validate46.errors : vErrors.concat(validate46.errors);
+      if (!validate47(data.best_zone, { instancePath: instancePath + "/best_zone", parentData: data, parentDataProperty: "best_zone", rootData, dynamicAnchors })) {
+        vErrors = vErrors === null ? validate47.errors : vErrors.concat(validate47.errors);
         errors = vErrors.length;
       }
     }
@@ -3871,7 +4281,7 @@ function validate45(data, { instancePath = "", parentData, parentDataProperty, r
         for (let i0 = 0; i0 < len0; i0++) {
           let data7 = data6[i0];
           if (data7 && typeof data7 == "object" && !Array.isArray(data7)) {
-            for (const prop1 of schema101.properties.history.items.required) {
+            for (const prop1 of schema104.properties.history.items.required) {
               if (data7[prop1] === void 0) {
                 const err11 = { instancePath: instancePath + "/history/" + i0 };
                 if (vErrors === null) {
@@ -4045,7 +4455,7 @@ function validate45(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.confidence !== void 0) {
       let valid6;
       valid6 = false;
-      for (const v0 of schema101.properties.confidence.enum) {
+      for (const v0 of schema104.properties.confidence.enum) {
         if (func0(data.confidence, v0)) {
           valid6 = true;
           break;
@@ -4070,15 +4480,15 @@ function validate45(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate45.errors = vErrors;
+  validate46.errors = vErrors;
   return errors === 0;
 }
-validate45.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-function validate35(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate46.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+function validate36(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   ;
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate35.evaluated;
+  const evaluated0 = validate36.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -4086,7 +4496,7 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema76.required) {
+    for (const prop0 of schema79.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -4098,7 +4508,7 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema76.properties, key0)) {
+      if (!func3.call(schema79.properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -4144,7 +4554,7 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.source_sha256 !== void 0) {
       let data3 = data.source_sha256;
       if (typeof data3 === "string") {
-        if (!pattern14.test(data3)) {
+        if (!pattern17.test(data3)) {
           const err5 = { instancePath: instancePath + "/source_sha256" };
           if (vErrors === null) {
             vErrors = [err5];
@@ -4188,7 +4598,7 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.season_range !== void 0) {
       let data5 = data.season_range;
       if (data5 && typeof data5 == "object" && !Array.isArray(data5)) {
-        for (const prop1 of schema76.properties.season_range.required) {
+        for (const prop1 of schema79.properties.season_range.required) {
           if (data5[prop1] === void 0) {
             const err9 = { instancePath: instancePath + "/season_range" };
             if (vErrors === null) {
@@ -4310,7 +4720,7 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.correlations !== void 0) {
       let data9 = data.correlations;
       if (data9 && typeof data9 == "object" && !Array.isArray(data9)) {
-        for (const prop2 of schema76.properties.correlations.required) {
+        for (const prop2 of schema79.properties.correlations.required) {
           if (data9[prop2] === void 0) {
             const err20 = { instancePath: instancePath + "/correlations" };
             if (vErrors === null) {
@@ -4440,8 +4850,8 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data13)) {
         const len0 = data13.length;
         for (let i0 = 0; i0 < len0; i0++) {
-          if (!validate36(data13[i0], { instancePath: instancePath + "/rows/" + i0, parentData: data13, parentDataProperty: i0, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate36.errors : vErrors.concat(validate36.errors);
+          if (!validate37(data13[i0], { instancePath: instancePath + "/rows/" + i0, parentData: data13, parentDataProperty: i0, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate37.errors : vErrors.concat(validate37.errors);
             errors = vErrors.length;
           }
         }
@@ -4460,8 +4870,8 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data15)) {
         const len1 = data15.length;
         for (let i1 = 0; i1 < len1; i1++) {
-          if (!validate38(data15[i1], { instancePath: instancePath + "/pick_summary/" + i1, parentData: data15, parentDataProperty: i1, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate38.errors : vErrors.concat(validate38.errors);
+          if (!validate39(data15[i1], { instancePath: instancePath + "/pick_summary/" + i1, parentData: data15, parentDataProperty: i1, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate39.errors : vErrors.concat(validate39.errors);
             errors = vErrors.length;
           }
         }
@@ -4480,8 +4890,8 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data17)) {
         const len2 = data17.length;
         for (let i2 = 0; i2 < len2; i2++) {
-          if (!validate42(data17[i2], { instancePath: instancePath + "/zone_summary/" + i2, parentData: data17, parentDataProperty: i2, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate42.errors : vErrors.concat(validate42.errors);
+          if (!validate43(data17[i2], { instancePath: instancePath + "/zone_summary/" + i2, parentData: data17, parentDataProperty: i2, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate43.errors : vErrors.concat(validate43.errors);
             errors = vErrors.length;
           }
         }
@@ -4500,8 +4910,8 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data19)) {
         const len3 = data19.length;
         for (let i3 = 0; i3 < len3; i3++) {
-          if (!validate45(data19[i3], { instancePath: instancePath + "/owner_recommendations/" + i3, parentData: data19, parentDataProperty: i3, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate45.errors : vErrors.concat(validate45.errors);
+          if (!validate46(data19[i3], { instancePath: instancePath + "/owner_recommendations/" + i3, parentData: data19, parentDataProperty: i3, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate46.errors : vErrors.concat(validate46.errors);
             errors = vErrors.length;
           }
         }
@@ -4524,17 +4934,17 @@ function validate35(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate35.errors = vErrors;
+  validate36.errors = vErrors;
   return errors === 0;
 }
-validate35.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var validateDerivedStats = validate50;
-var schema113 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://darling.example/schemas/derived-stats.schema.json", "title": "DerivedStats", "description": "Deterministic, filter-independent statistics generated from the league assets.", "type": "object", "additionalProperties": false, "required": ["schema_version", "derived_generator_version", "source_hashes", "owners", "seasons", "season_aggregates", "head_to_head_pairs", "weekly_awards", "records", "streaks", "owner_careers", "team_seasons"], "properties": { "schema_version": { "const": 1 }, "derived_generator_version": { "const": 1 }, "source_hashes": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries"], "properties": { "H2H": { "$ref": "common.schema.json#/$defs/sha256" }, "SeasonSummary": { "$ref": "common.schema.json#/$defs/sha256" }, "Rivalries": { "$ref": "common.schema.json#/$defs/sha256" } } }, "owners": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/owner" } }, "seasons": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/season" } }, "season_aggregates": { "type": "array", "items": { "$ref": "#/$defs/seasonAggregate" } }, "head_to_head_pairs": { "type": "array", "items": { "$ref": "#/$defs/headToHead" } }, "weekly_awards": { "type": "object", "additionalProperties": false, "required": ["top", "low", "high150"], "properties": { "top": { "type": "array", "items": { "$ref": "#/$defs/countRow" } }, "low": { "type": "array", "items": { "$ref": "#/$defs/countRow" } }, "high150": { "type": "array", "items": { "$ref": "#/$defs/countRow" } } } }, "records": { "type": "object", "additionalProperties": false, "required": ["top_scores", "bottom_scores", "sub_70"], "properties": { "top_scores": { "type": "array", "items": { "$ref": "#/$defs/scoreRecord" } }, "bottom_scores": { "type": "array", "items": { "$ref": "#/$defs/scoreRecord" } }, "sub_70": { "type": "array", "items": { "$ref": "#/$defs/countRow" } } } }, "streaks": { "type": "object", "additionalProperties": false, "required": ["wins", "losses"], "properties": { "wins": { "type": "array", "items": { "$ref": "#/$defs/streak" } }, "losses": { "type": "array", "items": { "$ref": "#/$defs/streak" } } } }, "owner_careers": { "type": "array", "items": { "$ref": "#/$defs/ownerCareer" } }, "team_seasons": { "type": "array", "items": { "$ref": "#/$defs/teamSeason" } } }, "$defs": { "countRow": { "type": "object", "additionalProperties": false, "required": ["team", "count"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } }, "seasonAggregate": { "type": "object", "additionalProperties": false, "required": ["team", "season", "w", "l", "t", "n", "pf", "pa", "actWins", "expWins", "pct", "ppg", "oppg", "luck", "diff"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "actWins": { "type": "number" }, "expWins": { "type": "number" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 }, "ppg": { "type": "number" }, "oppg": { "type": "number" }, "luck": { "type": "number" }, "diff": { "type": "number" } } }, "headToHead": { "type": "object", "additionalProperties": false, "required": ["team", "opp", "w", "l", "t", "g", "pct"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "g": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 } } }, "gameRef": { "type": "object", "additionalProperties": false, "required": ["season", "week", "date"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "week": { "$ref": "common.schema.json#/$defs/week" }, "date": { "$ref": "common.schema.json#/$defs/date" } } }, "streak": { "type": "object", "additionalProperties": false, "required": ["team", "len", "start", "end"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "len": { "type": "integer", "minimum": 1 }, "start": { "$ref": "#/$defs/gameRef" }, "end": { "$ref": "#/$defs/gameRef" } } }, "scoreRecord": { "type": "object", "additionalProperties": false, "required": ["team", "pf", "pa", "opp", "date", "season"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "date": { "$ref": "common.schema.json#/$defs/date" }, "season": { "$ref": "common.schema.json#/$defs/season" } } }, "ownerCareer": { "type": "object", "additionalProperties": false, "required": ["owner", "seasons", "games", "wins", "losses", "ties", "points_for", "points_against", "championships", "saunders_titles", "weekly_crowns"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "seasons": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "points_for": { "type": "number" }, "points_against": { "type": "number" }, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "weekly_crowns": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } }, "scoreEvent": { "type": "object", "additionalProperties": false, "required": ["score", "weight"], "properties": { "score": { "type": "number" }, "weight": { "type": "number", "exclusiveMinimum": 0 } } }, "teamSeason": { "type": "object", "additionalProperties": false, "required": ["id", "owner", "season", "scores", "games", "mean", "stdev", "min", "max", "median", "p25", "p75", "record", "wins", "losses", "ties", "finish", "champion", "saunders", "bye", "pointsFor", "pointsAgainst"], "properties": { "id": { "type": "string", "minLength": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "scores": { "type": "array", "items": { "type": "number" } }, "scoreEvents": { "type": "array", "items": { "$ref": "#/$defs/scoreEvent" } }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "mean": { "type": "number" }, "stdev": { "type": "number" }, "min": { "type": "number" }, "max": { "type": "number" }, "median": { "type": "number" }, "p25": { "type": "number" }, "p75": { "type": "number" }, "record": { "type": "string" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "finish": { "type": ["integer", "null"], "minimum": 1 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "bye": { "type": "boolean" }, "pointsFor": { "type": "number" }, "pointsAgainst": { "type": "number" } } } } };
-var schema119 = { "type": "object", "additionalProperties": false, "required": ["team", "season", "w", "l", "t", "n", "pf", "pa", "actWins", "expWins", "pct", "ppg", "oppg", "luck", "diff"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "actWins": { "type": "number" }, "expWins": { "type": "number" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 }, "ppg": { "type": "number" }, "oppg": { "type": "number" }, "luck": { "type": "number" }, "diff": { "type": "number" } } };
-function validate51(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate36.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var validateDerivedStats = validate51;
+var schema116 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://viva.example/schemas/derived-stats.schema.json", "title": "DerivedStats", "description": "Deterministic, filter-independent statistics generated from the league assets.", "type": "object", "additionalProperties": false, "required": ["schema_version", "derived_generator_version", "source_hashes", "owners", "seasons", "season_aggregates", "head_to_head_pairs", "weekly_awards", "records", "streaks", "owner_careers", "team_seasons"], "properties": { "schema_version": { "const": 1 }, "derived_generator_version": { "const": 1 }, "source_hashes": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries"], "properties": { "H2H": { "$ref": "common.schema.json#/$defs/sha256" }, "SeasonSummary": { "$ref": "common.schema.json#/$defs/sha256" }, "Rivalries": { "$ref": "common.schema.json#/$defs/sha256" } } }, "owners": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/owner" } }, "seasons": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/season" } }, "season_aggregates": { "type": "array", "items": { "$ref": "#/$defs/seasonAggregate" } }, "head_to_head_pairs": { "type": "array", "items": { "$ref": "#/$defs/headToHead" } }, "weekly_awards": { "type": "object", "additionalProperties": false, "required": ["top", "low", "high150"], "properties": { "top": { "type": "array", "items": { "$ref": "#/$defs/countRow" } }, "low": { "type": "array", "items": { "$ref": "#/$defs/countRow" } }, "high150": { "type": "array", "items": { "$ref": "#/$defs/countRow" } } } }, "records": { "type": "object", "additionalProperties": false, "required": ["top_scores", "bottom_scores", "sub_70"], "properties": { "top_scores": { "type": "array", "items": { "$ref": "#/$defs/scoreRecord" } }, "bottom_scores": { "type": "array", "items": { "$ref": "#/$defs/scoreRecord" } }, "sub_70": { "type": "array", "items": { "$ref": "#/$defs/countRow" } } } }, "streaks": { "type": "object", "additionalProperties": false, "required": ["wins", "losses"], "properties": { "wins": { "type": "array", "items": { "$ref": "#/$defs/streak" } }, "losses": { "type": "array", "items": { "$ref": "#/$defs/streak" } } } }, "owner_careers": { "type": "array", "items": { "$ref": "#/$defs/ownerCareer" } }, "team_seasons": { "type": "array", "items": { "$ref": "#/$defs/teamSeason" } } }, "$defs": { "countRow": { "type": "object", "additionalProperties": false, "required": ["team", "count"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } }, "seasonAggregate": { "type": "object", "additionalProperties": false, "required": ["team", "season", "w", "l", "t", "n", "pf", "pa", "actWins", "expWins", "pct", "ppg", "oppg", "luck", "diff"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "actWins": { "type": "number" }, "expWins": { "type": "number" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 }, "ppg": { "type": "number" }, "oppg": { "type": "number" }, "luck": { "type": "number" }, "diff": { "type": "number" } } }, "headToHead": { "type": "object", "additionalProperties": false, "required": ["team", "opp", "w", "l", "t", "g", "pct"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "g": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 } } }, "gameRef": { "type": "object", "additionalProperties": false, "required": ["season", "week", "date"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "week": { "$ref": "common.schema.json#/$defs/week" }, "date": { "$ref": "common.schema.json#/$defs/date" } } }, "streak": { "type": "object", "additionalProperties": false, "required": ["team", "len", "start", "end"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "len": { "type": "integer", "minimum": 1 }, "start": { "$ref": "#/$defs/gameRef" }, "end": { "$ref": "#/$defs/gameRef" } } }, "scoreRecord": { "type": "object", "additionalProperties": false, "required": ["team", "pf", "pa", "opp", "date", "season"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "date": { "$ref": "common.schema.json#/$defs/date" }, "season": { "$ref": "common.schema.json#/$defs/season" } } }, "ownerCareer": { "type": "object", "additionalProperties": false, "required": ["owner", "seasons", "games", "wins", "losses", "ties", "points_for", "points_against", "championships", "saunders_titles", "weekly_crowns"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "seasons": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "points_for": { "type": "number" }, "points_against": { "type": "number" }, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "weekly_crowns": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } }, "scoreEvent": { "type": "object", "additionalProperties": false, "required": ["score", "weight"], "properties": { "score": { "type": "number" }, "weight": { "type": "number", "exclusiveMinimum": 0 } } }, "teamSeason": { "type": "object", "additionalProperties": false, "required": ["id", "owner", "season", "scores", "games", "mean", "stdev", "min", "max", "median", "p25", "p75", "record", "wins", "losses", "ties", "finish", "champion", "saunders", "bye", "pointsFor", "pointsAgainst"], "properties": { "id": { "type": "string", "minLength": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "scores": { "type": "array", "items": { "type": "number" } }, "scoreEvents": { "type": "array", "items": { "$ref": "#/$defs/scoreEvent" } }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "mean": { "type": "number" }, "stdev": { "type": "number" }, "min": { "type": "number" }, "max": { "type": "number" }, "median": { "type": "number" }, "p25": { "type": "number" }, "p75": { "type": "number" }, "record": { "type": "string" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "finish": { "type": ["integer", "null"], "minimum": 1 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "bye": { "type": "boolean" }, "pointsFor": { "type": "number" }, "pointsAgainst": { "type": "number" } } } } };
+var schema122 = { "type": "object", "additionalProperties": false, "required": ["team", "season", "w", "l", "t", "n", "pf", "pa", "actWins", "expWins", "pct", "ppg", "oppg", "luck", "diff"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "n": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "actWins": { "type": "number" }, "expWins": { "type": "number" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 }, "ppg": { "type": "number" }, "oppg": { "type": "number" }, "luck": { "type": "number" }, "diff": { "type": "number" } } };
+function validate52(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate51.evaluated;
+  const evaluated0 = validate52.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -4542,7 +4952,7 @@ function validate51(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema119.required) {
+    for (const prop0 of schema122.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -4554,7 +4964,7 @@ function validate51(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema119.properties, key0)) {
+      if (!func3.call(schema122.properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -4855,15 +5265,15 @@ function validate51(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate51.errors = vErrors;
+  validate52.errors = vErrors;
   return errors === 0;
 }
-validate51.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema126 = { "type": "object", "additionalProperties": false, "required": ["team", "opp", "w", "l", "t", "g", "pct"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "g": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 } } };
-function validate53(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate52.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema129 = { "type": "object", "additionalProperties": false, "required": ["team", "opp", "w", "l", "t", "g", "pct"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "w": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "l": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "t": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "g": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "pct": { "type": "number", "minimum": 0, "maximum": 1 } } };
+function validate54(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate53.evaluated;
+  const evaluated0 = validate54.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -4871,7 +5281,7 @@ function validate53(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema126.required) {
+    for (const prop0 of schema129.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -5087,15 +5497,15 @@ function validate53(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate53.errors = vErrors;
+  validate54.errors = vErrors;
   return errors === 0;
 }
-validate53.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema133 = { "type": "object", "additionalProperties": false, "required": ["team", "count"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } };
-function validate55(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate54.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema136 = { "type": "object", "additionalProperties": false, "required": ["team", "count"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "count": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } };
+function validate56(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate55.evaluated;
+  const evaluated0 = validate56.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -5103,7 +5513,7 @@ function validate55(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema133.required) {
+    for (const prop0 of schema136.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -5188,15 +5598,15 @@ function validate55(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate55.errors = vErrors;
+  validate56.errors = vErrors;
   return errors === 0;
 }
-validate55.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema136 = { "type": "object", "additionalProperties": false, "required": ["team", "pf", "pa", "opp", "date", "season"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "date": { "$ref": "common.schema.json#/$defs/date" }, "season": { "$ref": "common.schema.json#/$defs/season" } } };
-function validate59(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate56.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema139 = { "type": "object", "additionalProperties": false, "required": ["team", "pf", "pa", "opp", "date", "season"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "pf": { "type": "number" }, "pa": { "type": "number" }, "opp": { "$ref": "common.schema.json#/$defs/owner" }, "date": { "$ref": "common.schema.json#/$defs/date" }, "season": { "$ref": "common.schema.json#/$defs/season" } } };
+function validate60(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate59.evaluated;
+  const evaluated0 = validate60.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -5204,7 +5614,7 @@ function validate59(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema136.required) {
+    for (const prop0 of schema139.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -5375,16 +5785,16 @@ function validate59(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate59.errors = vErrors;
+  validate60.errors = vErrors;
   return errors === 0;
 }
-validate59.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema141 = { "type": "object", "additionalProperties": false, "required": ["team", "len", "start", "end"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "len": { "type": "integer", "minimum": 1 }, "start": { "$ref": "#/$defs/gameRef" }, "end": { "$ref": "#/$defs/gameRef" } } };
-var schema143 = { "type": "object", "additionalProperties": false, "required": ["season", "week", "date"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "week": { "$ref": "common.schema.json#/$defs/week" }, "date": { "$ref": "common.schema.json#/$defs/date" } } };
-function validate64(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate60.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema144 = { "type": "object", "additionalProperties": false, "required": ["team", "len", "start", "end"], "properties": { "team": { "$ref": "common.schema.json#/$defs/owner" }, "len": { "type": "integer", "minimum": 1 }, "start": { "$ref": "#/$defs/gameRef" }, "end": { "$ref": "#/$defs/gameRef" } } };
+var schema146 = { "type": "object", "additionalProperties": false, "required": ["season", "week", "date"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "week": { "$ref": "common.schema.json#/$defs/week" }, "date": { "$ref": "common.schema.json#/$defs/date" } } };
+function validate65(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate64.evaluated;
+  const evaluated0 = validate65.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -5392,7 +5802,7 @@ function validate64(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema143.required) {
+    for (const prop0 of schema146.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -5509,14 +5919,14 @@ function validate64(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate64.errors = vErrors;
+  validate65.errors = vErrors;
   return errors === 0;
 }
-validate64.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-function validate63(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate65.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+function validate64(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate63.evaluated;
+  const evaluated0 = validate64.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -5524,7 +5934,7 @@ function validate63(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema141.required) {
+    for (const prop0 of schema144.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -5601,14 +6011,14 @@ function validate63(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     if (data.start !== void 0) {
-      if (!validate64(data.start, { instancePath: instancePath + "/start", parentData: data, parentDataProperty: "start", rootData, dynamicAnchors })) {
-        vErrors = vErrors === null ? validate64.errors : vErrors.concat(validate64.errors);
+      if (!validate65(data.start, { instancePath: instancePath + "/start", parentData: data, parentDataProperty: "start", rootData, dynamicAnchors })) {
+        vErrors = vErrors === null ? validate65.errors : vErrors.concat(validate65.errors);
         errors = vErrors.length;
       }
     }
     if (data.end !== void 0) {
-      if (!validate64(data.end, { instancePath: instancePath + "/end", parentData: data, parentDataProperty: "end", rootData, dynamicAnchors })) {
-        vErrors = vErrors === null ? validate64.errors : vErrors.concat(validate64.errors);
+      if (!validate65(data.end, { instancePath: instancePath + "/end", parentData: data, parentDataProperty: "end", rootData, dynamicAnchors })) {
+        vErrors = vErrors === null ? validate65.errors : vErrors.concat(validate65.errors);
         errors = vErrors.length;
       }
     }
@@ -5621,15 +6031,15 @@ function validate63(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate63.errors = vErrors;
+  validate64.errors = vErrors;
   return errors === 0;
 }
-validate63.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema147 = { "type": "object", "additionalProperties": false, "required": ["owner", "seasons", "games", "wins", "losses", "ties", "points_for", "points_against", "championships", "saunders_titles", "weekly_crowns"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "seasons": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "points_for": { "type": "number" }, "points_against": { "type": "number" }, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "weekly_crowns": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } };
-function validate69(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate64.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema150 = { "type": "object", "additionalProperties": false, "required": ["owner", "seasons", "games", "wins", "losses", "ties", "points_for", "points_against", "championships", "saunders_titles", "weekly_crowns"], "properties": { "owner": { "$ref": "common.schema.json#/$defs/owner" }, "seasons": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "points_for": { "type": "number" }, "points_against": { "type": "number" }, "championships": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "saunders_titles": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "weekly_crowns": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } };
+function validate70(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate69.evaluated;
+  const evaluated0 = validate70.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -5637,7 +6047,7 @@ function validate69(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema147.required) {
+    for (const prop0 of schema150.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -5649,7 +6059,7 @@ function validate69(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema147.properties, key0)) {
+      if (!func3.call(schema150.properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -5907,16 +6317,16 @@ function validate69(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate69.errors = vErrors;
+  validate70.errors = vErrors;
   return errors === 0;
 }
-validate69.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema157 = { "type": "object", "additionalProperties": false, "required": ["id", "owner", "season", "scores", "games", "mean", "stdev", "min", "max", "median", "p25", "p75", "record", "wins", "losses", "ties", "finish", "champion", "saunders", "bye", "pointsFor", "pointsAgainst"], "properties": { "id": { "type": "string", "minLength": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "scores": { "type": "array", "items": { "type": "number" } }, "scoreEvents": { "type": "array", "items": { "$ref": "#/$defs/scoreEvent" } }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "mean": { "type": "number" }, "stdev": { "type": "number" }, "min": { "type": "number" }, "max": { "type": "number" }, "median": { "type": "number" }, "p25": { "type": "number" }, "p75": { "type": "number" }, "record": { "type": "string" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "finish": { "type": ["integer", "null"], "minimum": 1 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "bye": { "type": "boolean" }, "pointsFor": { "type": "number" }, "pointsAgainst": { "type": "number" } } };
-var schema160 = { "type": "object", "additionalProperties": false, "required": ["score", "weight"], "properties": { "score": { "type": "number" }, "weight": { "type": "number", "exclusiveMinimum": 0 } } };
-function validate71(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate70.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema160 = { "type": "object", "additionalProperties": false, "required": ["id", "owner", "season", "scores", "games", "mean", "stdev", "min", "max", "median", "p25", "p75", "record", "wins", "losses", "ties", "finish", "champion", "saunders", "bye", "pointsFor", "pointsAgainst"], "properties": { "id": { "type": "string", "minLength": 1 }, "owner": { "$ref": "common.schema.json#/$defs/owner" }, "season": { "$ref": "common.schema.json#/$defs/season" }, "scores": { "type": "array", "items": { "type": "number" } }, "scoreEvents": { "type": "array", "items": { "$ref": "#/$defs/scoreEvent" } }, "games": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "mean": { "type": "number" }, "stdev": { "type": "number" }, "min": { "type": "number" }, "max": { "type": "number" }, "median": { "type": "number" }, "p25": { "type": "number" }, "p75": { "type": "number" }, "record": { "type": "string" }, "wins": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "losses": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "ties": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "finish": { "type": ["integer", "null"], "minimum": 1 }, "champion": { "type": "boolean" }, "saunders": { "type": "boolean" }, "bye": { "type": "boolean" }, "pointsFor": { "type": "number" }, "pointsAgainst": { "type": "number" } } };
+var schema163 = { "type": "object", "additionalProperties": false, "required": ["score", "weight"], "properties": { "score": { "type": "number" }, "weight": { "type": "number", "exclusiveMinimum": 0 } } };
+function validate72(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate71.evaluated;
+  const evaluated0 = validate72.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -5924,7 +6334,7 @@ function validate71(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema157.required) {
+    for (const prop0 of schema160.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -5936,7 +6346,7 @@ function validate71(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema157.properties, key0)) {
+      if (!func3.call(schema160.properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -6064,7 +6474,7 @@ function validate71(data, { instancePath = "", parentData, parentDataProperty, r
         for (let i1 = 0; i1 < len1; i1++) {
           let data6 = data5[i1];
           if (data6 && typeof data6 == "object" && !Array.isArray(data6)) {
-            for (const prop1 of schema160.required) {
+            for (const prop1 of schema163.required) {
               if (data6[prop1] === void 0) {
                 const err12 = { instancePath: instancePath + "/scoreEvents/" + i1 };
                 if (vErrors === null) {
@@ -6416,15 +6826,15 @@ function validate71(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate71.errors = vErrors;
+  validate72.errors = vErrors;
   return errors === 0;
 }
-validate71.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-function validate50(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate72.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+function validate51(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   ;
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate50.evaluated;
+  const evaluated0 = validate51.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -6432,7 +6842,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema113.required) {
+    for (const prop0 of schema116.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -6444,7 +6854,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
       }
     }
     for (const key0 in data) {
-      if (!func3.call(schema113.properties, key0)) {
+      if (!func3.call(schema116.properties, key0)) {
         const err1 = { instancePath };
         if (vErrors === null) {
           vErrors = [err1];
@@ -6479,7 +6889,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.source_hashes !== void 0) {
       let data2 = data.source_hashes;
       if (data2 && typeof data2 == "object" && !Array.isArray(data2)) {
-        for (const prop1 of schema113.properties.source_hashes.required) {
+        for (const prop1 of schema116.properties.source_hashes.required) {
           if (data2[prop1] === void 0) {
             const err4 = { instancePath: instancePath + "/source_hashes" };
             if (vErrors === null) {
@@ -6504,7 +6914,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
         if (data2.H2H !== void 0) {
           let data3 = data2.H2H;
           if (typeof data3 === "string") {
-            if (!pattern14.test(data3)) {
+            if (!pattern17.test(data3)) {
               const err6 = { instancePath: instancePath + "/source_hashes/H2H" };
               if (vErrors === null) {
                 vErrors = [err6];
@@ -6526,7 +6936,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
         if (data2.SeasonSummary !== void 0) {
           let data4 = data2.SeasonSummary;
           if (typeof data4 === "string") {
-            if (!pattern14.test(data4)) {
+            if (!pattern17.test(data4)) {
               const err8 = { instancePath: instancePath + "/source_hashes/SeasonSummary" };
               if (vErrors === null) {
                 vErrors = [err8];
@@ -6548,7 +6958,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
         if (data2.Rivalries !== void 0) {
           let data5 = data2.Rivalries;
           if (typeof data5 === "string") {
-            if (!pattern14.test(data5)) {
+            if (!pattern17.test(data5)) {
               const err10 = { instancePath: instancePath + "/source_hashes/Rivalries" };
               if (vErrors === null) {
                 vErrors = [err10];
@@ -6709,8 +7119,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data10)) {
         const len2 = data10.length;
         for (let i4 = 0; i4 < len2; i4++) {
-          if (!validate51(data10[i4], { instancePath: instancePath + "/season_aggregates/" + i4, parentData: data10, parentDataProperty: i4, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate51.errors : vErrors.concat(validate51.errors);
+          if (!validate52(data10[i4], { instancePath: instancePath + "/season_aggregates/" + i4, parentData: data10, parentDataProperty: i4, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate52.errors : vErrors.concat(validate52.errors);
             errors = vErrors.length;
           }
         }
@@ -6729,8 +7139,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data12)) {
         const len3 = data12.length;
         for (let i5 = 0; i5 < len3; i5++) {
-          if (!validate53(data12[i5], { instancePath: instancePath + "/head_to_head_pairs/" + i5, parentData: data12, parentDataProperty: i5, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate53.errors : vErrors.concat(validate53.errors);
+          if (!validate54(data12[i5], { instancePath: instancePath + "/head_to_head_pairs/" + i5, parentData: data12, parentDataProperty: i5, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate54.errors : vErrors.concat(validate54.errors);
             errors = vErrors.length;
           }
         }
@@ -6747,7 +7157,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.weekly_awards !== void 0) {
       let data14 = data.weekly_awards;
       if (data14 && typeof data14 == "object" && !Array.isArray(data14)) {
-        for (const prop2 of schema113.properties.weekly_awards.required) {
+        for (const prop2 of schema116.properties.weekly_awards.required) {
           if (data14[prop2] === void 0) {
             const err25 = { instancePath: instancePath + "/weekly_awards" };
             if (vErrors === null) {
@@ -6774,8 +7184,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data15)) {
             const len4 = data15.length;
             for (let i6 = 0; i6 < len4; i6++) {
-              if (!validate55(data15[i6], { instancePath: instancePath + "/weekly_awards/top/" + i6, parentData: data15, parentDataProperty: i6, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate55.errors : vErrors.concat(validate55.errors);
+              if (!validate56(data15[i6], { instancePath: instancePath + "/weekly_awards/top/" + i6, parentData: data15, parentDataProperty: i6, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate56.errors : vErrors.concat(validate56.errors);
                 errors = vErrors.length;
               }
             }
@@ -6794,8 +7204,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data17)) {
             const len5 = data17.length;
             for (let i7 = 0; i7 < len5; i7++) {
-              if (!validate55(data17[i7], { instancePath: instancePath + "/weekly_awards/low/" + i7, parentData: data17, parentDataProperty: i7, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate55.errors : vErrors.concat(validate55.errors);
+              if (!validate56(data17[i7], { instancePath: instancePath + "/weekly_awards/low/" + i7, parentData: data17, parentDataProperty: i7, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate56.errors : vErrors.concat(validate56.errors);
                 errors = vErrors.length;
               }
             }
@@ -6814,8 +7224,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data19)) {
             const len6 = data19.length;
             for (let i8 = 0; i8 < len6; i8++) {
-              if (!validate55(data19[i8], { instancePath: instancePath + "/weekly_awards/high150/" + i8, parentData: data19, parentDataProperty: i8, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate55.errors : vErrors.concat(validate55.errors);
+              if (!validate56(data19[i8], { instancePath: instancePath + "/weekly_awards/high150/" + i8, parentData: data19, parentDataProperty: i8, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate56.errors : vErrors.concat(validate56.errors);
                 errors = vErrors.length;
               }
             }
@@ -6842,7 +7252,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.records !== void 0) {
       let data21 = data.records;
       if (data21 && typeof data21 == "object" && !Array.isArray(data21)) {
-        for (const prop3 of schema113.properties.records.required) {
+        for (const prop3 of schema116.properties.records.required) {
           if (data21[prop3] === void 0) {
             const err31 = { instancePath: instancePath + "/records" };
             if (vErrors === null) {
@@ -6869,8 +7279,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data22)) {
             const len7 = data22.length;
             for (let i9 = 0; i9 < len7; i9++) {
-              if (!validate59(data22[i9], { instancePath: instancePath + "/records/top_scores/" + i9, parentData: data22, parentDataProperty: i9, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate59.errors : vErrors.concat(validate59.errors);
+              if (!validate60(data22[i9], { instancePath: instancePath + "/records/top_scores/" + i9, parentData: data22, parentDataProperty: i9, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate60.errors : vErrors.concat(validate60.errors);
                 errors = vErrors.length;
               }
             }
@@ -6889,8 +7299,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data24)) {
             const len8 = data24.length;
             for (let i10 = 0; i10 < len8; i10++) {
-              if (!validate59(data24[i10], { instancePath: instancePath + "/records/bottom_scores/" + i10, parentData: data24, parentDataProperty: i10, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate59.errors : vErrors.concat(validate59.errors);
+              if (!validate60(data24[i10], { instancePath: instancePath + "/records/bottom_scores/" + i10, parentData: data24, parentDataProperty: i10, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate60.errors : vErrors.concat(validate60.errors);
                 errors = vErrors.length;
               }
             }
@@ -6909,8 +7319,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data26)) {
             const len9 = data26.length;
             for (let i11 = 0; i11 < len9; i11++) {
-              if (!validate55(data26[i11], { instancePath: instancePath + "/records/sub_70/" + i11, parentData: data26, parentDataProperty: i11, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate55.errors : vErrors.concat(validate55.errors);
+              if (!validate56(data26[i11], { instancePath: instancePath + "/records/sub_70/" + i11, parentData: data26, parentDataProperty: i11, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate56.errors : vErrors.concat(validate56.errors);
                 errors = vErrors.length;
               }
             }
@@ -6937,7 +7347,7 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.streaks !== void 0) {
       let data28 = data.streaks;
       if (data28 && typeof data28 == "object" && !Array.isArray(data28)) {
-        for (const prop4 of schema113.properties.streaks.required) {
+        for (const prop4 of schema116.properties.streaks.required) {
           if (data28[prop4] === void 0) {
             const err37 = { instancePath: instancePath + "/streaks" };
             if (vErrors === null) {
@@ -6964,8 +7374,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data29)) {
             const len10 = data29.length;
             for (let i12 = 0; i12 < len10; i12++) {
-              if (!validate63(data29[i12], { instancePath: instancePath + "/streaks/wins/" + i12, parentData: data29, parentDataProperty: i12, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate63.errors : vErrors.concat(validate63.errors);
+              if (!validate64(data29[i12], { instancePath: instancePath + "/streaks/wins/" + i12, parentData: data29, parentDataProperty: i12, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate64.errors : vErrors.concat(validate64.errors);
                 errors = vErrors.length;
               }
             }
@@ -6984,8 +7394,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
           if (Array.isArray(data31)) {
             const len11 = data31.length;
             for (let i13 = 0; i13 < len11; i13++) {
-              if (!validate63(data31[i13], { instancePath: instancePath + "/streaks/losses/" + i13, parentData: data31, parentDataProperty: i13, rootData, dynamicAnchors })) {
-                vErrors = vErrors === null ? validate63.errors : vErrors.concat(validate63.errors);
+              if (!validate64(data31[i13], { instancePath: instancePath + "/streaks/losses/" + i13, parentData: data31, parentDataProperty: i13, rootData, dynamicAnchors })) {
+                vErrors = vErrors === null ? validate64.errors : vErrors.concat(validate64.errors);
                 errors = vErrors.length;
               }
             }
@@ -7014,8 +7424,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data33)) {
         const len12 = data33.length;
         for (let i14 = 0; i14 < len12; i14++) {
-          if (!validate69(data33[i14], { instancePath: instancePath + "/owner_careers/" + i14, parentData: data33, parentDataProperty: i14, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate69.errors : vErrors.concat(validate69.errors);
+          if (!validate70(data33[i14], { instancePath: instancePath + "/owner_careers/" + i14, parentData: data33, parentDataProperty: i14, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate70.errors : vErrors.concat(validate70.errors);
             errors = vErrors.length;
           }
         }
@@ -7034,8 +7444,8 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
       if (Array.isArray(data35)) {
         const len13 = data35.length;
         for (let i15 = 0; i15 < len13; i15++) {
-          if (!validate71(data35[i15], { instancePath: instancePath + "/team_seasons/" + i15, parentData: data35, parentDataProperty: i15, rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate71.errors : vErrors.concat(validate71.errors);
+          if (!validate72(data35[i15], { instancePath: instancePath + "/team_seasons/" + i15, parentData: data35, parentDataProperty: i15, rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate72.errors : vErrors.concat(validate72.errors);
             errors = vErrors.length;
           }
         }
@@ -7058,18 +7468,18 @@ function validate50(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate50.errors = vErrors;
+  validate51.errors = vErrors;
   return errors === 0;
 }
-validate50.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var validateAssetManifest = validate73;
-var schema165 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://darling.example/schemas/asset-manifest.schema.json", "title": "AssetManifest", "description": "Content-addressed inventory for one deployable data snapshot.", "type": "object", "additionalProperties": false, "required": ["manifest_version", "data_version", "derived_generator_version", "schema_versions", "assets", "derived", "media"], "properties": { "manifest_version": { "type": "integer", "minimum": 1 }, "data_version": { "$ref": "common.schema.json#/$defs/sha256" }, "derived_generator_version": { "type": "integer", "minimum": 1 }, "schema_versions": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries", "CurrentSeason", "TransactionHistory", "DraftSpot", "DerivedStats"], "properties": { "H2H": { "type": "integer", "minimum": 1 }, "SeasonSummary": { "type": "integer", "minimum": 1 }, "Rivalries": { "type": "integer", "minimum": 1 }, "CurrentSeason": { "type": "integer", "minimum": 1 }, "TransactionHistory": { "type": "integer", "minimum": 1 }, "DraftSpot": { "type": "integer", "minimum": 1 }, "DerivedStats": { "type": "integer", "minimum": 1 } } }, "assets": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries", "CurrentSeason", "TransactionHistory", "DraftSpot"], "properties": { "H2H": { "$ref": "#/$defs/jsonAsset" }, "SeasonSummary": { "$ref": "#/$defs/jsonAsset" }, "Rivalries": { "$ref": "#/$defs/jsonAsset" }, "CurrentSeason": { "$ref": "#/$defs/jsonAsset" }, "TransactionHistory": { "$ref": "#/$defs/jsonAsset" }, "DraftSpot": { "$ref": "#/$defs/jsonAsset" } } }, "derived": { "type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes", "required", "source_hashes"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "required": { "type": "boolean" }, "source_hashes": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries"], "properties": { "H2H": { "$ref": "common.schema.json#/$defs/sha256" }, "SeasonSummary": { "$ref": "common.schema.json#/$defs/sha256" }, "Rivalries": { "$ref": "common.schema.json#/$defs/sha256" } } } } }, "media": { "type": "object", "additionalProperties": false, "required": ["leagueHero", "leagueHeroSource"], "properties": { "leagueHero": { "type": "object", "additionalProperties": false, "required": ["role", "variants"], "properties": { "role": { "const": "runtime-required" }, "variants": { "type": "array", "minItems": 12, "maxItems": 12, "items": { "$ref": "#/$defs/mediaVariant" } } } }, "leagueHeroSource": { "type": "object", "additionalProperties": false, "required": ["role", "path", "fallback"], "properties": { "role": { "const": "regeneration-optional" }, "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "fallback": { "$ref": "common.schema.json#/$defs/relativeAssetPath" } } } } } }, "$defs": { "jsonAsset": { "type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes", "rows", "season_min", "season_max", "required"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "rows": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "season_min": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "season_max": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "required": { "type": "boolean" } } }, "mediaVariant": { "type": "object", "additionalProperties": false, "required": ["path", "format", "width", "height", "bytes", "sha256", "max_bytes"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "format": { "enum": ["avif", "webp", "jpeg"] }, "width": { "enum": [480, 768, 1280, 1920] }, "height": { "type": "integer", "minimum": 1 }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "max_bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } } } };
-var pattern31 = new RegExp("^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$", "u");
-var schema167 = { "type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes", "rows", "season_min", "season_max", "required"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "rows": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "season_min": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "season_max": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "required": { "type": "boolean" } } };
-function validate74(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate51.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var validateAssetManifest = validate74;
+var schema168 = { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://viva.example/schemas/asset-manifest.schema.json", "title": "AssetManifest", "description": "Content-addressed inventory for one deployable data snapshot.", "type": "object", "additionalProperties": false, "required": ["manifest_version", "data_version", "derived_generator_version", "schema_versions", "assets", "derived", "media"], "properties": { "manifest_version": { "type": "integer", "minimum": 1 }, "data_version": { "$ref": "common.schema.json#/$defs/sha256" }, "derived_generator_version": { "type": "integer", "minimum": 1 }, "schema_versions": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries", "CurrentSeason", "Shotguns", "DraftSpot", "DerivedStats"], "properties": { "H2H": { "type": "integer", "minimum": 1 }, "SeasonSummary": { "type": "integer", "minimum": 1 }, "Rivalries": { "type": "integer", "minimum": 1 }, "CurrentSeason": { "type": "integer", "minimum": 1 }, "Shotguns": { "type": "integer", "minimum": 1 }, "DraftSpot": { "type": "integer", "minimum": 1 }, "DerivedStats": { "type": "integer", "minimum": 1 } } }, "assets": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries", "Shotguns", "DraftSpot"], "properties": { "H2H": { "$ref": "#/$defs/jsonAsset" }, "SeasonSummary": { "$ref": "#/$defs/jsonAsset" }, "Rivalries": { "$ref": "#/$defs/jsonAsset" }, "CurrentSeason": { "$ref": "#/$defs/jsonAsset" }, "Shotguns": { "$ref": "#/$defs/jsonAsset" }, "DraftSpot": { "$ref": "#/$defs/jsonAsset" } } }, "derived": { "type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes", "required", "source_hashes"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "required": { "type": "boolean" }, "source_hashes": { "type": "object", "additionalProperties": false, "required": ["H2H", "SeasonSummary", "Rivalries"], "properties": { "H2H": { "$ref": "common.schema.json#/$defs/sha256" }, "SeasonSummary": { "$ref": "common.schema.json#/$defs/sha256" }, "Rivalries": { "$ref": "common.schema.json#/$defs/sha256" } } } } }, "media": { "type": "object", "additionalProperties": false, "required": ["leagueHero", "leagueHeroSource"], "properties": { "leagueHero": { "type": "object", "additionalProperties": false, "required": ["role", "variants"], "properties": { "role": { "const": "runtime-required" }, "variants": { "type": "array", "minItems": 12, "maxItems": 12, "items": { "$ref": "#/$defs/mediaVariant" } } } }, "leagueHeroSource": { "type": "object", "additionalProperties": false, "required": ["role", "path", "fallback"], "properties": { "role": { "const": "regeneration-optional" }, "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "fallback": { "$ref": "common.schema.json#/$defs/relativeAssetPath" } } } } } }, "$defs": { "jsonAsset": { "type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes", "rows", "season_min", "season_max", "required"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "rows": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "season_min": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "season_max": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "required": { "type": "boolean" } } }, "mediaVariant": { "type": "object", "additionalProperties": false, "required": ["path", "format", "width", "height", "bytes", "sha256", "max_bytes"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "format": { "enum": ["avif", "webp", "jpeg"] }, "width": { "enum": [480, 768, 1280, 1920] }, "height": { "type": "integer", "minimum": 1 }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "max_bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } } } };
+var pattern34 = new RegExp("^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$", "u");
+var schema170 = { "type": "object", "additionalProperties": false, "required": ["path", "sha256", "bytes", "rows", "season_min", "season_max", "required"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "rows": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "season_min": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "season_max": { "type": ["integer", "null"], "minimum": 2014, "maximum": 2100 }, "required": { "type": "boolean" } } };
+function validate75(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate74.evaluated;
+  const evaluated0 = validate75.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -7077,7 +7487,7 @@ function validate74(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema167.required) {
+    for (const prop0 of schema170.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -7102,7 +7512,7 @@ function validate74(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.path !== void 0) {
       let data0 = data.path;
       if (typeof data0 === "string") {
-        if (!pattern31.test(data0)) {
+        if (!pattern34.test(data0)) {
           const err2 = { instancePath: instancePath + "/path" };
           if (vErrors === null) {
             vErrors = [err2];
@@ -7124,7 +7534,7 @@ function validate74(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.sha256 !== void 0) {
       let data1 = data.sha256;
       if (typeof data1 === "string") {
-        if (!pattern14.test(data1)) {
+        if (!pattern17.test(data1)) {
           const err4 = { instancePath: instancePath + "/sha256" };
           if (vErrors === null) {
             vErrors = [err4];
@@ -7273,15 +7683,15 @@ function validate74(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate74.errors = vErrors;
+  validate75.errors = vErrors;
   return errors === 0;
 }
-validate74.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-var schema178 = { "type": "object", "additionalProperties": false, "required": ["path", "format", "width", "height", "bytes", "sha256", "max_bytes"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "format": { "enum": ["avif", "webp", "jpeg"] }, "width": { "enum": [480, 768, 1280, 1920] }, "height": { "type": "integer", "minimum": 1 }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "max_bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } };
-function validate81(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate75.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+var schema181 = { "type": "object", "additionalProperties": false, "required": ["path", "format", "width", "height", "bytes", "sha256", "max_bytes"], "properties": { "path": { "$ref": "common.schema.json#/$defs/relativeAssetPath" }, "format": { "enum": ["avif", "webp", "jpeg"] }, "width": { "enum": [480, 768, 1280, 1920] }, "height": { "type": "integer", "minimum": 1 }, "bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" }, "sha256": { "$ref": "common.schema.json#/$defs/sha256" }, "max_bytes": { "$ref": "common.schema.json#/$defs/nonNegativeInteger" } } };
+function validate82(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate81.evaluated;
+  const evaluated0 = validate82.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -7289,7 +7699,7 @@ function validate81(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema178.required) {
+    for (const prop0 of schema181.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -7314,7 +7724,7 @@ function validate81(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.path !== void 0) {
       let data0 = data.path;
       if (typeof data0 === "string") {
-        if (!pattern31.test(data0)) {
+        if (!pattern34.test(data0)) {
           const err2 = { instancePath: instancePath + "/path" };
           if (vErrors === null) {
             vErrors = [err2];
@@ -7336,7 +7746,7 @@ function validate81(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.format !== void 0) {
       let valid2;
       valid2 = false;
-      for (const v0 of schema178.properties.format.enum) {
+      for (const v0 of schema181.properties.format.enum) {
         if (func0(data.format, v0)) {
           valid2 = true;
           break;
@@ -7355,7 +7765,7 @@ function validate81(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.width !== void 0) {
       let valid3;
       valid3 = false;
-      for (const v1 of schema178.properties.width.enum) {
+      for (const v1 of schema181.properties.width.enum) {
         if (func0(data.width, v1)) {
           valid3 = true;
           break;
@@ -7420,7 +7830,7 @@ function validate81(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.sha256 !== void 0) {
       let data5 = data.sha256;
       if (typeof data5 === "string") {
-        if (!pattern14.test(data5)) {
+        if (!pattern17.test(data5)) {
           const err10 = { instancePath: instancePath + "/sha256" };
           if (vErrors === null) {
             vErrors = [err10];
@@ -7471,15 +7881,15 @@ function validate81(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate81.errors = vErrors;
+  validate82.errors = vErrors;
   return errors === 0;
 }
-validate81.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
-function validate73(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
+validate82.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+function validate74(data, { instancePath = "", parentData, parentDataProperty, rootData = data, dynamicAnchors = {} } = {}) {
   ;
   let vErrors = null;
   let errors = 0;
-  const evaluated0 = validate73.evaluated;
+  const evaluated0 = validate74.evaluated;
   if (evaluated0.dynamicProps) {
     evaluated0.props = void 0;
   }
@@ -7487,7 +7897,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
     evaluated0.items = void 0;
   }
   if (data && typeof data == "object" && !Array.isArray(data)) {
-    for (const prop0 of schema165.required) {
+    for (const prop0 of schema168.required) {
       if (data[prop0] === void 0) {
         const err0 = { instancePath };
         if (vErrors === null) {
@@ -7535,7 +7945,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.data_version !== void 0) {
       let data1 = data.data_version;
       if (typeof data1 === "string") {
-        if (!pattern14.test(data1)) {
+        if (!pattern17.test(data1)) {
           const err4 = { instancePath: instancePath + "/data_version" };
           if (vErrors === null) {
             vErrors = [err4];
@@ -7580,7 +7990,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.schema_versions !== void 0) {
       let data3 = data.schema_versions;
       if (data3 && typeof data3 == "object" && !Array.isArray(data3)) {
-        for (const prop1 of schema165.properties.schema_versions.required) {
+        for (const prop1 of schema168.properties.schema_versions.required) {
           if (data3[prop1] === void 0) {
             const err8 = { instancePath: instancePath + "/schema_versions" };
             if (vErrors === null) {
@@ -7592,7 +8002,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
           }
         }
         for (const key1 in data3) {
-          if (!(key1 === "H2H" || key1 === "SeasonSummary" || key1 === "Rivalries" || key1 === "CurrentSeason" || key1 === "TransactionHistory" || key1 === "DraftSpot" || key1 === "DerivedStats")) {
+          if (!(key1 === "H2H" || key1 === "SeasonSummary" || key1 === "Rivalries" || key1 === "CurrentSeason" || key1 === "Shotguns" || key1 === "DraftSpot" || key1 === "DerivedStats")) {
             const err9 = { instancePath: instancePath + "/schema_versions" };
             if (vErrors === null) {
               vErrors = [err9];
@@ -7694,10 +8104,10 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
             }
           }
         }
-        if (data3.TransactionHistory !== void 0) {
-          let data8 = data3.TransactionHistory;
+        if (data3.Shotguns !== void 0) {
+          let data8 = data3.Shotguns;
           if (!(typeof data8 == "number" && (!(data8 % 1) && !isNaN(data8)) && isFinite(data8))) {
-            const err18 = { instancePath: instancePath + "/schema_versions/TransactionHistory" };
+            const err18 = { instancePath: instancePath + "/schema_versions/Shotguns" };
             if (vErrors === null) {
               vErrors = [err18];
             } else {
@@ -7707,7 +8117,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
           }
           if (typeof data8 == "number" && isFinite(data8)) {
             if (data8 < 1 || isNaN(data8)) {
-              const err19 = { instancePath: instancePath + "/schema_versions/TransactionHistory" };
+              const err19 = { instancePath: instancePath + "/schema_versions/Shotguns" };
               if (vErrors === null) {
                 vErrors = [err19];
               } else {
@@ -7776,7 +8186,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.assets !== void 0) {
       let data11 = data.assets;
       if (data11 && typeof data11 == "object" && !Array.isArray(data11)) {
-        for (const prop2 of schema165.properties.assets.required) {
+        for (const prop2 of schema168.properties.assets.required) {
           if (data11[prop2] === void 0) {
             const err25 = { instancePath: instancePath + "/assets" };
             if (vErrors === null) {
@@ -7788,7 +8198,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
           }
         }
         for (const key2 in data11) {
-          if (!(key2 === "H2H" || key2 === "SeasonSummary" || key2 === "Rivalries" || key2 === "CurrentSeason" || key2 === "TransactionHistory" || key2 === "DraftSpot")) {
+          if (!(key2 === "H2H" || key2 === "SeasonSummary" || key2 === "Rivalries" || key2 === "CurrentSeason" || key2 === "Shotguns" || key2 === "DraftSpot")) {
             const err26 = { instancePath: instancePath + "/assets" };
             if (vErrors === null) {
               vErrors = [err26];
@@ -7799,38 +8209,38 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
           }
         }
         if (data11.H2H !== void 0) {
-          if (!validate74(data11.H2H, { instancePath: instancePath + "/assets/H2H", parentData: data11, parentDataProperty: "H2H", rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate74.errors : vErrors.concat(validate74.errors);
+          if (!validate75(data11.H2H, { instancePath: instancePath + "/assets/H2H", parentData: data11, parentDataProperty: "H2H", rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate75.errors : vErrors.concat(validate75.errors);
             errors = vErrors.length;
           }
         }
         if (data11.SeasonSummary !== void 0) {
-          if (!validate74(data11.SeasonSummary, { instancePath: instancePath + "/assets/SeasonSummary", parentData: data11, parentDataProperty: "SeasonSummary", rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate74.errors : vErrors.concat(validate74.errors);
+          if (!validate75(data11.SeasonSummary, { instancePath: instancePath + "/assets/SeasonSummary", parentData: data11, parentDataProperty: "SeasonSummary", rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate75.errors : vErrors.concat(validate75.errors);
             errors = vErrors.length;
           }
         }
         if (data11.Rivalries !== void 0) {
-          if (!validate74(data11.Rivalries, { instancePath: instancePath + "/assets/Rivalries", parentData: data11, parentDataProperty: "Rivalries", rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate74.errors : vErrors.concat(validate74.errors);
+          if (!validate75(data11.Rivalries, { instancePath: instancePath + "/assets/Rivalries", parentData: data11, parentDataProperty: "Rivalries", rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate75.errors : vErrors.concat(validate75.errors);
             errors = vErrors.length;
           }
         }
         if (data11.CurrentSeason !== void 0) {
-          if (!validate74(data11.CurrentSeason, { instancePath: instancePath + "/assets/CurrentSeason", parentData: data11, parentDataProperty: "CurrentSeason", rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate74.errors : vErrors.concat(validate74.errors);
+          if (!validate75(data11.CurrentSeason, { instancePath: instancePath + "/assets/CurrentSeason", parentData: data11, parentDataProperty: "CurrentSeason", rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate75.errors : vErrors.concat(validate75.errors);
             errors = vErrors.length;
           }
         }
-        if (data11.TransactionHistory !== void 0) {
-          if (!validate74(data11.TransactionHistory, { instancePath: instancePath + "/assets/TransactionHistory", parentData: data11, parentDataProperty: "TransactionHistory", rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate74.errors : vErrors.concat(validate74.errors);
+        if (data11.Shotguns !== void 0) {
+          if (!validate75(data11.Shotguns, { instancePath: instancePath + "/assets/Shotguns", parentData: data11, parentDataProperty: "Shotguns", rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate75.errors : vErrors.concat(validate75.errors);
             errors = vErrors.length;
           }
         }
         if (data11.DraftSpot !== void 0) {
-          if (!validate74(data11.DraftSpot, { instancePath: instancePath + "/assets/DraftSpot", parentData: data11, parentDataProperty: "DraftSpot", rootData, dynamicAnchors })) {
-            vErrors = vErrors === null ? validate74.errors : vErrors.concat(validate74.errors);
+          if (!validate75(data11.DraftSpot, { instancePath: instancePath + "/assets/DraftSpot", parentData: data11, parentDataProperty: "DraftSpot", rootData, dynamicAnchors })) {
+            vErrors = vErrors === null ? validate75.errors : vErrors.concat(validate75.errors);
             errors = vErrors.length;
           }
         }
@@ -7847,7 +8257,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.derived !== void 0) {
       let data18 = data.derived;
       if (data18 && typeof data18 == "object" && !Array.isArray(data18)) {
-        for (const prop3 of schema165.properties.derived.required) {
+        for (const prop3 of schema168.properties.derived.required) {
           if (data18[prop3] === void 0) {
             const err28 = { instancePath: instancePath + "/derived" };
             if (vErrors === null) {
@@ -7872,7 +8282,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
         if (data18.path !== void 0) {
           let data19 = data18.path;
           if (typeof data19 === "string") {
-            if (!pattern31.test(data19)) {
+            if (!pattern34.test(data19)) {
               const err30 = { instancePath: instancePath + "/derived/path" };
               if (vErrors === null) {
                 vErrors = [err30];
@@ -7894,7 +8304,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
         if (data18.sha256 !== void 0) {
           let data20 = data18.sha256;
           if (typeof data20 === "string") {
-            if (!pattern14.test(data20)) {
+            if (!pattern17.test(data20)) {
               const err32 = { instancePath: instancePath + "/derived/sha256" };
               if (vErrors === null) {
                 vErrors = [err32];
@@ -7950,7 +8360,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
         if (data18.source_hashes !== void 0) {
           let data23 = data18.source_hashes;
           if (data23 && typeof data23 == "object" && !Array.isArray(data23)) {
-            for (const prop4 of schema165.properties.derived.properties.source_hashes.required) {
+            for (const prop4 of schema168.properties.derived.properties.source_hashes.required) {
               if (data23[prop4] === void 0) {
                 const err37 = { instancePath: instancePath + "/derived/source_hashes" };
                 if (vErrors === null) {
@@ -7975,7 +8385,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
             if (data23.H2H !== void 0) {
               let data24 = data23.H2H;
               if (typeof data24 === "string") {
-                if (!pattern14.test(data24)) {
+                if (!pattern17.test(data24)) {
                   const err39 = { instancePath: instancePath + "/derived/source_hashes/H2H" };
                   if (vErrors === null) {
                     vErrors = [err39];
@@ -7997,7 +8407,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
             if (data23.SeasonSummary !== void 0) {
               let data25 = data23.SeasonSummary;
               if (typeof data25 === "string") {
-                if (!pattern14.test(data25)) {
+                if (!pattern17.test(data25)) {
                   const err41 = { instancePath: instancePath + "/derived/source_hashes/SeasonSummary" };
                   if (vErrors === null) {
                     vErrors = [err41];
@@ -8019,7 +8429,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
             if (data23.Rivalries !== void 0) {
               let data26 = data23.Rivalries;
               if (typeof data26 === "string") {
-                if (!pattern14.test(data26)) {
+                if (!pattern17.test(data26)) {
                   const err43 = { instancePath: instancePath + "/derived/source_hashes/Rivalries" };
                   if (vErrors === null) {
                     vErrors = [err43];
@@ -8061,7 +8471,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
     if (data.media !== void 0) {
       let data27 = data.media;
       if (data27 && typeof data27 == "object" && !Array.isArray(data27)) {
-        for (const prop5 of schema165.properties.media.required) {
+        for (const prop5 of schema168.properties.media.required) {
           if (data27[prop5] === void 0) {
             const err47 = { instancePath: instancePath + "/media" };
             if (vErrors === null) {
@@ -8086,7 +8496,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
         if (data27.leagueHero !== void 0) {
           let data28 = data27.leagueHero;
           if (data28 && typeof data28 == "object" && !Array.isArray(data28)) {
-            for (const prop6 of schema165.properties.media.properties.leagueHero.required) {
+            for (const prop6 of schema168.properties.media.properties.leagueHero.required) {
               if (data28[prop6] === void 0) {
                 const err49 = { instancePath: instancePath + "/media/leagueHero" };
                 if (vErrors === null) {
@@ -8142,8 +8552,8 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
                 }
                 const len0 = data30.length;
                 for (let i0 = 0; i0 < len0; i0++) {
-                  if (!validate81(data30[i0], { instancePath: instancePath + "/media/leagueHero/variants/" + i0, parentData: data30, parentDataProperty: i0, rootData, dynamicAnchors })) {
-                    vErrors = vErrors === null ? validate81.errors : vErrors.concat(validate81.errors);
+                  if (!validate82(data30[i0], { instancePath: instancePath + "/media/leagueHero/variants/" + i0, parentData: data30, parentDataProperty: i0, rootData, dynamicAnchors })) {
+                    vErrors = vErrors === null ? validate82.errors : vErrors.concat(validate82.errors);
                     errors = vErrors.length;
                   }
                 }
@@ -8170,7 +8580,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
         if (data27.leagueHeroSource !== void 0) {
           let data32 = data27.leagueHeroSource;
           if (data32 && typeof data32 == "object" && !Array.isArray(data32)) {
-            for (const prop7 of schema165.properties.media.properties.leagueHeroSource.required) {
+            for (const prop7 of schema168.properties.media.properties.leagueHeroSource.required) {
               if (data32[prop7] === void 0) {
                 const err56 = { instancePath: instancePath + "/media/leagueHeroSource" };
                 if (vErrors === null) {
@@ -8206,7 +8616,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
             if (data32.path !== void 0) {
               let data34 = data32.path;
               if (typeof data34 === "string") {
-                if (!pattern31.test(data34)) {
+                if (!pattern34.test(data34)) {
                   const err59 = { instancePath: instancePath + "/media/leagueHeroSource/path" };
                   if (vErrors === null) {
                     vErrors = [err59];
@@ -8228,7 +8638,7 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
             if (data32.fallback !== void 0) {
               let data35 = data32.fallback;
               if (typeof data35 === "string") {
-                if (!pattern31.test(data35)) {
+                if (!pattern34.test(data35)) {
                   const err61 = { instancePath: instancePath + "/media/leagueHeroSource/fallback" };
                   if (vErrors === null) {
                     vErrors = [err61];
@@ -8276,10 +8686,10 @@ function validate73(data, { instancePath = "", parentData, parentDataProperty, r
     }
     errors++;
   }
-  validate73.errors = vErrors;
+  validate74.errors = vErrors;
   return errors === 0;
 }
-validate73.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
+validate74.evaluated = { "props": true, "dynamicProps": false, "dynamicItems": false };
 export {
   validateAssetManifest,
   validateCurrentSeason,
@@ -8287,22 +8697,24 @@ export {
   validateDraftSpot,
   validateH2H,
   validateRivalries,
-  validateSeasonSummary
+  validateSeasonSummary,
+  validateShotguns
 };
 
-import type { AssetManifest, CurrentSeasonData, DerivedStats, DraftSpot, H2HGame, RivalryDefinition, SeasonSummaryRow } from './asset-types';
+import type { AssetManifest, CurrentSeasonData, DerivedStats, DraftSpot, H2HGame, RivalryDefinition, SeasonSummaryRow, ShotgunRecord } from './asset-types';
 
 export function isH2H(value: unknown): value is H2HGame[] { return validateH2H(value) as boolean; }
 export function isSeasonSummary(value: unknown): value is SeasonSummaryRow[] { return validateSeasonSummary(value) as boolean; }
 export function isRivalries(value: unknown): value is RivalryDefinition[] { return validateRivalries(value) as boolean; }
 export function isCurrentSeason(value: unknown): value is CurrentSeasonData { return validateCurrentSeason(value) as boolean; }
+export function isShotguns(value: unknown): value is ShotgunRecord[] { return validateShotguns(value) as boolean; }
 export function isDraftSpot(value: unknown): value is DraftSpot { return validateDraftSpot(value) as boolean; }
 export function isDerivedStats(value: unknown): value is DerivedStats { return validateDerivedStats(value) as boolean; }
 export function isAssetManifest(value: unknown): value is AssetManifest { return validateAssetManifest(value) as boolean; }
 
-export type ValidatorName = 'H2H' | 'SeasonSummary' | 'Rivalries' | 'CurrentSeason' | 'DraftSpot' | 'DerivedStats' | 'AssetManifest';
+export type ValidatorName = 'H2H' | 'SeasonSummary' | 'Rivalries' | 'CurrentSeason' | 'Shotguns' | 'DraftSpot' | 'DerivedStats' | 'AssetManifest';
 export function getValidatorErrors(name: ValidatorName): Array<{ instancePath?: string; message?: string }> | null {
-  const validators = { H2H: validateH2H, SeasonSummary: validateSeasonSummary, Rivalries: validateRivalries, CurrentSeason: validateCurrentSeason, DraftSpot: validateDraftSpot, DerivedStats: validateDerivedStats, AssetManifest: validateAssetManifest };
+  const validators = { H2H: validateH2H, SeasonSummary: validateSeasonSummary, Rivalries: validateRivalries, CurrentSeason: validateCurrentSeason, Shotguns: validateShotguns, DraftSpot: validateDraftSpot, DerivedStats: validateDerivedStats, AssetManifest: validateAssetManifest };
   return (validators[name] as any).errors || null;
 }
 

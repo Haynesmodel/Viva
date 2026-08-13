@@ -11,7 +11,7 @@ let temporaryDirectory;
 let createFeatureController;
 
 test.before(async () => {
-  temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-pulse-controller-'));
+  temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-pulse-controller-'));
   const outfile = path.join(temporaryDirectory, 'controller.mjs');
   await esbuild.build({
     entryPoints: [path.join(root, 'src/features/league-pulse/league-pulse-controller.ts')],
@@ -71,7 +71,7 @@ function contextFixture() {
     data: { diagnostics: { freshness: { status: 'current' } } },
     document: { getElementById: id => id === 'leaguePulseRoot' ? rootElement : null },
     window: {
-      location: { pathname: '/Darling/' },
+      location: { pathname: '/Viva/' },
       fetch() { throw new Error('Pulse activation must not fetch'); },
     },
     freshness: {

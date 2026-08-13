@@ -45,7 +45,7 @@ function descriptorFor(value, name = 'Fixture') {
 }
 
 test.before(async () => {
-  tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-integrity-'));
+  tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-integrity-'));
   await Promise.all([
     esbuild.build({ entryPoints: [path.join(root, 'src/data/canonical-json.ts')], outfile: path.join(tempDir, 'canonical.mjs'), bundle: true, platform: 'node', format: 'esm', target: 'node20', logLevel: 'silent' }),
     esbuild.build({ entryPoints: [path.join(root, 'src/data/verified-json-fetch.ts')], outfile: path.join(tempDir, 'transport.mjs'), bundle: true, platform: 'node', format: 'esm', target: 'node20', logLevel: 'silent' }),
@@ -78,7 +78,7 @@ test('browser hashes match the manifest for every canonical JSON asset', async (
 
 test('versioned URLs use the full digest and preserve an existing query', () => {
   const digest = `sha256:${'a'.repeat(64)}`;
-  assert.equal(transport.versionedAssetUrl('assets/H2H.json?source=test', '/Darling', digest), `/Darling/assets/H2H.json?source=test&v=${'a'.repeat(64)}`);
+  assert.equal(transport.versionedAssetUrl('assets/H2H.json?source=test', '/Viva', digest), `/Viva/assets/H2H.json?source=test&v=${'a'.repeat(64)}`);
   assert.throws(() => transport.versionedAssetUrl('assets/H2H.json', '/', 'sha256:abc'), error => error.code === 'INVALID_MANIFEST');
 });
 

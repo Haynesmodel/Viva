@@ -61,10 +61,10 @@ const PORTABLE_CLASS_STYLE = Object.freeze({
 
 const DEFAULT_SHARE_SPEC = Object.freeze({
   schemaVersion: 1,
-  id: 'league:darling-default',
+  id: 'league:viva-default',
   kind: 'season-recap',
-  eyebrow: 'League history · Current season · Rivalries',
-  title: 'The Darling',
+  eyebrow: 'League history · Current season · Shotguns',
+  title: 'Viva',
   subtitle: 'Trophies, Dynasty, Draft Spot, weekly recaps, and the stories behind the league.',
   metrics: Object.freeze([
     Object.freeze({ label: 'League history', value: '2014–present', detail: 'Every verified season' }),
@@ -72,12 +72,12 @@ const DEFAULT_SHARE_SPEC = Object.freeze({
     Object.freeze({ label: 'Owners', value: 'Rivalries', detail: 'Records and trophies' }),
     Object.freeze({ label: 'Tools', value: 'Dynasty + Draft', detail: 'Deep league analysis' }),
   ]),
-  canonicalUrl: 'https://haynesmodel.github.io/Darling/',
-  sourceLabel: 'haynesmodel.github.io/Darling',
+  canonicalUrl: 'https://haynesmodel.github.io/Viva/',
+  sourceLabel: 'haynesmodel.github.io/Viva',
   dataVersion: 'league-default',
-  altText: 'The Darling league site: history, current season, rivalries, trophies, Dynasty, Draft Spot, and weekly recaps.',
+  altText: 'Viva league history, current season, rivalries, trophies, Dynasty, Draft Spot, Shotguns, and weekly recaps.',
   accent: 'gold',
-  filename: 'darling-default-card.png',
+  filename: 'viva-default-card.png',
 });
 
 function decodePortableText(value) {
@@ -151,7 +151,7 @@ async function generateShareCardBuffer() {
 }
 
 async function generateShareCardAssets(root = process.cwd(), options = {}) {
-  const output = options.output || path.join(root, 'assets', 'share', 'darling-default-card.png');
+  const output = options.output || path.join(root, 'assets', 'share', 'viva-default-card.png');
   const buffer = await generateShareCardBuffer();
   if (options.check) {
     if (!fs.existsSync(output)) throw new Error('Default share card is missing; run npm run generate:share-assets.');

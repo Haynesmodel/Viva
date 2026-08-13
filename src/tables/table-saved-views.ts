@@ -7,7 +7,7 @@ import type {
 } from './table-types';
 import { TABLE_IDS } from './table-types';
 
-export const TABLE_VIEWS_STORAGE_KEY = 'darling.tableViews.v1';
+export const TABLE_VIEWS_STORAGE_KEY = 'viva.tableViews.v1';
 export const MAX_SAVED_TABLE_VIEWS = 25;
 
 const PORTABLE_CONTEXT_KEYS = [

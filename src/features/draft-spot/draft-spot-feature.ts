@@ -2,10 +2,10 @@ import './draft-spot.entry.css';
 import { mountDraftSpot, unmountDraftSpot } from './draft-spot-controller';
 import { registerDraftSpotTables } from './draft-spot-tables';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { ownerOrNull } from '../../app/feature-utils';
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let selected: Record<string, unknown> | null = null;
   let activeSignal: AbortSignal | null = null;

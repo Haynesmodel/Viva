@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { isBlowout, isCloseGame, isPostseason, isSaunders, parseRecord } from './table-filter-functions';
-import type { DarlingTableRow, TableColumnDefinition, TableId, TableRegistryEntry } from './table-types';
+import type { VivaTableRow, TableColumnDefinition, TableId, TableRegistryEntry } from './table-types';
 
 const text = (id: string, label: string, options: Partial<TableColumnDefinition> = {}): TableColumnDefinition => ({
   id,
@@ -36,8 +36,8 @@ const signed = (digits = 2) => (value: unknown) => Number.isFinite(Number(value)
   ? `${Number(value) >= 0 ? '+' : ''}${Number(value).toFixed(digits)}`
   : '—';
 const percent = (value: unknown) => Number.isFinite(Number(value)) ? `${(Number(value) * 100).toFixed(1)}%` : '—';
-const scoreWithMark = (value: unknown, row: DarlingTableRow) => `${value ?? '—'}${row.crownLabel || ''}`;
-const notes = (value: unknown, row: DarlingTableRow) => {
+const scoreWithMark = (value: unknown, row: VivaTableRow) => `${value ?? '—'}${row.crownLabel || ''}`;
+const notes = (value: unknown, row: VivaTableRow) => {
   const items = Array.isArray(row.notes) ? row.notes : String(value || '').split(' • ').filter(Boolean);
   return h('span', { class: 'table-chip-list' }, items.length
     ? items.map(item => h('span', { class: 'table-note-chip', key: String(item) }, String(item)))

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { DarlingThemeRuntime } from '../../theme/apply-theme';
+import type { VivaThemeRuntime } from '../../theme/apply-theme';
 import type { ColorSchemePreference, ThemeContext } from '../../theme/theme-types';
 
 const OPTIONS: Array<{ value: ColorSchemePreference; label: string; title: string }> = [
@@ -9,7 +9,7 @@ const OPTIONS: Array<{ value: ColorSchemePreference; label: string; title: strin
 ];
 
 interface ThemeToggleProps {
-  runtime: DarlingThemeRuntime;
+  runtime: VivaThemeRuntime;
 }
 
 export default function ThemeToggle({ runtime }: ThemeToggleProps) {

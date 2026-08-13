@@ -162,8 +162,8 @@ test('loadLeagueAssets fetches, dedupes, and derives weeks', async () => {
     ['assets/SeasonSummary.json', mockJsonResponse([validSeasonRow({ season: 2025, owner: 'Joe', wins: 10, finish: 1 })])],
     ['assets/Rivalries.json', mockJsonResponse([{ name: ' Originals ', members: [' Joe ', ' Shap '], note: ' Founders ' }])],
     ['assets/CurrentSeason.json', mockJsonResponse({
-      source: 'sleeper',
-      league_id: '1',
+      source: 'manual',
+      league_key: '1',
       season: 2026,
       current_week: 1,
       games: [{ ...game, season: 2026, scoreA: null, scoreB: null, status: 'scheduled' }],
@@ -283,7 +283,7 @@ test('asset validation accepts optional fields and null-handling cases', () => {
         note: '  Legacy  ',
       }],
       currentSeason: {
-        source: 'sleeper',
+        source: 'manual',
         season: 2026,
         games: [{
           season: 2026,
@@ -301,7 +301,7 @@ test('asset validation accepts optional fields and null-handling cases', () => {
     })
   );
   assert.doesNotThrow(() => validateCurrentSeason({
-    source: 'sleeper',
+    source: 'manual',
     season: 2026,
     playoff_rules: {
       regular_season_max_week: 14,
@@ -331,7 +331,7 @@ test('asset validation accepts optional fields and null-handling cases', () => {
   }));
   assert.throws(
     () => validateCurrentSeason({
-      source: 'sleeper',
+      source: 'manual',
       season: 2026,
       playoff_rules: { playoff_slots: 0 },
       games: [],
@@ -340,7 +340,7 @@ test('asset validation accepts optional fields and null-handling cases', () => {
   );
   assert.throws(
     () => validateCurrentSeason({
-      source: 'sleeper',
+      source: 'manual',
       season: 2026,
       update_context: { contains_live_scores: 'yes' },
       games: [],

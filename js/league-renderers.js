@@ -321,7 +321,7 @@ function leagueSummaryTablesHtml(opts = {}) {
     const sOPPG = r.sN ? (r.sPA / r.sN) : 0;
     return {
       team: r.team,
-      darlingRec: `${r.dW}-${r.dL}`,
+      vivaRec: `${r.dW}-${r.dL}`,
       byes: r.byes,
       champs: r.champs,
       dPPG,
@@ -354,14 +354,14 @@ function leagueSummaryTablesHtml(opts = {}) {
       <table>
         <thead>
           <tr>
-            <th scope="col">Team</th><th scope="col">Darling Record</th><th scope="col">Byes</th><th scope="col">Championships</th>
-            <th scope="col">Darling PPG</th><th scope="col">Darling Opp PPG</th>
+            <th scope="col">Team</th><th scope="col">Viva Record</th><th scope="col">Byes</th><th scope="col">Championships</th>
+            <th scope="col">Viva PPG</th><th scope="col">Viva Opp PPG</th>
             <th scope="col">Saunders Record</th><th scope="col">Saunders</th><th scope="col">Saunders PPG</th><th scope="col">Saunders Opp PPG</th>
           </tr>
         </thead>
         <tbody>${
           postRows.map(r => `<tr>
-            <td>${esc(r.team)}</td><td>${r.darlingRec}</td><td>${r.byes}</td><td>${r.champs}</td>
+            <td>${esc(r.team)}</td><td>${r.vivaRec}</td><td>${r.byes}</td><td>${r.champs}</td>
             <td>${nfmt(r.dPPG, 2)}</td><td>${nfmt(r.dOPPG, 2)}</td>
             <td>${r.saundersRec}</td><td>${r.saundersTitles}</td>
             <td>${nfmt(r.sPPG, 2)}</td><td>${nfmt(r.sOPPG, 2)}</td>

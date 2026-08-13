@@ -14,7 +14,7 @@ let page;
 let state;
 
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-draft-spot-model-'));
+  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-draft-spot-model-'));
   await esbuild.build({
     entryPoints: {
       model: path.join(root, 'src/features/draft-spot/draft-spot-model.ts'),
@@ -26,7 +26,7 @@ test.before(async () => {
     platform: 'node',
     format: 'esm',
     target: 'node20',
-    define: { 'import.meta.env.BASE_URL': "'/Darling/'" },
+    define: { 'import.meta.env.BASE_URL': "'/Viva/'" },
     logLevel: 'silent',
   });
   model = await import(`${pathToFileURL(path.join(temp, 'model.js')).href}?${Date.now()}`);
@@ -116,7 +116,7 @@ test('percentile mode groups and selects equivalent positions on a 12-team scale
 });
 
 test('Draft share cards describe the active league, owner, pick, and zone analysis', () => {
-  const win = { location: { pathname: '/Darling/', origin: 'https://example.com', href: 'https://example.com/Darling/' } };
+  const win = { location: { pathname: '/Viva/', origin: 'https://example.com', href: 'https://example.com/Viva/' } };
   const cases = [
     {
       mode: 'league',
@@ -171,7 +171,7 @@ test('Draft share cards describe the active league, owner, pick, and zone analys
 });
 
 test('Draft share cards fail closed for empty data or a missing active selection', () => {
-  const win = { location: { pathname: '/Darling/', origin: 'https://example.com', href: 'https://example.com/Darling/' } };
+  const win = { location: { pathname: '/Viva/', origin: 'https://example.com', href: 'https://example.com/Viva/' } };
   const emptyAsset = {
     ...asset,
     rows: [],

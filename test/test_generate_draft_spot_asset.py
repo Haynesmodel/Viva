@@ -26,19 +26,12 @@ class DraftSpotAssetGeneratorTest(unittest.TestCase):
         cls.generator = load_generator_module()
         cls.source_rows = json.loads(SEASON_SUMMARY.read_text())
 
-    def test_build_asset_captures_restoration_contract(self):
+    def test_build_asset_preserves_truthful_unavailable_state(self):
         asset = self.generator.build_asset(self.source_rows)
-        self.assertEqual(asset["season_range"], {"start": 2017, "end": 2025})
-        self.assertEqual(asset["team_seasons"], 92)
-        self.assertEqual(
-            next(row for row in asset["pick_summary"] if row["draft_pick"] == 11)["n"],
-            1,
-        )
-        self.assertEqual(
-            next(row for row in asset["pick_summary"] if row["draft_pick"] == 12)["n"],
-            1,
-        )
-        self.assertTrue(all(row["confidence"] for row in asset["owner_recommendations"]))
+        self.assertEqual(asset["season_range"], {"start": None, "end": None})
+        self.assertEqual(asset["team_seasons"], 0)
+        self.assertEqual(asset["rows"], [])
+        self.assertEqual(asset["owner_recommendations"], [])
         self.assertEqual(asset["source_sha256"], self.generator.sha256_json(self.source_rows))
 
     def test_cli_output_is_byte_deterministic(self):

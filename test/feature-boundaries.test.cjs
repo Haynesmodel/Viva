@@ -19,7 +19,7 @@ test('feature import resolver identifies sibling-relative feature directories', 
 });
 
 test('feature boundary checker rejects eager shell imports', () => {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-boundary-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-boundary-'));
   try {
     fs.mkdirSync(path.join(root, 'src', 'app', 'services'), { recursive: true });
     fs.mkdirSync(path.join(root, 'src', 'features', 'history'), { recursive: true });
@@ -39,7 +39,7 @@ test('feature boundary checker rejects eager shell imports', () => {
 });
 
 test('feature boundary checker rejects sibling-relative cross-feature imports', () => {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-cross-feature-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-cross-feature-'));
   try {
     fs.mkdirSync(path.join(root, 'src', 'app', 'services'), { recursive: true });
     fs.mkdirSync(path.join(root, 'src', 'features', 'history'), { recursive: true });

@@ -1,5 +1,5 @@
 import type { DraftSpotRow } from '../../data/generated/asset-types';
-import type { DarlingTableRow, TableContext } from '../table-types';
+import type { VivaTableRow, TableContext } from '../table-types';
 
 function outcome(row: DraftSpotRow): string {
   if (row.champion) return 'Champion';
@@ -8,7 +8,7 @@ function outcome(row: DraftSpotRow): string {
   return 'Missed playoffs';
 }
 
-export function adaptDraftSpotRows(rows: unknown[], _context: TableContext): DarlingTableRow[] {
+export function adaptDraftSpotRows(rows: unknown[], _context: TableContext): VivaTableRow[] {
   return (rows as DraftSpotRow[]).map(row => ({
     id: `${row.season}:${row.owner}:${row.draft_pick}`,
     season: row.season,

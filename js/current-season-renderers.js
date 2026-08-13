@@ -257,7 +257,7 @@ function buildCurrentSeasonViewModel({
     standings,
     matchups,
     snapshots,
-    source: currentSeason && Number(currentSeason.season) === Number(selectedSeason) ? 'sleeper' : 'history',
+    source: currentSeason && Number(currentSeason.season) === Number(selectedSeason) ? 'manual' : 'history',
     generatedAt: currentSeason && Number(currentSeason.season) === Number(selectedSeason) ? currentSeason.generated_at || null : null,
     commandCenter,
     summary: {
@@ -328,7 +328,7 @@ function currentSeasonHeroHtml(view) {
         <div class="card-kicker">Current Season</div>
         <h3>${escapeHtml(view.season || 'Season')}</h3>
         <p class="muted">${escapeHtml(weekLabel)} ${historicalAnalysis ? 'historical/final analysis' : 'command center'} from ${escapeHtml(command?.summary?.completedGameCount ?? view.summary.completedGameCount)} completed regular-season games.</p>
-        ${view.presentation?.source === 'historical' ? '<p class="muted">Source: validated historical snapshot</p>' : `<p class="muted">Source: ${phase === 'regular-season' ? 'Sleeper snapshot' : 'validated CurrentSeason snapshot'}${generatedAt ? ` &middot; Last updated ${escapeHtml(generatedAt)}` : ''}</p>`}
+        ${view.presentation?.source === 'historical' ? '<p class="muted">Source: validated historical snapshot</p>' : `<p class="muted">Source: ${phase === 'regular-season' ? 'ESPN snapshot' : 'validated CurrentSeason snapshot'}${generatedAt ? ` &middot; Last updated ${escapeHtml(generatedAt)}` : ''}</p>`}
         ${command && phase === 'regular-season' ? `<p class="muted">Model: ${escapeHtml(command.modelLabel)} &middot; ${escapeHtml(command.rules.playoff_slots)} playoff spots, ${escapeHtml(command.rules.bye_slots)} byes</p>` : ''}
         ${selectedNeed ? `<p class="current-owner-focus-note"><strong>${escapeHtml(selectedNeed.owner)}:</strong> ${escapeHtml(selectedNeed.mainNeed)}</p>` : ''}
       </div>

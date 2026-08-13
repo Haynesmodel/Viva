@@ -265,6 +265,6 @@ export async function fetchVerifiedJson<T = unknown>(
     if (!retryable(error)) throw error;
   }
   const result = await verifyAttempt<T>(descriptor, url, fetchFn, digestFn, 'reload', 2);
-  (options.logger || console).warn(`[Darling] ${descriptor.name} recovered after a cache-bypass verification retry`);
+  (options.logger || console).warn(`[Viva] ${descriptor.name} recovered after a cache-bypass verification retry`);
   return { ...result, attempts: 2, cacheRecovered: true };
 }

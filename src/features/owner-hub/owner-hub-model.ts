@@ -67,7 +67,6 @@ function direction(rows: SeasonSummaryRow[]) {
 
 function buildActions(pathname: string, owner: string, opponent: string | null) {
   return [
-    { label: 'Moves', href: url(pathname, { tab: 'transactions', selectedTransactionView: 'owners', selectedTransactionOwner: owner }) },
     { label: 'History', href: url(pathname, { tab: 'history', selectedTeam: owner }) },
     { label: 'Current', href: url(pathname, { tab: 'current', selectedCurrentOwner: owner }) },
     { label: 'Trophy', href: url(pathname, { tab: 'trophy', selectedTrophyOwner: owner }) },
@@ -132,7 +131,7 @@ export function buildOwnerHubModel(
     rightNow = {
       heading: `${latestSummary.season} season`,
       summary: `Finished No. ${latestSummary.finish} with a ${latestSummary.wins}-${latestSummary.losses}-${latestSummary.ties} record.`,
-      detail: latestSummary.champion ? 'Darling champion' : latestSummary.saunders ? 'Saunders winner' : null,
+      detail: latestSummary.champion ? 'Viva champion' : latestSummary.saunders ? 'Saunders winner' : null,
       href: url(pathname, { tab: 'history', selectedTeam: owner }),
     };
   } else {
@@ -222,9 +221,9 @@ export function buildOwnerHubModel(
     identity: {
       owner,
       displayName: currentTeam?.display_name && currentTeam.display_name !== owner ? currentTeam.display_name : null,
-      teamName: currentTeam?.sleeper_team_name
-        && ![owner, currentTeam.display_name].includes(currentTeam.sleeper_team_name)
-        ? currentTeam.sleeper_team_name : null,
+      teamName: currentTeam?.source_team_name
+        && ![owner, currentTeam.display_name].includes(currentTeam.source_team_name)
+        ? currentTeam.source_team_name : null,
       completedSeasons: new Set(summaries.map(row => row.season)).size,
       phase: seasonState.phase,
     },

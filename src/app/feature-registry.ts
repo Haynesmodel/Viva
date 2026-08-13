@@ -1,13 +1,12 @@
 import type { AppContext } from './app-types';
-import type { DarlingFeatureController, DarlingFeatureModule, FeatureId } from './feature-contract';
+import type { VivaFeatureController, VivaFeatureModule, FeatureId } from './feature-contract';
 
 export type FeatureLoadState = 'idle' | 'loading' | 'ready' | 'error';
-type Loader = () => Promise<DarlingFeatureModule>;
+type Loader = () => Promise<VivaFeatureModule>;
 
 export const featureLoaders: Record<FeatureId, Loader> = {
   pulse: () => import('../features/league-pulse/league-pulse-controller'),
   owner: () => import('../features/owner-hub/owner-hub-controller'),
-  transactions: () => import('../features/transactions/transactions-controller'),
   history: () => import('../features/history/history-controller'),
   current: () => import('../features/current-season/current-season-controller'),
   rivalry: () => import('../features/rivalry/rivalry-controller'),
@@ -15,12 +14,13 @@ export const featureLoaders: Record<FeatureId, Loader> = {
   dynasty: () => import('../features/dynasty/dynasty-controller'),
   draft: () => import('../features/draft-spot/draft-spot-feature'),
   gauntlet: () => import('../features/gauntlet/gauntlet-controller'),
+  shotguns: () => import('../features/shotguns/shotguns-controller'),
 };
 
 interface Entry {
   state: FeatureLoadState;
-  promise?: Promise<DarlingFeatureController>;
-  controller?: DarlingFeatureController;
+  promise?: Promise<VivaFeatureController>;
+  controller?: VivaFeatureController;
   mounted: boolean;
   activationCount: number;
   lastError?: string;
@@ -40,7 +40,7 @@ export class FeatureRegistry {
     return entry;
   }
 
-  load(id: FeatureId): Promise<DarlingFeatureController> {
+  load(id: FeatureId): Promise<VivaFeatureController> {
     const entry = this.#entry(id);
     if (entry.controller) return Promise.resolve(entry.controller);
     if (entry.promise) return entry.promise;
@@ -67,7 +67,7 @@ export class FeatureRegistry {
     return entry.promise;
   }
 
-  async mount(id: FeatureId, controller: DarlingFeatureController, context: AppContext): Promise<void> {
+  async mount(id: FeatureId, controller: VivaFeatureController, context: AppContext): Promise<void> {
     const entry = this.#entry(id);
     if (entry.mounted) return;
     await controller.mount(context);
@@ -78,7 +78,7 @@ export class FeatureRegistry {
     this.#entry(id).activationCount += 1;
   }
 
-  retry(id: FeatureId): Promise<DarlingFeatureController> {
+  retry(id: FeatureId): Promise<VivaFeatureController> {
     const entry = this.#entry(id);
     if (entry.controller) return Promise.resolve(entry.controller);
     entry.promise = undefined;

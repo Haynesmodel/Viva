@@ -6,7 +6,7 @@ import { gauntletModelLabel, gauntletNarrativeText, renderGauntlet } from '../..
 import { simulateMatchup } from '../../../js/gauntlet-simulator.js';
 import { gauntletHistogramRows } from './gauntlet-histogram-data';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { createSectionDisclosure, type SectionDisclosureController } from '../../app/section-disclosure';
 
 const HISTOGRAM_ERROR_MESSAGE = 'Score Distribution failed. Reload.';
@@ -42,7 +42,7 @@ function renderHistogramImportError(host: HTMLElement, retry: () => void): void 
   host.replaceChildren(status);
 }
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let state: any = null;
   let active = false;

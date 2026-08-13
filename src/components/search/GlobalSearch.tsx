@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import type { DarlingSearchRuntime } from '../../search/search-types';
+import type { VivaSearchRuntime } from '../../search/search-types';
 import SearchTrigger from './SearchTrigger';
 import { lockBodyScroll, setApplicationInert, unlockBodyScroll } from '../../accessibility/focus';
 
 interface GlobalSearchProps {
-  runtime: DarlingSearchRuntime;
+  runtime: VivaSearchRuntime;
   portal: any;
 }
 

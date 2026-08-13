@@ -47,7 +47,7 @@ test('current-season renderer emits hero, matchup, standings, and snapshot html'
     currentSeason: {
       season: 2025,
       generated_at: '2026-06-17T14:22:30Z',
-      source: 'sleeper',
+      source: 'manual',
       update_context: {
         mode: 'manual',
         cutoff_date: '2026-06-17',
@@ -72,7 +72,7 @@ test('current-season renderer emits hero, matchup, standings, and snapshot html'
   assert.match(hero, /2025/);
   assert.match(hero, /High Score/);
   assert.match(hero, /Deterministic path model/);
-  assert.match(hero, /Source: Sleeper/);
+  assert.match(hero, /Source: ESPN/);
   assert.match(hero, /Last updated Jun 17, 2026, 2:22 PM UTC/);
 
   const playoff = currentPlayoffPictureHtml(view);

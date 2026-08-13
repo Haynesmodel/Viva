@@ -1,6 +1,6 @@
-import type { DarlingTableRow, TableContext } from '../table-types';
+import type { VivaTableRow, TableContext } from '../table-types';
 
-export function adaptHistoryOpponentRows(rows: unknown[], context: TableContext = {}): DarlingTableRow[] {
+export function adaptHistoryOpponentRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   const owner = String(context.owner || '');
   const games = Array.isArray(context.games) ? context.games as Array<Record<string, any>> : [];
   return rows.map((input, index) => {

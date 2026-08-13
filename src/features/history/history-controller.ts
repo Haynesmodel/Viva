@@ -34,8 +34,9 @@ import {
 } from '../../../js/history-controls.js';
 import { opponentOptions, teamOptions } from '../../../js/facet-helpers.js';
 import { setGroupBackdrop, triggerGroupEgg } from '../../../js/easter-eggs.js';
+import { vivaTitleNote } from '../../viva/owners';
 import type { AppContext, AppRoute } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { ALL_TEAMS, seasonModeFromLabels } from '../../app/feature-utils';
 import { createSectionDisclosure, type SectionDisclosureController } from '../../app/section-disclosure';
 import { registerHistoryTables } from './history-tables';
@@ -44,12 +45,7 @@ const BLOWOUT_MARGIN = 29;
 const HIGH_SCORE_THRESHOLD = 150;
 const SUB_SCORE_THRESHOLD = 70;
 const CLOSE_GAME_MARGIN = 5;
-const NOTES: Record<string, { champs?: Record<number, string>; saunders?: Record<number, string> }> = {
-  Joel: { champs: { 2014: 'Singer not in league', 2020: 'COVID season' } },
-  Joe: { saunders: { 2015: 'Saunders Bowl matchups incorrect' } },
-};
-
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let active = false;
   let selectedTeam = ALL_TEAMS;
@@ -66,8 +62,8 @@ export function createFeatureController(): DarlingFeatureController {
   let lastEffectKey: string | null = null;
   let disclosure: SectionDisclosureController | null = null;
 
-  const champNote = (owner: string, season: number) => NOTES[owner]?.champs?.[season] || null;
-  const saundersNote = (owner: string, season: number) => NOTES[owner]?.saunders?.[season] || null;
+  const champNote = (owner: string, season: number) => vivaTitleNote(owner, 'champion', season);
+  const saundersNote = (owner: string, season: number) => vivaTitleNote(owner, 'saunders', season);
   const facetState = () => snapshotFacetState({ selectedTeam, selectedSeasons, selectedWeeks, selectedOpponents, selectedTypes, selectedRounds, universe, allTeams: ALL_TEAMS });
   const tableUrlState = () => {
     const route = context.router.parse();
@@ -173,7 +169,7 @@ export function createFeatureController(): DarlingFeatureController {
   };
 
   const crownRain = () => {
-    if (context.window.darlingAccessibility?.prefersReducedMotion?.()) return;
+    if (context.window.vivaAccessibility?.prefersReducedMotion?.()) return;
     const wrap = context.document.getElementById('fxCrown');
     if (!wrap) return;
     wrap.replaceChildren();
@@ -186,7 +182,7 @@ export function createFeatureController(): DarlingFeatureController {
     context.window.setTimeout(() => { wrap.style.display = 'none'; wrap.replaceChildren(); }, 3000);
   };
   const saundersFog = () => {
-    if (context.window.darlingAccessibility?.prefersReducedMotion?.()) return;
+    if (context.window.vivaAccessibility?.prefersReducedMotion?.()) return;
     const fog = context.document.getElementById('fxSaunders');
     if (!fog) return;
     fog.style.display = 'block';
@@ -303,7 +299,7 @@ export function createFeatureController(): DarlingFeatureController {
     mount(nextContext) {
       context = nextContext;
       registerHistoryTables(context.tables);
-      context.window.__darlingRenderMetrics = metrics;
+      context.window.__vivaRenderMetrics = metrics;
       context.document.getElementById('clearFilters')?.addEventListener('click', reset);
       context.document.getElementById('exportCsv')?.addEventListener('click', exportCsv);
       const mount = context.document.getElementById('historySectionNav');

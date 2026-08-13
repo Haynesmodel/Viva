@@ -21,7 +21,7 @@ import { enumFilterValue, isEmptyRange, numberRangeFilterValue, textFilterValue 
 import { filterByQuickFilters, toggleQuickFilter } from '../../tables/table-quick-filters';
 import { sanitizePortableState, tableContextsMatch } from '../../tables/table-saved-views';
 import type {
-  DarlingTableRow,
+  VivaTableRow,
   PortableTableState,
   SavedTableView,
   TableContext,
@@ -54,7 +54,7 @@ const features = tableFeatures({
 
 interface InteractiveTableProps {
   registry: TableRegistryEntry;
-  rows: DarlingTableRow[];
+  rows: VivaTableRow[];
   context?: TableContext;
   initialState?: Partial<PortableTableState>;
   urlState?: TableUrlState;
@@ -149,7 +149,7 @@ export default function InteractiveTable({
   );
   const columns = useMemo(() => registry.columns.map(definition => ({
     id: definition.id,
-    accessorFn: definition.accessor || ((row: DarlingTableRow) => row[definition.id]),
+    accessorFn: definition.accessor || ((row: VivaTableRow) => row[definition.id]),
     header: definition.label,
     cell: (info: any) => definition.render
       ? definition.render(info.getValue(), info.row.original)
@@ -173,7 +173,7 @@ export default function InteractiveTable({
     features,
     columns: columns as any,
     data,
-    getRowId: (row: DarlingTableRow) => row.id,
+    getRowId: (row: VivaTableRow) => row.id,
     getRowCanExpand: (row: any) => registry.expandable && !!(row.original.details?.length || row.original.links?.length),
     enableSortingRemoval: true,
     enableMultiSort: true,

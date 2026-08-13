@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://darling.example/schemas/derived-stats.schema.json",
+  "$id": "https://viva.example/schemas/derived-stats.schema.json",
   "title": "DerivedStats",
   "description": "Deterministic, filter-independent statistics generated from the league assets.",
   "type": "object",

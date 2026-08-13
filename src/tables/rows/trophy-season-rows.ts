@@ -1,7 +1,7 @@
 import { parseScore } from '../table-filter-functions';
-import type { DarlingTableRow, TableContext } from '../table-types';
+import type { VivaTableRow, TableContext } from '../table-types';
 
-export function adaptTrophySeasonRows(rows: unknown[], context: TableContext = {}): DarlingTableRow[] {
+export function adaptTrophySeasonRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   return rows.map((input, index) => {
     const row = input as Record<string, any>;
     const notes = Array.isArray(row.notes) ? row.notes : [];

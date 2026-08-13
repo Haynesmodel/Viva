@@ -7,7 +7,7 @@ const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
 const root = path.join(__dirname, '..');
-const environment = { origin: 'https://example.com', basePath: '/Darling/' };
+const environment = { origin: 'https://example.com', basePath: '/Viva/' };
 let temp;
 let share;
 
@@ -23,18 +23,18 @@ function candidate(overrides = {}) {
       { label: 'Alpha', value: '120.50', detail: 'Winner' },
       { label: 'Beta', value: '100.25', detail: 'Final' },
     ],
-    canonicalUrl: 'https://example.com/Darling/?tab=current',
+    canonicalUrl: 'https://example.com/Viva/?tab=current',
     sourceLabel: 'Current Season',
     dataVersion: 'sha256:fixture',
     altText: 'Alpha defeated Beta, 120.50 to 100.25.',
     accent: 'red',
-    filename: 'darling-matchup-alpha-beta.png',
+    filename: 'viva-matchup-alpha-beta.png',
     ...overrides,
   };
 }
 
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-share-spec-'));
+  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-share-spec-'));
   await esbuild.build({
     entryPoints: [
       path.join(root, 'src/share/share-card-spec.ts'),
@@ -50,7 +50,7 @@ test.before(async () => {
     format: 'esm',
     target: 'node20',
     entryNames: '[name]',
-    define: { 'import.meta.env.BASE_URL': "'/Darling/'" },
+    define: { 'import.meta.env.BASE_URL': "'/Viva/'" },
     logLevel: 'silent',
   });
   const spec = await import(`${pathToFileURL(path.join(temp, 'share-card-spec.js')).href}?${Date.now()}`);
@@ -129,14 +129,14 @@ test('layout-aware text and metric boundaries return stable error codes', () => 
 
 test('canonical URLs and filenames fail closed', () => {
   for (const canonicalUrl of [
-    'https://attacker.example/Darling/',
+    'https://attacker.example/Viva/',
     'https://example.com/outside/',
     'javascript:alert(1)',
   ]) assert.equal(share.validateShareCardSpec(candidate({ canonicalUrl }), environment).code, 'INVALID_URL');
   for (const filename of ['../card.png', 'folder/card.png', 'card.svg', 'Bad.png']) {
     assert.equal(share.validateShareCardSpec(candidate({ filename }), environment).code, 'INVALID_TEXT');
   }
-  const hashed = share.validateShareCardSpec(candidate({ canonicalUrl: 'https://example.com/Darling/?tab=current#private' }), environment);
+  const hashed = share.validateShareCardSpec(candidate({ canonicalUrl: 'https://example.com/Viva/?tab=current#private' }), environment);
   assert.equal(hashed.ok, true);
   assert.equal(hashed.spec.canonicalUrl.includes('#'), false);
 });
@@ -155,27 +155,27 @@ test('builders accept zero-value Trophy facts and reject incomplete stories', ()
     id: 'owner',
     eyebrow: 'Trophy Case',
     title: 'Owner',
-    metrics: [{ label: 'Darlings', value: '0' }, { label: 'Saunders', value: '0' }],
-    canonicalHref: 'https://example.com/Darling/?tab=trophy',
+    metrics: [{ label: 'Championships', value: '0' }, { label: 'Saunders', value: '0' }],
+    canonicalHref: 'https://example.com/Viva/?tab=trophy',
     sourceLabel: 'Trophy Case',
     dataVersion: 'fixture',
-    altText: 'Owner has zero Darlings and zero Saunders titles.',
+    altText: 'Owner has zero Championships and zero Saunders titles.',
   };
   assert.equal(share.buildShareCard('trophy', facts, environment).ok, true);
   assert.equal(share.buildShareCard('trophy', { ...facts, complete: false }, environment).code, 'INCOMPLETE_DATA');
 });
 
 test('Pulse matchup identity and visible context include season and week', () => {
-  const win = { location: { origin: environment.origin, href: `${environment.origin}/Darling/` } };
+  const win = { location: { origin: environment.origin, href: `${environment.origin}/Viva/` } };
   const matchup = {
     ownerA: 'Alpha', ownerB: 'Beta', scoreA: 120.5, scoreB: 100.25,
     type: 'Regular', round: '', result: 'Alpha wins',
-    currentHref: '/Darling/?tab=current&currentSeason=2025&currentWeek=4',
+    currentHref: '/Viva/?tab=current&currentSeason=2025&currentWeek=4',
   };
   const weekFour = share.buildPulseMatchupCardResult(matchup, 2025, 4, 'fixture', win);
   const weekFive = share.buildPulseMatchupCardResult({
     ...matchup,
-    currentHref: '/Darling/?tab=current&currentSeason=2025&currentWeek=5',
+    currentHref: '/Viva/?tab=current&currentSeason=2025&currentWeek=5',
   }, 2025, 5, 'fixture', win);
   assert.equal(weekFour.ok, true);
   assert.equal(weekFive.ok, true);
@@ -195,8 +195,8 @@ test('every complete canonical League Newspaper edition builds a share-ready car
     derivedStats: null,
     dataVersion: 'fixture',
   };
-  const win = { location: { origin: environment.origin, href: `${environment.origin}/Darling/` } };
-  const complete = share.buildLeagueNewspaper(data, '/Darling/').editions
+  const win = { location: { origin: environment.origin, href: `${environment.origin}/Viva/` } };
+  const complete = share.buildLeagueNewspaper(data, '/Viva/').editions
     .filter(edition => edition.state === 'complete');
   assert.ok(complete.length > 0);
   const results = complete.map(edition => [edition.id, share.buildLeagueEditionCardResult(edition, win)]);
@@ -225,7 +225,7 @@ test('every complete canonical League Newspaper edition builds a share-ready car
 });
 
 test('Dynasty cards bind to the selected owner and disclose partial coverage', () => {
-  const win = { location: { origin: environment.origin, href: `${environment.origin}/Darling/` } };
+  const win = { location: { origin: environment.origin, href: `${environment.origin}/Viva/` } };
   const score = {
     owner: 'Shemer',
     requestedStartSeason: 2014,
@@ -244,12 +244,12 @@ test('Dynasty cards bind to the selected owner and disclose partial coverage', (
     components: { hardware: 10 },
   };
   assert.equal(
-    share.buildDynastyCardResult(score, '/Darling/?tab=dynasty&dynastyOwner=Shemer', 'fixture', win, 'Joel'),
+    share.buildDynastyCardResult(score, '/Viva/?tab=dynasty&dynastyOwner=Shemer', 'fixture', win, 'Joel'),
     null,
   );
   const result = share.buildDynastyCardResult(
     score,
-    '/Darling/?tab=dynasty&dynastyOwner=Shemer',
+    '/Viva/?tab=dynasty&dynastyOwner=Shemer',
     'fixture',
     win,
     'Shemer',

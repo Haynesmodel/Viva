@@ -51,7 +51,7 @@ interface ThemeWindow {
   };
 }
 
-export interface DarlingThemeRuntime {
+export interface VivaThemeRuntime {
   getSnapshot(): ThemeContext;
   setColorSchemePreference(preference: ColorSchemePreference): void;
   applyAppContext(context: AppThemeContext): void;
@@ -146,11 +146,11 @@ export function applyThemeToDocument(context: ThemeContext, doc: ThemeDocument =
   return normalized;
 }
 
-export function createDarlingThemeRuntime(options: {
+export function createVivaThemeRuntime(options: {
   document?: ThemeDocument | null;
   window?: ThemeWindow | null;
   initialContext?: AppThemeContext;
-} = {}): DarlingThemeRuntime {
+} = {}): VivaThemeRuntime {
   const doc = options.document || globalDocument();
   const win = options.window || globalWindow();
   let colorSchemePreference = readColorSchemePreference(win);
@@ -179,7 +179,7 @@ export function createDarlingThemeRuntime(options: {
     if (colorSchemePreference === 'system') publish();
   });
 
-  const runtime: DarlingThemeRuntime = {
+  const runtime: VivaThemeRuntime = {
     getSnapshot() {
       return normalizeThemeContext(snapshot());
     },

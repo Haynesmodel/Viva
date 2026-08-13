@@ -1,11 +1,11 @@
 import './league-pulse.entry.css';
 import { h, render } from 'preact';
 import type { AppContext } from '../../app/app-types';
-import type { DarlingFeatureController, FeatureActivation } from '../../app/feature-contract';
+import type { VivaFeatureController, FeatureActivation } from '../../app/feature-contract';
 import { LeaguePulsePage } from './LeaguePulsePage';
 import { buildLeaguePulseModel } from './league-pulse-model';
 
-export function createFeatureController(): DarlingFeatureController {
+export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let root: HTMLElement | null = null;
   let activeSignal: AbortSignal | null = null;

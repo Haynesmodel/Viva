@@ -122,13 +122,13 @@ export interface DraftSpotMountOptions {
   onReady?: (state: DraftSpotState) => void;
 }
 
-export interface DarlingDraftSpotRuntime {
+export interface VivaDraftSpotRuntime {
   mount(options: Omit<DraftSpotMountOptions, 'mount'> & { mountId?: string }): Promise<void>;
   unmount(): void;
 }
 
 declare global {
   interface Window {
-    darlingDraftSpot?: DarlingDraftSpotRuntime;
+    vivaDraftSpot?: VivaDraftSpotRuntime;
   }
 }

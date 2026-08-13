@@ -3,7 +3,7 @@ import { adaptHistoryGameRows } from '../../tables/rows/history-game-rows';
 import { adaptHistoryOpponentRows } from '../../tables/rows/history-opponent-rows';
 import { adaptHistorySeasonRows } from '../../tables/rows/history-season-rows';
 import { adaptHistoryWeekRows } from '../../tables/rows/history-week-rows';
-import type { DarlingTableRuntime, TableId, TableRowAdapter } from '../../tables/table-types';
+import type { VivaTableRuntime, TableId, TableRowAdapter } from '../../tables/table-types';
 
 const tables: Array<[TableId, TableRowAdapter]> = [
   ['history-games', adaptHistoryGameRows],
@@ -12,6 +12,6 @@ const tables: Array<[TableId, TableRowAdapter]> = [
   ['history-seasons', adaptHistorySeasonRows],
 ];
 
-export function registerHistoryTables(runtime: DarlingTableRuntime): void {
+export function registerHistoryTables(runtime: VivaTableRuntime): void {
   tables.forEach(([id, adapter]) => runtime.register(id, getTableRegistryEntry(id), adapter));
 }

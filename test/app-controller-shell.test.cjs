@@ -10,7 +10,7 @@ let temp;
 let controller;
 
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-app-controller-shell-'));
+  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-app-controller-shell-'));
   await esbuild.build({
     entryPoints: [path.join(__dirname, '../src/app/app-controller.ts')],
     outfile: path.join(temp, 'app-controller.js'),

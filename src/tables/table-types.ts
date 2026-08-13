@@ -47,7 +47,7 @@ export interface TableContext {
   [key: string]: unknown;
 }
 
-export interface DarlingTableRow {
+export interface VivaTableRow {
   id: string;
   rowClass?: string;
   details?: Array<{ label: string; value: string }>;
@@ -58,9 +58,9 @@ export interface DarlingTableRow {
 export interface TableColumnDefinition {
   id: string;
   label: string;
-  accessor?: (row: DarlingTableRow) => unknown;
-  sortAccessor?: (row: DarlingTableRow) => unknown;
-  render?: (value: unknown, row: DarlingTableRow) => ComponentChildren;
+  accessor?: (row: VivaTableRow) => unknown;
+  sortAccessor?: (row: VivaTableRow) => unknown;
+  render?: (value: unknown, row: VivaTableRow) => ComponentChildren;
   sortable?: boolean;
   sortDescFirst?: boolean;
   filterType?: ColumnFilterType;
@@ -74,7 +74,7 @@ export interface QuickFilterDefinition {
   id: string;
   label: string;
   group?: string;
-  test: (row: DarlingTableRow, context: TableContext) => boolean;
+  test: (row: VivaTableRow, context: TableContext) => boolean;
 }
 
 export interface TableRegistryEntry {
@@ -123,7 +123,7 @@ export interface TableRenderPayload {
   onContextChange?: (context: TableContext, urlState?: TableUrlState) => void;
 }
 
-export interface DarlingTableRuntime {
+export interface VivaTableRuntime {
   register(tableId: TableId, definition: TableRegistryEntry, adapter: TableRowAdapter): void;
   isRegistered(tableId: TableId): boolean;
   render(tableId: TableId, payload: TableRenderPayload): void;
@@ -131,4 +131,4 @@ export interface DarlingTableRuntime {
   listSavedViews(): SavedTableView[];
 }
 
-export type TableRowAdapter = (rows: unknown[], context: TableContext) => DarlingTableRow[];
+export type TableRowAdapter = (rows: unknown[], context: TableContext) => VivaTableRow[];

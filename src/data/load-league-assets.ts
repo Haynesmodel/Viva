@@ -19,6 +19,7 @@ import type {
   H2HGame,
   RivalryDefinition,
   SeasonSummaryRow,
+  VivaShotguns,
 } from './generated/asset-types';
 import {
   formatValidatorErrors,
@@ -29,6 +30,7 @@ import {
   isH2H,
   isRivalries,
   isSeasonSummary,
+  isShotguns,
 } from './generated/asset-validators';
 import type { ValidatorName } from './generated/asset-validators';
 
@@ -59,6 +61,7 @@ export interface LoadedLeagueAssets {
   seasonSummaries: SeasonSummaryRow[];
   rivalries: RivalryDefinition[];
   currentSeason: CurrentSeasonData | null;
+  shotguns: VivaShotguns | null;
   derivedStats: DerivedStats | null;
   manifest: AssetManifest;
   dataVersion: string;
@@ -169,16 +172,23 @@ export async function loadLeagueAssets(options: LoaderOptions = {}): Promise<Loa
         reason: failureReason(error),
         code: error instanceof DataLoadError ? error.code : 'UNKNOWN_ERROR',
       });
-      logger.warn(`[Darling] Optional ${name} unavailable: ${(error as Error).message}`);
+      logger.warn(`[Viva] Optional ${name} unavailable: ${(error as Error).message}`);
       return null;
     }
   }
 
-  const [required, rivalriesValue, currentValue, derivedValue] = await Promise.all([
+  const [required, rivalriesValue, currentValue, derivedValue, shotgunsValue] = await Promise.all([
     requiredPromise,
-    optional('Rivalries', descriptor('Rivalries', manifest.assets.Rivalries), isRivalries),
-    optional('CurrentSeason', descriptor('CurrentSeason', manifest.assets.CurrentSeason), isCurrentSeason),
+    manifest.assets.Rivalries
+      ? optional('Rivalries', descriptor('Rivalries', manifest.assets.Rivalries), isRivalries)
+      : Promise.resolve(null),
+    manifest.assets.CurrentSeason
+      ? optional('CurrentSeason', descriptor('CurrentSeason', manifest.assets.CurrentSeason), isCurrentSeason)
+      : Promise.resolve(null),
     optional('DerivedStats', descriptor('DerivedStats', manifest.derived), isDerivedStats),
+    manifest.assets.Shotguns
+      ? optional('Shotguns', descriptor('Shotguns', manifest.assets.Shotguns), isShotguns)
+      : Promise.resolve(null),
   ]);
   const h2h = validateRequired(required[0].value, 'H2H', isH2H, version);
   const seasonSummary = validateRequired(required[1].value, 'SeasonSummary', isSeasonSummary, version);
@@ -194,7 +204,7 @@ export async function loadLeagueAssets(options: LoaderOptions = {}): Promise<Loa
     failedOptionalAssets.push('CurrentSeason');
     const index = loadedAssets.indexOf('CurrentSeason');
     if (index >= 0) loadedAssets.splice(index, 1);
-    logger.warn('[Darling] Optional CurrentSeason unavailable: a game has the wrong season');
+    logger.warn('[Viva] Optional CurrentSeason unavailable: a game has the wrong season');
   }
   let derivedStats = derivedValue;
   if (derivedStats && Object.entries(manifest.derived.source_hashes).some(([name, hash]) => derivedStats?.source_hashes[name as keyof DerivedStats['source_hashes']] !== hash)) {
@@ -204,7 +214,7 @@ export async function loadLeagueAssets(options: LoaderOptions = {}): Promise<Loa
     failedOptionalAssets.push('DerivedStats');
     const index = loadedAssets.indexOf('DerivedStats');
     if (index >= 0) loadedAssets.splice(index, 1);
-    logger.warn('[Darling] Optional DerivedStats unavailable: source dependency hashes do not match the manifest');
+    logger.warn('[Viva] Optional DerivedStats unavailable: source dependency hashes do not match the manifest');
   }
   runtimeRequiredSemanticCheck(leagueGames, version);
   const finalizedWeeks = currentSeason?.games.filter(game => game.status === 'final').map(game => game.week) || [];
@@ -250,6 +260,7 @@ export async function loadLeagueAssets(options: LoaderOptions = {}): Promise<Loa
     seasonSummaries: seasonSummary,
     rivalries: rivalriesValue || [],
     currentSeason,
+    shotguns: shotgunsValue,
     derivedStats,
     manifest,
     dataVersion: version,

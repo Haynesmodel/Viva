@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://darling.example/schemas/common.schema.json",
-  "title": "Darling shared data definitions",
-  "description": "Reusable scalar contracts for the Darling static data pipeline.",
+  "$id": "https://viva.example/schemas/common.schema.json",
+  "title": "Viva shared data definitions",
+  "description": "Reusable scalar contracts for the Viva static data pipeline.",
   "$defs": {
     "schemaVersion": { "type": "integer", "minimum": 1 },
     "season": { "type": "integer", "minimum": 2014, "maximum": 2100 },

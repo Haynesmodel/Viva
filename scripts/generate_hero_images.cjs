@@ -24,7 +24,7 @@ function readGitSource(root, gitPath) {
 function resolveSource(root, requestedSource) {
   const candidates = [
     requestedSource,
-    process.env.DARLING_HERO_SOURCE,
+    process.env.VIVA_HERO_SOURCE,
     path.join(root, 'assets', 'LeaguePic.jpeg'),
     path.join(root, 'assets', 'hero', 'league-1920.jpg'),
   ].filter(Boolean);
@@ -40,7 +40,7 @@ function resolveSource(root, requestedSource) {
   throw new Error([
     'Missing hero regeneration source.',
     'Download assets/LeaguePic.jpeg from iCloud, restore assets/hero/league-1920.jpg,',
-    'pass a source path, or set DARLING_HERO_SOURCE.',
+    'pass a source path, or set VIVA_HERO_SOURCE.',
   ].join(' '));
 }
 
@@ -63,7 +63,7 @@ async function generateHeroImages(root = process.cwd(), requestedSource = proces
         .rotate()
         .resize({
           width,
-          withoutEnlargement: true,
+          withoutEnlargement: false,
         });
       if (format.ext === 'avif') image = image.avif(format.options);
       else if (format.ext === 'webp') image = image.webp(format.options);

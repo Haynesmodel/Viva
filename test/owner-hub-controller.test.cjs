@@ -68,7 +68,7 @@ function fixture({ owner = 'Joe', root = true } = {}) {
         return null;
       },
     },
-    window: { location: { pathname: '/Darling/' } },
+    window: { location: { pathname: '/Viva/' } },
     selectors: { seasonAggregates: () => [] },
     header: { feature: (...args) => calls.headers.push(args) },
     theme: {

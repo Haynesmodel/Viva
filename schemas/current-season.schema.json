@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://darling.example/schemas/current-season.schema.json",
+  "$id": "https://viva.example/schemas/current-season.schema.json",
   "title": "Current season data",
-  "description": "Sleeper update context, current team map, rules, and matchups.",
+  "description": "Manual ESPN update context, current team map, rules, and matchups.",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "source", "league_id", "season", "generated_at", "current_week", "regular_season_max_week",
+    "source", "league_key", "season", "generated_at", "current_week", "regular_season_max_week",
     "playoff_rules", "update_context", "max_week", "weeks_fetched", "teams", "games"
   ],
   "properties": {
     "source": { "type": "string", "minLength": 1 },
-    "league_id": { "type": "string", "pattern": "^[0-9]+$" },
+    "league_key": { "type": "string", "minLength": 1 },
     "season": { "$ref": "common.schema.json#/$defs/season" },
     "generated_at": { "type": "string", "format": "date-time" },
     "current_week": { "type": ["integer", "null"], "minimum": 1, "maximum": 25 },
@@ -65,12 +65,12 @@
       "title": "CurrentSeasonTeam",
       "type": "object",
       "additionalProperties": false,
-      "required": ["roster_id", "owner", "display_name", "sleeper_team_name"],
+      "required": ["roster_id", "owner", "display_name", "source_team_name"],
       "properties": {
         "roster_id": { "type": "integer", "minimum": 1 },
         "owner": { "$ref": "common.schema.json#/$defs/owner" },
         "display_name": { "type": "string", "minLength": 1 },
-        "sleeper_team_name": { "type": "string" }
+        "source_team_name": { "type": "string" }
       }
     },
     "game": {

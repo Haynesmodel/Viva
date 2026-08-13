@@ -13,7 +13,6 @@ const CHECKED = [
   GENERATED_ASSETS.DraftSpot.path,
   GENERATED_ASSETS.AssetTypes.path,
   GENERATED_ASSETS.AssetValidators.path,
-  GENERATED_ASSETS.TransactionHistoryValidator.path,
   GENERATED_ASSETS.DerivedStats.path,
   GENERATED_ASSETS.AssetManifest.path,
 ];
@@ -30,7 +29,7 @@ function compareGeneratedFiles(root, generatedRoot, checked = CHECKED) {
 }
 
 async function checkGeneratedAssets(root = process.cwd()) {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-data-generated-'));
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-data-generated-'));
   try {
     const draftOutput = path.join(temp, GENERATED_ASSETS.DraftSpot.path);
     const draftResult = spawnSync('python3', [

@@ -1,6 +1,6 @@
-import type { DarlingTableRow, TableContext } from '../table-types';
+import type { VivaTableRow, TableContext } from '../table-types';
 
-export function adaptCurrentStandingRows(rows: unknown[], context: TableContext = {}): DarlingTableRow[] {
+export function adaptCurrentStandingRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   const picture = Array.isArray(context.playoffPicture) ? context.playoffPicture as Array<Record<string, any>> : [];
   const status = new Map(picture.map(row => [row.owner, row]));
   return rows.map((input, index) => {
@@ -26,7 +26,7 @@ export function adaptCurrentStandingRows(rows: unknown[], context: TableContext 
   });
 }
 
-export function adaptCurrentProjectedRows(rows: unknown[], context: TableContext = {}): DarlingTableRow[] {
+export function adaptCurrentProjectedRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   return rows.map((input, index) => {
     const row = input as Record<string, any>;
     return {

@@ -1,6 +1,6 @@
 {
-  "source": "sleeper",
-  "league_id": "12345",
+  "source": "source",
+  "league_key": "12345",
   "season": 2025,
   "generated_at": "2025-09-08T00:00:00Z",
   "current_week": 1,
@@ -25,13 +25,13 @@
       "roster_id": 1,
       "owner": "Joe",
       "display_name": "Joe",
-      "sleeper_team_name": "Joe"
+      "source_team_name": "Joe"
     },
     {
       "roster_id": 2,
       "owner": "Shap",
       "display_name": "Shap",
-      "sleeper_team_name": "Shap"
+      "source_team_name": "Shap"
     }
   ],
   "games": [

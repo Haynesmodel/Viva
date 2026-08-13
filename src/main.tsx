@@ -4,27 +4,27 @@ import { render } from 'preact';
 import ThemeToggle from './components/theme/ThemeToggle';
 import GlobalSearch from './components/search/GlobalSearch';
 import DataFreshnessBadge, { createDataFreshnessRuntime } from './components/data-freshness/DataFreshnessBadge';
-import { createDarlingThemeRuntime, type DarlingThemeRuntime } from './theme/apply-theme';
+import { createVivaThemeRuntime, type VivaThemeRuntime } from './theme/apply-theme';
 import { createSearchRuntime } from './search/search-runtime';
-import type { DarlingSearchRuntime } from './search/search-types';
+import type { VivaSearchRuntime } from './search/search-types';
 import { createTableRuntime } from './tables/table-runtime';
-import type { DarlingTableRuntime } from './tables/table-types';
+import type { VivaTableRuntime } from './tables/table-types';
 import type { DataDiagnostics } from './data/load-league-assets';
-import { bootstrapDarlingApp } from './app/app-controller';
+import { bootstrapVivaApp } from './app/app-controller';
 import { bindDropdownChecklists } from './accessibility/dropdown-checklist';
 import { focusableElements } from './accessibility/focus';
 import { prefersReducedMotion, subscribeToReducedMotion } from './accessibility/motion';
 import { bindPrimaryNavigation, syncPageState } from './accessibility/primary-navigation';
 
-type DarlingDataLoader = typeof import('./data/load-league-assets').loadLeagueAssets;
+type VivaDataLoader = typeof import('./data/load-league-assets').loadLeagueAssets;
 
 interface BrowserWindow {
-  darlingTheme?: DarlingThemeRuntime;
-  darlingSearch?: DarlingSearchRuntime;
-  darlingTables?: DarlingTableRuntime;
-  darlingDataLoader?: DarlingDataLoader;
-  darlingDataDiagnostics?: DataDiagnostics;
-  darlingAccessibility?: {
+  vivaTheme?: VivaThemeRuntime;
+  vivaSearch?: VivaSearchRuntime;
+  vivaTables?: VivaTableRuntime;
+  vivaDataLoader?: VivaDataLoader;
+  vivaDataDiagnostics?: DataDiagnostics;
+  vivaAccessibility?: {
     prefersReducedMotion: typeof prefersReducedMotion;
     focusableElements: typeof focusableElements;
     syncPageState: typeof syncPageState;
@@ -37,7 +37,7 @@ interface BrowserDocument {
   addEventListener(type: 'DOMContentLoaded', listener: () => void, options?: { once?: boolean }): void;
 }
 
-const themeRuntime = createDarlingThemeRuntime();
+const themeRuntime = createVivaThemeRuntime();
 const searchRuntime = createSearchRuntime();
 const tableRuntime = createTableRuntime();
 const freshnessRuntime = createDataFreshnessRuntime();
@@ -46,14 +46,14 @@ const browser = globalThis as unknown as {
   document?: BrowserDocument;
 };
 
-browser.window.darlingTheme = themeRuntime;
-browser.window.darlingSearch = searchRuntime;
-browser.window.darlingTables = tableRuntime;
-browser.window.darlingDataLoader = async options => {
+browser.window.vivaTheme = themeRuntime;
+browser.window.vivaSearch = searchRuntime;
+browser.window.vivaTables = tableRuntime;
+browser.window.vivaDataLoader = async options => {
   const { loadLeagueAssets } = await import('./data/load-league-assets');
   return loadLeagueAssets(options);
 };
-browser.window.darlingAccessibility = {
+browser.window.vivaAccessibility = {
   prefersReducedMotion,
   focusableElements,
   syncPageState,
@@ -83,9 +83,9 @@ function mountShell() {
   bindDropdownChecklists(document);
   subscribeToReducedMotion((reduced) => {
     document.documentElement.dataset.reducedMotion = reduced ? 'reduce' : 'no-preference';
-    window.dispatchEvent(new CustomEvent('darling:motionchange', { detail: { reduced } }));
+    window.dispatchEvent(new CustomEvent('viva:motionchange', { detail: { reduced } }));
   });
-  void bootstrapDarlingApp({ tableRuntime, searchRuntime, freshnessRuntime });
+  void bootstrapVivaApp({ tableRuntime, searchRuntime, freshnessRuntime });
 }
 
 if (browser.document?.readyState === 'loading') {

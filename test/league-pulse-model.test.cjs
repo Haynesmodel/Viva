@@ -20,11 +20,11 @@ function game(overrides = {}) {
 }
 
 function current(games, overrides = {}) {
-  return { source: 'fixture', league_id: 'fixture', season: 2026, generated_at: '2026-09-07T12:00:00Z', current_week: 1, regular_season_max_week: 14, max_week: 17, weeks_fetched: [1], playoff_rules: { regular_season_max_week: 14, playoff_slots: 1, bye_slots: 0, saunders_slots: 1, standings_tiebreakers: ['win_pct', 'points_for', 'owner'] }, update_context: { mode: 'fixture', cutoff_date: '2026-09-07', contains_live_scores: false, contains_projected_scores: false }, teams: [{ roster_id: 1, owner: 'Joe', display_name: 'Joe', sleeper_team_name: 'Joe' }, { roster_id: 2, owner: 'Shap', display_name: 'Shap', sleeper_team_name: 'Shap' }], games, ...overrides };
+  return { source: 'fixture', league_key: 'fixture', season: 2026, generated_at: '2026-09-07T12:00:00Z', current_week: 1, regular_season_max_week: 14, max_week: 17, weeks_fetched: [1], playoff_rules: { regular_season_max_week: 14, playoff_slots: 1, bye_slots: 0, saunders_slots: 1, standings_tiebreakers: ['win_pct', 'points_for', 'owner'] }, update_context: { mode: 'fixture', cutoff_date: '2026-09-07', contains_live_scores: false, contains_projected_scores: false }, teams: [{ roster_id: 1, owner: 'Joe', display_name: 'Joe', source_team_name: 'Joe' }, { roster_id: 2, owner: 'Shap', display_name: 'Shap', source_team_name: 'Shap' }], games, ...overrides };
 }
 
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-league-pulse-'));
+  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-league-pulse-'));
   await esbuild.build({ entryPoints: [path.join(root, 'src/features/league-pulse/league-pulse-model.ts')], outfile: path.join(temp, 'model.js'), bundle: true, platform: 'node', format: 'esm', target: 'node20', logLevel: 'silent' });
   pulse = await import(`${pathToFileURL(path.join(temp, 'model.js')).href}?${Date.now()}`);
 });
@@ -67,7 +67,7 @@ test('canonical 2025 snapshot builds an authoritative year in review without mut
     dataVersion: 'fixture',
   };
   const before = JSON.stringify(data);
-  const model = pulse.buildLeaguePulseModel(data, { pathname: '/Darling/' });
+  const model = pulse.buildLeaguePulseModel(data, { pathname: '/Viva/' });
   assert.equal(model.state.phase, 'offseason');
   assert.equal(model.state.season, 2025);
   assert.equal(model.yearInReview.champion, 'Zook');
@@ -82,7 +82,7 @@ test('canonical 2025 snapshot builds an authoritative year in review without mut
 test('preseason and postseason models expose their phase-specific context', () => {
   const historical = [{ season: 2025, date: '2025-12-28', teamA: 'Joe', teamB: 'Shap', scoreA: 120, scoreB: 100, week: 17, round: 'Championship', type: 'Playoff' }];
   const base = { leagueGames: historical, seasonSummaries: summary(2025), rivalries: [], derivedStats: null, dataVersion: 'fixture' };
-  const preseason = pulse.buildLeaguePulseModel({ ...base, currentSeason: current([game()]) }, { pathname: '/Darling/' });
+  const preseason = pulse.buildLeaguePulseModel({ ...base, currentSeason: current([game()]) }, { pathname: '/Viva/' });
   assert.equal(preseason.state.phase, 'preseason');
   assert.equal(preseason.yearInReview.season, 2025);
   assert.match(preseason.hero.summary, /defending champion/i);
@@ -91,7 +91,7 @@ test('preseason and postseason models expose their phase-specific context', () =
   const postseason = pulse.buildLeaguePulseModel({
     ...base,
     currentSeason: current([game({ week: 16, type: 'Playoff', round: 'Semi Final', status: 'live', scoreA: 80, scoreB: 70 })], { current_week: 16 }),
-  }, { pathname: '/Darling/' });
+  }, { pathname: '/Viva/' });
   assert.equal(postseason.state.phase, 'postseason');
   assert.equal(postseason.standings.heading, 'Road to the trophies');
 
@@ -102,7 +102,7 @@ test('preseason and postseason models expose their phase-specific context', () =
       { slug: 'pair', name: 'Pair rivalry', type: 'pair', members: ['Joe', 'Shap'] },
     ],
     currentSeason: current([game()]),
-  }, { pathname: '/Darling/' });
+  }, { pathname: '/Viva/' });
   assert.equal(rivalry.featuredMatchup.name, 'Pair rivalry');
 });
 
@@ -110,7 +110,7 @@ test('league pulse lowest-score record ignores the outlier game', () => {
   const target = { season: 2022, date: '2022-12-24', teamA: 'Joel', teamB: 'Plot', scoreA: 6.5, scoreB: 4.6, week: 16, round: 'Saunders Final', type: 'Saunders' };
   const eligibleLow = { season: 2022, date: '2022-12-24', teamA: 'Joe', teamB: 'Shap', scoreA: 20, scoreB: 10, week: 16, round: '', type: 'Regular' };
   const other = { season: 2022, date: '2022-12-23', teamA: 'Joe', teamB: 'Shap', scoreA: 100, scoreB: 90, week: 16, round: '', type: 'Regular' };
-  const model = pulse.buildLeaguePulseModel({ leagueGames: [target, eligibleLow, other], seasonSummaries: summary(2022), rivalries: [], currentSeason: null, derivedStats: null, dataVersion: 'fixture' }, { pathname: '/Darling/' });
+  const model = pulse.buildLeaguePulseModel({ leagueGames: [target, eligibleLow, other], seasonSummaries: summary(2022), rivalries: [], currentSeason: null, derivedStats: null, dataVersion: 'fixture' }, { pathname: '/Viva/' });
   assert.ok(model.record);
   assert.equal(model.record.title, 'Lowest individual score');
   assert.equal(model.record.date, eligibleLow.date);

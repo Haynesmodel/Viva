@@ -250,7 +250,7 @@ export default function DraftSpotPage({
   }, [disclosureSignature, model.pickSummary.length, model.zoneSummary.length, model.ownerRecommendations.length, model.baseRows.length, model.rows.length, model.selectedPickSummary, model.selectedZoneSummary, model.ownerProfile]);
 
   useEffect(() => {
-    window.darlingTables?.render('draft-rows', {
+    window.vivaTables?.render('draft-rows', {
       rows: model.rows,
       context: {
         owner: model.state.owner,
@@ -269,7 +269,7 @@ export default function DraftSpotPage({
       }),
       instanceKey: JSON.stringify(draftStateForUrl(model.state)),
     });
-    return () => window.darlingTables?.unmount('draft-rows');
+    return () => window.vivaTables?.unmount('draft-rows');
   }, [model.rows, model.state]);
 
   return (

@@ -593,8 +593,8 @@ function detectChronicallyUnlucky(model) {
       owner,
       opponents: [],
       seasons: regularSeasons.map(row => +row.season),
-      summary: `${owner} has the most Expected Wins of any owner without a Darling title.`,
-      detail: `Most career Expected Wins among title-less teams. Actual wins: ${formatCount(totalAct, 1)}. Expected wins: ${formatCount(totalExp, 1)}. Deficit: ${formatCount(deficit, 1)}. ${neverWon ? 'Never won the Darling.' : 'Never finished top 3.'} Evidence shows the worst luck seasons only.`,
+      summary: `${owner} has the most Expected Wins of any owner without a Viva championship.`,
+      detail: `Most career Expected Wins among title-less teams. Actual wins: ${formatCount(totalAct, 1)}. Expected wins: ${formatCount(totalExp, 1)}. Deficit: ${formatCount(deficit, 1)}. ${neverWon ? 'Never won the Viva championship.' : 'Never finished top 3.'} Evidence shows the worst luck seasons only.`,
       observed: totalAct,
       expected: totalExp,
       sampleSize: regularSeasons.length,
@@ -900,7 +900,7 @@ function buildCurseTrackerControls({
         </select>
       </label>
     `;
-    if (typeof window !== 'undefined' && window.__DARLING_DEBUG__) {
+    if (typeof window !== 'undefined' && window.__VIVA_DEBUG__) {
       const debugToggle = root.createElement('label');
       debugToggle.className = 'checkbox-label curse-debug-toggle';
       debugToggle.innerHTML = '<input id="curseDevToggle" type="checkbox" /> <span>Show development candidates</span>';

@@ -7,7 +7,7 @@ const path = require('node:path');
 const { collectClosure, findReachableDynamic, measureBundle, normalizeId } = require('../scripts/check_bundle_size.cjs');
 
 function withBundleFixture({ manifest, budgets, files = {} }, callback) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-bundle-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-bundle-'));
   try {
     const assetDir = path.join(root, 'dist', 'assets');
     fs.mkdirSync(path.join(root, 'dist', '.vite'), { recursive: true });

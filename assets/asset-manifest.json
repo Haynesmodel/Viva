@@ -1,0 +1,192 @@
+{
+  "assets": {
+    "DraftSpot": {
+      "bytes": 520,
+      "path": "assets/DraftSpot.json",
+      "required": false,
+      "rows": 0,
+      "season_max": null,
+      "season_min": null,
+      "sha256": "sha256:77c367d3af0c87798f28f3d3c255b40d1290d2b41ab0afeca49ddd5317bc3f64"
+    },
+    "H2H": {
+      "bytes": 95708,
+      "path": "assets/H2H.json",
+      "required": true,
+      "rows": 486,
+      "season_max": 2025,
+      "season_min": 2020,
+      "sha256": "sha256:fa778feb113ec9fc9fb288a7520df823e4d1188587d6d27c252821f5175c0323"
+    },
+    "Rivalries": {
+      "bytes": 1530,
+      "path": "assets/Rivalries.json",
+      "required": false,
+      "rows": 9,
+      "season_max": null,
+      "season_min": null,
+      "sha256": "sha256:92ba7b7af7abf916deb0b25b6ee41998f1539ac638b0b69870a0b3b013eb3967"
+    },
+    "SeasonSummary": {
+      "bytes": 27158,
+      "path": "assets/SeasonSummary.json",
+      "required": true,
+      "rows": 66,
+      "season_max": 2025,
+      "season_min": 2020,
+      "sha256": "sha256:7f6c7606d9347830937b6d017edf18171147591d33b57bfb60b4bddc1c9e1c0d"
+    },
+    "Shotguns": {
+      "bytes": 23567,
+      "path": "assets/Shotguns.json",
+      "required": false,
+      "rows": 97,
+      "season_max": null,
+      "season_min": null,
+      "sha256": "sha256:27030935e5aa7940f7c2c15fea7a1e56adf624256039e5cd955477901975f74a"
+    }
+  },
+  "data_version": "sha256:e33b023213b9013116046006ad84a127364cb9913bd5bc1a8aa76404e47d53b7",
+  "derived": {
+    "bytes": 127374,
+    "path": "assets/DerivedStats.json",
+    "required": false,
+    "sha256": "sha256:cff4cd6ffd678e66e415bee0bfe192e7f592b78b7fd7fc4cb3a402b08cc23523",
+    "source_hashes": {
+      "H2H": "sha256:fa778feb113ec9fc9fb288a7520df823e4d1188587d6d27c252821f5175c0323",
+      "Rivalries": "sha256:92ba7b7af7abf916deb0b25b6ee41998f1539ac638b0b69870a0b3b013eb3967",
+      "SeasonSummary": "sha256:7f6c7606d9347830937b6d017edf18171147591d33b57bfb60b4bddc1c9e1c0d"
+    }
+  },
+  "derived_generator_version": 1,
+  "manifest_version": 3,
+  "media": {
+    "leagueHero": {
+      "role": "runtime-required",
+      "variants": [
+        {
+          "bytes": 17721,
+          "format": "avif",
+          "height": 866,
+          "max_bytes": 307200,
+          "path": "assets/hero/league-1280.avif",
+          "sha256": "sha256:0b4bf7501ca1f244c16bef7cba531a78f21ba89c7d4a89572c0c01437a1fe309",
+          "width": 1280
+        },
+        {
+          "bytes": 43444,
+          "format": "jpeg",
+          "height": 866,
+          "max_bytes": 440320,
+          "path": "assets/hero/league-1280.jpg",
+          "sha256": "sha256:ce822142e8f0447862d08413eab27ba92896b268c6e87d7160d835c910d30e8f",
+          "width": 1280
+        },
+        {
+          "bytes": 22466,
+          "format": "webp",
+          "height": 866,
+          "max_bytes": 368640,
+          "path": "assets/hero/league-1280.webp",
+          "sha256": "sha256:104e953e466f13971e20aaca790effaa83ed9b3bcbbdd9cb0e740a11f0db8afa",
+          "width": 1280
+        },
+        {
+          "bytes": 26901,
+          "format": "avif",
+          "height": 1299,
+          "max_bytes": 532480,
+          "path": "assets/hero/league-1920.avif",
+          "sha256": "sha256:6931ee9261bf915104b2aa071fb8abd76ddcd19162fd5362607597c12dcaf36c",
+          "width": 1920
+        },
+        {
+          "bytes": 72865,
+          "format": "jpeg",
+          "height": 1299,
+          "max_bytes": 778240,
+          "path": "assets/hero/league-1920.jpg",
+          "sha256": "sha256:b4ec2a82c70919b1a1d845d711a1e2f5823e448adf04aae749603791304161f5",
+          "width": 1920
+        },
+        {
+          "bytes": 37028,
+          "format": "webp",
+          "height": 1299,
+          "max_bytes": 655360,
+          "path": "assets/hero/league-1920.webp",
+          "sha256": "sha256:83635289d65aa3337f8d4db71f236c65a12358c371343b1ad6c6b84c6c77deef",
+          "width": 1920
+        },
+        {
+          "bytes": 6029,
+          "format": "avif",
+          "height": 325,
+          "max_bytes": 92160,
+          "path": "assets/hero/league-480.avif",
+          "sha256": "sha256:0b93b6c77d047c81444d7602402c10dc4a873f717a81cf26459bec4635ba1216",
+          "width": 480
+        },
+        {
+          "bytes": 11845,
+          "format": "jpeg",
+          "height": 325,
+          "max_bytes": 133120,
+          "path": "assets/hero/league-480.jpg",
+          "sha256": "sha256:16c4425e0926b8fecc3d7863a4eabe57cb4b9fac37240a3d600abe7d35e6564a",
+          "width": 480
+        },
+        {
+          "bytes": 6934,
+          "format": "webp",
+          "height": 325,
+          "max_bytes": 112640,
+          "path": "assets/hero/league-480.webp",
+          "sha256": "sha256:c9bb51c16acded1ff062b9b79c0846be152690bad4174d611f28b4b6677e2b53",
+          "width": 480
+        },
+        {
+          "bytes": 10071,
+          "format": "avif",
+          "height": 520,
+          "max_bytes": 153600,
+          "path": "assets/hero/league-768.avif",
+          "sha256": "sha256:74dda079176f0a3466d2753acf15e787cbff2814b722bd96ea20192ed59285f4",
+          "width": 768
+        },
+        {
+          "bytes": 22185,
+          "format": "jpeg",
+          "height": 520,
+          "max_bytes": 225280,
+          "path": "assets/hero/league-768.jpg",
+          "sha256": "sha256:89c794246715e7d6ca8347f9c3f6b9387a6f54e55018325f4df2921db1ed72c4",
+          "width": 768
+        },
+        {
+          "bytes": 11984,
+          "format": "webp",
+          "height": 520,
+          "max_bytes": 184320,
+          "path": "assets/hero/league-768.webp",
+          "sha256": "sha256:845a56fb8a77512319400db34365bef50d2762c27ba6b3063ac254596ace6c37",
+          "width": 768
+        }
+      ]
+    },
+    "leagueHeroSource": {
+      "fallback": "assets/hero/league-1920.jpg",
+      "path": "assets/LeaguePic.jpeg",
+      "role": "regeneration-optional"
+    }
+  },
+  "schema_versions": {
+    "CurrentSeason": 1,
+    "DerivedStats": 1,
+    "DraftSpot": 1,
+    "H2H": 1,
+    "Rivalries": 1,
+    "SeasonSummary": 1,
+    "Shotguns": 1
+  }
+}

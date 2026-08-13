@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://darling.example/schemas/asset-manifest.schema.json",
+  "$id": "https://viva.example/schemas/asset-manifest.schema.json",
   "title": "AssetManifest",
   "description": "Content-addressed inventory for one deployable data snapshot.",
   "type": "object",
@@ -13,13 +13,13 @@
     "schema_versions": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["H2H", "SeasonSummary", "Rivalries", "CurrentSeason", "TransactionHistory", "DraftSpot", "DerivedStats"],
+      "required": ["H2H", "SeasonSummary", "Rivalries", "CurrentSeason", "Shotguns", "DraftSpot", "DerivedStats"],
       "properties": {
         "H2H": { "type": "integer", "minimum": 1 },
         "SeasonSummary": { "type": "integer", "minimum": 1 },
         "Rivalries": { "type": "integer", "minimum": 1 },
         "CurrentSeason": { "type": "integer", "minimum": 1 },
-        "TransactionHistory": { "type": "integer", "minimum": 1 },
+        "Shotguns": { "type": "integer", "minimum": 1 },
         "DraftSpot": { "type": "integer", "minimum": 1 },
         "DerivedStats": { "type": "integer", "minimum": 1 }
       }
@@ -27,13 +27,13 @@
     "assets": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["H2H", "SeasonSummary", "Rivalries", "CurrentSeason", "TransactionHistory", "DraftSpot"],
+      "required": ["H2H", "SeasonSummary", "Rivalries", "Shotguns", "DraftSpot"],
       "properties": {
         "H2H": { "$ref": "#/$defs/jsonAsset" },
         "SeasonSummary": { "$ref": "#/$defs/jsonAsset" },
         "Rivalries": { "$ref": "#/$defs/jsonAsset" },
         "CurrentSeason": { "$ref": "#/$defs/jsonAsset" },
-        "TransactionHistory": { "$ref": "#/$defs/jsonAsset" },
+        "Shotguns": { "$ref": "#/$defs/jsonAsset" },
         "DraftSpot": { "$ref": "#/$defs/jsonAsset" }
       }
     },

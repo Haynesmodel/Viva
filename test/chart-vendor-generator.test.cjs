@@ -32,7 +32,7 @@ const EXPECTED_EXPORTS = [
 ];
 
 function withTempDir(callback) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-chart-vendor-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-chart-vendor-'));
   return Promise.resolve(callback(root)).finally(() => fs.rmSync(root, { recursive: true, force: true }));
 }
 

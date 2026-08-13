@@ -35,11 +35,11 @@ function data(games, owners = ['A', 'B', 'C', 'D'], current = false) {
     seasonSummaries,
     rivalries: [],
     currentSeason: current ? {
-      source: 'fixture', league_id: 'fixture', season: 2030, generated_at: '2030-09-08T00:00:00Z',
+      source: 'fixture', league_key: 'fixture', season: 2030, generated_at: '2030-09-08T00:00:00Z',
       current_week: 1, regular_season_max_week: 14, max_week: 17, weeks_fetched: [1],
       playoff_rules: { regular_season_max_week: 14, playoff_slots: 2, bye_slots: 0, saunders_slots: 2, standings_tiebreakers: [] },
       update_context: { mode: 'fixture', cutoff_date: '2030-09-08', contains_live_scores: false, contains_projected_scores: false },
-      teams: owners.map((owner, index) => ({ roster_id: index + 1, owner, display_name: owner, sleeper_team_name: owner })),
+      teams: owners.map((owner, index) => ({ roster_id: index + 1, owner, display_name: owner, source_team_name: owner })),
       games,
     } : null,
     derivedStats: null,
@@ -52,7 +52,7 @@ function weekly(model) {
 }
 
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-recap-model-'));
+  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-recap-model-'));
   await esbuild.build({
     entryPoints: [path.join(root, 'src/features/league-pulse/league-recap-model.ts')],
     outfile: path.join(temp, 'recap.js'),
@@ -69,7 +69,7 @@ test.after(() => fs.rmSync(temp, { recursive: true, force: true }));
 
 test('complete weekly editions have exactly four deterministic highlights', () => {
   const games = [game('A', 'B', { scoreA: 120 }), game('C', 'D', { scoreA: 110, scoreB: 105 })];
-  const edition = weekly(recap.buildLeagueNewspaper(data(games), '/Darling/'));
+  const edition = weekly(recap.buildLeagueNewspaper(data(games), '/Viva/'));
   assert.equal(edition.state, 'complete');
   assert.equal(edition.issue, null);
   assert.deepEqual(edition.highlights.map(item => item.label), [
@@ -84,7 +84,7 @@ test('current live and non-finite games remain pending', () => {
     game('A', 'B', { status: 'live' }),
     game('A', 'B', { scoreA: null }),
   ]) {
-    const edition = weekly(recap.buildLeagueNewspaper(data([changed, game('C', 'D')], undefined, true), '/Darling/'));
+    const edition = weekly(recap.buildLeagueNewspaper(data([changed, game('C', 'D')], undefined, true), '/Viva/'));
     assert.equal(edition.state, 'pending');
     assert.equal(edition.issue.code, 'LIVE_GAMES');
     assert.equal(edition.facts, null);
@@ -101,7 +101,7 @@ test('weekly integrity failures use deterministic issue codes', () => {
     ['INVALID_SCORE', data([game('A', 'B', { scoreA: Number.NaN })], ['A', 'B'])],
   ];
   for (const [code, fixture] of cases) {
-    const edition = weekly(recap.buildLeagueNewspaper(fixture, '/Darling/'));
+    const edition = weekly(recap.buildLeagueNewspaper(fixture, '/Viva/'));
     assert.equal(edition.state, 'partial', code);
     assert.equal(edition.issue.code, code);
     assert.equal(edition.facts, null);
@@ -114,7 +114,7 @@ test('a complete week after a partial week cannot publish cumulative standings',
     game('A', 'B', { week: 2, date: '2030-09-15', scoreA: 80, scoreB: 90 }),
     game('C', 'D', { week: 2, date: '2030-09-15', scoreA: 95, scoreB: 85 }),
   ];
-  const model = recap.buildLeagueNewspaper(data(games), '/Darling/');
+  const model = recap.buildLeagueNewspaper(data(games), '/Viva/');
   const first = model.editions.find(edition => edition.id === 'weekly:2030:1');
   const second = model.editions.find(edition => edition.id === 'weekly:2030:2');
   assert.equal(first.state, 'partial');
@@ -129,14 +129,14 @@ test('tie handling is independent of source order and owner names are canonical'
     game('C', 'D', { scoreA: 120, scoreB: 100 }),
     game('B', 'A', { scoreA: 90, scoreB: 120 }),
   ];
-  const first = weekly(recap.buildLeagueNewspaper(data(games), '/Darling/'));
-  const second = weekly(recap.buildLeagueNewspaper(data(games.slice().reverse()), '/Darling/'));
+  const first = weekly(recap.buildLeagueNewspaper(data(games), '/Viva/'));
+  const second = weekly(recap.buildLeagueNewspaper(data(games.slice().reverse()), '/Viva/'));
   assert.deepEqual(first.facts, second.facts);
   assert.equal(first.facts.highScore.value, 'A, C');
   const tiedWeek = weekly(recap.buildLeagueNewspaper(data([
     game('A', 'B', { scoreA: 100, scoreB: 100 }),
     game('C', 'D', { scoreA: 90, scoreB: 90 }),
-  ]), '/Darling/'));
+  ]), '/Viva/'));
   assert.equal(tiedWeek.facts.largestMargin.value, 'Tie');
 });
 
@@ -146,7 +146,7 @@ test('all ten audited historical anomalies remain partial and unshareable', () =
     seasonSummaries: JSON.parse(fs.readFileSync(path.join(root, 'assets/SeasonSummary.json'), 'utf8')),
     currentSeason: JSON.parse(fs.readFileSync(path.join(root, 'assets/CurrentSeason.json'), 'utf8')),
     rivalries: [], derivedStats: null, dataVersion: 'fixture',
-  }, '/Darling/');
+  }, '/Viva/');
   const anomalies = [
     'weekly:2015:7', 'weekly:2015:8', 'weekly:2016:4', 'weekly:2016:8',
     'weekly:2016:9', 'weekly:2016:10', 'weekly:2016:13', 'weekly:2019:3',
@@ -168,7 +168,7 @@ test('all ten audited historical anomalies remain partial and unshareable', () =
 });
 
 test('incomplete honors produce pending seasons while canonical facts remain authoritative', () => {
-  const pending = recap.buildLeagueNewspaper(data([game('A', 'B')], ['A', 'B']), '/Darling/')
+  const pending = recap.buildLeagueNewspaper(data([game('A', 'B')], ['A', 'B']), '/Viva/')
     .editions.find(edition => edition.id === 'season:2030');
   assert.equal(pending.state, 'pending');
   assert.equal(pending.issue.code, 'HONORS_PENDING');
@@ -178,7 +178,7 @@ test('incomplete honors produce pending seasons while canonical facts remain aut
     currentSeason: JSON.parse(fs.readFileSync(path.join(root, 'assets/CurrentSeason.json'), 'utf8')),
     rivalries: [], derivedStats: null, dataVersion: 'fixture',
   };
-  const review = recap.buildSeasonYearInReview(canonical, 2025, '/Darling/');
+  const review = recap.buildSeasonYearInReview(canonical, 2025, '/Viva/');
   assert.equal(review.champion, 'Zook');
   assert.equal(review.saunders, 'Connor');
   assert.equal(review.superlatives.length, 5);

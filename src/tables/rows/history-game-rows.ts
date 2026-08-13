@@ -1,11 +1,11 @@
-import type { DarlingTableRow, TableContext } from '../table-types';
+import type { VivaTableRow, TableContext } from '../table-types';
 
 function number(value: unknown): number {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
-export function adaptHistoryGameRows(rows: unknown[], context: TableContext = {}): DarlingTableRow[] {
+export function adaptHistoryGameRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   return rows.map((input, index) => {
     const row = input as Record<string, any>;
     const score = number(row.score);

@@ -22,7 +22,7 @@ jobs:
       dist_digest: ${{ steps.dist.outputs.artifact-digest }}
     env:
       CI: '1'
-      VITE_BASE_PATH: /Darling/
+      VITE_BASE_PATH: /Viva/
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -52,7 +52,7 @@ jobs:
         id: dist
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: darling-dist-${{ github.sha }}
+          name: viva-dist-${{ github.sha }}
           path: dist/
           include-hidden-files: true
           if-no-files-found: error
@@ -74,7 +74,7 @@ jobs:
             echo "- Unit/data checks: ${UNIT_DATA_RESULT}"
             echo "- Production build: ${BUILD_RESULT}"
             echo "- Bundle budget: ${BUNDLE_BUDGET_RESULT}"
-            echo "- Artifact: darling-dist-${GITHUB_SHA}"
+            echo "- Artifact: viva-dist-${GITHUB_SHA}"
             echo "- Digest: ${ARTIFACT_DIGEST:-unavailable}"
             if [[ -d dist ]]; then
               echo "- Files: $(find dist -type f | wc -l | tr -d ' ')"
@@ -106,7 +106,7 @@ jobs:
         id: dist
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: darling-dist-${{ github.sha }}
+          name: viva-dist-${{ github.sha }}
           path: dist/
           digest-mismatch: error
       - name: Validate production artifact
@@ -224,7 +224,7 @@ jobs:
         id: dist
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: darling-dist-${{ github.sha }}
+          name: viva-dist-${{ github.sha }}
           path: dist/
           digest-mismatch: error
       - name: Validate production artifact
@@ -293,7 +293,7 @@ jobs:
         id: dist
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: darling-dist-${{ github.sha }}
+          name: viva-dist-${{ github.sha }}
           path: dist/
           digest-mismatch: error
       - name: Validate Pages payload
@@ -320,7 +320,7 @@ jobs:
           {
             echo '### Pages packaging'
             echo "- Source SHA: ${GITHUB_SHA}"
-            echo "- Tested artifact: darling-dist-${GITHUB_SHA}"
+            echo "- Tested artifact: viva-dist-${GITHUB_SHA}"
             echo "- Tested artifact digest: ${ARTIFACT_DIGEST}"
             echo '- Required payload files: present and non-empty'
           } >> "$GITHUB_STEP_SUMMARY"
@@ -332,7 +332,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     concurrency:
-      group: darling-pages-production
+      group: viva-pages-production
       cancel-in-progress: true
     permissions:
       contents: read

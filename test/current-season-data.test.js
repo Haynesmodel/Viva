@@ -61,8 +61,8 @@ test('current matchup rows include historical head-to-head context', () => {
   assert.equal(joeShap.rivalryUrl, '?tab=rivalry&rivalryTeamA=Joe&rivalryTeamB=Shap');
 });
 
-test('current-season helpers prefer Sleeper current-season asset when present', () => {
-  const sleeperAsset = {
+test('current-season helpers prefer ESPN current-season asset when present', () => {
+  const sourceAsset = {
     season: 2026,
     current_week: 1,
     games: [
@@ -71,11 +71,11 @@ test('current-season helpers prefer Sleeper current-season asset when present', 
     ],
   };
 
-  const standings = buildCurrentSeasonStandings({ leagueGames: games, currentSeason: sleeperAsset });
+  const standings = buildCurrentSeasonStandings({ leagueGames: games, currentSeason: sourceAsset });
   assert.equal(standings.find(row => row.owner === 'Joe').games, 0);
   assert.equal(standings.find(row => row.owner === 'Nuss').record, '1-0');
 
-  const rows = buildCurrentMatchupRows({ leagueGames: games, currentSeason: sleeperAsset });
+  const rows = buildCurrentMatchupRows({ leagueGames: games, currentSeason: sourceAsset });
   const scheduled = rows.find(row => row.teamA === 'Joe');
   assert.equal(rows.length, 2);
   assert.equal(scheduled.scoreA, null);
@@ -88,7 +88,7 @@ test('current-season helpers prefer Sleeper current-season asset when present', 
 });
 
 test('current-season helpers do not count live games as completed standings results', () => {
-  const sleeperAsset = {
+  const sourceAsset = {
     season: 2026,
     current_week: 2,
     games: [
@@ -97,12 +97,12 @@ test('current-season helpers do not count live games as completed standings resu
     ],
   };
 
-  const standings = buildCurrentSeasonStandings({ leagueGames: games, currentSeason: sleeperAsset });
+  const standings = buildCurrentSeasonStandings({ leagueGames: games, currentSeason: sourceAsset });
   assert.equal(standings.find(row => row.owner === 'Joe').games, 0);
   assert.equal(standings.find(row => row.owner === 'Shap').games, 0);
   assert.equal(standings.find(row => row.owner === 'Nuss').record, '1-0');
 
-  const rows = buildCurrentMatchupRows({ leagueGames: games, currentSeason: sleeperAsset, week: 2 });
+  const rows = buildCurrentMatchupRows({ leagueGames: games, currentSeason: sourceAsset, week: 2 });
   const live = rows.find(row => row.teamA === 'Joe');
   assert.equal(live.completed, false);
   assert.equal(live.scoreA, 25);

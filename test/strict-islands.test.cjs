@@ -41,7 +41,7 @@ test('strict-island policy permits the documented type-only vendor facade', () =
 });
 
 test('strict-island repository checker enforces parsed TypeScript project membership for ts and tsx', () => {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'darling-strict-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-strict-'));
   try {
     fs.mkdirSync(path.join(root, 'scripts', 'data'), { recursive: true });
     fs.mkdirSync(path.join(root, 'src', 'island'), { recursive: true });

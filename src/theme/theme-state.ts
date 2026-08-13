@@ -1,6 +1,6 @@
 import type { ColorSchemePreference, ResolvedColorScheme } from './theme-types';
 
-export const COLOR_SCHEME_STORAGE_KEY = 'darling.colorScheme';
+export const COLOR_SCHEME_STORAGE_KEY = 'viva.colorScheme';
 const COLOR_SCHEME_VALUES = new Set<ColorSchemePreference>(['system', 'light', 'dark']);
 
 interface StorageLike {

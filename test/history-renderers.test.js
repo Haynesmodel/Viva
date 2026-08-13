@@ -73,14 +73,14 @@ test('history renderer builds week-by-week table html for selected team', () => 
   assert.match(allHtml, /Select a team to see week-by-week games/);
 });
 
-test('history lowest-score markers exclude the outlier but keep both game rows', () => {
+test('history lowest-score markers preserve canonical low-score game rows', () => {
   const target = { season: 2022, date: '2022-12-24', teamA: 'Joel', teamB: 'Plot', scoreA: 6.5, scoreB: 4.6, type: 'Saunders', round: 'Saunders Final', _weekByTeam: { Joel: 16, Plot: 16 } };
   const other = { season: 2022, date: '2022-12-24', teamA: 'Joe', teamB: 'Shap', scoreA: 100, scoreB: 90, type: 'Regular', round: '', _weekByTeam: { Joe: 16, Shap: 16 } };
   const joelRows = weekByWeekRows('Joel', [target], { allGames: [target, other] });
   const plotRows = weekByWeekRows('Plot', [target], { allGames: [target, other] });
   const targetOnlyRows = weekByWeekRows('Joel', [target], { allGames: [target] });
   assert.equal(joelRows[0].isTurd, false);
-  assert.equal(plotRows[0].isTurd, false);
+  assert.equal(plotRows[0].isTurd, true);
   assert.equal(targetOnlyRows[0].isCrown, true);
   assert.equal(joelRows[0].pf, 6.5);
   assert.equal(plotRows[0].pf, 4.6);
@@ -140,7 +140,7 @@ test('history renderer builds top highlight chips', () => {
     champNoteFn: (owner, season) => owner === 'Joe' && season === 2025 ? 'note' : null,
     saundersNoteFn: (owner, season) => owner === 'Joe' && season === 2024 ? 'bad bracket' : null,
   });
-  assert.match(html, /Darlings/);
+  assert.match(html, /Championships/);
   assert.match(html, /Years: 2025\*/);
   assert.match(html, /Saunders/);
   assert.match(html, /Years: 2024\*/);
@@ -167,7 +167,7 @@ test('history renderer view models normalize headline text', () => {
     saundersNoteFn: (owner, season) => owner === 'Joe' && season === 2024 ? 'bad bracket' : null,
   });
   assert.equal(vm.isLeagueView, false);
-  assert.equal(vm.chips[0].title, 'Darlings');
+  assert.equal(vm.chips[0].title, 'Championships');
   assert.equal(vm.chips[0].main, '1');
   assert.match(vm.chips[0].sub, /Years: 2025\*/);
   assert.equal(vm.chips[3].main, '4.50');

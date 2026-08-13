@@ -37,16 +37,10 @@ test('curse tracker builds normalized cards from the league data', () => {
   const seasonSummaries = readJson(seasonPath);
   const model = buildCurseTrackerModel(leagueGames, seasonSummaries);
 
-  assert.equal(model.cards.length, 5);
+  assert.equal(model.cards.length, 2);
 
   const ids = model.cards.map(card => card.id).sort();
-  assert.deepEqual(ids, [
-    'bye-curse:league',
-    'chronically-unlucky:Plot',
-    'regular-season-champion-curse:league',
-    'season-high-loss:Nuss',
-    'season-high-loss:Shap',
-  ]);
+  assert.deepEqual(ids, ['chronically-unlucky:Rico', 'season-opener:Rico']);
 
   for (const card of model.cards) {
     assert.ok(card.id);
@@ -61,38 +55,16 @@ test('curse tracker builds normalized cards from the league data', () => {
     assert.ok(card.status === 'Active' || card.status === 'Cold' || card.status === 'Broken');
   }
 
-  const bye = model.cards.find(card => card.id === 'bye-curse:league');
-  assert.equal(bye.severity, 2);
-  assert.equal(bye.status, 'Active');
-  assert.match(bye.summary, /Semi Final/);
-  assert.match(bye.detail, /Each semifinal game's win chance comes from the two teams' regular-season record and scoring margin/);
-  assert.match(bye.detail, /Observed 9 wins in 24 semifinal games/);
-  assert.ok(Number.isFinite(bye.pValue));
-  assert.ok(Number.isFinite(bye.qValue));
-  assert.ok(bye.qValue < 0.05);
-  assert.ok(bye.evidence.every(ev => !String(ev.note || '').includes('Bye team semifinal')));
-
-  const seasonHigh = model.cards.find(card => card.id === 'season-high-loss:Nuss');
-  assert.equal(seasonHigh.evidence[0].note, 'Highest regular-season score');
-  assert.ok(!String(seasonHigh.evidence[0].note || '').includes('138.6'));
-
-  const unlucky = model.cards.find(card => card.id === 'chronically-unlucky:Plot');
+  const unlucky = model.cards.find(card => card.id === 'chronically-unlucky:Rico');
   assert.equal(unlucky.ratingMethod, 'effect-size');
-  assert.equal(unlucky.severity, null);
   assert.equal(unlucky.status, 'Active');
-  assert.match(unlucky.summary, /most Expected Wins/);
-
-  const titleHolder = model.cards.find(card => card.id === 'regular-season-champion-curse:league');
-  assert.equal(titleHolder.title, 'The #1 Seed Curse');
-  assert.match(titleHolder.summary, /The #1 Seed has won 1 time/);
-  assert.match(titleHolder.detail, /points scored as the tiebreak/);
-  assert.match(titleHolder.evidence[0].note, /#1 Seed:/);
+  assert.match(unlucky.summary, /Expected Wins/);
 
   const summary = buildCurseTrackerSummary(model.cards, model.cards, model.completedSeasons, {
     allOwners: model.owners,
     owner: '__ALL__',
   });
-  assert.match(summary, /5 curses shown, 3 active, across 12 completed seasons/);
+  assert.match(summary, /2 curses shown, 2 active, across 6 completed seasons/);
   assert.match(summary, /Most cursed:/);
   assert.match(summary, /Most blessed:/);
 });

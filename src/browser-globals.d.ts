@@ -6,10 +6,10 @@ declare class PopStateEvent {
 }
 
 interface Window {
-  darlingTables?: import('./tables/table-types').DarlingTableRuntime;
-  darlingAccessibility?: any;
-  darlingDataDiagnostics?: import('./data/load-league-assets').DataDiagnostics;
-  darlingFeatureDiagnostics?: import('./app/app-types').AppDiagnostics;
-  __darlingDataVersion?: string;
-  __darlingRenderMetrics?: { filterRuns: number };
+  vivaTables?: import('./tables/table-types').VivaTableRuntime;
+  vivaAccessibility?: any;
+  vivaDataDiagnostics?: import('./data/load-league-assets').DataDiagnostics;
+  vivaFeatureDiagnostics?: import('./app/app-types').AppDiagnostics;
+  __vivaDataVersion?: string;
+  __vivaRenderMetrics?: { filterRuns: number };
 }

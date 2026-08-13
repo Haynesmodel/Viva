@@ -1,7 +1,7 @@
 import { showPage } from '../../js/render-helpers.js';
 import { applyFocusTarget } from './feature-utils';
 import { FeatureRegistry } from './feature-registry';
-import { FEATURE_IDS, type DarlingFeatureController, type FeatureId } from './feature-contract';
+import { FEATURE_IDS, type VivaFeatureController, type FeatureId } from './feature-contract';
 import { FEATURE_NAVIGATION } from './feature-navigation';
 import { createNavigationService, normalizeFeatureId } from './router';
 import { createFeatureStatusService } from './services/feature-status';
@@ -9,8 +9,8 @@ import { createHeaderService } from './services/header-service';
 import { createLeagueSelectors } from './services/league-selectors';
 import { createThemeContextService } from './services/theme-context-service';
 import type { AppContext, AppDiagnostics, AppRoute } from './app-types';
-import type { DarlingTableRuntime } from '../tables/table-types';
-import type { DarlingSearchRuntime } from '../search/search-types';
+import type { VivaTableRuntime } from '../tables/table-types';
+import type { VivaSearchRuntime } from '../search/search-types';
 import type { DataFreshnessRuntime } from '../components/data-freshness/DataFreshnessBadge';
 import { isEligiblePrimaryNavigationClick } from '../accessibility/primary-navigation';
 import { buildUrlFromState } from '../../js/state-helpers.js';
@@ -22,8 +22,8 @@ import {
 } from './services/owner-preference-service';
 
 export interface BootstrapOptions {
-  tableRuntime: DarlingTableRuntime;
-  searchRuntime: DarlingSearchRuntime;
+  tableRuntime: VivaTableRuntime;
+  searchRuntime: VivaSearchRuntime;
   freshnessRuntime?: DataFreshnessRuntime;
   win?: Window;
   doc?: Document;
@@ -58,14 +58,14 @@ function updateOwnerDestination(doc: Document, win: Window, snapshot: OwnerPrefe
   if (status) status.textContent = snapshot.owner ? `, current team: ${snapshot.owner}` : ', not chosen';
 }
 
-export async function bootstrapDarlingApp(options: BootstrapOptions): Promise<() => Promise<void>> {
+export async function bootstrapVivaApp(options: BootstrapOptions): Promise<() => Promise<void>> {
   const win = options.win || window;
   const doc = options.doc || document;
   const registry = new FeatureRegistry();
   const router = createNavigationService(win);
   const status = createFeatureStatusService(doc);
   let activeFeature: FeatureId | null = null;
-  let activeController: DarlingFeatureController | null = null;
+  let activeController: VivaFeatureController | null = null;
   let activationCount = 0;
   let abortController: AbortController | null = null;
   let ownerPreference: OwnerPreferenceService | null = null;
@@ -75,7 +75,7 @@ export async function bootstrapDarlingApp(options: BootstrapOptions): Promise<()
     get activationCount() { return activationCount; },
     get features() { return registry.diagnostics(); },
   };
-  win.darlingFeatureDiagnostics = diagnostics;
+  win.vivaFeatureDiagnostics = diagnostics;
   status.dataLoading();
   let dataFailed = false;
   const dataPromise = import('../data/load-league-assets').then(({ loadLeagueAssets }) => loadLeagueAssets()).catch(error => {
@@ -83,8 +83,8 @@ export async function bootstrapDarlingApp(options: BootstrapOptions): Promise<()
     throw error;
   });
   const contextPromise = dataPromise.then(data => {
-    win.darlingDataDiagnostics = data.diagnostics;
-    win.__darlingDataVersion = data.dataVersion;
+    win.vivaDataDiagnostics = data.diagnostics;
+    win.__vivaDataVersion = data.dataVersion;
     options.freshnessRuntime?.publish({
       currentSeason: data.currentSeason,
       seasonSummaries: data.seasonSummaries,
@@ -145,7 +145,7 @@ export async function bootstrapDarlingApp(options: BootstrapOptions): Promise<()
     } catch (error) {
       if (disposed || signal.aborted || activationId !== activationCount) return;
       if (dataFailed) console.error('Failed to load league JSON', error);
-      else console.error(`[Darling] Failed to activate ${id}`, error);
+      else console.error(`[Viva] Failed to activate ${id}`, error);
       if (dataFailed) {
         status.dataError(error);
         return;

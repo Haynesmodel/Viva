@@ -3,9 +3,9 @@ import { buildSearchIndex, type BuiltSearchIndex } from './search-index';
 import { parseSearchIntents } from './search-intents';
 import { executeSearchAction } from './search-navigation';
 import { rankSearchDocuments } from './search-rank';
-import type { DarlingSearchRuntime, SearchDocument, SearchHydrationData, SearchResult, SearchRuntimeSnapshot } from './search-types';
+import type { VivaSearchRuntime, SearchDocument, SearchHydrationData, SearchResult, SearchRuntimeSnapshot } from './search-types';
 
-const RECENT_KEY = 'darling.search.recent';
+const RECENT_KEY = 'viva.search.recent';
 const MAX_RECENT = 8;
 
 function readRecent(): string[] {
@@ -17,7 +17,7 @@ function readRecent(): string[] {
   }
 }
 
-export function createSearchRuntime(): DarlingSearchRuntime {
+export function createSearchRuntime(): VivaSearchRuntime {
   let data: SearchHydrationData | null = null;
   let index: BuiltSearchIndex = { documents: [], owners: [], seasons: [], ownerAliases: new Map() };
   let recentIds = readRecent();

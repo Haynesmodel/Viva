@@ -14,7 +14,7 @@ function isDeployableAsset(sourceDir, filePath) {
     return ['.avif', '.webp', '.jpg', '.jpeg'].includes(ext.toLowerCase());
   }
   if (normalizedRel.startsWith('share/')) {
-    return normalizedRel === 'share/darling-default-card.png';
+    return normalizedRel === 'share/viva-default-card.png';
   }
   if (normalizedRel.startsWith('trophy/')) {
     return /^(?:trophy|medal|bagel|warning|football|beach-chair|joker|turd)\.svg$/.test(
@@ -23,6 +23,7 @@ function isDeployableAsset(sourceDir, filePath) {
   }
 
   if (ext && ext !== '.json') return false;
+  if (/\.(?:mov|mp4|m4v|webm|avi)$/i.test(name)) return false;
   if (name.startsWith('.')) return false;
   if (/\.updated\.json$/.test(name)) return false;
   if (/\.draft\.json$/.test(name)) return false;

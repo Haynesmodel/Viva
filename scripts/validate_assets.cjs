@@ -23,7 +23,7 @@ function resolveAssetPaths(argv, root = process.cwd()) {
   const defaults = Object.values(SOURCE_ASSETS).map(asset => path.join(root, asset.path));
   if (!argv.length) return { paths: defaults, custom: false };
   if (![3, 4, 5].includes(argv.length)) {
-    throw new Error('Usage: node scripts/validate_assets.cjs [H2H.json SeasonSummary.json Rivalries.json [CurrentSeason.json [TransactionHistory.json]]]');
+    throw new Error('Usage: node scripts/validate_assets.cjs [H2H.json SeasonSummary.json Rivalries.json [CurrentSeason.json [Shotguns.json]]]');
   }
   return {
     paths: argv.map(file => path.resolve(root, file)).concat(defaults.slice(argv.length)),

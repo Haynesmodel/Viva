@@ -13,9 +13,9 @@ export default function SearchTrigger({ busy, disabled, onOpen, triggerRef }: Se
       class="tab search-trigger"
       aria-haspopup="dialog"
       aria-controls="global-search-dialog"
-      aria-label="Search The Darling"
+      aria-label="Search The Viva"
       aria-busy={busy ? 'true' : undefined}
-      title="Search The Darling"
+      title="Search The Viva"
       disabled={disabled}
       onClick={onOpen}
     >

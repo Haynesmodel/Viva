@@ -34,7 +34,7 @@ function createCoveragePlugin() {
     parserPlugins: ['typescript', 'jsx'],
   });
   return {
-    name: 'darling:istanbul',
+    name: 'viva:istanbul',
     apply: 'serve' as const,
     enforce: 'pre' as const,
     transform(source: string, id: string, options?: { ssr?: boolean }) {
@@ -68,13 +68,13 @@ function createPropertyCompactionPlugin() {
   // These literal keys are selected through FEATURE_IDS, so Terser cannot see
   // their computed property access while processing an individual chunk.
   const publicProperties = new Set([
-    'pulse', 'owner', 'transactions', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet',
+    'pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet', 'shotguns',
     // DOM dataset and Window diagnostics are observable contracts, including
     // from accessibility tooling and the production browser suite.
     'accentTheme', 'activeFeature', 'bound', 'chartState', 'colorScheme',
-    'colorSchemePreference', 'darlingAccessibility', 'darlingDataDiagnostics',
-    'darlingDataLoader', 'darlingFeatureDiagnostics', 'darlingSearch', 'darlingTables',
-    'darlingTheme', 'featureId', 'featureMessage', 'featureState', 'heroMode',
+    'colorSchemePreference', 'vivaAccessibility', 'vivaDataDiagnostics',
+    'vivaDataLoader', 'vivaFeatureDiagnostics', 'vivaSearch', 'vivaTables',
+    'vivaTheme', 'featureId', 'featureMessage', 'featureState', 'heroMode',
     'loadedAssets', 'manifestVersion', 'optionalAssetFailures',
     'player',
     // Dynasty score component keys are iterated into visible breakdown labels.
@@ -172,7 +172,7 @@ function createPropertyCompactionPlugin() {
   };
   sourceFiles(root).forEach(filename => analyzeProperties(filename, fs.readFileSync(filename, 'utf8')));
   return {
-    name: 'darling:compact-runtime-properties',
+    name: 'viva:compact-runtime-properties',
     apply: 'build' as const,
     enforce: 'post' as const,
     transform(code: string, id: string) {

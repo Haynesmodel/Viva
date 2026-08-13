@@ -3,7 +3,7 @@ const { defineConfig, devices } = require('@playwright/test');
 const usePreview = process.env.PLAYWRIGHT_SERVER === 'preview';
 const collectCoverage = process.env.COLLECT_COVERAGE === '1';
 const host = 'http://127.0.0.1:8000';
-const basePath = process.env.PLAYWRIGHT_BASE_PATH || '/Darling/';
+const basePath = process.env.PLAYWRIGHT_BASE_PATH || '/Viva/';
 const strippedBasePath = basePath.replace(/^\/+|\/+$/g, '');
 const normalizedBasePath = strippedBasePath ? `/${strippedBasePath}/` : '/';
 const baseURL = usePreview ? `${host}${normalizedBasePath}` : host;
@@ -34,14 +34,12 @@ module.exports = defineConfig({
       name: 'chromium',
       // Axe behavior remains authoritative in the production-preview lane; it
       // does not add application execution paths to the instrumented lane.
-      testIgnore: collectCoverage
-        ? [/webkit-smoke\.spec\.js/, /accessibility\.spec\.js/]
-        : /webkit-smoke\.spec\.js/,
+      testIgnore: collectCoverage ? [] : undefined,
       use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'webkit-smoke',
-      testMatch: /webkit-smoke\.spec\.js/,
+      testMatch: /viva-smoke\.spec\.js/,
       use: { ...devices['Desktop Safari'] },
     },
   ],
