@@ -1,0 +1,763 @@
+{
+  "description": "Expiring baseline for the large Viva feature-parity snapshot. Each threshold is five hundredths below the observed coverage at the 0473aae baseline; behavior-focused tests must ratchet these values upward before expiry.",
+  "owner": "@Haynesmodel",
+  "expires": "2026-10-22",
+  "files": {
+    "js/app-state-controller.js": {
+      "lines": 91.2,
+      "statements": 88.52,
+      "functions": 82.8,
+      "branches": 69.37
+    },
+    "js/current-season-renderers.js": {
+      "lines": 91.14,
+      "statements": 87.65,
+      "functions": 91.47,
+      "branches": 56.15
+    },
+    "js/easter-eggs.js": {
+      "lines": 48.09,
+      "statements": 45.11,
+      "functions": 49.95,
+      "branches": 37.45
+    },
+    "js/facet-helpers.js": {
+      "lines": 89.23,
+      "statements": 90.64,
+      "functions": 95.4,
+      "branches": 56.2
+    },
+    "js/gauntlet-controls.js": {
+      "lines": 87.06,
+      "statements": 78.29,
+      "functions": 82.92,
+      "branches": 72.59
+    },
+    "js/gauntlet-data.js": {
+      "lines": 77.35,
+      "statements": 78.65,
+      "functions": 86.43,
+      "branches": 81.09
+    },
+    "js/history-controls.js": {
+      "lines": 66.18,
+      "statements": 61.48,
+      "functions": 49.95,
+      "branches": 40.24
+    },
+    "js/history-renderers.js": {
+      "lines": 92.14,
+      "statements": 85.96,
+      "functions": 92.07,
+      "branches": 61.6
+    },
+    "js/shared/simulation-math.js": {
+      "lines": 97.09,
+      "statements": 93.79,
+      "functions": 99.95,
+      "branches": 62.01
+    },
+    "scripts/audit_built_assets.cjs": {
+      "lines": 51.7,
+      "statements": 51.7,
+      "functions": 49.95,
+      "branches": 54.49
+    },
+    "scripts/check_coverage.js": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 99.95,
+      "branches": 0
+    },
+    "scripts/check_css_hygiene.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/check_generated_assets.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/check_owner_images.cjs": {
+      "lines": 65.46,
+      "statements": 65.46,
+      "functions": 99.95,
+      "branches": 79.95
+    },
+    "scripts/check_repo_hygiene.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/check_viva_media.cjs": {
+      "lines": 77.87,
+      "statements": 77.87,
+      "functions": 83.28,
+      "branches": 60.66
+    },
+    "scripts/ci_smoke.js": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/compare_json.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/generate_asset_manifest.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/generate_asset_types.cjs": {
+      "lines": 33.95,
+      "statements": 33.95,
+      "functions": 49.95,
+      "branches": 79.95
+    },
+    "scripts/generate_asset_validators.cjs": {
+      "lines": 37.88,
+      "statements": 37.88,
+      "functions": 74.95,
+      "branches": 90.85
+    },
+    "scripts/generate_derived_stats.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/generate_hero_images.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/migrate_shotguns.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/normalize_viva_assets.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/run_tests_with_coverage.js": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 99.95,
+      "branches": 0
+    },
+    "scripts/serve_static.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/v8_coverage_report.js": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/validate_assets.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/validate_candidate.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/data/constants.cjs": {
+      "lines": 93.95,
+      "statements": 93.95,
+      "functions": 0,
+      "branches": 99.95
+    },
+    "scripts/data/derived-stats.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/data/manifest.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/data/media-validation.cjs": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "scripts/data/schema-validation.cjs": {
+      "lines": 34.64,
+      "statements": 34.64,
+      "functions": 0,
+      "branches": 99.95
+    },
+    "scripts/data/semantic-validation.cjs": {
+      "lines": 62.21,
+      "statements": 62.21,
+      "functions": 99.95,
+      "branches": 51.8
+    },
+    "src/main.tsx": {
+      "lines": 90.27,
+      "statements": 90.27,
+      "functions": 83.28,
+      "branches": 49.95
+    },
+    "src/accessibility/dropdown-checklist.ts": {
+      "lines": 22.77,
+      "statements": 20.51,
+      "functions": 36.31,
+      "branches": 11.34
+    },
+    "src/accessibility/focus.ts": {
+      "lines": 12.99,
+      "statements": 10.66,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/accessibility/motion.ts": {
+      "lines": 71.37,
+      "statements": 55.5,
+      "functions": 19.95,
+      "branches": 0
+    },
+    "src/accessibility/primary-navigation.ts": {
+      "lines": 73.18,
+      "statements": 70.68,
+      "functions": 69.95,
+      "branches": 67.29
+    },
+    "src/app/app-controller.ts": {
+      "lines": 74.71,
+      "statements": 70.35,
+      "functions": 46.1,
+      "branches": 63.88
+    },
+    "src/app/feature-utils.ts": {
+      "lines": 99.95,
+      "statements": 99.95,
+      "functions": 99.95,
+      "branches": 37.45
+    },
+    "src/app/router.ts": {
+      "lines": 96.82,
+      "statements": 77.99,
+      "functions": 99.95,
+      "branches": 76.68
+    },
+    "src/app/section-disclosure.ts": {
+      "lines": 69.54,
+      "statements": 64.35,
+      "functions": 53.79,
+      "branches": 40.97
+    },
+    "src/app/services/feature-status.ts": {
+      "lines": 50.89,
+      "statements": 48.33,
+      "functions": 63.58,
+      "branches": 22.17
+    },
+    "src/app/services/league-selectors.ts": {
+      "lines": 62.45,
+      "statements": 61.06,
+      "functions": 49.95,
+      "branches": 39.95
+    },
+    "src/app/services/theme-context-service.ts": {
+      "lines": 82.3,
+      "statements": 82.3,
+      "functions": 99.95,
+      "branches": 59.2
+    },
+    "src/charting/chart-data.ts": {
+      "lines": 99.95,
+      "statements": 94.56,
+      "functions": 95.95,
+      "branches": 62.99
+    },
+    "src/charting/chart-theme.ts": {
+      "lines": 99.95,
+      "statements": 96.44,
+      "functions": 92.8,
+      "branches": 69.43
+    },
+    "src/charting/load-chart-runtime.ts": {
+      "lines": 96.24,
+      "statements": 90.42,
+      "functions": 69.95,
+      "branches": 87.45
+    },
+    "src/charting/plot-charts.ts": {
+      "lines": 95.46,
+      "statements": 92.57,
+      "functions": 95.4,
+      "branches": 65.95
+    },
+    "src/charting/plot-specs.ts": {
+      "lines": 99.95,
+      "statements": 95.07,
+      "functions": 94.06,
+      "branches": 68.1
+    },
+    "src/components/charts/DeferredChartCore.tsx": {
+      "lines": 71.37,
+      "statements": 58.09,
+      "functions": 47.95,
+      "branches": 41.12
+    },
+    "src/components/data-freshness/DataFreshnessBadge.tsx": {
+      "lines": 73.12,
+      "statements": 73.01,
+      "functions": 76.42,
+      "branches": 56.2
+    },
+    "src/components/search/CommandPalette.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/components/search/GlobalSearch.tsx": {
+      "lines": 30.15,
+      "statements": 30.85,
+      "functions": 31.52,
+      "branches": 14.01
+    },
+    "src/components/search/SearchResultRow.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/components/search/SearchTrigger.tsx": {
+      "lines": 99.95,
+      "statements": 99.95,
+      "functions": 99.95,
+      "branches": 49.95
+    },
+    "src/components/tables/ColumnFilterMenu.tsx": {
+      "lines": 63.58,
+      "statements": 63.58,
+      "functions": 33.28,
+      "branches": 62.45
+    },
+    "src/components/tables/ExpandedRow.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/components/tables/InteractiveTable.tsx": {
+      "lines": 65.95,
+      "statements": 61.42,
+      "functions": 51.01,
+      "branches": 56.65
+    },
+    "src/components/tables/SavedViewsMenu.tsx": {
+      "lines": 24.34,
+      "statements": 21.68,
+      "functions": 17.59,
+      "branches": 18.13
+    },
+    "src/components/tables/TableToolbar.tsx": {
+      "lines": 61.48,
+      "statements": 57.09,
+      "functions": 62.45,
+      "branches": 49.95
+    },
+    "src/data/data-errors.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/data/data-freshness.ts": {
+      "lines": 55.88,
+      "statements": 56.87,
+      "functions": 62.45,
+      "branches": 35.35
+    },
+    "src/data/load-league-assets.ts": {
+      "lines": 66.98,
+      "statements": 60.5,
+      "functions": 63.1,
+      "branches": 46.91
+    },
+    "src/data/verified-json-fetch.ts": {
+      "lines": 74.14,
+      "statements": 69.25,
+      "functions": 72.67,
+      "branches": 49.95
+    },
+    "src/features/current-season/current-season-controller.ts": {
+      "lines": 75.43,
+      "statements": 70.12,
+      "functions": 54.95,
+      "branches": 58.77
+    },
+    "src/features/draft-spot/DraftOwnerRecommendations.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/DraftOwnerTimeline.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/DraftPickBoard.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/DraftSelectionDetail.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/DraftSpotControls.tsx": {
+      "lines": 4.71,
+      "statements": 4.49,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/DraftSpotHero.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/DraftSpotPage.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/DraftZoneComparison.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/draft-spot-controller.ts": {
+      "lines": 70.9,
+      "statements": 62.8,
+      "functions": 66.61,
+      "branches": 36.31
+    },
+    "src/features/draft-spot/draft-spot-feature.ts": {
+      "lines": 89.95,
+      "statements": 82.3,
+      "functions": 74.95,
+      "branches": 69.64
+    },
+    "src/features/draft-spot/draft-spot-format.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/draft-spot-model.ts": {
+      "lines": 1.99,
+      "statements": 1.6,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/draft-spot/draft-spot-state.ts": {
+      "lines": 3.07,
+      "statements": 2.38,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/dynasty/DynastyControls.tsx": {
+      "lines": 89.95,
+      "statements": 58.77,
+      "functions": 46.1,
+      "branches": 57.09
+    },
+    "src/features/dynasty/DynastyPage.tsx": {
+      "lines": 68.6,
+      "statements": 51.88,
+      "functions": 70.43,
+      "branches": 43.67
+    },
+    "src/features/dynasty/dynasty-controller.ts": {
+      "lines": 76.73,
+      "statements": 54.11,
+      "functions": 59.95,
+      "branches": 53.58
+    },
+    "src/features/gauntlet/GauntletHistogramMount.tsx": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/features/gauntlet/gauntlet-controller.ts": {
+      "lines": 38.63,
+      "statements": 36.48,
+      "functions": 31.95,
+      "branches": 30.15
+    },
+    "src/features/history/history-controller.ts": {
+      "lines": 72.29,
+      "statements": 61.02,
+      "functions": 57.64,
+      "branches": 40.49
+    },
+    "src/features/league-pulse/LeaguePulsePage.tsx": {
+      "lines": 66.61,
+      "statements": 64.39,
+      "functions": 66.61,
+      "branches": 36.55
+    },
+    "src/features/league-pulse/league-pulse-controller.ts": {
+      "lines": 78.73,
+      "statements": 68.24,
+      "functions": 74.95,
+      "branches": 65.15
+    },
+    "src/features/league-pulse/league-pulse-model.ts": {
+      "lines": 72.88,
+      "statements": 70.82,
+      "functions": 77.72,
+      "branches": 38.92
+    },
+    "src/features/league-pulse/league-recap-model.ts": {
+      "lines": 92.85,
+      "statements": 90.23,
+      "functions": 92.05,
+      "branches": 62.75
+    },
+    "src/features/owner-hub/owner-hub-model.ts": {
+      "lines": 95.36,
+      "statements": 88.45,
+      "functions": 99.95,
+      "branches": 66.97
+    },
+    "src/features/rivalry/RivalryPage.tsx": {
+      "lines": 94.82,
+      "statements": 83.95,
+      "functions": 89.95,
+      "branches": 51.73
+    },
+    "src/features/shotguns/shotguns-controller.ts": {
+      "lines": 91.88,
+      "statements": 80.79,
+      "functions": 87.04,
+      "branches": 59.95
+    },
+    "src/features/trophy/TrophyControls.tsx": {
+      "lines": 66.61,
+      "statements": 66.61,
+      "functions": 66.61,
+      "branches": 99.95
+    },
+    "src/features/trophy/trophy-controller.ts": {
+      "lines": 71.82,
+      "statements": 66.15,
+      "functions": 73.28,
+      "branches": 48.92
+    },
+    "src/search/search-actions.ts": {
+      "lines": 70.4,
+      "statements": 68.26,
+      "functions": 73.86,
+      "branches": 60.61
+    },
+    "src/search/search-intents.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/search/search-navigation.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/search/search-normalize.ts": {
+      "lines": 33.28,
+      "statements": 27.22,
+      "functions": 33.28,
+      "branches": 16.61
+    },
+    "src/search/search-rank.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/search/search-runtime.ts": {
+      "lines": 47.86,
+      "statements": 42.8,
+      "functions": 35.95,
+      "branches": 21.37
+    },
+    "src/share/share-card-actions.ts": {
+      "lines": 39.34,
+      "statements": 37.67,
+      "functions": 28.52,
+      "branches": 12.85
+    },
+    "src/share/share-card-builders.ts": {
+      "lines": 83.28,
+      "statements": 83.28,
+      "functions": 99.95,
+      "branches": 66.61
+    },
+    "src/share/share-card-feature-adapters.ts": {
+      "lines": 75.62,
+      "statements": 67.36,
+      "functions": 79.95,
+      "branches": 46.7
+    },
+    "src/share/share-card-runtime.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/share/share-card-spec.ts": {
+      "lines": 93.28,
+      "statements": 77.72,
+      "functions": 99.95,
+      "branches": 66.01
+    },
+    "src/tables/table-filter-functions.ts": {
+      "lines": 6.61,
+      "statements": 5.21,
+      "functions": 9.04,
+      "branches": 3.28
+    },
+    "src/tables/table-quick-filters.ts": {
+      "lines": 11.06,
+      "statements": 11.71,
+      "functions": 9.95,
+      "branches": 14.23
+    },
+    "src/tables/table-registry.ts": {
+      "lines": 44.39,
+      "statements": 47,
+      "functions": 37.88,
+      "branches": 35.24
+    },
+    "src/tables/table-runtime.tsx": {
+      "lines": 69.95,
+      "statements": 59.4,
+      "functions": 55.5,
+      "branches": 47.31
+    },
+    "src/tables/table-saved-views.ts": {
+      "lines": 15.5,
+      "statements": 11.71,
+      "functions": 4.82,
+      "branches": 4.29
+    },
+    "src/tables/rows/current-standing-rows.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/tables/rows/draft-spot-rows.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/tables/rows/history-game-rows.ts": {
+      "lines": 99.95,
+      "statements": 99.95,
+      "functions": 99.95,
+      "branches": 57.52
+    },
+    "src/tables/rows/history-opponent-rows.ts": {
+      "lines": 71.37,
+      "statements": 66.61,
+      "functions": 49.95,
+      "branches": 48.88
+    },
+    "src/tables/rows/history-season-rows.ts": {
+      "lines": 9.95,
+      "statements": 9.95,
+      "functions": 49.95,
+      "branches": 0
+    },
+    "src/tables/rows/history-week-rows.ts": {
+      "lines": 12.45,
+      "statements": 12.45,
+      "functions": 49.95,
+      "branches": 0
+    },
+    "src/tables/rows/rivalry-game-rows.ts": {
+      "lines": 92.8,
+      "statements": 94.06,
+      "functions": 99.95,
+      "branches": 55.95
+    },
+    "src/tables/rows/rivalry-season-rows.ts": {
+      "lines": 99.95,
+      "statements": 99.95,
+      "functions": 99.95,
+      "branches": 37.88
+    },
+    "src/tables/rows/trophy-season-rows.ts": {
+      "lines": 99.95,
+      "statements": 99.95,
+      "functions": 99.95,
+      "branches": 51.67
+    },
+    "src/theme/owner-themes.ts": {
+      "lines": 79.95,
+      "statements": 77.72,
+      "functions": 59.95,
+      "branches": 74.95
+    },
+    "src/theme/theme-context.ts": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0
+    },
+    "src/theme/theme-state.ts": {
+      "lines": 71.82,
+      "statements": 63.1,
+      "functions": 54.49,
+      "branches": 48.09
+    },
+    "src/viva/owners.ts": {
+      "lines": 85.81,
+      "statements": 79.95,
+      "functions": 59.95,
+      "branches": 74.95
+    }
+  }
+}

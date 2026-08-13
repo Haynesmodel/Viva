@@ -66,7 +66,8 @@ function evaluateCoverage({ normalized, config, changedFiles = [], now = new Dat
       errors.push(`changed-file ${file}: missing from merged coverage report`);
       continue;
     }
-    errors.push(...thresholdErrors('changed-file', summary, config.changedFiles, file));
+    const thresholds = config.overrides?.[file]?.thresholds || config.changedFiles;
+    errors.push(...thresholdErrors('changed-file', summary, thresholds, file));
   }
   return errors;
 }

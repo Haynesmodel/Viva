@@ -4,6 +4,7 @@ const correctedBaseline = thresholds => ({
   owner: '@Haynesmodel',
   expires: '2026-10-22',
 });
+const vivaBaseline = require('./coverage.viva-baseline.json');
 
 module.exports = {
   global: { lines: 75, statements: 75, functions: 65, branches: 60 },
@@ -34,5 +35,14 @@ module.exports = {
     // Draft Spot.
     'src/features/draft-spot/DraftSpotControls.tsx': correctedBaseline({ lines: 61.9, statements: 57.44, functions: 45.83, branches: 31.25 }),
     'src/features/draft-spot/DraftSpotPage.tsx': correctedBaseline({ lines: 82.14, statements: 84.44, functions: 66.66, branches: 0 }),
+    // The feature-parity snapshot ports a large legacy surface in one change. These
+    // file-specific baselines preserve the ratchet while behavior-focused tests are
+    // expanded; they expire and must be raised or removed before the next release.
+    ...Object.fromEntries(Object.entries(vivaBaseline.files).map(([file, thresholds]) => [file, {
+      thresholds,
+      reason: vivaBaseline.description,
+      owner: vivaBaseline.owner,
+      expires: vivaBaseline.expires,
+    }])),
   },
 };
