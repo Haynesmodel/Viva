@@ -25,7 +25,7 @@ fed by manually exported ESPN data.
 The importer is fail-closed. It does not infer a season, follow another
 league, call ESPN, or modify canonical assets in candidate mode.
 
-## Current Season and Draft Spot
+## Current Season, Draft Spot, and Tuesday refresh
 
 Current Season is optional and must be correctly seasoned before promotion.
 Draft Spot is generated only from reviewed `draft_pick` fields in
@@ -33,21 +33,47 @@ Draft Spot is generated only from reviewed `draft_pick` fields in
 route remains an accessible unavailable state rather than showing invented
 order.
 
+`scripts/import_viva_espn.py` is for a one-time historical import of a
+sanitized, normalized local source. It does not call ESPN.
+
+`scripts/refresh_viva_current_season.py` is the separate adapter for ESPN's
+current season response. It only writes `CurrentSeason.json`, so an ongoing
+season is never forced through finalized historical summary validation. It
+requires the target season's team count, owner aliases, and a
+`current_season` block in `scripts/viva_season_mapping.json` with the
+commissioner-verified league key, regular/max weeks, playoff/bye/Saunders
+slots, and standings tiebreakers.
+
+The `Refresh current season` workflow is scheduled for Tuesday at 10:17 AM
+America/Chicago. It is disabled until repository variable
+`VIVA_ESPN_ENABLED` is exactly `true`. When enabled it needs:
+
+- `VIVA_ESPN_LEAGUE_ID` and `VIVA_ESPN_SEASON` repository variables;
+- `VIVA_MEDIA_BASE_URL` (already configured for the production build);
+- for a private league only, `VIVA_ESPN_S2` and `VIVA_ESPN_SWID` GitHub Actions
+  secrets.
+
+The workflow fetches server-side, validates the candidate, regenerates data,
+and opens/updates `automation/espn-current-season` as a review PR. It never
+commits raw ESPN responses, credentials, or browser session data, and it never
+merges its own PR. Test it first with **Run workflow** before setting
+`VIVA_ESPN_ENABLED=true`.
+
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for all 97 rows. Keep IDs,
-owner, week, date, cause, due date, completion, and `media_key` stable. Do not
-commit video bytes to the Pages artifact. Provision a Viva-owned object store
-or CDN, set `VITE_VIVA_MEDIA_BASE_URL` in the deployment environment, and run:
+`assets/Shotguns.json` is the source of record for all 98 rows (95 completed
+and media-backed, 3 owed). Keep IDs, owner, week, date, cause, due date,
+completion, and `media_key` stable. Do not commit video bytes to the Pages
+artifact. The reviewed external Viva media origin is supplied through
+`VITE_VIVA_MEDIA_BASE_URL`; run:
 
 ```bash
 npm run check:viva-media
 VITE_BASE_PATH=/Viva/ npm run build
 ```
 
-The media audit must report zero video files in `dist/`. Reconcile the current
-unreferenced `Erin/IMG_7068.MOV` clip manually before considering media
-provisioning complete.
+The media audit must report zero video files in `dist/` and every preserved
+clip must have exactly one completed Shotguns media key.
 
 ## Deployment and rollback
 

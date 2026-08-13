@@ -1,0 +1,116 @@
+name: Refresh current season
+
+on:
+  workflow_dispatch:
+    inputs:
+      season:
+        description: Viva season to refresh
+        required: true
+        default: '2026'
+        type: string
+  schedule:
+    - cron: '17 10 * * 2'
+      timezone: America/Chicago
+
+concurrency:
+  group: viva-current-season-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    if: github.event_name == 'workflow_dispatch' || vars.VIVA_ESPN_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VIVA_ESPN_LEAGUE_ID: ${{ vars.VIVA_ESPN_LEAGUE_ID }}
+      ESPN_S2: ${{ secrets.VIVA_ESPN_S2 }}
+      ESPN_SWID: ${{ secrets.VIVA_ESPN_SWID }}
+      VITE_VIVA_MEDIA_BASE_URL: ${{ vars.VIVA_MEDIA_BASE_URL }}
+      REQUIRE_VIVA_MEDIA_CONFIG: '1'
+      VIVA_SEASON: ${{ inputs.season || vars.VIVA_ESPN_SEASON }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Continue an open current-season review branch
+        id: review_branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr_number="$(gh pr list --head automation/espn-current-season --base main --state open --json number --jq '.[0].number')"
+          if [ -n "$pr_number" ]; then
+            git fetch origin automation/espn-current-season
+            git switch --track origin/automation/espn-current-season
+            echo "open_pr=true" >> "$GITHUB_OUTPUT"
+          else
+            git switch -c automation/espn-current-season
+            echo "open_pr=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - name: Select npm 11.18.0
+        run: npm install --global npm@11.18.0
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate required automation configuration
+        run: |
+          test -n "$VIVA_SEASON"
+          test -n "$VIVA_ESPN_LEAGUE_ID"
+          test -n "$VITE_VIVA_MEDIA_BASE_URL"
+          npm run check:viva-media-config
+      - name: Refresh and validate current-season candidate
+        run: |
+          python3 scripts/refresh_viva_current_season.py \
+            --league-id "$VIVA_ESPN_LEAGUE_ID" \
+            --season "$VIVA_SEASON" \
+            --output "$RUNNER_TEMP/CurrentSeason.json" \
+            --promote
+          npm run generate:data
+          npm run test:assets
+      - name: Create or update the review branch
+        id: changes
+        run: |
+          if git diff --quiet -- assets/CurrentSeason.json assets/DraftSpot.json assets/DerivedStats.json assets/asset-manifest.json src/data/generated; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/CurrentSeason.json assets/DraftSpot.json assets/DerivedStats.json assets/asset-manifest.json src/data/generated
+          git commit -m "data: refresh Viva current season"
+          if [ "${{ steps.review_branch.outputs.open_pr }}" = 'true' ]; then
+            git push origin automation/espn-current-season
+          else
+            git push --force-with-lease origin automation/espn-current-season
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Create or update data review pull request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          body_file="$RUNNER_TEMP/refresh-pr-body.md"
+          cat > "$body_file" <<'EOF'
+          ## Automated Viva current-season refresh
+
+          This scheduled refresh fetched the configured ESPN league server-side, normalized only `CurrentSeason.json`, and regenerated the dependent Viva data assets.
+
+          - No ESPN credential is committed or exposed to the static site.
+          - This pull request requires a normal data review before merge/deployment.
+          - Historical H2H and season-summary data are intentionally unchanged.
+          EOF
+          pr_number="$(gh pr list --head automation/espn-current-season --base main --state open --json number --jq '.[0].number')"
+          if [ -n "$pr_number" ]; then
+            gh pr edit "$pr_number" --body-file "$body_file"
+          else
+            gh pr create --base main --head automation/espn-current-season --title 'data: refresh Viva current season' --body-file "$body_file"
+          fi

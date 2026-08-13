@@ -55,7 +55,8 @@
     "serve": "npm run dev -- --port 8000",
     "test:ci": "node scripts/run_ci.cjs",
     "check:viva-media": "node scripts/check_viva_media.cjs",
-    "check:viva-media-config": "node scripts/check_viva_media_config.cjs"
+    "check:viva-media-config": "node scripts/check_viva_media_config.cjs",
+    "refresh:current-season": "python3 scripts/refresh_viva_current_season.py"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",
