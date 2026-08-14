@@ -14,7 +14,7 @@ test.before(async () => {
   temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-pulse-page-'));
   const outfile = path.join(temporaryDirectory, 'page.mjs');
   await esbuild.build({
-    entryPoints: [path.join(root, 'src/features/league-pulse/LeaguePulsePage.tsx')],
+    entryPoints: [path.join(root, 'src/features/league-pulse/league-pulse-grouping.ts')],
     outfile,
     bundle: true,
     platform: 'node',

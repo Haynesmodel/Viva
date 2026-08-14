@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { isLastPlaceGame } from '../../../js/core-helpers.js';
-import type { LeaguePulseViewModel, PulseLink, PulseMatchupModel, PulsePhase } from './league-pulse-types';
+import { pulseMatchupGroups } from './league-pulse-grouping';
+import type { LeaguePulseViewModel, PulseLink, PulseMatchupModel } from './league-pulse-types';
 import { shortDataVersion } from '../../data/data-version';
 import {
   absoluteShareHref,
@@ -90,15 +90,6 @@ function MatchupCard({
       label={final ? `Share ${matchup.ownerA} vs ${matchup.ownerB} card` : 'Copy matchup link'}
     />
   </article>;
-}
-
-export function pulseMatchupGroups(matchups: PulseMatchupModel[], phase: PulsePhase) {
-  if (phase !== 'postseason') return [{ title: '', rows: matchups }];
-  return [
-    { title: 'Championship bracket', rows: matchups.filter(matchup => matchup.type !== 'Saunders' && !isLastPlaceGame(matchup)) },
-    { title: 'Last Place bracket', rows: matchups.filter(isLastPlaceGame) },
-    { title: 'Saunders bracket', rows: matchups.filter(matchup => matchup.type === 'Saunders') },
-  ].filter(group => group.rows.length);
 }
 
 function Matchups({ model }: { model: LeaguePulseViewModel }) {
