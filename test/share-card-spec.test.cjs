@@ -40,6 +40,7 @@ test.before(async () => {
       path.join(root, 'src/share/share-card-spec.ts'),
       path.join(root, 'src/share/share-card-builders.ts'),
       path.join(root, 'src/share/share-card-feature-adapters.ts'),
+      path.join(root, 'src/share/share-card-actions.ts'),
       path.join(root, 'src/features/league-pulse/league-recap-model.ts'),
       path.join(root, 'js/share-card-svg.js'),
     ],
@@ -56,12 +57,51 @@ test.before(async () => {
   const spec = await import(`${pathToFileURL(path.join(temp, 'share-card-spec.js')).href}?${Date.now()}`);
   const builders = await import(`${pathToFileURL(path.join(temp, 'share-card-builders.js')).href}?${Date.now()}`);
   const adapters = await import(`${pathToFileURL(path.join(temp, 'share-card-feature-adapters.js')).href}?${Date.now()}`);
+  const actions = await import(`${pathToFileURL(path.join(temp, 'share-card-actions.js')).href}?${Date.now()}`);
   const recap = await import(`${pathToFileURL(path.join(temp, 'league-recap-model.js')).href}?${Date.now()}`);
   const svg = await import(`${pathToFileURL(path.join(temp, 'share-card-svg.js')).href}?${Date.now()}`);
-  share = { ...spec, ...builders, ...adapters, ...recap, ...svg };
+  share = { ...spec, ...builders, ...adapters, ...actions, ...recap, ...svg };
 });
 
 test.after(() => fs.rmSync(temp, { recursive: true, force: true }));
+
+class FakeElement {
+  constructor(ownerDocument) {
+    this.ownerDocument = ownerDocument;
+    this.attributes = new Map();
+    this.children = [];
+    this.listeners = new Map();
+    this.hidden = false;
+    this.textContent = '';
+    this.value = '';
+  }
+
+  setAttribute(name, value) { this.attributes.set(name, String(value)); }
+  getAttribute(name) { return this.attributes.get(name) ?? null; }
+  removeAttribute(name) { this.attributes.delete(name); }
+  addEventListener(name, listener) { this.listeners.set(name, listener); }
+  removeEventListener(name, listener) {
+    if (this.listeners.get(name) === listener) this.listeners.delete(name);
+  }
+  append(...nodes) { this.children.push(...nodes); }
+  replaceChildren(...nodes) { this.children = nodes; }
+  focus() { this.focused = true; }
+  select() { this.selected = true; }
+  querySelectorAll() { return []; }
+  async dispatch(name) { return this.listeners.get(name)?.(); }
+}
+
+class FakeDocument {
+  createElement() { return new FakeElement(this); }
+}
+
+function fakeHost() {
+  return new FakeElement(new FakeDocument());
+}
+
+function fakeWindow() {
+  return { location: { origin: environment.origin, href: `${environment.origin}/Viva/` } };
+}
 
 test('valid specs normalize, freeze, and serialize deterministically at 1200x630', () => {
   const result = share.validateShareCardSpec(candidate({ title: '  Alpha   vs   Beta  ' }), environment);
@@ -264,4 +304,132 @@ test('Dynasty cards bind to the selected owner and disclose partial coverage', (
   });
   assert.match(result.spec.subtitle, /Partial coverage/);
   assert.match(result.spec.altText, /1 of 12 requested seasons; scored range 2025/);
+});
+
+test('share-card actions cover unavailable, mounted, retry, and copy fallback states', async () => {
+  const win = fakeWindow();
+  const valid = share.validateShareCardSpec(candidate(), environment);
+  const unavailable = share.validateShareCardSpec(candidate({ title: 'bad\ntext' }), environment);
+  assert.equal(valid.ok, true);
+  assert.equal(unavailable.ok, false);
+
+  const unavailableHost = fakeHost();
+  const unavailableController = share.mountShareCardAction({
+    host: unavailableHost,
+    result: unavailable,
+  });
+  assert.equal(unavailableHost.getAttribute('data-share-state'), 'unavailable');
+  unavailableController.dispose();
+  assert.equal(unavailableHost.children.length, 0);
+
+  const shareHost = fakeHost();
+  const shareController = share.mountShareCardAction({
+    host: shareHost,
+    result: valid,
+    label: 'Open card',
+  });
+  assert.equal(shareHost.children.length, 3);
+  const shareButton = shareHost.children[0];
+  await shareButton.dispatch('click');
+  assert.equal(shareHost.children[2].hidden, false);
+  assert.equal(shareHost.children[2].selected, true);
+  shareController.dispose();
+
+  const previousNavigator = globalThis.navigator;
+  let copied;
+  Object.defineProperty(globalThis, 'navigator', {
+    configurable: true,
+    value: { clipboard: { writeText: async value => { copied = value; } } },
+  });
+  const copyHost = fakeHost();
+  const copyController = share.mountCopyLinkAction(copyHost, 'https://example.com/Viva/?tab=current');
+  await copyHost.children[0].dispatch('click');
+  assert.equal(copied, 'https://example.com/Viva/?tab=current');
+  assert.equal(copyHost.children[1].textContent, 'Link copied.');
+  copyController.dispose();
+
+  Object.defineProperty(globalThis, 'navigator', {
+    configurable: true,
+    value: { clipboard: { writeText: async () => { throw new Error('blocked'); } } },
+  });
+  const fallbackHost = fakeHost();
+  const fallbackController = share.mountCopyLinkAction(fallbackHost, 'https://example.com/Viva/?tab=current');
+  await fallbackHost.children[0].dispatch('click');
+  assert.equal(fallbackHost.children[2].hidden, false);
+  assert.equal(fallbackHost.children[2].focused, true);
+  assert.equal(fallbackHost.children[2].selected, true);
+  fallbackController.dispose();
+
+  if (previousNavigator === undefined) delete globalThis.navigator;
+  else Object.defineProperty(globalThis, 'navigator', { configurable: true, value: previousNavigator });
+  assert.equal(share.absoluteShareHref('/Viva/?tab=current', win), 'https://example.com/Viva/?tab=current');
+});
+
+test('share-card feature adapters cover empty, pending, completed, and partial views', () => {
+  const win = fakeWindow();
+  const pendingHost = fakeHost();
+  const completedHost = fakeHost();
+  pendingHost.setAttribute('data-share-team-a', 'Alpha');
+  pendingHost.setAttribute('data-share-team-b', 'Beta');
+  completedHost.setAttribute('data-share-team-a', 'Gamma');
+  completedHost.setAttribute('data-share-team-b', 'Delta');
+  const root = fakeHost();
+  root.querySelectorAll = () => [pendingHost, completedHost];
+  const view = {
+    season: 2026,
+    week: 1,
+    matchups: [
+      { teamA: 'Alpha', teamB: 'Beta', scoreA: null, scoreB: null, completed: false, date: '2026-09-13', type: 'Regular', round: '' },
+      { teamA: 'Gamma', teamB: 'Delta', scoreA: 101.25, scoreB: 101.25, completed: true, date: '2026-09-13', type: 'Regular', round: '' },
+    ],
+  };
+  const currentControllers = share.mountCurrentMatchupCards(root, view, '/Viva/?tab=current', 'fixture', win);
+  assert.equal(currentControllers.length, 2);
+  assert.equal(pendingHost.children[0].textContent, 'Copy matchup link');
+  currentControllers.forEach(controller => controller.dispose());
+  assert.deepEqual(share.mountCurrentMatchupCards(null, view, '/Viva/', 'fixture', win), []);
+
+  const noMeetings = share.mountRivalryCard(fakeHost(), {
+    teamA: 'Alpha', teamB: 'Beta', scope: 'allTime',
+    summary: { overall: { g: 0, w: 0, l: 0, pf: 0, pa: 0, recordText: '0-0' }, lastMeeting: null },
+  }, '/Viva/?tab=rivalry', 'fixture', win);
+  assert.equal(noMeetings, null);
+  assert.equal(share.mountRivalryCard(null, {
+    teamA: 'Alpha', teamB: 'Beta', scope: 'allTime',
+    summary: { overall: { g: 1, w: 1, l: 0, pf: 100, pa: 90, recordText: '1-0' }, lastMeeting: null },
+  }, '/Viva/?tab=rivalry', 'fixture', win), null);
+  const rivalryHost = fakeHost();
+  const rivalryController = share.mountRivalryCard(rivalryHost, {
+    teamA: 'Alpha', teamB: 'Beta', scope: 'currentSeason',
+    summary: {
+      overall: { g: 3, w: 1, l: 1, pf: 300.5, pa: 298.5, recordText: '1-1-1' },
+      lastMeeting: { date: '2026-09-13', winner: 'Tie', pf: 100, pa: 100 },
+    },
+  }, '/Viva/?tab=rivalry', 'fixture', win);
+  assert.equal(rivalryHost.children.length, 3);
+  rivalryController.dispose();
+
+  assert.equal(share.mountTrophyCard(null, {}, '/Viva/?tab=trophy', 'fixture', win), null);
+  assert.equal(share.mountTrophyCard(fakeHost(), { owner: '' }, '/Viva/?tab=trophy', 'fixture', win), null);
+  const trophyHost = fakeHost();
+  const trophyController = share.mountTrophyCard(trophyHost, {
+    owner: 'Alpha',
+    hardwareShelf: [{ label: 'Championships', count: 2 }],
+    hero: { title: 'Alpha', identityLabel: 'Veteran', rankContext: 'Rank #1|12 owners', record: '10-2 (83.3%)' },
+    identity: { label: 'Owner' },
+  }, '/Viva/?tab=trophy', 'fixture', win);
+  assert.equal(trophyHost.children.length, 3);
+  trophyController.dispose();
+
+  assert.equal(share.mountDynastyCard(null, {}, '/Viva/?tab=dynasty', 'fixture', win), null);
+  assert.equal(share.mountDynastyCard(fakeHost(), {}, '/Viva/?tab=dynasty', 'fixture', win), null);
+  const dynastyHost = fakeHost();
+  const dynastyController = share.mountDynastyCard(dynastyHost, {
+    owner: 'Alpha', requestedStartSeason: 2025, requestedEndSeason: 2026,
+    requestedSeasonCount: 2, scoredStartSeason: 2025, scoredEndSeason: 2026,
+    scoredSeasonCount: 2, score: 12, rankInPeriod: 1, totalOwners: 8,
+    wins: 10, losses: 2, ties: 0, label: 'Elite', components: { hardware: 12 },
+  }, '/Viva/?tab=dynasty&dynastyOwner=Alpha', 'fixture', win, 'Alpha');
+  assert.equal(dynastyHost.children.length, 3);
+  dynastyController.dispose();
 });
