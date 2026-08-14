@@ -25,6 +25,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_API_BASE = "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl"
+DEFAULT_CALENDAR_BASE = "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons"
 
 
 def load_importer() -> Any:
@@ -90,6 +91,10 @@ def api_url(base_url: str, season: int, league_id: str) -> str:
     return f"{base}/seasons/{season}/segments/0/leagues/{urllib.parse.quote(str(league_id), safe='')}?{query}"
 
 
+def scoring_period_url(base_url: str, season: int, period: int) -> str:
+    return f"{base_url.rstrip('/')}/{season}/types/2/weeks/{period}"
+
+
 def fetch_league(base_url: str, season: int, league_id: str, espn_s2: str | None, swid: str | None) -> dict[str, Any]:
     if bool(espn_s2) != bool(swid):
         raise ValueError("ESPN_S2 and ESPN_SWID must either both be set for a private league or both be omitted for a public league")
@@ -107,6 +112,39 @@ def fetch_league(base_url: str, season: int, league_id: str, espn_s2: str | None
     if not isinstance(payload, dict):
         raise ValueError("ESPN response must be a JSON object")
     return payload
+
+
+def schedule_periods(payload: dict[str, Any]) -> set[int]:
+    periods: set[int] = set()
+    for index, matchup in enumerate(payload.get("schedule", [])):
+        if not isinstance(matchup, dict):
+            raise ValueError(f"ESPN schedule row {index} is not an object")
+        home = matchup.get("home") if isinstance(matchup.get("home"), dict) else None
+        away = matchup.get("away") if isinstance(matchup.get("away"), dict) else None
+        if not home or not away or home.get("teamId") is None or away.get("teamId") is None:
+            continue
+        periods.add(as_int(matchup.get("matchupPeriodId"), f"ESPN schedule row {index}.matchupPeriodId"))
+    return periods
+
+
+def fetch_scoring_period_dates(base_url: str, season: int, periods: set[int]) -> dict[int, str]:
+    dates: dict[int, str] = {}
+    for period in sorted(periods):
+        request = urllib.request.Request(
+            scoring_period_url(base_url, season, period),
+            headers={"Accept": "application/json", "User-Agent": "Viva current-season refresh"},
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                payload = json.load(response)
+        except urllib.error.HTTPError as error:
+            raise ValueError(f"ESPN scoring-period calendar request failed with HTTP {error.code} for week {period}") from error
+        except urllib.error.URLError as error:
+            raise ValueError(f"ESPN scoring-period calendar request failed for week {period}: {error.reason}") from error
+        if not isinstance(payload, dict) or not payload.get("startDate"):
+            raise ValueError(f"ESPN scoring-period calendar response for week {period} has no startDate")
+        dates[period] = date_from_espn(payload["startDate"], f"ESPN scoring-period week {period}.startDate")
+    return dates
 
 
 def season_config(mapping: dict[str, Any], season: int) -> tuple[int, dict[str, Any]]:
@@ -186,7 +224,13 @@ def fallback_matchup_id(matchup: dict[str, Any], period: int, home_id: int, away
         return period * 10_000 + min(home_id, away_id) * 100 + max(home_id, away_id)
 
 
-def build_current_season(payload: dict[str, Any], mapping: dict[str, Any], season: int, generated_at: str | None = None) -> dict[str, Any]:
+def build_current_season(
+    payload: dict[str, Any],
+    mapping: dict[str, Any],
+    season: int,
+    generated_at: str | None = None,
+    scoring_period_dates: dict[int, str] | None = None,
+) -> dict[str, Any]:
     expected_teams, config = season_config(mapping, season)
     aliases = IMPORTER.owner_map(mapping)
     members = member_names(payload)
@@ -232,9 +276,18 @@ def build_current_season(payload: dict[str, Any], mapping: dict[str, Any], seaso
         seen_matchup_ids.add(matchup_id)
         home_owner, _, _ = teams_by_id[home_id]
         away_owner, _, _ = teams_by_id[away_id]
+        raw_date = matchup.get("date")
+        if raw_date is not None:
+            game_date = date_from_espn(raw_date, f"ESPN schedule row {index}.date")
+        elif scoring_period_dates and period in scoring_period_dates:
+            game_date = scoring_period_dates[period]
+        else:
+            raise ValueError(
+                f"ESPN schedule row {index} has no date; provide the ESPN scoring-period calendar date for week {period}"
+            )
         games.append({
             "season": season,
-            "date": date_from_espn(matchup.get("date"), f"ESPN schedule row {index}.date"),
+            "date": game_date,
             "teamA": home_owner,
             "teamB": away_owner,
             "scoreA": as_optional_number(home.get("totalPoints"), f"ESPN schedule row {index}.home.totalPoints") if state != "scheduled" else None,
@@ -302,6 +355,7 @@ def main() -> int:
     parser.add_argument("--mapping", type=Path, default=ROOT / "scripts" / "viva_season_mapping.json")
     parser.add_argument("--output", required=True, type=Path, help="Candidate JSON path outside assets unless --promote is set")
     parser.add_argument("--api-base", default=DEFAULT_API_BASE)
+    parser.add_argument("--calendar-base", default=DEFAULT_CALENDAR_BASE)
     parser.add_argument("--promote", action="store_true", help="Replace assets/CurrentSeason.json after validation")
     args = parser.parse_args()
 
@@ -318,7 +372,10 @@ def main() -> int:
         if not league_id:
             raise ValueError("VIVA_ESPN_LEAGUE_ID is required when --league-id is not supplied")
         payload = fetch_league(args.api_base, args.season, league_id, os.environ.get("ESPN_S2"), os.environ.get("ESPN_SWID"))
-    candidate = build_current_season(payload, mapping, args.season)
+    scoring_period_dates = None
+    if not args.input:
+        scoring_period_dates = fetch_scoring_period_dates(args.calendar_base, args.season, schedule_periods(payload))
+    candidate = build_current_season(payload, mapping, args.season, scoring_period_dates=scoring_period_dates)
     atomic_write(output, candidate)
     validate_candidate(output)
     if args.promote:

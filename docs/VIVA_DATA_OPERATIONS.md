@@ -53,6 +53,15 @@ America/Chicago. It is disabled until repository variable
 - for a private league only, `VIVA_ESPN_S2` and `VIVA_ESPN_SWID` GitHub Actions
   secrets.
 
+Before enabling the workflow, open the repository's **Settings → Actions →
+General** page and set **Workflow permissions** to **Read and write
+permissions**, then enable **Allow GitHub Actions to create and approve pull
+requests**. The workflow checks these permissions before it can push the
+automation branch; if they are not enabled, it stops before creating or
+updating a remote branch. The approval capability is required by GitHub's
+`GITHUB_TOKEN` policy for this automated review-PR flow; the workflow itself
+never approves or merges its PR.
+
 The workflow fetches server-side, validates the candidate, regenerates data,
 and opens/updates `automation/espn-current-season` as a review PR. It never
 commits raw ESPN responses, credentials, or browser session data, and it never

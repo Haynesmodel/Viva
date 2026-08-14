@@ -1,3 +1,4 @@
+import json
 import importlib.util
 import sys
 import tempfile
@@ -36,21 +37,16 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
         }
 
     def payload(self):
-        return {
-            "members": [{"id": "a", "displayName": "Joe"}, {"id": "b", "displayName": "Erin"}],
-            "teams": [
-                {"id": 1, "name": "Joe Team", "owners": ["a"]},
-                {"id": 2, "name": "Erin Team", "owners": ["b"]},
-            ],
-            "status": {"currentMatchupPeriod": 2},
-            "schedule": [
-                {"id": 11, "date": 1780704000000, "matchupPeriodId": 1, "winner": "HOME", "home": {"teamId": 1, "totalPoints": 111.5}, "away": {"teamId": 2, "totalPoints": 99.25}},
-                {"id": 12, "date": 1781308800000, "matchupPeriodId": 2, "winner": "UNDECIDED", "home": {"teamId": 2, "totalPoints": 0}, "away": {"teamId": 1, "totalPoints": 0}},
-            ],
-        }
+        with (ROOT / "test" / "fixtures" / "espn" / "current-season-raw.json").open(encoding="utf-8") as handle:
+            return json.load(handle)
+
+    def scoring_period_dates(self):
+        return {1: "2026-06-06", 2: "2026-06-13"}
 
     def test_builds_valid_current_snapshot_from_espn_payload(self):
-        result = self.refresher.build_current_season(self.payload(), self.mapping(), 2026, "2026-06-08T00:00:00Z")
+        result = self.refresher.build_current_season(
+            self.payload(), self.mapping(), 2026, "2026-06-08T00:00:00Z", self.scoring_period_dates()
+        )
         self.assertEqual(result["source"], "ESPN scheduled refresh")
         self.assertEqual(result["current_week"], 2)
         self.assertEqual(result["teams"][0]["owner"], "Erin")
@@ -61,7 +57,9 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
         self.assertEqual(result["games"][0]["date"], "2026-06-06")
 
     def test_generated_snapshot_passes_repository_candidate_validation(self):
-        result = self.refresher.build_current_season(self.payload(), self.mapping(), 2026, "2026-06-08T00:00:00Z")
+        result = self.refresher.build_current_season(
+            self.payload(), self.mapping(), 2026, "2026-06-08T00:00:00Z", self.scoring_period_dates()
+        )
         with tempfile.TemporaryDirectory() as directory:
             candidate = Path(directory) / "CurrentSeason.json"
             self.refresher.atomic_write(candidate, result)
@@ -80,6 +78,10 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "could not be mapped"):
             self.refresher.build_current_season(payload, self.mapping(), 2026)
 
+    def test_requires_scoring_period_calendar_for_raw_espn_schedule(self):
+        with self.assertRaisesRegex(ValueError, "scoring-period calendar date"):
+            self.refresher.build_current_season(self.payload(), self.mapping(), 2026)
+
     def test_rejects_incomplete_private_league_credentials(self):
         with self.assertRaisesRegex(ValueError, "both be set"):
             self.refresher.fetch_league("https://example.test", 2026, "1", "session", None)
@@ -90,6 +92,13 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
         self.assertIn("view=mTeam", url)
         self.assertIn("view=mMatchupScore", url)
         self.assertIn("view=mSettings", url)
+
+    def test_builds_scoring_period_calendar_url(self):
+        url = self.refresher.scoring_period_url("https://example.test/calendar", 2026, 1)
+        self.assertEqual(
+            url,
+            "https://example.test/calendar/2026/types/2/weeks/1",
+        )
 
 
 if __name__ == "__main__":
