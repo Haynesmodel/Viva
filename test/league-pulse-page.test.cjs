@@ -49,3 +49,8 @@ test('League Pulse separates Playoff and Last Place postseason matchups', () => 
     ['Saunders'],
   ]);
 });
+
+test('League Pulse leaves regular-season matchups in one unlabelled group', () => {
+  const rows = [matchup('Regular', '')];
+  assert.deepEqual(pulseMatchupGroups(rows, 'regular-season'), [{ title: '', rows }]);
+});
