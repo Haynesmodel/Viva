@@ -20,6 +20,8 @@ test.before(async () => {
     platform: 'node',
     format: 'esm',
     target: 'node20',
+    sourcemap: 'inline',
+    sourcesContent: true,
     logLevel: 'silent',
   });
   ({ pulseMatchupGroups } = await import(`${pathToFileURL(outfile).href}?${Date.now()}`));
