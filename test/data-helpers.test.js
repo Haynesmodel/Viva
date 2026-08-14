@@ -23,6 +23,7 @@ const {
   sidesForTeam,
   isSaundersGame,
   isRegularGame,
+  isLastPlaceGame,
   isPlayoffGame,
   roundOrder,
   isRestrictive,
@@ -107,6 +108,8 @@ test('game helpers classify and orient matchups consistently', () => {
   assert.equal(isPlayoffGame(game), false);
   assert.equal(isSaundersGame({ ...game, type: 'Saunders' }), true);
   assert.equal(isPlayoffGame({ ...game, type: 'Playoff' }), true);
+  assert.equal(isLastPlaceGame({ ...game, type: 'Last Place', round: 'Last Place' }), true);
+  assert.equal(isPlayoffGame({ ...game, type: 'Last Place', round: 'Last Place' }), false);
 });
 
 test('stats helpers compute expected wins and season aggregates', () => {

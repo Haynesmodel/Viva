@@ -60,8 +60,14 @@ function isRegularGame(g) {
   return normType(g.type) === 'Regular';
 }
 
+function isLastPlaceGame(g) {
+  const t = normType(g.type).toLowerCase();
+  const r = normRound(g.round).toLowerCase();
+  return t === 'last place' || r.includes('last place');
+}
+
 function isPlayoffGame(g) {
-  return !isRegularGame(g) && !isSaundersGame(g);
+  return !isRegularGame(g) && !isSaundersGame(g) && !isLastPlaceGame(g);
 }
 
 function roundOrder(roundStr = '') {
@@ -170,6 +176,7 @@ export {
   sidesForTeam,
   isSaundersGame,
   isRegularGame,
+  isLastPlaceGame,
   isPlayoffGame,
   roundOrder,
   canonicalGameKey,

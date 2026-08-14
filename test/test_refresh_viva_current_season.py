@@ -99,7 +99,7 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
     def test_current_consolation_matchups_use_generic_last_place_label(self):
         matchup = {"playoffTierType": "CONSOLATION_LADDER"}
         self.assertTrue(self.refresher.is_consolation_matchup(matchup))
-        self.assertEqual(self.refresher.matchup_type(matchup, 15, self.mapping()["seasons"]["2026"]["current_season"]), "Playoff")
+        self.assertEqual(self.refresher.matchup_type(matchup, 15, self.mapping()["seasons"]["2026"]["current_season"]), "Last Place")
         self.assertEqual(self.refresher.matchup_round(matchup), "Last Place")
 
     def test_generated_consolation_matchup_uses_last_place_round(self):
@@ -120,7 +120,7 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
             {1: "2026-06-06", 2: "2026-06-13", 15: "2026-12-20"},
         )
         game = next(row for row in result["games"] if row["matchup_id"] == 13)
-        self.assertEqual(game["type"], "Playoff")
+        self.assertEqual(game["type"], "Last Place")
         self.assertEqual(game["round"], "Last Place")
 
     def test_builds_scoring_period_calendar_url(self):

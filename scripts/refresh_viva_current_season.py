@@ -218,7 +218,7 @@ def is_consolation_matchup(matchup: dict[str, Any]) -> bool:
 def matchup_type(matchup: dict[str, Any], period: int, config: dict[str, Any]) -> str:
     if period <= as_int(config["regular_season_max_week"], "regular_season_max_week"):
         return "Regular"
-    return "Playoff"
+    return "Last Place" if is_consolation_matchup(matchup) else "Playoff"
 
 
 def matchup_round(matchup: dict[str, Any]) -> str:

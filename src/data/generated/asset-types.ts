@@ -38,7 +38,7 @@ export interface H2HGame {
   scoreB: number;
   week: number;
   round: string | null;
-  type: 'Regular' | 'Playoff' | 'Saunders';
+  type: 'Regular' | 'Playoff' | 'Saunders' | 'Last Place';
   bracket?: null;
 }
 export interface SeasonSummaryRow {
@@ -121,7 +121,7 @@ export interface CurrentSeasonGame {
   scoreB: number | null;
   week: number;
   round: string;
-  type: 'Regular' | 'Playoff' | 'Saunders';
+  type: 'Regular' | 'Playoff' | 'Saunders' | 'Last Place';
   status: 'scheduled' | 'live' | 'final';
   matchup_id: number;
   rosterA: number;
