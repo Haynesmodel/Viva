@@ -178,6 +178,26 @@ test('current-season renderer labels postseason weeks', () => {
   assert.equal(formattedGeneratedAt('2026-06-17T14:22:30Z'), 'Jun 17, 2026, 2:22 PM UTC');
 });
 
+test('current-season renderer separates the Last Place path from the Championship Path', () => {
+  const postseasonGames = [
+    { season: 2025, date: '2025-12-21', teamA: 'Joe', teamB: 'Shap', scoreA: 110, scoreB: 100, week: 16, type: 'Playoff', round: 'Semi Final', status: 'live' },
+    { season: 2025, date: '2025-12-21', teamA: 'Nuss', teamB: 'Joel', scoreA: 90, scoreB: 95, week: 16, type: 'Last Place', round: 'Last Place', status: 'live' },
+  ];
+  const view = buildCurrentSeasonViewModel({
+    leagueGames: games,
+    currentSeason: { season: 2025, generated_at: '2026-06-17T14:22:30Z', games: postseasonGames },
+    season: 2025,
+    week: 16,
+  });
+  view.presentation = { phase: 'postseason', source: 'manual' };
+
+  const html = currentMatchupsHtml(view);
+  assert.match(html, /Championship Path/);
+  assert.match(html, /Last Place Path/);
+  assert.match(html, /Last Place Week 16/);
+  assert.doesNotMatch(html, /Saunders Path/);
+});
+
 test('current-season renderers hide containers when view mode filters sections', () => {
   const elements = new Map([
     ['currentPlayoffPicture', { innerHTML: '', hidden: false }],

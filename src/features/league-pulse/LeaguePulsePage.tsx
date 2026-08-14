@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { pulseMatchupGroups } from './league-pulse-grouping';
 import type { LeaguePulseViewModel, PulseLink, PulseMatchupModel } from './league-pulse-types';
 import { shortDataVersion } from '../../data/data-version';
 import {
@@ -93,12 +94,7 @@ function MatchupCard({
 
 function Matchups({ model }: { model: LeaguePulseViewModel }) {
   if (!model.matchups.length) return null;
-  const groups = model.state.phase === 'postseason'
-    ? [
-        { title: 'Championship bracket', rows: model.matchups.filter(matchup => matchup.type !== 'Saunders') },
-        { title: 'Saunders bracket', rows: model.matchups.filter(matchup => matchup.type === 'Saunders') },
-      ].filter(group => group.rows.length)
-    : [{ title: '', rows: model.matchups }];
+  const groups = pulseMatchupGroups(model.matchups, model.state.phase);
   return <section class="card pulse-matchups" aria-labelledby="pulseMatchupsTitle">
     <div class="pulse-section-heading"><div><p class="pulse-eyebrow">Spotlight</p><h3 id="pulseMatchupsTitle">Week {model.state.spotlightWeek} matchups</h3></div></div>
     {groups.map(group => <div class="pulse-matchup-group" key={group.title || 'week'}>

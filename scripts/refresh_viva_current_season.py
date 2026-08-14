@@ -210,11 +210,24 @@ def matchup_status(matchup: dict[str, Any], period: int, current_period: int | N
     return "scheduled"
 
 
+def is_consolation_matchup(matchup: dict[str, Any]) -> bool:
+    playoff_tier = str(matchup.get("playoffTierType") or matchup.get("playoff_tier_type") or "").lower()
+    return "consolation" in playoff_tier or "saunders" in playoff_tier
+
+
 def matchup_type(matchup: dict[str, Any], period: int, config: dict[str, Any]) -> str:
     if period <= as_int(config["regular_season_max_week"], "regular_season_max_week"):
         return "Regular"
-    playoff_tier = str(matchup.get("playoffTierType") or matchup.get("playoff_tier_type") or "").lower()
-    return "Saunders" if "consolation" in playoff_tier or "saunders" in playoff_tier else "Playoff"
+    return "Last Place" if is_consolation_matchup(matchup) else "Playoff"
+
+
+def matchup_round(matchup: dict[str, Any]) -> str:
+    if is_consolation_matchup(matchup):
+        # The current-season contract retains the historical saunders_slots
+        # numeric field for odds compatibility, but this league's new
+        # consolation bracket is presented as generic Last Place.
+        return "Last Place"
+    return str(matchup.get("playoffTierType") or matchup.get("playoff_tier_type") or "")
 
 
 def fallback_matchup_id(matchup: dict[str, Any], period: int, home_id: int, away_id: int) -> int:
@@ -293,7 +306,7 @@ def build_current_season(
             "scoreA": as_optional_number(home.get("totalPoints"), f"ESPN schedule row {index}.home.totalPoints") if state != "scheduled" else None,
             "scoreB": as_optional_number(away.get("totalPoints"), f"ESPN schedule row {index}.away.totalPoints") if state != "scheduled" else None,
             "week": period,
-            "round": str(matchup.get("playoffTierType") or ""),
+            "round": matchup_round(matchup),
             "type": matchup_type(matchup, period, config),
             "status": state,
             "matchup_id": matchup_id,

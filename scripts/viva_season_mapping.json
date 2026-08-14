@@ -1,17 +1,17 @@
 {
   "owners": {
-    "Dulberger": ["Dulberger", "Josh"],
-    "Erin": ["Erin"],
-    "Joe": ["Joe"],
-    "Kylie": ["Kylie"],
-    "Leah": ["Leah"],
-    "Malcolm": ["Malcolm"],
-    "Marian": ["Marian"],
-    "Mino": ["Mino"],
-    "Rico": ["Rico"],
-    "Seth": ["Seth"],
-    "Taylor": ["Taylor"],
-    "Wei": ["Wei"],
+    "Dulberger": ["Dulberger", "Josh", "Bed, Bath, and Bijan", "BBB", "Josh Dulberger"],
+    "Erin": ["Erin", "Fourth and Drunk", "E", "Erin Newell"],
+    "Joe": ["Joe", "JoeJoe JoeJoe", "JoeJoe", "Joe Haynes"],
+    "Kylie": ["Kylie", "Karma is my Tight End", "MALO", "Kylie Maloney"],
+    "Leah": ["Leah", "Another 'Quon", "LMM", "Leah Mahlka"],
+    "Malcolm": ["Malcolm", "No Child Left Behind", "BBC", "Malcolm Steele"],
+    "Marian": ["Marian", "Stroud Boys", "HILL", "Marian Hillebrand"],
+    "Mino": ["Mino", "Kmet Me Bro", "MINO", "Mino Matsuda"],
+    "Rico": ["Rico", "Smokin Jays", "RIco", "Rafael Rico"],
+    "Seth": ["Seth", "Team Mills", "MILL", "Seth Mills"],
+    "Taylor": ["Taylor", "Leah \"I hate this league\" Matsu", "da", "Taylor Beegle"],
+    "Wei": ["Wei", "Pizza Nut", "PNUT", "Michael Wu"],
     "Chuck": ["Chuck"],
     "Julia": ["Julia"]
   },
@@ -21,6 +21,18 @@
     "2022": { "teams": 12 },
     "2023": { "teams": 12 },
     "2024": { "teams": 12 },
-    "2025": { "teams": 12 }
+    "2025": { "teams": 12 },
+    "2026": {
+      "teams": 12,
+      "current_season": {
+        "league_key": "viva",
+        "regular_season_max_week": 14,
+        "max_week": 17,
+        "playoff_slots": 6,
+        "bye_slots": 2,
+        "saunders_slots": 6,
+        "standings_tiebreakers": ["points_for"]
+      }
+    }
   }
 }

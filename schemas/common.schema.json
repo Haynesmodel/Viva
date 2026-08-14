@@ -18,7 +18,7 @@
       "type": "string",
       "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
     },
-    "gameType": { "enum": ["Regular", "Playoff", "Saunders"] },
+    "gameType": { "enum": ["Regular", "Playoff", "Saunders", "Last Place"] },
     "round": { "type": ["string", "null"] }
   }
 }

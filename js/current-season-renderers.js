@@ -1,4 +1,4 @@
-import { byDateDesc, sidesForTeam } from './core-helpers.js';
+import { byDateDesc, isLastPlaceGame, sidesForTeam } from './core-helpers.js';
 import { escapeHtml, nfmt } from './render-helpers.js';
 import {
   buildCurrentMatchupRows,
@@ -129,22 +129,26 @@ function weekTypeLabel(type) {
   const normalized = String(type || '').trim().toLowerCase();
   if (normalized === 'playoff') return 'Playoff';
   if (normalized === 'saunders') return 'Saunders';
+  if (normalized === 'last place') return 'Last Place';
   return 'Week';
 }
 
 function rowWeekLabel(row) {
-  const prefix = weekTypeLabel(row?.type);
+  const prefix = isLastPlaceGame(row) ? 'Last Place' : weekTypeLabel(row?.type);
   return `${prefix} Week ${row?.week || '-'}`;
 }
 
 function viewWeekLabel(view) {
-  const types = new Set((view.matchups || [])
+  const rows = view.matchups || [];
+  const types = new Set(rows
     .map(row => String(row.type || '').trim())
     .filter(Boolean));
+  const hasLastPlace = rows.some(isLastPlaceGame);
   if (types.size === 1) {
+    if (hasLastPlace) return `Last Place Week ${view.week || '-'}`;
     return `${weekTypeLabel([...types][0])} Week ${view.week || '-'}`;
   }
-  if (types.has('Playoff') || types.has('Saunders')) {
+  if (types.has('Playoff') || types.has('Saunders') || hasLastPlace) {
     return `Postseason Week ${view.week || '-'}`;
   }
   return `Week ${view.week || '-'}`;
@@ -493,7 +497,8 @@ function currentMatchupsHtml(view) {
   }
   const weekLabel = viewWeekLabel(view);
   if (view.presentation?.phase === 'postseason') {
-    const championship = view.matchups.filter(row => String(row.type) !== 'Saunders');
+    const championship = view.matchups.filter(row => String(row.type) !== 'Saunders' && !isLastPlaceGame(row));
+    const lastPlace = view.matchups.filter(isLastPlaceGame);
     const saunders = view.matchups.filter(row => String(row.type) === 'Saunders');
     const group = (heading, rows) => rows.length ? `
       <div class="current-postseason-group">
@@ -507,6 +512,7 @@ function currentMatchupsHtml(view) {
         <div class="muted">${escapeHtml(view.matchups.length)} active or final games</div>
       </div>
       ${group('Championship Path', championship)}
+      ${group('Last Place Path', lastPlace)}
       ${group('Saunders Path', saunders)}
     `;
   }

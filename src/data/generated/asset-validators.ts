@@ -127,7 +127,7 @@ var require_standalone_formats = __commonJS({
 // asset-validator-runtime.mjs
 var validateH2H = validate20;
 var schema32 = { "title": "H2HGame", "type": "object", "additionalProperties": false, "required": ["season", "date", "teamA", "teamB", "scoreA", "scoreB", "week", "round", "type"], "properties": { "season": { "$ref": "common.schema.json#/$defs/season" }, "date": { "$ref": "common.schema.json#/$defs/date" }, "teamA": { "$ref": "common.schema.json#/$defs/owner" }, "teamB": { "$ref": "common.schema.json#/$defs/owner" }, "scoreA": { "$ref": "common.schema.json#/$defs/score" }, "scoreB": { "$ref": "common.schema.json#/$defs/score" }, "week": { "$ref": "common.schema.json#/$defs/week" }, "round": { "$ref": "common.schema.json#/$defs/round" }, "type": { "$ref": "common.schema.json#/$defs/gameType" }, "bracket": { "type": "null" } } };
-var schema42 = { "enum": ["Regular", "Playoff", "Saunders"] };
+var schema42 = { "enum": ["Regular", "Playoff", "Saunders", "Last Place"] };
 var func3 = Object.prototype.hasOwnProperty;
 var func4 = require_ucs2length().default;
 var func0 = require_equal().default;

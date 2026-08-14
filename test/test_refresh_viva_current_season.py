@@ -96,6 +96,33 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
         self.assertIn("view=mMatchupScore", url)
         self.assertIn("view=mSettings", url)
 
+    def test_current_consolation_matchups_use_generic_last_place_label(self):
+        matchup = {"playoffTierType": "CONSOLATION_LADDER"}
+        self.assertTrue(self.refresher.is_consolation_matchup(matchup))
+        self.assertEqual(self.refresher.matchup_type(matchup, 15, self.mapping()["seasons"]["2026"]["current_season"]), "Last Place")
+        self.assertEqual(self.refresher.matchup_round(matchup), "Last Place")
+
+    def test_generated_consolation_matchup_uses_last_place_round(self):
+        payload = self.payload()
+        payload["schedule"].append({
+            "id": 13,
+            "matchupPeriodId": 15,
+            "playoffTierType": "CONSOLATION_LADDER",
+            "winner": "UNDECIDED",
+            "home": {"teamId": 1, "totalPoints": 0},
+            "away": {"teamId": 2, "totalPoints": 0},
+        })
+        result = self.refresher.build_current_season(
+            payload,
+            self.mapping(),
+            2026,
+            "2026-06-08T00:00:00Z",
+            {1: "2026-06-06", 2: "2026-06-13", 15: "2026-12-20"},
+        )
+        game = next(row for row in result["games"] if row["matchup_id"] == 13)
+        self.assertEqual(game["type"], "Last Place")
+        self.assertEqual(game["round"], "Last Place")
+
     def test_builds_scoring_period_calendar_url(self):
         url = self.refresher.scoring_period_url("https://example.test/calendar", 2026, 1)
         self.assertEqual(

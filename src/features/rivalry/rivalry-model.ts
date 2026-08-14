@@ -58,8 +58,12 @@ function isRegularGame(game: RivalryGame): boolean {
   return normType(game.type) === 'Regular';
 }
 
+function isLastPlaceGame(game: RivalryGame): boolean {
+  return normType(game.type).toLowerCase() === 'last place' || normRound(game.round).toLowerCase().includes('last place');
+}
+
 function isPlayoffGame(game: RivalryGame): boolean {
-  return !isRegularGame(game) && !isSaundersGame(game);
+  return !isRegularGame(game) && !isSaundersGame(game) && !isLastPlaceGame(game);
 }
 
 export function pairMatches(teamA: string, teamB: string, game: RivalryGame): boolean {
