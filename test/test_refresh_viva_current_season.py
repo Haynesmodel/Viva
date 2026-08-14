@@ -46,6 +46,11 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
     def scoring_period_dates(self):
         return {1: "2026-06-06", 2: "2026-06-13"}
 
+    def mapping_with_week_display_dates(self):
+        mapping = self.mapping()
+        mapping["seasons"]["2026"]["current_season"]["week_display_dates"] = {"1": "2026-09-13"}
+        return mapping
+
     def test_builds_valid_current_snapshot_from_espn_payload(self):
         result = self.refresher.build_current_season(
             self.payload(), self.mapping(), 2026, "2026-06-08T00:00:00Z", self.scoring_period_dates()
@@ -84,6 +89,15 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
     def test_requires_scoring_period_calendar_for_raw_espn_schedule(self):
         with self.assertRaisesRegex(ValueError, "scoring-period calendar date"):
             self.refresher.build_current_season(self.payload(), self.mapping(), 2026)
+
+    def test_normalizes_espn_none_round_and_uses_verified_week_display_date(self):
+        payload = self.payload()
+        payload["schedule"][0]["playoffTierType"] = "NONE"
+        result = self.refresher.build_current_season(
+            payload, self.mapping_with_week_display_dates(), 2026, scoring_period_dates=self.scoring_period_dates()
+        )
+        self.assertEqual(result["games"][0]["round"], "")
+        self.assertEqual(result["games"][0]["date"], "2026-09-13")
 
     def test_rejects_incomplete_private_league_credentials(self):
         with self.assertRaisesRegex(ValueError, "both be set"):
