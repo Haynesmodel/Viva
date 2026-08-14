@@ -1,7 +1,10 @@
+import http.server
 import json
 import importlib.util
+import subprocess
 import sys
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 
@@ -99,6 +102,57 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
             url,
             "https://example.test/calendar/2026/types/2/weeks/1",
         )
+
+    def test_input_cli_fetches_calendar_dates_for_raw_espn_response(self):
+        class CalendarHandler(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                period = self.path.rsplit("/", 1)[-1]
+                start_dates = {"1": "2026-06-06T07:00Z", "2": "2026-06-13T07:00Z"}
+                body = json.dumps({"startDate": start_dates[period]}).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+            def log_message(self, format, *args):
+                return
+
+        server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), CalendarHandler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with tempfile.TemporaryDirectory() as directory:
+                directory_path = Path(directory)
+                mapping_path = directory_path / "mapping.json"
+                output_path = directory_path / "CurrentSeason.json"
+                mapping_path.write_text(json.dumps(self.mapping()), encoding="utf-8")
+                result = subprocess.run(
+                    [
+                        sys.executable,
+                        str(ROOT / "scripts" / "refresh_viva_current_season.py"),
+                        "--input",
+                        str(ROOT / "test" / "fixtures" / "espn" / "current-season-raw.json"),
+                        "--season",
+                        "2026",
+                        "--mapping",
+                        str(mapping_path),
+                        "--output",
+                        str(output_path),
+                        "--calendar-base",
+                        f"http://127.0.0.1:{server.server_port}",
+                    ],
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                candidate = json.loads(output_path.read_text(encoding="utf-8"))
+                self.assertEqual([game["date"] for game in candidate["games"]], ["2026-06-06", "2026-06-13"])
+        finally:
+            server.shutdown()
+            thread.join()
+            server.server_close()
 
 
 if __name__ == "__main__":

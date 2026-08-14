@@ -56,11 +56,11 @@ America/Chicago. It is disabled until repository variable
 Before enabling the workflow, open the repository's **Settings → Actions →
 General** page and set **Workflow permissions** to **Read and write
 permissions**, then enable **Allow GitHub Actions to create and approve pull
-requests**. The workflow checks these permissions before it can push the
-automation branch; if they are not enabled, it stops before creating or
-updating a remote branch. The approval capability is required by GitHub's
-`GITHUB_TOKEN` policy for this automated review-PR flow; the workflow itself
-never approves or merges its PR.
+requests**. The approval capability is required by GitHub's `GITHUB_TOKEN`
+policy for this automated review-PR flow; the workflow itself never approves
+or merges its PR. The workflow relies on this setup and does not use an
+Administration-scoped preflight credential; `gh pr create` is the authoritative
+check when the first review PR is opened.
 
 The workflow fetches server-side, validates the candidate, regenerates data,
 and opens/updates `automation/espn-current-season` as a review PR. It never

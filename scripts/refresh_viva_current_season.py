@@ -372,9 +372,7 @@ def main() -> int:
         if not league_id:
             raise ValueError("VIVA_ESPN_LEAGUE_ID is required when --league-id is not supplied")
         payload = fetch_league(args.api_base, args.season, league_id, os.environ.get("ESPN_S2"), os.environ.get("ESPN_SWID"))
-    scoring_period_dates = None
-    if not args.input:
-        scoring_period_dates = fetch_scoring_period_dates(args.calendar_base, args.season, schedule_periods(payload))
+    scoring_period_dates = fetch_scoring_period_dates(args.calendar_base, args.season, schedule_periods(payload))
     candidate = build_current_season(payload, mapping, args.season, scoring_period_dates=scoring_period_dates)
     atomic_write(output, candidate)
     validate_candidate(output)
