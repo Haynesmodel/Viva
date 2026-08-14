@@ -1,7 +1,9 @@
 # Viva data operations
 
-This runbook keeps Viva's data reproducible and reviewable while the league is
-fed by manually exported ESPN data.
+This runbook keeps Viva's data reproducible, reviewable, and credential-safe.
+Historical data is still fed by reviewed local exports; the current-season
+snapshot has a separate server-side ESPN workflow that always publishes
+through a human-reviewed pull request.
 
 ## Historical refresh
 
@@ -68,6 +70,49 @@ commits raw ESPN responses, credentials, or browser session data, and it never
 merges its own PR. Test it first with **Run workflow** before setting
 `VIVA_ESPN_ENABLED=true`.
 
+### Secure activation checklist
+
+Complete these steps before the first manual dispatch:
+
+1. Delete any credential-bearing Actions variables, rotate the associated ESPN
+   session cookies, and create only the `VIVA_ESPN_S2` and
+   `VIVA_ESPN_SWID` Actions secrets. Never reuse a value that was stored in a
+   variable or share a cookie in chat, a ticket, a pull request, or a commit.
+2. Confirm the non-secret `VIVA_ESPN_LEAGUE_ID`, `VIVA_ESPN_SEASON`, and
+   `VIVA_MEDIA_BASE_URL` variables by name and expected non-sensitive value.
+   Keep `VIVA_ESPN_ENABLED` unset or different from the literal `true`.
+3. Confirm Actions has read/write workflow permissions and may create pull
+   requests. The workflow may create or update its bot review PR, but it never
+   approves or merges that PR.
+4. Add the commissioner-verified season mapping and rules before dispatching.
+   Do not infer team aliases, team count, playoff settings, or tiebreakers
+   from historical data.
+5. Inspect the open PR and branch state for
+   `automation/espn-current-season` before the first run. A successful run may
+   update that bot-owned PR; it must not overwrite human-authored work.
+
+Verification is name-only for secrets. Do not request, print, serialize, or
+capture secret values in terminal output, workflow logs, screenshots, PR
+bodies, or agent messages.
+
+### Refresh recovery
+
+- **Expired or exposed session:** leave the schedule gate disabled, delete the
+  affected secret, rotate the ESPN session, recreate only the Actions secret,
+  and rerun manually. Treat any old value as unusable.
+- **Mapping or rule failure:** do not merge a generated PR. Correct the
+  commissioner-reviewed mapping in a focused pull request, then rerun the
+  manual workflow.
+- **401/403 or workflow permission failure:** keep the gate disabled, correct
+  the Actions secret or repository setting, and retry through `workflow_dispatch`.
+  Do not substitute a personal access token in the workflow.
+- **Incorrect generated snapshot:** close or reject the bot PR, disable the
+  schedule, and revert the data PR as one coherent snapshot if it was merged.
+  Correct the source mapping before rerunning.
+- **Unexpected scheduled behavior:** set `VIVA_ESPN_ENABLED` to a value other
+  than `true` immediately. Investigate with a controlled manual dispatch and
+  keep every generated change behind normal human review.
+
 ## Shotguns and external media
 
 `assets/Shotguns.json` is the source of record for all 98 rows (95 completed
@@ -96,9 +141,14 @@ manifest/media-origin configuration. Restore source JSON and generated output
 as one coherent snapshot, then rerun the asset and build checks. Do not modify
 the reference repository or add automation without a new approved scope.
 
-## Deferred automation
+## Deferred scope
 
-Credentialed ESPN discovery, scheduled refreshes, Transactions, and Player
-History remain deferred. They require a separately approved data/security
-contract and representative exports; they must not be reintroduced by copying
-an unrelated workflow.
+The credentialed current-season refresh and Tuesday schedule are implemented
+above, but the schedule remains disabled until the first manually dispatched
+2026 snapshot is reviewed, merged, and verified after deployment. Recurring
+refreshes continue to open or update a review PR; they never auto-merge or
+write directly to `main`.
+
+Transactions and Player History remain deferred. They require a separate
+approved data/security contract and representative exports; they must not be
+reintroduced by copying this workflow or an unrelated automation.
