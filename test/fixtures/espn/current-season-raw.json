@@ -1,0 +1,27 @@
+{
+  "members": [
+    {"id": "a", "displayName": "Joe"},
+    {"id": "b", "displayName": "Erin"}
+  ],
+  "teams": [
+    {"id": 1, "name": "Joe Team", "owners": ["a"]},
+    {"id": 2, "name": "Erin Team", "owners": ["b"]}
+  ],
+  "status": {"currentMatchupPeriod": 2},
+  "schedule": [
+    {
+      "id": 11,
+      "matchupPeriodId": 1,
+      "winner": "HOME",
+      "home": {"teamId": 1, "totalPoints": 111.5},
+      "away": {"teamId": 2, "totalPoints": 99.25}
+    },
+    {
+      "id": 12,
+      "matchupPeriodId": 2,
+      "winner": "UNDECIDED",
+      "home": {"teamId": 2, "totalPoints": 0},
+      "away": {"teamId": 1, "totalPoints": 0}
+    }
+  ]
+}

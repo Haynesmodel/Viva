@@ -27,16 +27,21 @@ CSS, TypeScript, route boundaries, bundle budgets, and the Pages artifact.
   are the canonical historical data sources.
 - `assets/CurrentSeason.json` and draft-pick fields are optional. They remain
   unavailable until a reviewed ESPN export is normalized and promoted.
-- `assets/Shotguns.json` contains the 97 curated records. Completed records
+- `assets/Shotguns.json` contains 98 curated records: 95 completed,
+  media-backed records and 3 owed records. Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
   artifact and are resolved through `VITE_VIVA_MEDIA_BASE_URL`.
-- `scripts/import_viva_espn.py` accepts local, manually exported ESPN JSON,
-  validates the season and owner mapping, and writes a candidate only. Use
-  `--promote` after review; the importer rejects private/session/credential
-  fields and never calls an ESPN API.
+- `scripts/import_viva_espn.py` accepts local, manually exported ESPN JSON for
+  one-time historical imports, validates the season and owner mapping, and
+  writes a candidate only. Use `--promote` after review; the importer rejects
+  private/session/credential fields and never calls an ESPN API.
+- `scripts/refresh_viva_current_season.py` is the separate server-side current
+  season adapter. The Tuesday GitHub Actions workflow uses it only after the
+  required ESPN configuration is enabled, and opens a review PR rather than
+  publishing directly to `main`.
 - `scripts/check_viva_media.cjs` audits the 95 preserved local clips and the
-  built artifact. The current audit intentionally reports one unreferenced
-  preserved clip for owner review.
+  built artifact. Every preserved clip must be referenced by one completed
+  Shotguns record.
 
 See [`docs/VIVA_DATA_OPERATIONS.md`](docs/VIVA_DATA_OPERATIONS.md) for the
 manual normalization, promotion, media, deployment, and rollback procedure.

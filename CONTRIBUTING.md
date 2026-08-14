@@ -9,5 +9,7 @@ same change. Do not commit credentials, cookies, session payloads, or video
 bytes. Keep Shotguns media references as stable keys and run
 `npm run check:viva-media`.
 
-Transactions, Player History, scheduled league refreshes, and credentialed
-ESPN calls are out of scope for Viva V1.
+Transactions and Player History remain out of scope for Viva V1. The only
+credentialed ESPN operation is the reviewed `Refresh current season` GitHub
+Actions workflow; it runs server-side, requires GitHub secrets for private
+leagues, and must open a review PR rather than commit to `main`.

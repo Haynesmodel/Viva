@@ -21,4 +21,4 @@ The following Darling-only paths are deliberately absent from Viva V1:
 - Darling league data, owner mappings, copy, hero/share assets, and production URLs.
 
 Baseline inventory from the plan: Viva had 486 H2H rows, 66 SeasonSummary
-rows, 9 named rivalry groups, 97 Shotguns records, and 95 completed clips.
+rows, 9 named rivalry groups, 98 Shotguns records, and 95 completed clips.
