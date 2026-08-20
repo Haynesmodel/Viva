@@ -15,12 +15,15 @@ test('fresh sessions stay locked and make no canonical JSON request', async ({ p
   await expect(page.locator('#accessGate')).toBeVisible();
   await expect(page.locator('#accessGateInstructions')).toHaveText('Enter the password to continue in this browser tab.');
   await expect(page.locator('label[for="accessPhrase"]')).toHaveText('Password');
+  await expect(page.locator('#accessRemember')).toBeVisible();
+  await expect(page.locator('#accessRemember')).not.toBeChecked();
   await expect(page.locator('.access-gate-boundary')).toHaveCount(0);
   await expect(page.locator('#accessPhrase')).toBeFocused();
   await expect(page.locator('#appShell')).toBeHidden();
   await expect(page.locator('#appShell')).toHaveAttribute('inert', '');
   await expect(page.locator('#appShell')).toHaveAttribute('aria-hidden', 'true');
   await expect(page.locator('#primaryNavigation')).toBeHidden();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('viva:casual-access:v1'))).toBeNull();
   expect(jsonRequests).toEqual([]);
 });
 
@@ -57,6 +60,7 @@ for (const width of [320, 390]) {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/');
     await expect(page.locator('#accessGate')).toBeVisible();
+    await expect(page.locator('#accessRemember')).toBeVisible();
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
     await page.locator('#accessPhrase').fill('wrong');
     await page.locator('#accessPhrase').press('Enter');
@@ -64,6 +68,7 @@ for (const width of [320, 390]) {
     if (width === 320) {
       await page.evaluate(() => { document.documentElement.style.zoom = '2'; });
       await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+      await expect(page.locator('#accessRemember')).toBeVisible();
       await expect(page.locator('#accessGateStatus')).toBeVisible();
     }
   });
@@ -85,6 +90,7 @@ test('exact unlock starts the app only after submission and preserves a deep lin
 test('same-tab reload bypasses the form while a new browser context is locked', async ({ page, browser }) => {
   await page.goto('/');
   await unlockViva(page);
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('viva:casual-access:v1'))).toBeNull();
   await page.reload();
   await expect(page.locator('#accessGate')).toBeHidden();
   await expect(page.locator('#appStatus')).toBeHidden({ timeout: 15_000 });
@@ -94,6 +100,34 @@ test('same-tab reload bypasses the form while a new browser context is locked', 
   await freshPage.goto('/');
   await expect(freshPage.locator('#accessGate')).toBeVisible();
   await expect(freshPage.locator('#accessPhrase')).toBeFocused();
+  await context.close();
+});
+
+test('remembered access survives a new browser context and Forget re-locks without reload', async ({ page, browser }) => {
+  await page.goto('/');
+  await unlockViva(page, { remember: true });
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('viva:casual-access:v1'))).toBe('granted');
+  await expect.poll(() => page.evaluate(() => sessionStorage.getItem('viva:casual-access:v1'))).toBe('granted');
+
+  const context = await browser.newContext({ storageState: await page.context().storageState() });
+  const rememberedPage = await context.newPage();
+  await rememberedPage.goto('/');
+  await expect(rememberedPage.locator('#accessGate')).toBeHidden();
+  await expect(rememberedPage.locator('#appStatus')).toBeHidden({ timeout: 15_000 });
+
+  const urlBeforeForget = rememberedPage.url();
+  await rememberedPage.locator('#forgetAccessButton').click();
+  await expect(rememberedPage).toHaveURL(urlBeforeForget);
+  await expect(rememberedPage.locator('#accessGate')).toBeVisible();
+  await expect(rememberedPage.locator('#appShell')).toBeHidden();
+  await expect(rememberedPage.locator('#accessPhrase')).toBeFocused();
+  await expect.poll(() => rememberedPage.evaluate(() => localStorage.getItem('viva:casual-access:v1'))).toBeNull();
+  await expect.poll(() => rememberedPage.evaluate(() => sessionStorage.getItem('viva:casual-access:v1'))).toBeNull();
+
+  await rememberedPage.locator('#accessPhrase').fill('ShotgunsDueSoon');
+  await rememberedPage.locator('#accessPhrase').press('Enter');
+  await expect(rememberedPage.locator('#accessGate')).toBeHidden();
+  await expect(rememberedPage.locator('#mainContent')).toBeFocused();
   await context.close();
 });
 

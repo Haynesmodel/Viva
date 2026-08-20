@@ -1,6 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from './coverage-fixture.js';
-import { unlockViva } from './access-gate.ts';
+import { ACCESS_EASTER_EGG_PHRASE, ACCESS_PHRASE, unlockViva } from './access-gate.ts';
 
 const routes = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet', 'shotguns'];
 const buttons = Object.fromEntries(routes.filter(route => route !== 'pulse').map(route => [route, `#tab${route[0].toUpperCase()}${route.slice(1)}Btn`]));
@@ -42,6 +42,32 @@ test('theme controls remain accessible across light, dark, and system modes', as
     await page.waitForTimeout(350);
     await analyze(page, preference);
   }
+});
+
+test('remembered gate, rejection, Easter egg, unlock, and Forget states are axe-clean', async ({ page }) => {
+  await page.goto('/');
+  await analyze(page, 'access-gate-locked');
+
+  const input = page.locator('#accessPhrase');
+  await input.fill('wrong');
+  await input.press('Enter');
+  await analyze(page, 'access-gate-rejected');
+
+  await input.fill(ACCESS_EASTER_EGG_PHRASE);
+  await input.press('Enter');
+  await expect(page.locator('#accessGateStatus')).toHaveText("Dulberger's one too");
+  await analyze(page, 'access-gate-easter-egg');
+
+  await page.locator('#accessRemember').check();
+  await input.fill(ACCESS_PHRASE);
+  await input.press('Enter');
+  await expect(page.locator('#accessGate')).toBeHidden();
+  await waitForApp(page);
+  await analyze(page, 'access-gate-unlocked-remembered');
+
+  await page.locator('#forgetAccessButton').click();
+  await expect(page.locator('#accessGate')).toBeVisible();
+  await analyze(page, 'access-gate-forgotten');
 });
 
 test('Viva remains usable at 320px and 200 percent zoom', async ({ page }) => {

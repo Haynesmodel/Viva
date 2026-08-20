@@ -41,6 +41,23 @@ test('theme buttons expose state and respond to Enter', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('data-color-scheme', 'dark');
 });
 
+test('Forget this browser re-locks the gate and supports keyboard re-entry', async ({ page }) => {
+  await page.goto('/');
+  await unlockViva(page);
+  const forget = page.locator('#forgetAccessButton');
+  await forget.focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#accessGate')).toBeVisible();
+  await expect(page.locator('#appShell')).toBeHidden();
+  await expect(page.locator('#accessPhrase')).toBeFocused();
+  await expect.poll(() => page.evaluate(() => sessionStorage.getItem('viva:casual-access:v1'))).toBeNull();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('viva:casual-access:v1'))).toBeNull();
+  await page.locator('#accessPhrase').fill(ACCESS_PHRASE);
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#accessGate')).toBeHidden();
+  await expect(page.locator('#mainContent')).toBeFocused();
+});
+
 test('mobile keyboard navigation does not create horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
   await page.goto('/');
