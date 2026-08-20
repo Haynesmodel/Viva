@@ -34,6 +34,20 @@ class DraftSpotAssetGeneratorTest(unittest.TestCase):
         self.assertEqual(asset["owner_recommendations"], [])
         self.assertEqual(asset["source_sha256"], self.generator.sha256_json(self.source_rows))
 
+    def test_complete_seeded_season_produces_one_row_per_owner(self):
+        seeded = [dict(row) for row in self.source_rows]
+        picks = {row["owner"]: index for index, row in enumerate(
+            (row for row in seeded if row["season"] == 2025), start=1
+        )}
+        for row in seeded:
+            if row["season"] == 2025:
+                row["draft_pick"] = picks[row["owner"]]
+        asset = self.generator.build_asset(seeded)
+        self.assertEqual(asset["team_seasons"], 12)
+        self.assertEqual(len(asset["rows"]), 12)
+        self.assertEqual({row["season"] for row in asset["rows"]}, {2025})
+        self.assertEqual({row["draft_pick"] for row in asset["rows"]}, set(range(1, 13)))
+
     def test_cli_output_is_byte_deterministic(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             first = Path(tmpdir) / "DraftSpot.first.json"

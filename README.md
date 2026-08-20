@@ -56,6 +56,13 @@ owner assets, Shotguns records, or the media host.
   one-time historical imports, validates the season and owner mapping, and
   writes a candidate only. Use `--promote` after review; the importer rejects
   private/session/credential fields and never calls an ESPN API.
+- `scripts/enrich_viva_draft_order.py` is the separate local-only,
+  candidate-first workflow for a complete commissioner-approved draft order.
+  Its sanitized input contains only `season`, `source_team_name`, and
+  `draft_pick`; unavailable seasons remain absent. Candidate output is
+  validated outside `assets/`, and only explicit promotion may update the
+  selected `SeasonSummary.json` draft fields. Transactions and Player History
+  remain deferred.
 - `scripts/refresh_viva_current_season.py` is the separate server-side current
   season adapter. The Tuesday GitHub Actions workflow uses it only after the
   required ESPN configuration is enabled, and opens a review PR rather than

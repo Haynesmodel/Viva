@@ -1,0 +1,17 @@
+{
+  "season": 2025,
+  "draft_order": [
+    {"source_team_name": "BBB", "draft_pick": 1},
+    {"source_team_name": "E", "draft_pick": 2},
+    {"source_team_name": "JoeJoe", "draft_pick": 3},
+    {"source_team_name": "MALO", "draft_pick": 4},
+    {"source_team_name": "LMM", "draft_pick": 5},
+    {"source_team_name": "BBC", "draft_pick": 6},
+    {"source_team_name": "HILL", "draft_pick": 7},
+    {"source_team_name": "MINO", "draft_pick": 8},
+    {"source_team_name": "RIco", "draft_pick": 9},
+    {"source_team_name": "MILL", "draft_pick": 10},
+    {"source_team_name": "da", "draft_pick": 11},
+    {"source_team_name": "PNUT", "draft_pick": 12}
+  ]
+}

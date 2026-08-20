@@ -33,6 +33,57 @@ Draft Spot is generated only from reviewed `draft_pick` fields in
 route remains an accessible unavailable state rather than showing invented
 order.
 
+### Historical draft-order enrichment
+
+Historical draft order is a separate, commissioner-reviewed backfill. Prepare
+one sanitized local file per season; retain only the season, the team name as
+shown by ESPN, and the team's original draft position:
+
+```json
+{
+  "season": 2025,
+  "draft_order": [
+    {"source_team_name": "Team name shown by ESPN", "draft_pick": 1}
+  ]
+}
+```
+
+Run candidate mode to an untracked directory and inspect both the candidate
+summary and `draft-order-report.json`:
+
+```bash
+python3 scripts/enrich_viva_draft_order.py \
+  --input /secure/local/viva-draft-2025.json \
+  --season 2025 --mapping scripts/viva_season_mapping.json \
+  --output-dir /tmp/viva-draft-candidate-2025
+```
+
+The command fails closed on private/session fields, wrong seasons, incomplete
+or duplicate orders, out-of-range picks, and unknown or ambiguous owner names.
+It never contacts ESPN, reads credentials, or writes under `assets/` in
+candidate mode. The commissioner must reconcile the report against the
+private source manifest and approve the exact owner-to-pick mapping. A season
+that cannot be verified completely remains unavailable; do not infer its
+order from standings, finish, screenshots, or partial exports.
+
+After approval, promote one season explicitly, then regenerate and validate the
+derived assets in the normal reviewed data PR:
+
+```bash
+python3 scripts/enrich_viva_draft_order.py \
+  --input /secure/local/viva-draft-2025.json \
+  --season 2025 --mapping scripts/viva_season_mapping.json \
+  --output-dir /tmp/viva-draft-promote-2025 --promote
+npm run generate:data
+npm run test:assets
+```
+
+Promotion changes only the selected season's optional `draft_pick` fields in
+`SeasonSummary.json`; it never changes H2H, CurrentSeason, Rivalries,
+Shotguns, owner presentation, or media. Keep Transactions and Player History
+out of this workflow; they remain separately deferred scope. Never commit the
+sanitized source files or a private commissioner manifest.
+
 `scripts/import_viva_espn.py` is for a one-time historical import of a
 sanitized, normalized local source. It does not call ESPN.
 
