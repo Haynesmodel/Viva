@@ -22,7 +22,7 @@ jobs:
       dist_digest: ${{ steps.dist.outputs.artifact-digest }}
     env:
       CI: '1'
-      VITE_BASE_PATH: /Viva/
+      VITE_BASE_PATH: /
       VITE_VIVA_MEDIA_BASE_URL: ${{ vars.VIVA_MEDIA_BASE_URL }}
       REQUIRE_VIVA_MEDIA_CONFIG: '1'
     steps:

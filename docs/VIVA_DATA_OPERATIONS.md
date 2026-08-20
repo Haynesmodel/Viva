@@ -83,7 +83,7 @@ artifact. The reviewed external Viva media origin is supplied through
 
 ```bash
 npm run check:viva-media
-VITE_BASE_PATH=/Viva/ npm run build
+VITE_BASE_PATH=/ npm run build
 ```
 
 The media audit must report zero video files in `dist/` and every preserved
@@ -100,6 +100,27 @@ For rollback, redeploy the last known-good Viva artifact and restore the prior
 manifest/media-origin configuration. Restore source JSON and generated output
 as one coherent snapshot, then rerun the asset and build checks. Do not modify
 the reference repository or add automation without a new approved scope.
+
+## Apex-domain cutover and rollback
+
+The canonical site URL is `https://taylorsahoefantasy.com/`. GitHub Pages owns
+the site and certificate; `www.taylorsahoefantasy.com` is a redirect alias, and
+`media.taylorsahoefantasy.com` remains the separate Shotguns media host.
+
+Before public DNS changes, the owner verifies the domain with GitHub and sets
+the Pages custom domain to the exact apex hostname. Then create only the
+documented DNS-only GitHub Pages apex records and the direct `www` CNAME to
+`Haynesmodel.github.io`; do not proxy them, add a wildcard, or modify the
+media record. Enable Enforce HTTPS only after Pages reports the certificate
+ready and an apex HTTPS request succeeds. Record the apex, `www`, root-route,
+media, and legacy project-URL checks after propagation.
+
+If activation fails, keep the old
+`https://haynesmodel.github.io/Viva/` URL as the availability reference. Before
+or after DNS exposure, remove the Pages custom-domain setting and only the new
+apex/`www` web records, confirm the old URL, and revert the root-base PR through
+the normal review process if application behavior is defective. Never roll
+back by changing the media host, data assets, owner records, or Shotguns keys.
 
 ## Deferred automation
 

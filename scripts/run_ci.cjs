@@ -16,7 +16,7 @@ async function runCi(run, { detectWebKitSupport = detectLocalWebKitSupport } = {
   await run('npm version', npmCommand, ['--version'], { env: sharedEnv });
   await run('unit and data checks', npmCommand, ['run', 'test:unit'], { env: sharedEnv });
   await run('production build', npmCommand, ['run', 'build'], {
-    env: { ...sharedEnv, VITE_BASE_PATH: '/Viva/' },
+    env: { ...sharedEnv, VITE_BASE_PATH: '/' },
   });
   await run('Chromium production preview', npmCommand, ['run', 'test:ui:preview:chromium'], {
     env: sharedEnv,

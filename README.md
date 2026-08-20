@@ -1,7 +1,9 @@
 # Viva
 
 Viva is a static fantasy-league history application deployed at
-`https://haynesmodel.github.io/Viva/`.
+`https://taylorsahoefantasy.com/`. The `www` hostname is the permanent
+redirect alias; `media.taylorsahoefantasy.com` remains the separate host for
+Shotguns media.
 
 The application owns its data, branding, media references, and deployment. The
 current snapshot adopts the shared platform shape documented in
@@ -15,11 +17,26 @@ npm ci
 npm run test:unit
 npm run test:ui:preview:chromium
 npm run test:ui:preview:webkit
-VITE_BASE_PATH=/Viva/ npm run build
+VITE_BASE_PATH=/ npm run build
 ```
 
 The build validates JSON schemas, semantic relationships, generated assets,
 CSS, TypeScript, route boundaries, bundle budgets, and the Pages artifact.
+
+## Domain cutover and rollback
+
+The GitHub Pages custom domain and the repository root `CNAME` must both be
+`taylorsahoefantasy.com`. The owner should verify the domain in GitHub before
+publishing DNS, then use DNS-only GitHub Pages records for the apex and a
+`www` CNAME pointing directly to `Haynesmodel.github.io`. Do not proxy these
+records, add a wildcard, or change `media.taylorsahoefantasy.com`.
+
+After Pages reports the custom domain served and HTTPS is available, verify the
+apex routes and the single permanent `www` redirect before enabling Enforce
+HTTPS. To roll back, remove the Pages custom-domain setting and the new apex
+and `www` web records, confirm `https://haynesmodel.github.io/Viva/` is
+available, and revert the root-base PR only if the application code requires
+it. Do not alter data, owner assets, Shotguns records, or the media host.
 
 ## Data and media
 
