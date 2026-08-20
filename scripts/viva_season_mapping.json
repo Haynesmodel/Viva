@@ -31,7 +31,10 @@
         "playoff_slots": 6,
         "bye_slots": 2,
         "saunders_slots": 6,
-        "standings_tiebreakers": ["points_for"]
+        "standings_tiebreakers": ["points_for"],
+        "week_display_dates": {
+          "1": "2026-09-13"
+        }
       }
     }
   }

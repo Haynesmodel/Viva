@@ -42,7 +42,12 @@ season is never forced through finalized historical summary validation. It
 requires the target season's team count, owner aliases, and a
 `current_season` block in `scripts/viva_season_mapping.json` with the
 commissioner-verified league key, regular/max weeks, playoff/bye/Saunders
-slots, and standings tiebreakers.
+slots, standings tiebreakers, and any commissioner-verified `week_display_dates`
+overrides. ESPN's matchup date and scoring-period `startDate` represent the
+provider's scoring-period boundary; use a display-date override when that
+boundary is not the date the league should show to users. The adapter also
+normalizes ESPN's `NONE` playoff-tier sentinel to the empty regular-season
+round.
 
 The `Refresh current season` workflow is scheduled for Tuesday at 10:17 AM
 America/Chicago. It is disabled until repository variable

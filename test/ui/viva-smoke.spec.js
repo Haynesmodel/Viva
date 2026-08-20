@@ -5,7 +5,7 @@ const routes = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dy
 
 test('Viva shell exposes the supported route matrix and omits Transactions', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle(/Viva|Year in Review/);
+  await expect(page).toHaveTitle(/Viva|Preview|Year in Review/);
   await expect(page.locator('#tabShotgunsBtn')).toHaveCount(1);
   await expect(page.getByText('Transactions', { exact: true })).toHaveCount(0);
 

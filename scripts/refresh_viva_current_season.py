@@ -227,7 +227,8 @@ def matchup_round(matchup: dict[str, Any]) -> str:
         # numeric field for odds compatibility, but this league's new
         # consolation bracket is presented as generic Last Place.
         return "Last Place"
-    return str(matchup.get("playoffTierType") or matchup.get("playoff_tier_type") or "")
+    value = str(matchup.get("playoffTierType") or matchup.get("playoff_tier_type") or "").strip()
+    return "" if value.upper() == "NONE" else value
 
 
 def fallback_matchup_id(matchup: dict[str, Any], period: int, home_id: int, away_id: int) -> int:
@@ -264,6 +265,7 @@ def build_current_season(
     status = payload.get("status") if isinstance(payload.get("status"), dict) else {}
     raw_current = status.get("currentMatchupPeriod", status.get("currentScoringPeriod"))
     current_period = as_int(raw_current, "ESPN status current matchup period") if raw_current not in (None, 0, "0") else None
+    display_dates = config.get("week_display_dates", {})
     games: list[dict[str, Any]] = []
     seen_matchup_ids: set[int] = set()
     for index, matchup in enumerate(payload.get("schedule", [])):
@@ -289,15 +291,18 @@ def build_current_season(
         seen_matchup_ids.add(matchup_id)
         home_owner, _, _ = teams_by_id[home_id]
         away_owner, _, _ = teams_by_id[away_id]
-        raw_date = matchup.get("date")
-        if raw_date is not None:
-            game_date = date_from_espn(raw_date, f"ESPN schedule row {index}.date")
-        elif scoring_period_dates and period in scoring_period_dates:
-            game_date = scoring_period_dates[period]
+        if str(period) in display_dates:
+            game_date = display_dates[str(period)]
         else:
-            raise ValueError(
-                f"ESPN schedule row {index} has no date; provide the ESPN scoring-period calendar date for week {period}"
-            )
+            raw_date = matchup.get("date")
+            if raw_date is not None:
+                game_date = date_from_espn(raw_date, f"ESPN schedule row {index}.date")
+            elif scoring_period_dates and period in scoring_period_dates:
+                game_date = scoring_period_dates[period]
+            else:
+                raise ValueError(
+                    f"ESPN schedule row {index} has no date; provide the ESPN scoring-period calendar date for week {period}"
+                )
         games.append({
             "season": season,
             "date": game_date,
