@@ -2,11 +2,11 @@ import { expect, test } from './coverage-fixture.js';
 
 test('Shotguns no-media build keeps records and explains unavailable actions', async ({ page }) => {
   test.skip(process.env.PLAYWRIGHT_EXPECT_NO_MEDIA !== '1', 'Run against a build with VITE_VIVA_MEDIA_BASE_URL unset');
-  await page.goto('/?tab=shotguns');
   const videoRequests = [];
   page.on('request', request => {
     if (request.resourceType() === 'media' || /\.(?:mov|mp4|webm)(?:\?|$)/i.test(request.url())) videoRequests.push(request.url());
   });
+  await page.goto('/?tab=shotguns');
   const unavailable = page.locator('.shotgun-play[disabled]');
   await expect(unavailable).toHaveCount(95);
   const copy = await unavailable.allTextContents();
