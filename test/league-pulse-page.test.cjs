@@ -45,12 +45,13 @@ test('League Pulse separates Playoff and Last Place postseason matchups', () => 
     matchup('Playoff', 'Semi Final'),
     matchup('Last Place', 'Last Place'),
     matchup('Saunders', 'Saunders Final'),
+    matchup('Playoff', 'Saunders Final'),
   ], 'postseason');
 
   assert.deepEqual(groups.map(group => group.title), ['Championship bracket', 'Last-place bracket']);
   assert.deepEqual(groups.map(group => group.rows.map(row => row.type)), [
-    ['Playoff'],
-    ['Last Place', 'Saunders'],
+    ['Playoff', 'Playoff'],
+    ['Last Place', 'Saunders', 'Playoff'],
   ]);
 });
 
