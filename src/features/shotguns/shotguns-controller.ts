@@ -20,8 +20,17 @@ function normalizeRows(rows: ShotgunRecord[] | null): ShotgunRecord[] {
   return Array.isArray(rows) ? rows.filter(row => resolveVivaOwner(row.owner)) : [];
 }
 
+function recordLabel(row: ShotgunRecord, action: 'play' | 'unavailable'): string {
+  const owner = vivaShotgunDisplayName(row.owner);
+  const details = `${owner}'s Shotgun from ${row.date}: ${row.cause} (record ${row.id})`;
+  return action === 'play' ? `Play ${details}` : `Media unavailable for ${details}`;
+}
+
 function completedRecord(row: ShotgunRecord): string {
-  return `<li class="shotgun-record"><div><strong>${escapeHtml(row.date)}</strong>${row.week ? `<span>Week ${escapeHtml(row.week)}</span>` : ''}<span>${escapeHtml(row.cause)}</span></div><button class="btn shotgun-play" type="button" data-shotgun-id="${escapeHtml(row.id)}" ${row.media_key && MEDIA_BASE_URL ? '' : 'disabled'}>${row.media_key && MEDIA_BASE_URL ? 'Play clip' : 'Media unavailable'}</button></li>`;
+  const playable = Boolean(row.media_key && MEDIA_BASE_URL);
+  const label = recordLabel(row, playable ? 'play' : 'unavailable');
+  const unavailableCopy = `Media unavailable for ${vivaShotgunDisplayName(row.owner)} · ${row.date} · ${row.cause}`;
+  return `<li class="shotgun-record"><div class="shotgun-record-details"><strong>${escapeHtml(row.date)}</strong>${row.week ? `<span>Week ${escapeHtml(row.week)}</span>` : ''}<span>${escapeHtml(row.cause)}</span></div><button class="btn shotgun-play" type="button" data-shotgun-id="${escapeHtml(row.id)}" aria-label="${escapeHtml(label)}" ${playable ? '' : 'disabled'}>${playable ? 'Play clip' : escapeHtml(unavailableCopy)}</button></li>`;
 }
 
 function ownerTile(owner: string, owedCount: number, completed: ShotgunRecord[]): string {
@@ -33,6 +42,15 @@ function ownerTile(owner: string, owedCount: number, completed: ShotgunRecord[])
   return `<article class="shotgun-card shotgun-owner-tile"><div class="shotgun-card-header">${identity ? `<img src="${escapeHtml(identity.src)}" alt="${escapeHtml(identity.alt)}" />` : ''}<h3>${escapeHtml(displayName)}</h3></div><div class="shotgun-card-metrics"><span>Owed: ${owedCount}</span><span>Completed: ${completed.length}</span></div>${records}</article>`;
 }
 
+function ownerOverviewCard(owner: string, owedCount: number, completedCount: number): string {
+  const displayName = vivaShotgunDisplayName(owner);
+  return `<li><article class="shotgun-card shotgun-owner-overview-card"><h3>${escapeHtml(displayName)}</h3><dl class="shotgun-card-metrics"><div><dt>Owed</dt><dd>${owedCount}</dd></div><div><dt>Completed</dt><dd>${completedCount}</dd></div><div><dt>Total</dt><dd>${owedCount + completedCount}</dd></div></dl></article></li>`;
+}
+
+function owedRecord(row: ShotgunRecord): string {
+  return `<li class="shotgun-owed-record"><div><strong>${escapeHtml(vivaShotgunDisplayName(row.owner))}</strong><span>${escapeHtml(row.cause)}</span></div><dl><div><dt>Week</dt><dd>${escapeHtml(row.week ?? '—')}</dd></div><div><dt>Record date</dt><dd>${escapeHtml(row.date)}</dd></div><div><dt>Due date</dt><dd>${escapeHtml(row.due_date || '—')}</dd></div></dl></li>`;
+}
+
 export function createFeatureController(): VivaFeatureController {
   let context: AppContext;
   let active = false;
@@ -42,12 +60,29 @@ export function createFeatureController(): VivaFeatureController {
   let video: HTMLVideoElement | null = null;
   let mediaStatus: HTMLElement | null = null;
   let lastFocused: HTMLElement | null = null;
+  let selectedOwner: string | null = null;
 
   const closeDialog = () => {
     video?.pause();
     if (video) video.removeAttribute('src');
     if (dialog?.open) dialog.close();
     lastFocused?.focus();
+  };
+
+  const bindPlayback = () => {
+    if (!root || !rows) return;
+    root.querySelectorAll<HTMLButtonElement>('.shotgun-play').forEach(button => button.addEventListener('click', () => {
+      const row = rows?.find(candidate => candidate.id === button.getAttribute('data-shotgun-id'));
+      const source = row?.media_key ? mediaUrl(row.media_key) : null;
+      if (!row || !source || !dialog || !video) return;
+      lastFocused = button;
+      if (mediaStatus) mediaStatus.textContent = '';
+      video.src = source;
+      dialog.showModal();
+      void video.play().catch(() => {
+        if (mediaStatus) mediaStatus.textContent = 'This clip could not be played. Check the media origin and try again.';
+      });
+    }));
   };
 
   const render = () => {
@@ -59,26 +94,28 @@ export function createFeatureController(): VivaFeatureController {
     const owed = rows.filter(row => !row.completed).sort((a, b) => String(b.due_date || '').localeCompare(String(a.due_date || '')));
     const completed = rows.filter(row => row.completed).sort((a, b) => b.date.localeCompare(a.date));
     const owners = [...new Set(rows.map(row => row.owner))].sort();
-    const ownerRows = owners.map(owner => {
-      const ownerOwed = owed.filter(row => row.owner === owner).length;
-      const ownerCompleted = completed.filter(row => row.owner === owner).length;
-      return `<tr><th scope="row">${escapeHtml(vivaShotgunDisplayName(owner))}</th><td>${ownerOwed}</td><td>${ownerCompleted}</td><td>${ownerOwed + ownerCompleted}</td></tr>`;
-    }).join('');
-    const completedByOwner = new Map(owners.map(owner => [owner, completed.filter(row => row.owner === owner)]));
-    const ownerTiles = owners.map(owner => ownerTile(owner, owed.filter(row => row.owner === owner).length, completedByOwner.get(owner) || [])).join('');
-    root.innerHTML = `<div class="shotgun-summary"><p>${owed.length} owed · ${completed.length} completed · ${rows.length} total</p>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning" role="status">Shotgun media is not configured for this deployment. All records remain available.</p>' : ''}</div><section class="card"><h3>Shotguns by owner</h3><div class="table-wrap" tabindex="0" aria-label="Shotguns by owner"><table><thead><tr><th scope="col">Owner</th><th scope="col">Owed</th><th scope="col">Completed</th><th scope="col">Total</th></tr></thead><tbody>${ownerRows}</tbody></table></div></section><section class="card"><h3>Shotguns Owed</h3>${owed.length ? `<div class="table-wrap" tabindex="0" aria-label="Shotguns owed"><table><thead><tr><th scope="col">Owner</th><th scope="col">Week</th><th scope="col">Cause</th><th scope="col">Date</th><th scope="col">Due</th></tr></thead><tbody>${owed.map(row => `<tr><td>${escapeHtml(vivaShotgunDisplayName(row.owner))}</td><td>${escapeHtml(row.week ?? '—')}</td><td>${escapeHtml(row.cause)}</td><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.due_date || '—')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No shotguns owed.</p>'}</section><section class="card"><h3>Completed Shotguns</h3><div class="shotgun-grid">${ownerTiles || '<p class="muted">No completed Shotguns available.</p>'}</div></section>`;
-    root.querySelectorAll<HTMLButtonElement>('.shotgun-play').forEach(button => button.addEventListener('click', () => {
-      const row = rows.find(candidate => candidate.id === button.getAttribute('data-shotgun-id'));
-      const source = row?.media_key ? mediaUrl(row.media_key) : null;
-      if (!row || !source || !dialog || !video) return;
-      lastFocused = button;
-      if (mediaStatus) mediaStatus.textContent = '';
-      video.src = source;
-      dialog.showModal();
-      void video.play().catch(() => {
-        if (mediaStatus) mediaStatus.textContent = 'This clip could not be played. Check the media origin and try again.';
+    if (selectedOwner && !owners.includes(selectedOwner)) selectedOwner = null;
+    const completedOwnerNames = owners.filter(owner => completed.some(row => row.owner === owner));
+    const completedOwners = selectedOwner ? completedOwnerNames.filter(owner => owner === selectedOwner) : completedOwnerNames;
+    const ownerOverview = owners.map(owner => ownerOverviewCard(owner, owed.filter(row => row.owner === owner).length, completed.filter(row => row.owner === owner).length)).join('');
+    const ownerTiles = completedOwners.map(owner => ownerTile(owner, owed.filter(row => row.owner === owner).length, completed.filter(row => row.owner === owner))).join('');
+    const filterLabel = selectedOwner ? `Showing ${vivaShotgunDisplayName(selectedOwner)} completed Shotguns` : 'Showing all owners completed Shotguns';
+    root.innerHTML = `<section class="shotgun-lead"><div><p class="shotgun-kicker">Viva archive</p><h2 id="shotgunsLeadHeading">Shotguns</h2><p class="shotgun-lead-copy">Track owed consequences and revisit every completed Shotgun.</p></div><div class="shotgun-metrics" aria-label="Shotguns totals"><div class="shotgun-metric"><span>Owed</span><strong>${owed.length}</strong></div><div class="shotgun-metric"><span>Completed</span><strong>${completed.length}</strong></div><div class="shotgun-metric"><span>Total</span><strong>${rows.length}</strong></div></div>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning shotgun-media-notice" role="status">Shotgun media is not configured for this deployment. All records remain available, with unavailable controls explained below.</p>' : ''}</section><section class="card" aria-labelledby="shotgunsByOwnerHeading"><div class="section-heading"><div><h3 id="shotgunsByOwnerHeading">Shotguns by owner</h3><p class="muted">A compact overview of every owner in the archive.</p></div></div><ul class="shotgun-owner-overview">${ownerOverview}</ul></section><section class="card" aria-labelledby="shotgunsOwedHeading"><div class="section-heading"><div><h3 id="shotgunsOwedHeading">Shotguns owed</h3><p class="muted">These records are still awaiting completion.</p></div></div>${owed.length ? `<ul class="shotgun-owed-list">${owed.map(owedRecord).join('')}</ul>` : '<p class="muted">No Shotguns owed.</p>'}</section><section class="card" aria-labelledby="completedShotgunsHeading"><div class="section-heading shotgun-archive-heading"><div><h3 id="completedShotgunsHeading">Completed archive</h3><p id="shotgunFilterStatus" class="muted" role="status" aria-live="polite">${escapeHtml(filterLabel)}</p></div><div class="shotgun-filter"><label for="shotgunOwnerFilter">Filter by owner</label><select id="shotgunOwnerFilter"><option value="">All owners</option>${owners.map(owner => `<option value="${escapeHtml(owner)}">${escapeHtml(vivaShotgunDisplayName(owner))}</option>`).join('')}</select>${selectedOwner ? '<button type="button" class="btn" data-shotgun-clear-filter>Clear filter</button>' : ''}</div></div><div class="shotgun-grid" aria-live="polite">${ownerTiles || `<p class="muted shotgun-empty-state">No completed Shotguns match this owner. <button type="button" class="btn" data-shotgun-clear-filter>Clear filter</button></p>`}</div></section>`;
+    const filter = root.querySelector<HTMLSelectElement>('#shotgunOwnerFilter');
+    if (filter) {
+      filter.value = selectedOwner || '';
+      filter.addEventListener('change', () => {
+        selectedOwner = filter.value || null;
+        render();
+        root?.querySelector<HTMLSelectElement>('#shotgunOwnerFilter')?.focus();
       });
+    }
+    root.querySelectorAll<HTMLButtonElement>('[data-shotgun-clear-filter]').forEach(button => button.addEventListener('click', () => {
+      selectedOwner = null;
+      render();
+      root?.querySelector<HTMLSelectElement>('#shotgunOwnerFilter')?.focus();
     }));
+    bindPlayback();
   };
 
   return {
@@ -100,6 +137,7 @@ export function createFeatureController(): VivaFeatureController {
     activate(input: FeatureActivation) {
       active = !input.signal.aborted;
       rows = context.data.shotguns === null ? null : normalizeRows(context.data.shotguns);
+      selectedOwner = null;
       context.header.feature('Shotguns', null, 'Shotguns — Viva');
       context.theme.league();
       render();

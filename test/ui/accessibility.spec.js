@@ -68,3 +68,13 @@ test('Shotguns announces modal playback failures and restores focus', async ({ p
   await page.locator('[data-shotgun-close]').click();
   await expect(play).toBeFocused();
 });
+
+test('Shotguns filtered archive remains axe-clean and labels actions distinctly', async ({ page }) => {
+  await page.goto('/?tab=shotguns');
+  await analyze(page, 'shotguns-default');
+  const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
+  expect(new Set(labels).size).toBe(labels.length);
+  await page.locator('#shotgunOwnerFilter').selectOption({ label: 'Taylor' });
+  await analyze(page, 'shotguns-filtered');
+  await expect(page.locator('.shotgun-owner-tile')).toHaveCount(1);
+});
