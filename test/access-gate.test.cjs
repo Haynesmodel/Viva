@@ -164,6 +164,27 @@ test('the Easter egg stays locked and stale timers cannot clear a newer message'
   assert.equal(fixture.elements.appShell.hidden, true);
 });
 
+test('a rejection replaces an active Easter-egg timer and keeps its own status', () => {
+  const fixture = createFixture();
+  const timers = [];
+  const controller = gate.createAccessGate({
+    document: fixture.document,
+    storage: fixture.session,
+    onGranted() {},
+    setTimeout(callback) { const timer = { callback }; timers.push(timer); return timer; },
+    clearTimeout() {},
+  });
+  controller.initialize();
+  fixture.elements.accessPhrase.value = 'TaylorsAHoe';
+  fixture.elements.accessGate.dispatch('submit');
+  const staleEggTimer = timers[0];
+  fixture.elements.accessPhrase.value = 'wrong';
+  fixture.elements.accessGate.dispatch('submit');
+  staleEggTimer.callback();
+  assert.match(fixture.elements.accessGateStatus.textContent, /did not work/);
+  assert.equal(fixture.elements.appShell.hidden, true);
+});
+
 test('a valid same-tab marker bypasses form submission and bootstraps once', () => {
   const fixture = createFixture({ [gate.ACCESS_STORAGE_KEY]: gate.ACCESS_STORAGE_VALUE });
   let grants = 0;

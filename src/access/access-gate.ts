@@ -143,16 +143,19 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
     input.setAttribute('aria-invalid', invalid ? 'true' : 'false');
     focusInput();
   };
-
-  const grant = () => {
-    if (started) return;
-    started = true;
-    eggSequence += 1;
-    writeAccessGrant(storage);
+  const cancelEggStatusTimer = () => {
     if (eggTimer !== null) {
       clearTimer(eggTimer);
       eggTimer = null;
     }
+    eggSequence += 1;
+  };
+
+  const grant = () => {
+    if (started) return;
+    started = true;
+    cancelEggStatusTimer();
+    writeAccessGrant(storage);
     clearStatus(status);
     if (input) {
       input.value = '';
@@ -175,7 +178,7 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
       return;
     }
     if (result === 'easter-egg') {
-      if (eggTimer !== null) clearTimer(eggTimer);
+      cancelEggStatusTimer();
       const sequence = ++eggSequence;
       showStatus(status, ACCESS_EASTER_EGG_MESSAGE, result);
       resetInput(false);
@@ -186,6 +189,7 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
       }, ACCESS_EASTER_EGG_DURATION_MS);
       return;
     }
+    cancelEggStatusTimer();
     showStatus(status, 'That phrase did not work. Try again.', result);
     resetInput(true);
   };
@@ -221,11 +225,7 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
     if (!initialized) return;
     form?.removeEventListener?.('submit', onSubmit);
     input?.removeEventListener?.('input', onInput);
-    if (eggTimer !== null) {
-      clearTimer(eggTimer);
-      eggTimer = null;
-    }
-    eggSequence += 1;
+    cancelEggStatusTimer();
     initialized = false;
   };
 
