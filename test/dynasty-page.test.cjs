@@ -7,14 +7,13 @@ const { pathToFileURL } = require('node:url');
 
 let helpers;
 test.before(async () => {
-  const result = await esbuild.build({
-    entryPoints: [path.join(process.cwd(), 'src/features/dynasty/DynastyPage.tsx')],
-    bundle: true, write: false, platform: 'node', format: 'esm', target: 'node20',
-    loader: { '.tsx': 'tsx' }, sourcemap: 'inline', sourcesContent: true, logLevel: 'silent',
-  });
   const outfile = path.join(process.cwd(), 'coverage', 'test-bundles', 'dynasty-page-test.mjs');
   fs.mkdirSync(path.dirname(outfile), { recursive: true });
-  fs.writeFileSync(outfile, result.outputFiles[0].text);
+  await esbuild.build({
+    entryPoints: [path.join(process.cwd(), 'src/features/dynasty/DynastyPage.tsx')],
+    outfile, bundle: true, platform: 'node', format: 'esm', target: 'node20',
+    loader: { '.tsx': 'tsx' }, sourcemap: 'inline', sourcesContent: true, logLevel: 'silent',
+  });
   helpers = await import(`${pathToFileURL(outfile).href}?${Date.now()}`);
 });
 
