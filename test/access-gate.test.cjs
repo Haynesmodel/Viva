@@ -237,6 +237,29 @@ test('unchecked grant stays session-only and storage failures do not block curre
   assert.equal(deniedFixture.session.getItem(gate.ACCESS_STORAGE_KEY), gate.ACCESS_STORAGE_VALUE);
 });
 
+test('session storage failure still permits a remembered current-page grant', () => {
+  const fixture = createFixture();
+  const deniedSession = {
+    getItem() { throw new Error('session storage denied'); },
+    setItem() { throw new Error('session storage denied'); },
+    removeItem() { throw new Error('session storage denied'); },
+  };
+  let grants = 0;
+  const controller = gate.createAccessGate({
+    document: fixture.document,
+    storage: deniedSession,
+    persistentStorage: fixture.persistent,
+    onGranted: () => { grants += 1; },
+  });
+  controller.initialize();
+  fixture.elements.accessRemember.checked = true;
+  fixture.elements.accessPhrase.value = 'ShotgunsDueSoon';
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(grants, 1);
+  assert.equal(fixture.persistent.getItem(gate.ACCESS_STORAGE_KEY), gate.ACCESS_STORAGE_VALUE);
+  assert.equal(fixture.elements.appShell.hidden, false);
+});
+
 test('forget control clears both markers, re-locks without reload, and permits re-entry', () => {
   const fixture = createFixture({}, { [gate.ACCESS_STORAGE_KEY]: gate.ACCESS_STORAGE_VALUE });
   let grants = 0;
