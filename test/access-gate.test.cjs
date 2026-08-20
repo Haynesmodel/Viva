@@ -2,7 +2,6 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const esbuild = require('esbuild');
 const fs = require('node:fs');
-const os = require('node:os');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
@@ -52,8 +51,21 @@ function createFixture(storage = {}) {
   };
 }
 
+function withGlobalProperty(name, descriptor, callback) {
+  const previous = Object.getOwnPropertyDescriptor(globalThis, name);
+  try {
+    Object.defineProperty(globalThis, name, { configurable: true, ...descriptor });
+    return callback();
+  } finally {
+    if (previous) Object.defineProperty(globalThis, name, previous);
+    else delete globalThis[name];
+  }
+}
+
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-access-gate-'));
+  const bundles = path.join(process.cwd(), 'coverage', 'test-bundles');
+  fs.mkdirSync(bundles, { recursive: true });
+  temp = fs.mkdtempSync(path.join(bundles, 'access-gate-'));
   const outfile = path.join(temp, 'access-gate.mjs');
   await esbuild.build({
     entryPoints: [path.join(process.cwd(), 'src/access/access-gate.ts')],
@@ -62,12 +74,16 @@ test.before(async () => {
     format: 'esm',
     platform: 'node',
     target: 'node20',
+    sourcemap: 'inline',
+    sourcesContent: true,
     logLevel: 'silent',
   });
   gate = await import(`${pathToFileURL(outfile).href}?v=${Date.now()}`);
 });
 
-test.after(() => fs.rmSync(temp, { recursive: true, force: true }));
+test.after(() => {
+  if (!process.env.NODE_V8_COVERAGE) fs.rmSync(temp, { recursive: true, force: true });
+});
 
 test('phrase classification is exact and case-sensitive', () => {
   assert.equal(gate.ACCESS_EASTER_EGG_DURATION_MS, 3_600);
@@ -86,6 +102,7 @@ test('session marker accepts only the opaque granted value', () => {
   fixture.session.setItem(gate.ACCESS_STORAGE_KEY, 'ShotgunsDueSoon');
   assert.equal(gate.hasAccessGrant(fixture.session), false);
   assert.equal(gate.hasAccessGrant(null), false);
+  assert.equal(gate.writeAccessGrant(null), false);
 });
 
 test('storage exceptions fail closed on startup and do not prevent current-page unlock', () => {
@@ -106,6 +123,65 @@ test('storage exceptions fail closed on startup and do not prevent current-page 
   assert.equal(fixture.elements.mainContent.focusCount, 1);
 });
 
+test('global document and storage fallbacks preserve marker behavior and fail closed when unavailable', () => {
+  const fixture = createFixture();
+  withGlobalProperty('document', { value: fixture.document }, () => {
+    withGlobalProperty('sessionStorage', { value: fixture.session }, () => {
+      assert.equal(gate.hasAccessGrant(), false);
+      assert.equal(gate.writeAccessGrant(), true);
+      let grants = 0;
+      const controller = gate.createAccessGate({ onGranted: () => { grants += 1; } });
+      controller.initialize();
+      assert.equal(grants, 1);
+      controller.destroy();
+    });
+  });
+
+  withGlobalProperty('sessionStorage', { get() { throw new Error('session storage unavailable'); } }, () => {
+    assert.equal(gate.hasAccessGrant(), false);
+    assert.equal(gate.writeAccessGrant(), false);
+  });
+});
+
+test('gate tolerates missing optional DOM nodes while handling rejection and grant', () => {
+  const fixture = createFixture();
+  delete fixture.elements.accessGateMain;
+  delete fixture.elements.accessGateStatus;
+  delete fixture.elements.appShell;
+  delete fixture.elements.mainContent;
+  fixture.elements.accessGate.removeEventListener = undefined;
+  let grants = 0;
+  const controller = gate.createAccessGate({ document: fixture.document, storage: fixture.session, onGranted: () => { grants += 1; } });
+  controller.initialize();
+
+  fixture.elements.accessPhrase.value = 'wrong';
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(fixture.elements.accessPhrase.value, '');
+  fixture.elements.accessPhrase.dispatch('input');
+  fixture.elements.accessPhrase.value = 'ShotgunsDueSoon';
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(grants, 1);
+
+  controller.destroy();
+  controller.destroy();
+});
+
+test('submitting without an input fails closed and destroy removes the listener', () => {
+  const fixture = createFixture();
+  delete fixture.elements.accessPhrase;
+  let grants = 0;
+  const controller = gate.createAccessGate({ document: fixture.document, storage: fixture.session, onGranted: () => { grants += 1; } });
+  controller.destroy();
+  controller.initialize();
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(grants, 0);
+  assert.match(fixture.elements.accessGateStatus.textContent, /did not work/);
+  controller.destroy();
+  controller.destroy();
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(grants, 0);
+});
+
 test('grant transition is one-time and keeps the shell locked until exact submission', () => {
   const fixture = createFixture();
   let grants = 0;
@@ -120,6 +196,8 @@ test('grant transition is one-time and keeps the shell locked until exact submis
   assert.equal(fixture.elements.appShell.getAttribute('aria-hidden'), null);
   assert.equal(fixture.elements.appShell.getAttribute('inert'), null);
   assert.equal(fixture.elements.mainContent.focusCount, 1);
+  fixture.elements.accessPhrase.dispatch('input');
+  assert.equal(fixture.elements.accessPhrase.getAttribute('aria-invalid'), 'false');
 });
 
 test('ordinary rejection clears and refocuses input without echoing the value', () => {
