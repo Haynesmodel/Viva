@@ -2,7 +2,6 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const esbuild = require('esbuild');
 const fs = require('node:fs');
-const os = require('node:os');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
@@ -34,7 +33,9 @@ function candidate(overrides = {}) {
 }
 
 test.before(async () => {
-  temp = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-share-spec-'));
+  const bundles = path.join(root, 'coverage', 'test-bundles');
+  fs.mkdirSync(bundles, { recursive: true });
+  temp = fs.mkdtempSync(path.join(bundles, 'share-spec-'));
   await esbuild.build({
     entryPoints: [
       path.join(root, 'src/share/share-card-spec.ts'),
@@ -50,6 +51,8 @@ test.before(async () => {
     platform: 'node',
     format: 'esm',
     target: 'node20',
+    sourcemap: 'inline',
+    sourcesContent: true,
     entryNames: '[name]',
     define: { 'import.meta.env.BASE_URL': "'/Viva/'" },
     logLevel: 'silent',
@@ -63,7 +66,9 @@ test.before(async () => {
   share = { ...spec, ...builders, ...adapters, ...actions, ...recap, ...svg };
 });
 
-test.after(() => fs.rmSync(temp, { recursive: true, force: true }));
+test.after(() => {
+  if (!process.env.NODE_V8_COVERAGE) fs.rmSync(temp, { recursive: true, force: true });
+});
 
 class FakeElement {
   constructor(ownerDocument) {

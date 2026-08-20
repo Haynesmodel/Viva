@@ -2,7 +2,6 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const esbuild = require('esbuild');
 const fs = require('node:fs');
-const os = require('node:os');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
@@ -11,7 +10,9 @@ let temporaryDirectory;
 let pulseMatchupGroups;
 
 test.before(async () => {
-  temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-pulse-page-'));
+  const bundles = path.join(root, 'coverage', 'test-bundles');
+  fs.mkdirSync(bundles, { recursive: true });
+  temporaryDirectory = fs.mkdtempSync(path.join(bundles, 'pulse-page-'));
   const outfile = path.join(temporaryDirectory, 'page.mjs');
   await esbuild.build({
     entryPoints: [path.join(root, 'src/features/league-pulse/league-pulse-grouping.ts')],
@@ -27,7 +28,9 @@ test.before(async () => {
   ({ pulseMatchupGroups } = await import(`${pathToFileURL(outfile).href}?${Date.now()}`));
 });
 
-test.after(() => fs.rmSync(temporaryDirectory, { recursive: true, force: true }));
+test.after(() => {
+  if (!process.env.NODE_V8_COVERAGE) fs.rmSync(temporaryDirectory, { recursive: true, force: true });
+});
 
 function matchup(type, round) {
   return {
