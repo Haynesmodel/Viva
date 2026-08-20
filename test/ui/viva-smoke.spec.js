@@ -1,5 +1,7 @@
 import { test, expect } from './coverage-fixture.js';
 import AxeBuilder from '@axe-core/playwright';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 
 const routes = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet', 'shotguns'];
 
@@ -47,6 +49,32 @@ test('Shotguns owner filter narrows and restores the completed archive', async (
   await filter.selectOption('');
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
   await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(95);
+});
+
+test('Shotguns shows an empty state for an owner with only owed records', async ({ page }) => {
+  const records = JSON.parse(readFileSync(new URL('../../assets/Shotguns.json', import.meta.url), 'utf8'));
+  records.push({ id: 'shotgun-chuck-owed-only', owner: 'Chuck', week: 17, date: '2026-01-02', due_date: '2026-01-09', cause: 'Owed-only fixture', completed: false, media_key: null });
+  const sortJson = value => Array.isArray(value) ? value.map(sortJson) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, sortJson(value[key])])) : value;
+  const body = `${JSON.stringify(sortJson(records), null, 2)}\n`;
+  const hash = `sha256:${createHash('sha256').update(body).digest('hex')}`;
+  await page.route('**/assets/asset-manifest.json*', async route => {
+    const response = await route.fetch();
+    const manifest = await response.json();
+    manifest.assets.Shotguns = { ...manifest.assets.Shotguns, sha256: hash, bytes: Buffer.byteLength(body) };
+    await route.fulfill({ response, json: manifest });
+  });
+  await page.route('**/assets/Shotguns.json*', async route => {
+    await route.fulfill({ status: 200, contentType: 'application/json', body });
+  });
+  await page.goto('/?tab=shotguns');
+  const filter = page.locator('#shotgunOwnerFilter');
+  await expect(filter.locator('option[value="Chuck"]')).toHaveCount(1);
+  await filter.selectOption('Chuck');
+  await expect(page.locator('.shotgun-owner-tile')).toHaveCount(0);
+  await expect(page.locator('.shotgun-empty-state')).toContainText('No completed Shotguns match this owner');
+  await page.locator('[data-shotgun-clear-filter]').first().click();
+  await expect(filter).toHaveValue('');
+  await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
 });
 
 for (const width of [320, 390]) {

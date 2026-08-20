@@ -39,6 +39,7 @@
   .shotgun-record-details { display: grid; gap: .15rem; min-width: 0; }
   .shotgun-record-details span { color: var(--text-muted); font-size: .85rem; overflow-wrap: anywhere; }
   .shotgun-play { align-self: start; max-width: 100%; white-space: normal; }
+  .shotgun-play:disabled { overflow-wrap: anywhere; text-align: left; }
   .shotgun-empty-state { overflow-wrap: anywhere; }
   dialog.shotgun-dialog { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-panel); color: var(--text); max-width: min(90vw, 60rem); padding: var(--space-4); }
   dialog.shotgun-dialog::backdrop { background: color-mix(in srgb, var(--text) 70%, transparent); }

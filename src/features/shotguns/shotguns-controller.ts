@@ -29,7 +29,8 @@ function recordLabel(row: ShotgunRecord, action: 'play' | 'unavailable'): string
 function completedRecord(row: ShotgunRecord): string {
   const playable = Boolean(row.media_key && MEDIA_BASE_URL);
   const label = recordLabel(row, playable ? 'play' : 'unavailable');
-  return `<li class="shotgun-record"><div class="shotgun-record-details"><strong>${escapeHtml(row.date)}</strong>${row.week ? `<span>Week ${escapeHtml(row.week)}</span>` : ''}<span>${escapeHtml(row.cause)}</span></div><button class="btn shotgun-play" type="button" data-shotgun-id="${escapeHtml(row.id)}" aria-label="${escapeHtml(label)}" ${playable ? '' : 'disabled'}>${playable ? 'Play clip' : 'Media unavailable'}</button></li>`;
+  const unavailableCopy = `Media unavailable for ${vivaShotgunDisplayName(row.owner)} · ${row.date} · ${row.cause}`;
+  return `<li class="shotgun-record"><div class="shotgun-record-details"><strong>${escapeHtml(row.date)}</strong>${row.week ? `<span>Week ${escapeHtml(row.week)}</span>` : ''}<span>${escapeHtml(row.cause)}</span></div><button class="btn shotgun-play" type="button" data-shotgun-id="${escapeHtml(row.id)}" aria-label="${escapeHtml(label)}" ${playable ? '' : 'disabled'}>${playable ? 'Play clip' : escapeHtml(unavailableCopy)}</button></li>`;
 }
 
 function ownerTile(owner: string, owedCount: number, completed: ShotgunRecord[]): string {
@@ -94,7 +95,8 @@ export function createFeatureController(): VivaFeatureController {
     const completed = rows.filter(row => row.completed).sort((a, b) => b.date.localeCompare(a.date));
     const owners = [...new Set(rows.map(row => row.owner))].sort();
     if (selectedOwner && !owners.includes(selectedOwner)) selectedOwner = null;
-    const completedOwners = selectedOwner ? owners.filter(owner => owner === selectedOwner) : owners;
+    const completedOwnerNames = owners.filter(owner => completed.some(row => row.owner === owner));
+    const completedOwners = selectedOwner ? completedOwnerNames.filter(owner => owner === selectedOwner) : completedOwnerNames;
     const ownerOverview = owners.map(owner => ownerOverviewCard(owner, owed.filter(row => row.owner === owner).length, completed.filter(row => row.owner === owner).length)).join('');
     const ownerTiles = completedOwners.map(owner => ownerTile(owner, owed.filter(row => row.owner === owner).length, completed.filter(row => row.owner === owner))).join('');
     const filterLabel = selectedOwner ? `Showing ${vivaShotgunDisplayName(selectedOwner)} completed Shotguns` : 'Showing all owners completed Shotguns';
