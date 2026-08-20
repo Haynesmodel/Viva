@@ -10,13 +10,13 @@
       "sha256": "sha256:805f907ae4e3b8a59c7320c8cd4bedfc979f42d001ccfb16840e19751ae330b8"
     },
     "DraftSpot": {
-      "bytes": 520,
+      "bytes": 74856,
       "path": "assets/DraftSpot.json",
       "required": false,
-      "rows": 0,
-      "season_max": null,
-      "season_min": null,
-      "sha256": "sha256:77c367d3af0c87798f28f3d3c255b40d1290d2b41ab0afeca49ddd5317bc3f64"
+      "rows": 66,
+      "season_max": 2025,
+      "season_min": 2020,
+      "sha256": "sha256:1221f40b71878f9da3e1f6a059f7ad2afed89f5ee38666cc3cdda8a03a2ab339"
     },
     "H2H": {
       "bytes": 95708,
@@ -37,13 +37,13 @@
       "sha256": "sha256:92ba7b7af7abf916deb0b25b6ee41998f1539ac638b0b69870a0b3b013eb3967"
     },
     "SeasonSummary": {
-      "bytes": 27158,
+      "bytes": 28557,
       "path": "assets/SeasonSummary.json",
       "required": true,
       "rows": 66,
       "season_max": 2025,
       "season_min": 2020,
-      "sha256": "sha256:7f6c7606d9347830937b6d017edf18171147591d33b57bfb60b4bddc1c9e1c0d"
+      "sha256": "sha256:00a67bf1fd3300a6ceaccf00fd9629e2865fdd0f7d65cc3e8ada1f4d0eb16346"
     },
     "Shotguns": {
       "bytes": 23790,
@@ -55,16 +55,16 @@
       "sha256": "sha256:10071f68f808d64e6fac2c81eb83186f846be01ef5f7ec06e055baf4ed897901"
     }
   },
-  "data_version": "sha256:dabd0172fd9a88fb73216390be13cff1bb070d685c6a80b39eac6f0c3c506c46",
+  "data_version": "sha256:911bd39ebb94ea6999aa9283bcf4cb0df398c8c67787aa4bedf88326a891dce5",
   "derived": {
     "bytes": 127374,
     "path": "assets/DerivedStats.json",
     "required": false,
-    "sha256": "sha256:cff4cd6ffd678e66e415bee0bfe192e7f592b78b7fd7fc4cb3a402b08cc23523",
+    "sha256": "sha256:58dcb566b4045a08bf0fa66e048a04ebcfab5d0adac8ba7f16c60a2437e4e0c1",
     "source_hashes": {
       "H2H": "sha256:fa778feb113ec9fc9fb288a7520df823e4d1188587d6d27c252821f5175c0323",
       "Rivalries": "sha256:92ba7b7af7abf916deb0b25b6ee41998f1539ac638b0b69870a0b3b013eb3967",
-      "SeasonSummary": "sha256:7f6c7606d9347830937b6d017edf18171147591d33b57bfb60b4bddc1c9e1c0d"
+      "SeasonSummary": "sha256:00a67bf1fd3300a6ceaccf00fd9629e2865fdd0f7d65cc3e8ada1f4d0eb16346"
     }
   },
   "derived_generator_version": 1,
