@@ -19,6 +19,7 @@ import json
 import re
 import subprocess
 import tempfile
+from contextlib import nullcontext
 from pathlib import Path
 from typing import Any
 
@@ -176,13 +177,27 @@ def main() -> int:
     expected = team_count(mapping, args.season)
     normalized = normalize_order(raw, args.season, aliases_from_mapping(mapping), expected)
     summary = staged_summary(root, args.season, normalized)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    summary_path = output_dir / "SeasonSummary.json"
-    write_json(summary_path, summary)
-    validate_staged(root, summary_path)
-    if args.promote:
-        write_json(root / "assets" / "SeasonSummary.json", summary)
-    write_json(output_dir / "draft-order-report.json", audit(args.season, normalized, args.promote))
+    inside_assets = output_dir == assets or assets in output_dir.parents
+    # Promotion must never stage candidate data under assets: validation must
+    # complete before the canonical file is even opened for replacement.
+    temporary_stage = tempfile.TemporaryDirectory(prefix=".viva-draft-", dir=root) if args.promote else nullcontext()
+    with temporary_stage as temporary_path:
+        stage_dir = Path(temporary_path) if args.promote else output_dir
+        stage_dir.mkdir(parents=True, exist_ok=True)
+        summary_path = stage_dir / "SeasonSummary.json"
+        write_json(summary_path, summary)
+        validate_staged(root, summary_path)
+        if args.promote:
+            write_json(root / "assets" / "SeasonSummary.json", summary)
+            # Keep the requested audit output when it is safe to do so. An
+            # assets path is intentionally ignored to avoid writing a report
+            # into canonical data directories.
+            if not inside_assets:
+                output_dir.mkdir(parents=True, exist_ok=True)
+                write_json(output_dir / "SeasonSummary.json", summary)
+                write_json(output_dir / "draft-order-report.json", audit(args.season, normalized, True))
+        else:
+            write_json(output_dir / "draft-order-report.json", audit(args.season, normalized, False))
     print(f"Draft order {'promoted' if args.promote else 'candidate validated'}: season {args.season}, {len(normalized)} owners, picks 1-{len(normalized)}")
     return 0
 

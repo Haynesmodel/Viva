@@ -3,6 +3,7 @@ import json
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -80,6 +81,17 @@ class EnrichVivaDraftOrderTest(unittest.TestCase):
         result = subprocess.run(["python3", str(SCRIPT), "--input", str(fixture), "--season", "2025", "--mapping", str(ROOT / "scripts/viva_season_mapping.json"), "--output-dir", str(ROOT / "assets")], cwd=ROOT, capture_output=True, text=True)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("inside canonical assets", result.stdout + result.stderr)
+
+    def test_promotion_stages_outside_assets_before_validation_failure(self):
+        fixture = FIXTURES / "draft-order-2025-sanitized.json"
+        canonical = ROOT / "assets" / "SeasonSummary.json"
+        before = canonical.read_bytes()
+        argv = ["enrich_viva_draft_order.py", "--input", str(fixture), "--season", "2025", "--mapping", str(ROOT / "scripts/viva_season_mapping.json"), "--output-dir", str(ROOT / "assets"), "--promote"]
+        with patch("sys.argv", argv), patch.object(self.tool, "validate_staged", side_effect=ValueError("forced validation failure")):
+            with self.assertRaisesRegex(ValueError, "forced validation failure"):
+                self.tool.main()
+        self.assertEqual(canonical.read_bytes(), before)
+        self.assertFalse((ROOT / "assets" / "draft-order-report.json").exists())
 
 
 if __name__ == "__main__":
