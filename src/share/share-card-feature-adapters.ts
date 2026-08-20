@@ -242,7 +242,7 @@ export function mountTrophyCard(host: HTMLElement | null, view: TrophyShareFacts
         },
         { label: 'League rank', value: rank || '—' },
         { label: 'Championships', value: String(hardware.get('Championships') || 0) },
-        { label: 'Saunders titles', value: String(hardware.get('Saunders titles') || 0) },
+        { label: 'Last-place finishes', value: String(hardware.get('Saunders titles') || 0) },
       ],
       canonicalPath,
       sourceLabel: 'Trophy Case',

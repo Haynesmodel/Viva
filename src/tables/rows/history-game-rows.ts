@@ -1,4 +1,5 @@
 import type { VivaTableRow, TableContext } from '../table-types';
+import { displayGameType, displayRound } from '../table-filter-functions';
 
 function number(value: unknown): number {
   const parsed = Number(value);
@@ -29,15 +30,15 @@ export function adaptHistoryGameRows(rows: unknown[], context: TableContext = {}
       scoreLabel: `${score.toFixed(2)} - ${opponentScore.toFixed(2)}`,
       margin,
       combinedScore: number(row.combinedScore ?? score + opponentScore),
-      type,
-      round: String(row.round || ''),
+      type: displayGameType(type),
+      round: displayRound(row.round || ''),
       rowClass: `${row.result === 'W' ? 'result-win' : row.result === 'L' ? 'result-loss' : 'result-tie'}${type !== 'Regular' ? ' postseason' : ''}`,
       details: [
         { label: 'Matchup', value: `${team} ${score.toFixed(2)} - ${opponent} ${opponentScore.toFixed(2)}` },
         { label: 'Margin', value: `${margin >= 0 ? '+' : ''}${margin.toFixed(2)}` },
         { label: 'Combined score', value: (score + opponentScore).toFixed(2) },
         { label: 'Week', value: String(row.week || source.week || '—') },
-        { label: 'Context', value: [type, row.round].filter(Boolean).join(' · ') || 'Regular season' },
+        { label: 'Context', value: [displayGameType(type), displayRound(row.round)].filter(Boolean).join(' · ') || 'Regular season' },
       ],
       links: [
         { label: 'Head to head', href: rivalryHref },

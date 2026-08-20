@@ -27,7 +27,7 @@ function gauntletTeamSeasonCardHtml(teamSeason) {
   const badges = [
     teamSeason.champion ? '<span class="gauntlet-badge gauntlet-badge-champ">Champion</span>' : '',
     teamSeason.bye ? '<span class="gauntlet-badge gauntlet-badge-bye">Bye</span>' : '',
-    teamSeason.saunders ? '<span class="gauntlet-badge gauntlet-badge-saunders">Saunders</span>' : '',
+    teamSeason.saunders ? '<span class="gauntlet-badge gauntlet-badge-saunders">Last place</span>' : '',
   ].filter(Boolean).join('');
 
   return `

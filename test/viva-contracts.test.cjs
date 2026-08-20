@@ -8,9 +8,9 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 98);
+  assert.equal(shotguns.length, 95);
   assert.equal(shotguns.filter(row => row.completed).length, 95);
-  assert.equal(shotguns.filter(row => !row.completed).length, 3);
+  assert.equal(shotguns.filter(row => !row.completed).length, 0);
   assert.equal(new Set(shotguns.map(row => row.id)).size, shotguns.length);
   assert.ok(shotguns.every(row => Object.hasOwn(row, 'media_key')));
   assert.equal(fs.existsSync(path.join(root, 'assets/TransactionHistory.json')), false);

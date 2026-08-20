@@ -356,7 +356,7 @@ function leagueSummaryTablesHtml(opts = {}) {
           <tr>
             <th scope="col">Team</th><th scope="col">Viva Record</th><th scope="col">Byes</th><th scope="col">Championships</th>
             <th scope="col">Viva PPG</th><th scope="col">Viva Opp PPG</th>
-            <th scope="col">Saunders Record</th><th scope="col">Saunders</th><th scope="col">Saunders PPG</th><th scope="col">Saunders Opp PPG</th>
+            <th scope="col">Last place Record</th><th scope="col">Last place</th><th scope="col">Last place PPG</th><th scope="col">Last place Opp PPG</th>
           </tr>
         </thead>
         <tbody>${

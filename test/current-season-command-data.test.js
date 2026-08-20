@@ -117,7 +117,7 @@ test('command model builds playoff picture, needs, movement, and owner focus', (
   assert.ok(model.ownerNeeds.some(row => row.owner === 'Shap' && row.isSelected));
   assert.match(model.ownerNeeds.find(row => row.owner === 'Shap').pathSummary, /Joel/);
   assert.equal(model.ownerNeeds.find(row => row.owner === 'Shap').status.key, 'bubble');
-  assert.equal(model.ownerNeeds.find(row => row.owner === 'Shap').goalLabel, 'Saunders danger');
+  assert.equal(model.ownerNeeds.find(row => row.owner === 'Shap').goalLabel, 'Last-place danger');
   assert.ok(model.liveMovement.some(row => row.owner === 'Shap'));
   assert.equal(model.summary.highestLiveScore.owner, 'Joe');
   assert.equal(model.matchupImpacts.size, 2);
@@ -144,9 +144,9 @@ test('owner needs describe exact bubble help and Saunders danger paths', () => {
 
   const needs = buildOwnerWeekNeeds({ currentSeason: finalWeekSeason, season: 2026, week: 2 });
   const nuss = needs.find(row => row.owner === 'Nuss');
-  assert.equal(nuss.goalLabel, 'Saunders danger');
+  assert.equal(nuss.goalLabel, 'Last-place danger');
   assert.match(nuss.mainNeed, /Clinches a playoff spot if Nuss beats Joel and Shap loses to Joe\./);
-  assert.match(nuss.riskSummary, /Saunders danger/);
+  assert.match(nuss.riskSummary, /last-place danger/);
 });
 
 test('owner needs cover clinched, eliminated, and no-matchup owners', () => {

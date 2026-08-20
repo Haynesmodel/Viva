@@ -48,7 +48,16 @@ export function isPostseason(row: VivaTableRow): boolean {
 }
 
 export function isSaunders(row: VivaTableRow): boolean {
-  return `${row.type ?? ''} ${row.round ?? ''}`.toLocaleLowerCase().includes('saunders');
+  return `${row.type ?? ''} ${row.round ?? ''}`.toLocaleLowerCase().includes('saunders')
+    || `${row.type ?? ''} ${row.round ?? ''}`.toLocaleLowerCase().includes('last place');
+}
+
+export function displayGameType(value: unknown): string {
+  return String(value ?? '').replace(/^(?:saunders|last place)$/i, 'Last place');
+}
+
+export function displayRound(value: unknown): string {
+  return String(value ?? '').replace(/^(?:saunders|last place)\b/i, 'Last place');
 }
 
 export function isCloseGame(row: VivaTableRow, threshold = 5): boolean {

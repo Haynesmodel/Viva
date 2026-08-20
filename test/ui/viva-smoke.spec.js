@@ -145,6 +145,18 @@ test('Viva shell exposes the supported route matrix and omits Transactions', asy
   }
 });
 
+test('Dynasty last-place window shows normalized matchup result', async ({ page }) => {
+  await page.goto('/?tab=dynasty');
+  await unlockViva(page);
+  const slumps = page.locator('#dynastySlumpsDisclosure');
+  await slumps.locator('summary').click();
+  const lastPlaceWindow = slumps.locator('[data-window-kind="saunders"]').first();
+  await expect(lastPlaceWindow).toBeVisible();
+  await lastPlaceWindow.click();
+  await expect(page.locator('#dynastyWindowModal')).toBeVisible();
+  await expect(page.locator('#dynastyWindowModal')).toContainText('Last place');
+});
+
 test('Shotguns renders the preserved record states without loading video bytes', async ({ page }) => {
   const videoRequests = [];
   page.on('request', request => {
@@ -152,12 +164,12 @@ test('Shotguns renders the preserved record states without loading video bytes',
   });
   await page.goto('/?tab=shotguns');
   await unlockViva(page);
-  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed3');
+  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed0');
   await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed95');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
   await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(95);
-  await expect(page.locator('.shotgun-owed-record')).toHaveCount(3);
+  await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
   await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
   await expect(page.locator('#shotgunOwnerFilter option')).toHaveCount(13);
   const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
@@ -213,7 +225,7 @@ for (const width of [320, 390]) {
     await page.goto('/?tab=shotguns');
     await unlockViva(page);
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-    await expect(page.locator('.shotgun-owed-record').first()).toContainText('Taylor');
+    await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
     await expect(page.locator('.shotgun-owner-overview-card').first()).toBeVisible();
   });
 }

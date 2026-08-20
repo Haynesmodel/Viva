@@ -134,7 +134,7 @@ export default function DraftPickBoard({ model, onChange }: Props) {
               <span>Avg finish {formatNumber(summary.avg_finish)}</span>
               {model.state.normalize === 'percentile' ? <span>{draftSummaryContext(summary, model.state)}</span> : null}
               <span>{formatPercent(summary.playoff_rate)} playoff · {summary.championships} titles</span>
-              <span>{summary.saunders_count} Saunders</span>
+              <span>{summary.saunders_count} last-place finishes</span>
             </button>
           );
         })}

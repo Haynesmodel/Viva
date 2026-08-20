@@ -41,6 +41,14 @@ function normRound(value: string | null): string {
   return value || '';
 }
 
+function displayType(value: string): string {
+  return value.replace(/^saunders$/i, 'Last place');
+}
+
+function displayRound(value: string): string {
+  return value.replace(/^saunders\b/i, 'Last place');
+}
+
 function sidesForTeam(game: RivalryGame, team: string): TeamSide | null {
   const isA = game.teamA === team;
   const isB = game.teamB === team;
@@ -264,14 +272,14 @@ export function rivalrySeasonBreakdown(teamA: string, teamB: string, games: read
     else row.t += 1;
     if (isPlayoffGame(game)) {
       row.postseasonWinner = resultLabel(side.result, teamA, teamB);
-      const roundName = displayRoundName(normRound(game.round));
+      const roundName = displayRoundName(displayRound(normRound(game.round)));
       if (roundName && !row.postseasonRounds.includes(roundName)) row.postseasonRounds.push(roundName);
       if (!row.notes.includes('Playoff meeting')) row.notes.push('Playoff meeting');
     }
     if (isSaundersGame(game)) {
-      const roundName = displayRoundName(normRound(game.round));
+      const roundName = displayRoundName(displayRound(normRound(game.round)));
       if (roundName && !row.postseasonRounds.includes(roundName)) row.postseasonRounds.push(roundName);
-      if (!row.notes.includes('Saunders meeting')) row.notes.push('Saunders meeting');
+      if (!row.notes.includes('Last place meeting')) row.notes.push('Last place meeting');
     }
     if (isRegularGame(game) && !row.notes.includes('Regular season')) row.notes.push('Regular season');
     bySeason.set(game.season, row);
@@ -287,8 +295,8 @@ export function rivalrySeasonBreakdown(teamA: string, teamB: string, games: read
       const roundsText = rounds.join(', ');
       const playoffIndex = notes.indexOf('Playoff meeting');
       if (playoffIndex >= 0) notes[playoffIndex] = `Playoff meeting (${roundsText}) winner: ${row.postseasonWinner}`;
-      const saundersIndex = notes.indexOf('Saunders meeting');
-      if (saundersIndex >= 0) notes[saundersIndex] = `Saunders meeting (${roundsText})`;
+      const saundersIndex = notes.indexOf('Last place meeting');
+      if (saundersIndex >= 0) notes[saundersIndex] = `Last place meeting (${roundsText})`;
     }
     if (row.t) notes.push(`${row.t} tie${row.t === 1 ? '' : 's'}`);
     return { ...row, diff: row.pf - row.pa, recordText: formatRecord(row.w, row.l, row.t), notes };
@@ -304,8 +312,8 @@ export function rivalryGameRows(teamA: string, teamB: string, games: readonly Ri
       date: game.date,
       season: game.season,
       week: Number.isFinite(game._weekByTeam?.[teamA]) ? Number(game._weekByTeam?.[teamA]) : null,
-      type,
-      round: normRound(game.round),
+      type: displayType(type),
+      round: displayRound(normRound(game.round)),
       result: side.result,
       winner: resultLabel(side.result, teamA, teamB),
       score: formatScoreline(side.pf, side.pa),
@@ -354,7 +362,7 @@ function buildTape(summary: RivalrySummary, teamA: string, teamB: string): Rival
     { label: 'Average Score', value: `${nfmt(summary.overall.averageA)} - ${nfmt(summary.overall.averageB)}`, sub: summary.overall.g ? scoreLeader : '' },
     { label: 'Regular Season', value: summary.regular.recordText, sub: '' },
     { label: 'Playoffs', value: summary.playoffs.recordText, sub: '' },
-    { label: 'Saunders', value: summary.saunders.recordText, sub: '' },
+    { label: 'Last place', value: summary.saunders.recordText, sub: '' },
     { label: 'Current Streak', value: formatLeaderText(teamA, teamB, summary.currentStreak?.result || 'T', summary.currentStreak?.len || 0), sub: summary.currentStreak ? `${summary.currentStreak.start.date} to ${summary.currentStreak.end.date}` : '' },
     { label: `Longest ${teamA} Run`, value: formatLeaderText(teamA, teamB, summary.longestTeamAStreak?.result || 'T', summary.longestTeamAStreak?.len || 0), sub: summary.longestTeamAStreak ? `${summary.longestTeamAStreak.start.date} to ${summary.longestTeamAStreak.end.date}` : '' },
     { label: `Longest ${teamB} Run`, value: formatLeaderText(teamA, teamB, summary.longestTeamBStreak?.result || 'T', summary.longestTeamBStreak?.len || 0), sub: summary.longestTeamBStreak ? `${summary.longestTeamBStreak.start.date} to ${summary.longestTeamBStreak.end.date}` : '' },

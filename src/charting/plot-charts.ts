@@ -189,14 +189,22 @@ export function renderCurrentOddsMovementPlot(
 
 function draftSpec(request: Extract<ChartRequest, { kind: 'draft-picks' | 'draft-zones' }>): RuntimeSpec {
   const pick = request.kind === 'draft-picks';
+  // Pick labels are intentionally human-readable (P1, P2, ...), but Plot's
+  // default ordinal domain follows string ordering. Keep every draft graphic
+  // in numeric pick order even when a caller supplies rows out of order.
+  const rows = [...request.data.rows].sort((a, b) => {
+    if (!pick) return 0;
+    const pickNumber = (label: string) => Number(String(label).match(/\d+/)?.[0] || 0);
+    return pickNumber(a.label) - pickNumber(b.label);
+  });
   return {
     height: pick ? 240 : 220,
     marginLeft: pick ? 48 : 56,
     ariaLabel: request.data.ariaLabel,
-    rows: request.data.rows,
-    x: { label: pick ? request.data.xLabel : 'Draft zone' },
+    rows,
+    x: { label: pick ? request.data.xLabel : 'Draft zone', ...(pick ? { domain: rows.map(row => row.label) } : {}) },
     y: { label: request.data.yLabel },
-    marks: [{ type: 'barY', data: request.data.rows, x: 'label', y: 'value', fill: 'var(--accent-primary)', title: 'title' }],
+    marks: [{ type: 'barY', data: rows, x: 'label', y: 'value', fill: 'var(--accent-primary)', title: 'title' }],
   };
 }
 

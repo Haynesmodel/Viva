@@ -45,7 +45,7 @@ function buildTopHighlightsViewModel(team, opts = {}) {
       chips: [
         {
           title: 'League view',
-          main: 'Select a team to see Championships & Saunders',
+          main: 'Select a team to see Championships & Last place',
           sub: 'Filters still work (e.g., Week 1). See Team Breakdown below.',
         },
       ],
@@ -68,7 +68,7 @@ function buildTopHighlightsViewModel(team, opts = {}) {
     isLeagueView: false,
     chips: [
       { title: 'Championships', main: `${champYears.length}`, sub: champYears.length ? `Years: ${champsDisplay.join(', ')}` : '\u2014' },
-      { title: 'Saunders', main: `${sauYears.length}`, sub: sauYears.length ? `Years: ${sauDisplay.join(', ')}` : '\u2014' },
+      { title: 'Last place', main: `${sauYears.length}`, sub: sauYears.length ? `Years: ${sauDisplay.join(', ')}` : '\u2014' },
       { title: 'Regular-Season Titles', main: `${regYears.length}`, sub: regYears.length ? `Years: ${regYears.join(', ')}` : '\u2014' },
       { title: 'Avg Finish', main: nfmtFn(avgFinishValue, 2), sub: avgFinish.length ? `Seasons: ${avgFinish.length}` : '\u2014' },
       ...(notes.length ? [{ title: 'Notes', main: '', sub: `* ${notes.join(' \u2022 ')}`, kind: 'notes' }] : []),
@@ -94,12 +94,12 @@ function buildSeasonCalloutViewModel(team, opts = {}) {
   const bits = [];
   if (rec.champion) bits.push(`\ud83c\udfc6 Champion${champNoteFn(team, onlySeason) ? '*' : ''}`);
   if (rec.bye) bits.push('\ud83d\udd25 Top-2 Seed');
-  if (rec.saunders) bits.push(`\ud83e\udea6 Saunders${saundersNoteFn(team, onlySeason) ? '*' : ''}`);
+  if (rec.saunders) bits.push(`\ud83e\udea6 Last place${saundersNoteFn(team, onlySeason) ? '*' : ''}`);
   if (rec.playoff_wins || rec.playoff_losses || rec.playoff_ties) {
     bits.push(`Playoffs: ${(rec.playoff_wins || 0)}-${(rec.playoff_losses || 0)}-${(rec.playoff_ties || 0)}`);
   }
   if (rec.saunders_wins || rec.saunders_losses || rec.saunders_ties) {
-    bits.push(`Saunders: ${(rec.saunders_wins || 0)}-${(rec.saunders_losses || 0)}-${(rec.saunders_ties || 0)}`);
+    bits.push(`Last place: ${(rec.saunders_wins || 0)}-${(rec.saunders_losses || 0)}-${(rec.saunders_ties || 0)}`);
   }
 
   const record = `${rec.wins}-${rec.losses}-${rec.ties || 0}`;
@@ -326,7 +326,7 @@ function seasonRecapOutcome(team, summaryRow, allGames) {
     : ` \u2022 Bagels earned \ud83e\udd6f: ${summaryRow.bagels_earned}`;
   const playoffNarr = seasonOutcomeNarrative(team, playoffGames);
   if (playoffNarr) return `${playoffNarr}${bagelNote}`;
-  const saundersNarr = seasonOutcomeNarrative(team, saundersGames, 'Saunders');
+  const saundersNarr = seasonOutcomeNarrative(team, saundersGames, 'Last place');
   if (saundersNarr) return `${saundersNarr}${bagelNote}`;
   if (summaryRow.bye) return `Top-2 Seed${bagelNote}`;
   if (bagelNote) return `Bagels earned \ud83e\udd6f: ${summaryRow.bagels_earned}`;
@@ -393,7 +393,7 @@ function topHighlightsHtml(team, opts = {}) {
     return `
     <div class="overview-chip">
       <h3>League view</h3>
-      <div class="big">Select a team to see Championships &amp; Saunders</div>
+      <div class="big">Select a team to see Championships &amp; Last place</div>
       <div class="sub">Filters still work (e.g., Week 1). See Team Breakdown below.</div>
     </div>`;
   }
@@ -410,7 +410,7 @@ function topHighlightsHtml(team, opts = {}) {
       chipTile.title,
       chipTile.kind === 'notes' ? '' : (chipTile.main || '\u2014'),
       chipTile.sub || '\u2014',
-      chipTile.title === 'Championships' ? 'champs' : chipTile.title === 'Saunders' ? 'sau' : chipTile.title === 'Regular-Season Titles' ? 'regs' : chipTile.title === 'Avg Finish' ? 'avg-finish' : ''
+      chipTile.title === 'Championships' ? 'champs' : chipTile.title === 'Last place' ? 'sau' : chipTile.title === 'Regular-Season Titles' ? 'regs' : chipTile.title === 'Avg Finish' ? 'avg-finish' : ''
     )),
   ].join('');
 }

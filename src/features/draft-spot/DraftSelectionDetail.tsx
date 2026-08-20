@@ -36,7 +36,7 @@ export default function DraftSelectionDetail({ model }: { model: DraftSpotViewMo
       </div>
       <div class="draft-receipts" aria-label="Draft result receipts">
         <span>Champions: {champions.length ? champions.map(row => `${row.owner} ${row.season}`).join(', ') : 'none'}</span>
-        <span>Saunders: {saunders.length ? saunders.map(row => `${row.owner} ${row.season}`).join(', ') : 'none'}</span>
+        <span>Last place: {saunders.length ? saunders.map(row => `${row.owner} ${row.season}`).join(', ') : 'none'}</span>
         <span>Top 3: {topThree.length ? topThree.map(row => `${row.owner} ${row.season}`).join(', ') : 'none'}</span>
       </div>
       {rows.length < model.state.minSample ? (

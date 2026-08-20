@@ -50,7 +50,7 @@ export default function DraftZoneComparison({
               <span>{zone.label}</span>
               <strong>{summary ? formatMetric(draftMetricValue(summary, model.state.metric), model.state.metric) : '—'}</strong>
               <em>{summary ? `n=${summary.n} · ${draftSummaryContext(summary, model.state)} · avg finish ${formatNumber(summary.avg_finish)}` : 'No data'}</em>
-              <small>{summary ? `${formatPercent(summary.playoff_rate)} playoff · ${formatPercent(summary.champion_rate)} title · ${formatPercent(summary.saunders_rate)} Saunders` : ''}</small>
+              <small>{summary ? `${formatPercent(summary.playoff_rate)} playoff · ${formatPercent(summary.champion_rate)} title · ${formatPercent(summary.saunders_rate)} last place` : ''}</small>
             </button>
           );
         })}

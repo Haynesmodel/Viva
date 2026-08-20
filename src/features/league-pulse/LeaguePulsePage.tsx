@@ -200,7 +200,7 @@ function YearInReview({ model }: { model: LeaguePulseViewModel }) {
         {year.finalStandings.map(row => <li key={row.owner}>
           <span class="pulse-seed">{row.finish}</span><span><strong>{row.owner}</strong><small>{row.record} · {row.pointsFor.toFixed(2)} PF</small></span>
           {row.owner === year.champion && <span class="pulse-honor">Champion</span>}
-          {row.owner === year.saunders && <span class="pulse-honor pulse-honor-saunders">Saunders</span>}
+          {row.owner === year.saunders && <span class="pulse-honor pulse-honor-saunders">Last place</span>}
         </li>)}
       </ol>
     </section>

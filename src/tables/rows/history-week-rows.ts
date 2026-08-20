@@ -1,4 +1,5 @@
 import type { VivaTableRow, TableContext } from '../table-types';
+import { displayGameType, displayRound } from '../table-filter-functions';
 
 export function adaptHistoryWeekRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   return rows.map((input, index) => {
@@ -16,14 +17,14 @@ export function adaptHistoryWeekRows(rows: unknown[], context: TableContext = {}
       opponentScore: pa,
       scoreLabel: `${pf.toFixed(2)} - ${pa.toFixed(2)}`,
       margin: pf - pa,
-      type,
+      type: displayGameType(type),
       crownLabel: row.isCrown ? ' 👑' : row.isTurd ? ' 💩' : '',
       rowClass: `${row.result === 'W' ? 'result-win' : row.result === 'L' ? 'result-loss' : 'result-tie'}${type !== 'Regular' ? ' postseason' : ''}`,
       details: [
         { label: 'League scoring mark', value: row.isCrown ? 'Highest score this week' : row.isTurd ? 'Lowest score this week' : 'Middle of the pack' },
         { label: 'Expected wins', value: row.xw === null || row.xw === undefined ? '—' : Number(row.xw).toFixed(2) },
         { label: 'Margin', value: `${pf - pa >= 0 ? '+' : ''}${(pf - pa).toFixed(2)}` },
-        { label: 'Context', value: [type, row.round].filter(Boolean).join(' · ') || 'Regular season' },
+        { label: 'Context', value: [displayGameType(type), displayRound(row.round)].filter(Boolean).join(' · ') || 'Regular season' },
       ],
       links: owner && opponent ? [{
         label: 'Open rivalry',

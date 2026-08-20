@@ -28,7 +28,7 @@ import { buildLeagueNewspaper, buildSeasonYearInReview } from './league-recap-mo
 type Game = H2HGame | CurrentSeasonGame;
 
 const statusOrder = { live: 0, scheduled: 1, final: 2 } as const;
-const typeOrder: Record<string, number> = { Championship: 0, Playoff: 1, Saunders: 2, Regular: 3 };
+const typeOrder: Record<string, number> = { Championship: 0, Playoff: 1, Saunders: 2, 'Last place': 2, Regular: 3 };
 
 function numeric(value: unknown): number | null {
   if (value === null || value === undefined || value === '') return null;
@@ -245,14 +245,14 @@ function heroModel(data: PulseModelData, state: PulseSeasonState, year: PulseYea
   const historyHref = season === null ? pathUrl(pathname, { tab: 'history' }) : historyLink(data, pathname, { selectedSeasons: new Set([season]) });
   if (state.phase === 'offseason' && year) return {
     phase: state.phase, season, eyebrow: 'League Pulse · Offseason', title: `${season} Year in Review`,
-    summary: `${year.champion} claimed the championship${year.runnerUp ? ` over ${year.runnerUp}` : ''}${year.championshipResult ? ` — ${year.championshipResult}` : ''}. ${year.saunders} won the Saunders Bowl.`,
+    summary: `${year.champion} claimed the championship${year.runnerUp ? ` over ${year.runnerUp}` : ''}${year.championshipResult ? ` — ${year.championshipResult}` : ''}. ${year.saunders} finished in last place.`,
     badge: 'Offseason', generatedAt: data.currentSeason?.generated_at || null,
     primaryAction: { label: `Open ${year.champion}'s Trophy Case`, href: pathUrl(pathname, { tab: 'trophy', selectedTrophyOwner: year.champion }) },
     secondaryAction: { label: `Explore ${season} history`, href: historyHref },
   };
   if (state.phase === 'preseason' && year) return {
     phase: state.phase, season, eyebrow: 'League Pulse · Preseason', title: `${season} Preview`,
-    summary: `The schedule is available and competition has not started. ${year.champion} enters as the defending champion; ${year.saunders} holds the latest Saunders title.`,
+    summary: `The schedule is available and competition has not started. ${year.champion} enters as the defending champion; ${year.saunders} is the latest last-place finisher.`,
     badge: 'Scheduled', generatedAt: data.currentSeason?.generated_at || null,
     primaryAction: { label: 'Open Week 1 matchups', href: pathUrl(pathname, { tab: 'current', selectedCurrentSeason: season, selectedCurrentWeek: state.spotlightWeek }) },
     secondaryAction: { label: `Review ${year.season}`, href: historyLink(data, pathname, { selectedSeasons: new Set([year.season]) }) },
@@ -260,7 +260,7 @@ function heroModel(data: PulseModelData, state: PulseSeasonState, year: PulseYea
   const details: Record<PulsePhase, [string, string, string, PulseHeroModel['badge']]> = {
     preseason: ['Season starts soon', `${season} Preview`, 'The schedule is available; competition has not started yet.', 'Scheduled'],
     'regular-season': [`Week ${state.spotlightWeek ?? ''}`, state.isLive ? 'League action in progress' : 'This week in the league', 'Scores, standings movement, and the matchup that matters most.', state.isLive ? 'Live' : 'Scheduled'],
-    postseason: [`${season} Postseason`, state.isLive ? 'The trophy paths are live' : 'Road to the trophies', 'Championship and Saunders paths are separated by the validated bracket data.', state.isLive ? 'Live' : 'Scheduled'],
+    postseason: [`${season} Postseason`, state.isLive ? 'The trophy paths are live' : 'Road to the trophies', 'Championship and Last place paths are separated by the validated bracket data.', state.isLive ? 'Live' : 'Scheduled'],
     finalizing: ['League Pulse', 'Season complete — recap pending', 'Final results are available while authoritative season honors await the finalized summary.', 'Final'],
     offseason: ['League Pulse', `${season} Year in Review`, 'The latest finalized season at a glance.', 'Offseason'],
     'historical-fallback': ['League Pulse', season ? `${season} league snapshot` : 'League history', 'Current-season data is unavailable, so this page is using the latest completed history.', 'Data limited'],

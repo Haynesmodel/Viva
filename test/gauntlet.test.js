@@ -214,7 +214,7 @@ test('gauntlet renderers preserve fallbacks, semantics, escaping, and section ow
   assert.equal(gauntletModelLabel('hybrid', true), 'Era-adjusted + postseason');
   assert.match(gauntletTeamSeasonCardHtml(null), /No season selected/);
   assert.match(gauntletTeamSeasonCardHtml(teamA), /A&amp;B/);
-  assert.match(gauntletTeamSeasonCardHtml(teamB), /Saunders/);
+  assert.match(gauntletTeamSeasonCardHtml(teamB), /Last place/);
   assert.equal(gauntletProbabilityHtml(null, teamA, teamB), '');
   assert.match(gauntletProbabilityHtml(result, teamA, teamB), /60\.0%/);
   assert.match(gauntletHistogramSvg(null, teamA, teamB), /No simulation data/);

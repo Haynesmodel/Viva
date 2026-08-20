@@ -131,7 +131,7 @@ export function buildOwnerHubModel(
     rightNow = {
       heading: `${latestSummary.season} season`,
       summary: `Finished No. ${latestSummary.finish} with a ${latestSummary.wins}-${latestSummary.losses}-${latestSummary.ties} record.`,
-      detail: latestSummary.champion ? 'Viva champion' : latestSummary.saunders ? 'Saunders winner' : null,
+      detail: latestSummary.champion ? 'Viva champion' : latestSummary.saunders ? 'Last-place finisher' : null,
       href: url(pathname, { tab: 'history', selectedTeam: owner }),
     };
   } else {

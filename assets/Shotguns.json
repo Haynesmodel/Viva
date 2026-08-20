@@ -1,35 +1,5 @@
 [
   {
-    "id": "shotgun-taylor-2025-12-18-15-player-sean-combs-0",
-    "owner": "Taylor",
-    "week": 15,
-    "date": "2025-12-18",
-    "due_date": "2025-12-25",
-    "cause": "Player: Sean Combs",
-    "completed": false,
-    "media_key": null
-  },
-  {
-    "id": "shotgun-taylor-2025-12-26-16-carryover-1",
-    "owner": "Taylor",
-    "week": 16,
-    "date": "2025-12-26",
-    "due_date": "2026-01-01",
-    "cause": "Carryover",
-    "completed": false,
-    "media_key": null
-  },
-  {
-    "id": "shotgun-dulberger-2025-12-26-16-player-aaron-hernandez-2",
-    "owner": "Dulberger",
-    "week": 16,
-    "date": "2025-12-26",
-    "due_date": "2026-01-01",
-    "cause": "Player: Aaron Hernandez",
-    "completed": false,
-    "media_key": null
-  },
-  {
     "id": "shotgun-leah-2025-11-07-archive-archive-3",
     "owner": "Leah",
     "week": null,

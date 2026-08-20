@@ -22,10 +22,10 @@ An explicit command view for a finalized season exposes historical/final analysi
 - Model version: `team-score-monte-carlo-v1`.
 - Default run count: 10,000.
 - Seed: data version, season, selected week, model version, and the current game-score snapshot.
-- Outputs: playoff, bye, every seed, and Saunders probabilities for each active owner.
+- Outputs: playoff, bye, every seed, and Last place probabilities for each active owner.
 - Additional snapshots: matching pre-week baseline, if-current-scores-hold, and selected-owner win/loss scenarios.
 - Historical week selection truncates the analyzed snapshot after that week, so movement always compares post-week N with pre-week N.
-- Historical records, seeds, statuses, gaps, and probabilities share that same post-week snapshot, while playoff/byes/Saunders slots are inferred from the selected season's stored bracket.
+- Historical records, seeds, statuses, gaps, and probabilities share that same post-week snapshot, while playoff/byes/Last place slots are inferred from the selected season's stored bracket.
 - Forced win/loss scenarios condition normally sampled matchup scores and preserve live scores as hard floors.
 
 ## Team scoring distributions
@@ -46,7 +46,7 @@ When live scores are not declared reliable, simulations use pregame team strengt
 - Seed probabilities for one owner sum to 100%.
 - League playoff probabilities sum to the configured playoff slots.
 - League bye probabilities sum to the configured bye slots.
-- Saunders probabilities sum to the configured Saunders slots.
+- Last place probabilities sum to the configured Last place slots.
 - Completed-season results collapse to exact 0%/100% probabilities.
 - Clinched and eliminated mathematical states override estimates in the presentation layer.
 
