@@ -184,6 +184,12 @@ test('last-place table display normalizes raw Saunders rows while preserving qui
   assert.equal(row.type, 'Last place');
   assert.equal(row.round, 'Last place Final');
   assert.equal(filters.isSaunders(row), true);
+  const alreadyNormalized = historyGames.adaptHistoryGameRows([{
+    season: 2025, date: '2025-12-21', team: 'Joe', opponent: 'Shap',
+    score: 90, opponentScore: 95, result: 'L', type: 'Last Place', round: 'Last Place Final',
+  }], { owner: 'Joe' })[0];
+  assert.equal(alreadyNormalized.type, 'Last place');
+  assert.equal(alreadyNormalized.round, 'Last place Final');
 });
 
 test('record columns filter their displayed record and sort by numeric performance', async () => {

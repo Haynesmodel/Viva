@@ -53,11 +53,11 @@ export function isSaunders(row: VivaTableRow): boolean {
 }
 
 export function displayGameType(value: unknown): string {
-  return String(value ?? '').replace(/^saunders$/i, 'Last place');
+  return String(value ?? '').replace(/^(?:saunders|last place)$/i, 'Last place');
 }
 
 export function displayRound(value: unknown): string {
-  return String(value ?? '').replace(/^saunders\b/i, 'Last place');
+  return String(value ?? '').replace(/^(?:saunders|last place)\b/i, 'Last place');
 }
 
 export function isCloseGame(row: VivaTableRow, threshold = 5): boolean {
