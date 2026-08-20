@@ -7,7 +7,7 @@ import { pathToFileURL } from 'node:url';
 let buildSearchIndex;
 test.before(async () => {
   const outfile = path.join(process.cwd(), 'coverage', 'search-index-test.mjs');
-  await esbuild.build({ entryPoints: [path.join(process.cwd(), 'src/search/search-index.ts')], outfile, bundle: true, platform: 'node', format: 'esm', target: 'node20', logLevel: 'silent' });
+  await esbuild.build({ entryPoints: [path.join(process.cwd(), 'src/search/search-index.ts')], outfile, bundle: true, platform: 'node', format: 'esm', target: 'node20', sourcemap: 'inline', sourcesContent: true, logLevel: 'silent' });
   ({ buildSearchIndex } = await import(`${pathToFileURL(outfile).href}?${Date.now()}`));
 });
 
