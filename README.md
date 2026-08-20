@@ -51,7 +51,11 @@ CSS, TypeScript, route boundaries, bundle budgets, and the Pages artifact.
 
 Viva starts behind a browser-side casual access gate. When browser storage is
 available, a successful entry is remembered only in that browser tab's
-`sessionStorage`; if storage is denied, it unlocks only the current document.
+`sessionStorage` by default; checking “Remember this browser” also stores an
+opaque granted marker in `localStorage` so that the browser can unlock future
+sessions. The password is never stored. “Forget this browser” clears both
+markers and re-locks the current page without a reload. If storage is denied,
+the gate safely unlocks only the current document/session as appropriate.
 The gate is a convenience deterrent rather than secure authentication. The
 phrase and static bundle are delivered to every visitor, so source code, JSON,
 media keys, and direct asset URLs remain public. Restricted access would

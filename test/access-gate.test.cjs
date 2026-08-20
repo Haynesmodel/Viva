@@ -15,6 +15,7 @@ class FakeElement {
     this.hidden = false;
     this.inert = false;
     this.value = '';
+    this.checked = false;
     this.textContent = '';
     this.focusCount = 0;
   }
@@ -30,23 +31,33 @@ class FakeElement {
   }
 }
 
-function createFixture(storage = {}) {
+function createFixture(storage = {}, persistentStorage = {}) {
   const elements = {
     accessGateMain: new FakeElement(),
     accessGate: new FakeElement(),
     accessPhrase: new FakeElement(),
+    accessRemember: new FakeElement(),
     accessGateStatus: new FakeElement(),
     appShell: new FakeElement(),
     mainContent: new FakeElement(),
+    forgetAccessButton: new FakeElement(),
   };
   const values = new Map(Object.entries(storage));
   const session = {
     getItem(key) { return values.get(key) ?? null; },
     setItem(key, value) { values.set(key, String(value)); },
+    removeItem(key) { values.delete(key); },
+  };
+  const persistentValues = new Map(Object.entries(persistentStorage));
+  const persistent = {
+    getItem(key) { return persistentValues.get(key) ?? null; },
+    setItem(key, value) { persistentValues.set(key, String(value)); },
+    removeItem(key) { persistentValues.delete(key); },
   };
   return {
     elements,
     session,
+    persistent,
     document: { getElementById: id => elements[id] ?? null },
   };
 }
@@ -103,6 +114,10 @@ test('session marker accepts only the opaque granted value', () => {
   assert.equal(gate.hasAccessGrant(fixture.session), false);
   assert.equal(gate.hasAccessGrant(null), false);
   assert.equal(gate.writeAccessGrant(null), false);
+  assert.equal(gate.hasPersistentAccessGrant(fixture.persistent), false);
+  assert.equal(gate.writePersistentAccessGrant(null), false);
+  assert.equal(gate.clearAccessGrant(null), false);
+  assert.equal(gate.clearPersistentAccessGrant(null), false);
 });
 
 test('storage exceptions fail closed on startup and do not prevent current-page unlock', () => {
@@ -127,13 +142,17 @@ test('global document and storage fallbacks preserve marker behavior and fail cl
   const fixture = createFixture();
   withGlobalProperty('document', { value: fixture.document }, () => {
     withGlobalProperty('sessionStorage', { value: fixture.session }, () => {
-      assert.equal(gate.hasAccessGrant(), false);
-      assert.equal(gate.writeAccessGrant(), true);
-      let grants = 0;
-      const controller = gate.createAccessGate({ onGranted: () => { grants += 1; } });
-      controller.initialize();
-      assert.equal(grants, 1);
-      controller.destroy();
+      withGlobalProperty('localStorage', { value: fixture.persistent }, () => {
+        assert.equal(gate.hasAccessGrant(), false);
+        assert.equal(gate.writeAccessGrant(), true);
+        assert.equal(gate.hasPersistentAccessGrant(), false);
+        assert.equal(gate.writePersistentAccessGrant(), true);
+        let grants = 0;
+        const controller = gate.createAccessGate({ onGranted: () => { grants += 1; } });
+        controller.initialize();
+        assert.equal(grants, 1);
+        controller.destroy();
+      });
     });
   });
 
@@ -141,6 +160,107 @@ test('global document and storage fallbacks preserve marker behavior and fail cl
     assert.equal(gate.hasAccessGrant(), false);
     assert.equal(gate.writeAccessGrant(), false);
   });
+  withGlobalProperty('localStorage', { get() { throw new Error('local storage unavailable'); } }, () => {
+    assert.equal(gate.hasPersistentAccessGrant(), false);
+    assert.equal(gate.writePersistentAccessGrant(), false);
+    assert.equal(gate.clearPersistentAccessGrant(), false);
+  });
+});
+
+test('remembered grant writes only opaque markers and bypasses the gate from persistent storage', () => {
+  const fixture = createFixture();
+  let grants = 0;
+  const controller = gate.createAccessGate({
+    document: fixture.document,
+    storage: fixture.session,
+    persistentStorage: fixture.persistent,
+    onGranted: () => { grants += 1; },
+  });
+  controller.initialize();
+  fixture.elements.accessRemember.checked = true;
+  fixture.elements.accessPhrase.value = 'ShotgunsDueSoon';
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(grants, 1);
+  assert.equal(fixture.session.getItem(gate.ACCESS_STORAGE_KEY), gate.ACCESS_STORAGE_VALUE);
+  assert.equal(fixture.persistent.getItem(gate.ACCESS_STORAGE_KEY), gate.ACCESS_STORAGE_VALUE);
+  assert.notEqual(fixture.session.getItem(gate.ACCESS_STORAGE_KEY), 'ShotgunsDueSoon');
+  assert.notEqual(fixture.persistent.getItem(gate.ACCESS_STORAGE_KEY), 'ShotgunsDueSoon');
+
+  const nextFixture = createFixture({}, { [gate.ACCESS_STORAGE_KEY]: gate.ACCESS_STORAGE_VALUE });
+  let nextGrants = 0;
+  const nextController = gate.createAccessGate({
+    document: nextFixture.document,
+    storage: nextFixture.session,
+    persistentStorage: nextFixture.persistent,
+    onGranted: () => { nextGrants += 1; },
+  });
+  nextController.initialize();
+  assert.equal(nextGrants, 1);
+  assert.equal(nextFixture.elements.accessGate.hidden, true);
+  assert.equal(nextFixture.elements.appShell.hidden, false);
+});
+
+test('unchecked grant stays session-only and storage failures do not block current-page access', () => {
+  const fixture = createFixture();
+  let grants = 0;
+  const controller = gate.createAccessGate({
+    document: fixture.document,
+    storage: fixture.session,
+    persistentStorage: fixture.persistent,
+    onGranted: () => { grants += 1; },
+  });
+  controller.initialize();
+  fixture.elements.accessPhrase.value = 'ShotgunsDueSoon';
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(grants, 1);
+  assert.equal(fixture.session.getItem(gate.ACCESS_STORAGE_KEY), gate.ACCESS_STORAGE_VALUE);
+  assert.equal(fixture.persistent.getItem(gate.ACCESS_STORAGE_KEY), null);
+
+  const deniedPersistent = {
+    getItem() { throw new Error('local storage denied'); },
+    setItem() { throw new Error('local storage denied'); },
+    removeItem() { throw new Error('local storage denied'); },
+  };
+  const deniedFixture = createFixture();
+  let deniedGrants = 0;
+  const deniedController = gate.createAccessGate({
+    document: deniedFixture.document,
+    storage: deniedFixture.session,
+    persistentStorage: deniedPersistent,
+    onGranted: () => { deniedGrants += 1; },
+  });
+  deniedController.initialize();
+  deniedFixture.elements.accessRemember.checked = true;
+  deniedFixture.elements.accessPhrase.value = 'ShotgunsDueSoon';
+  deniedFixture.elements.accessGate.dispatch('submit');
+  assert.equal(deniedGrants, 1);
+  assert.equal(deniedFixture.session.getItem(gate.ACCESS_STORAGE_KEY), gate.ACCESS_STORAGE_VALUE);
+});
+
+test('forget control clears both markers, re-locks without reload, and permits re-entry', () => {
+  const fixture = createFixture({}, { [gate.ACCESS_STORAGE_KEY]: gate.ACCESS_STORAGE_VALUE });
+  let grants = 0;
+  const controller = gate.createAccessGate({
+    document: fixture.document,
+    storage: fixture.session,
+    persistentStorage: fixture.persistent,
+    onGranted: () => { grants += 1; },
+  });
+  controller.initialize();
+  assert.equal(grants, 1);
+  fixture.elements.accessGate.dispatch('submit');
+  fixture.elements.forgetAccessButton.dispatch('click');
+  assert.equal(fixture.session.getItem(gate.ACCESS_STORAGE_KEY), null);
+  assert.equal(fixture.persistent.getItem(gate.ACCESS_STORAGE_KEY), null);
+  assert.equal(fixture.elements.accessGate.hidden, false);
+  assert.equal(fixture.elements.appShell.hidden, true);
+  assert.equal(fixture.elements.accessPhrase.focusCount, 1);
+
+  fixture.elements.accessRemember.checked = true;
+  fixture.elements.accessPhrase.value = 'ShotgunsDueSoon';
+  fixture.elements.accessGate.dispatch('submit');
+  assert.equal(grants, 2);
+  assert.equal(fixture.persistent.getItem(gate.ACCESS_STORAGE_KEY), gate.ACCESS_STORAGE_VALUE);
 });
 
 test('gate tolerates missing optional DOM nodes while handling rejection and grant', () => {

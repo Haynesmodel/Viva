@@ -89,7 +89,14 @@ function mountShell() {
   void bootstrapVivaApp({ tableRuntime, searchRuntime, freshnessRuntime });
 }
 
-const accessGate = createAccessGate({ onGranted: mountShell });
+let shellMounted = false;
+const accessGate = createAccessGate({
+  onGranted: () => {
+    if (shellMounted) return;
+    shellMounted = true;
+    mountShell();
+  },
+});
 
 if (browser.document?.readyState === 'loading') {
   browser.document.addEventListener('DOMContentLoaded', accessGate.initialize, { once: true });

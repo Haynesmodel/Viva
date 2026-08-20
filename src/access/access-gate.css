@@ -11,6 +11,7 @@
   display:grid;
   gap:var(--space-3);
   inline-size:min(100%,420px);
+  min-inline-size:0;
   padding:clamp(24px,6vw,40px);
   border:1px solid var(--border-strong);
   border-radius:var(--radius-panel);
@@ -28,7 +29,7 @@
 .access-gate h1{margin:0;font-size:clamp(28px,8vw,40px);line-height:1.1}
 .access-gate-instructions{margin:0;line-height:1.5}
 .access-gate label{font-size:14px;font-weight:750}
-.access-gate input{
+.access-gate input[type="password"]{
   min-block-size:var(--control-min-block-size);
   inline-size:100%;
   padding:8px 10px;
@@ -37,12 +38,42 @@
   background:var(--surface-control);
   color:var(--text-primary);
 }
-.access-gate input[aria-invalid="true"]{border-color:var(--status-error-border)}
+.access-gate input[type="password"][aria-invalid="true"]{border-color:var(--status-error-border)}
+.access-gate-remember{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  line-height:1.4;
+  cursor:pointer;
+}
+.access-gate-remember input{
+  flex:0 0 auto;
+  inline-size:1.1rem;
+  block-size:1.1rem;
+  min-block-size:0;
+  margin:0;
+  padding:0;
+  accent-color:var(--accent-primary);
+}
 .access-gate button{justify-self:start}
 .access-gate-status{min-block-size:1.5em;margin:0;color:var(--status-error-text);font-weight:700}
 .access-gate-status[data-access-result="easter-egg"]{color:var(--accent-primary)}
 .access-gate button:focus-visible,
 .access-gate input:focus-visible{outline:var(--focus-ring-width) solid var(--border-focus);outline-offset:var(--focus-ring-offset)}
+.access-forget-button{
+  min-block-size:36px;
+  padding:7px 10px;
+  border:1px solid color-mix(in srgb,var(--hero-text) 35%,transparent);
+  border-radius:var(--radius-control);
+  background:color-mix(in srgb,var(--surface-panel) 42%,transparent);
+  color:var(--hero-text);
+  font:inherit;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+.access-forget-button:hover,
+.access-forget-button:focus-visible{background:color-mix(in srgb,var(--hero-text) 16%,transparent)}
 
 @media (max-width:380px){
   .access-gate{padding-inline:12px}
@@ -52,7 +83,10 @@
 
 @media (forced-colors:active){
   .access-gate-panel{border-color:CanvasText;box-shadow:none}
-  .access-gate input{border-color:CanvasText}
+  .access-gate input[type="password"],
+  .access-gate-remember input,
+  .access-forget-button{border-color:CanvasText}
+  .access-forget-button{background:Canvas;color:CanvasText}
   .access-gate-status{color:CanvasText}
 }
 

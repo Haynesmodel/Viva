@@ -11,6 +11,7 @@ const EASTER_EGG_PHRASE = 'TaylorsAHoe';
 export interface AccessStorage {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
+  removeItem?(key: string): void;
 }
 
 export interface AccessGateDocument {
@@ -21,6 +22,7 @@ export interface AccessElement {
   hidden?: boolean;
   inert?: boolean;
   value?: string;
+  checked?: boolean;
   textContent?: string | null;
   className?: string;
   disabled?: boolean;
@@ -40,6 +42,7 @@ export interface AccessEvent {
 export interface AccessGateOptions {
   document?: AccessGateDocument | null;
   storage?: AccessStorage | null;
+  persistentStorage?: AccessStorage | null;
   onGranted: () => void;
   setTimeout?: (callback: () => void, delay: number) => unknown;
   clearTimeout?: (handle: unknown) => void;
@@ -62,8 +65,16 @@ function globalSessionStorage(): AccessStorage | null {
   }
 }
 
-function resolveStorage(storage: AccessStorage | null | undefined): AccessStorage | null {
-  return storage === undefined ? globalSessionStorage() : storage;
+function globalLocalStorage(): AccessStorage | null {
+  try {
+    return (globalThis as unknown as { localStorage?: AccessStorage }).localStorage || null;
+  } catch {
+    return null;
+  }
+}
+
+function resolveStorage(storage: AccessStorage | null | undefined, fallback: () => AccessStorage | null): AccessStorage | null {
+  return storage === undefined ? fallback() : storage;
 }
 
 export function evaluateAccessAttempt(value: string): AccessAttempt {
@@ -72,23 +83,58 @@ export function evaluateAccessAttempt(value: string): AccessAttempt {
   return 'reject';
 }
 
-export function hasAccessGrant(storage?: AccessStorage | null): boolean {
+function hasAccessGrantFrom(storage: AccessStorage | null | undefined, fallback: () => AccessStorage | null): boolean {
   try {
-    return resolveStorage(storage)?.getItem(ACCESS_STORAGE_KEY) === ACCESS_STORAGE_VALUE;
+    return resolveStorage(storage, fallback)?.getItem(ACCESS_STORAGE_KEY) === ACCESS_STORAGE_VALUE;
   } catch {
     return false;
   }
 }
 
-export function writeAccessGrant(storage?: AccessStorage | null): boolean {
+export function hasAccessGrant(storage?: AccessStorage | null): boolean {
+  return hasAccessGrantFrom(storage, globalSessionStorage);
+}
+
+function writeAccessGrantTo(storage: AccessStorage | null | undefined, fallback: () => AccessStorage | null): boolean {
   try {
-    const target = resolveStorage(storage);
+    const target = resolveStorage(storage, fallback);
     if (!target) return false;
     target.setItem(ACCESS_STORAGE_KEY, ACCESS_STORAGE_VALUE);
     return true;
   } catch {
     return false;
   }
+}
+
+export function writeAccessGrant(storage?: AccessStorage | null): boolean {
+  return writeAccessGrantTo(storage, globalSessionStorage);
+}
+
+function clearAccessGrantFrom(storage: AccessStorage | null | undefined, fallback: () => AccessStorage | null): boolean {
+  try {
+    const target = resolveStorage(storage, fallback);
+    if (!target || typeof target.removeItem !== 'function') return false;
+    target.removeItem(ACCESS_STORAGE_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function clearAccessGrant(storage?: AccessStorage | null): boolean {
+  return clearAccessGrantFrom(storage, globalSessionStorage);
+}
+
+export function hasPersistentAccessGrant(storage?: AccessStorage | null): boolean {
+  return hasAccessGrantFrom(storage, globalLocalStorage);
+}
+
+export function writePersistentAccessGrant(storage?: AccessStorage | null): boolean {
+  return writeAccessGrantTo(storage, globalLocalStorage);
+}
+
+export function clearPersistentAccessGrant(storage?: AccessStorage | null): boolean {
+  return clearAccessGrantFrom(storage, globalLocalStorage);
 }
 
 function setShellLocked(shell: AccessElement | null, locked: boolean): void {
@@ -124,6 +170,7 @@ function showStatus(status: AccessElement | null, message: string, result: Acces
 export function createAccessGate(options: AccessGateOptions): AccessGateController {
   const doc = options.document || globalDocument();
   const storage = options.storage;
+  const persistentStorage = options.persistentStorage;
   const setTimer = options.setTimeout || ((callback, delay) => globalThis.setTimeout(callback, delay));
   const clearTimer = options.clearTimeout || (handle => globalThis.clearTimeout(handle as Parameters<typeof globalThis.clearTimeout>[0]));
   let initialized = false;
@@ -132,8 +179,10 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
   let form: AccessElement | null = null;
   let gateMain: AccessElement | null = null;
   let input: AccessElement | null = null;
+  let remember: AccessElement | null = null;
   let status: AccessElement | null = null;
   let shell: AccessElement | null = null;
+  let forgetButton: AccessElement | null = null;
   let eggSequence = 0;
 
   const focusInput = () => input?.focus();
@@ -156,6 +205,7 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
     started = true;
     cancelEggStatusTimer();
     writeAccessGrant(storage);
+    if (remember?.checked) writePersistentAccessGrant(persistentStorage);
     clearStatus(status);
     if (input) {
       input.value = '';
@@ -166,6 +216,23 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
     setShellLocked(shell, false);
     doc?.getElementById('mainContent')?.focus();
     options.onGranted();
+  };
+
+  const lock = () => {
+    started = false;
+    cancelEggStatusTimer();
+    clearAccessGrant(storage);
+    clearPersistentAccessGrant(persistentStorage);
+    clearStatus(status);
+    if (input) {
+      input.value = '';
+      input.setAttribute('aria-invalid', 'false');
+    }
+    if (remember) remember.checked = false;
+    setGateVisible(gateMain, true);
+    setGateVisible(form, true);
+    setShellLocked(shell, true);
+    focusInput();
   };
 
   const onSubmit = (event: AccessEvent) => {
@@ -194,6 +261,10 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
     resetInput(true);
   };
 
+  const onForget = () => {
+    lock();
+  };
+
   const onInput = () => {
     if (!input || started) return;
     input.setAttribute('aria-invalid', 'false');
@@ -206,17 +277,20 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
     gateMain = doc?.getElementById('accessGateMain') || null;
     form = doc?.getElementById('accessGate') || null;
     input = doc?.getElementById('accessPhrase') || null;
+    remember = doc?.getElementById('accessRemember') || null;
     status = doc?.getElementById('accessGateStatus') || null;
     shell = doc?.getElementById('appShell') || null;
+    forgetButton = doc?.getElementById('forgetAccessButton') || null;
     setGateVisible(gateMain, true);
     setGateVisible(form, true);
     setShellLocked(shell, true);
-    if (hasAccessGrant(storage)) {
+    form?.addEventListener('submit', onSubmit);
+    input?.addEventListener('input', onInput);
+    forgetButton?.addEventListener('click', onForget);
+    if (hasAccessGrant(storage) || hasPersistentAccessGrant(persistentStorage)) {
       grant();
       return;
     }
-    form?.addEventListener('submit', onSubmit);
-    input?.addEventListener('input', onInput);
     input?.setAttribute('aria-invalid', 'false');
     focusInput();
   };
@@ -225,6 +299,7 @@ export function createAccessGate(options: AccessGateOptions): AccessGateControll
     if (!initialized) return;
     form?.removeEventListener?.('submit', onSubmit);
     input?.removeEventListener?.('input', onInput);
+    forgetButton?.removeEventListener?.('click', onForget);
     cancelEggStatusTimer();
     initialized = false;
   };
