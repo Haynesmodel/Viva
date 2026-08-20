@@ -7,7 +7,7 @@
       "rows": 84,
       "season_max": 2026,
       "season_min": 2026,
-      "sha256": "sha256:805f907ae4e3b8a59c7320c8cd4bedfc979f42d001ccfb16840e19751ae330b8"
+      "sha256": "sha256:a345963fcda185aa07f3a39ef35670053aa254c62e0bc735f7c39a59c0833926"
     },
     "DraftSpot": {
       "bytes": 74856,
@@ -55,7 +55,7 @@
       "sha256": "sha256:10071f68f808d64e6fac2c81eb83186f846be01ef5f7ec06e055baf4ed897901"
     }
   },
-  "data_version": "sha256:911bd39ebb94ea6999aa9283bcf4cb0df398c8c67787aa4bedf88326a891dce5",
+  "data_version": "sha256:8ab7ecc2b0c6f2f2a362f6c1b8e1726185145d545761efd5e7ba4b95f86de344",
   "derived": {
     "bytes": 127374,
     "path": "assets/DerivedStats.json",
