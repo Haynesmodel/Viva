@@ -137,11 +137,14 @@ Run this procedure without disclosing any secret value:
 
 The workflow fetches and validates server-side, regenerates only
 `CurrentSeason.json` plus its dependent generated assets, and opens/updates
-`automation/espn-current-season` as a review PR. It never commits raw ESPN
-responses, credentials, or browser session data, and it never merges its own
-PR. The first manual dispatch is the authoritative check that the configured
-repository permissions allow `gh pr create`; no administration-scoped
-preflight credential is used.
+`automation/espn-current-season` as a review PR. A no-change manual dispatch
+proves the fetch, normalization, generation, and validation path, but does not
+exercise review-PR permissions. When a changed run successfully pushes the
+review branch and opens or updates its PR, it verifies the configured
+`contents: write`/`pull-requests: write` policy; a new PR exercises
+`gh pr create`, while an existing open PR exercises `gh pr edit`. It never
+commits raw ESPN responses, credentials, or browser session data, and it never
+merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
