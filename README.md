@@ -49,12 +49,13 @@ CSS, TypeScript, route boundaries, bundle budgets, and the Pages artifact.
 
 ### Casual browser gate
 
-Viva starts behind a browser-side casual access gate. A successful entry is
-remembered only in that browser tab's `sessionStorage`, and the gate is a
-convenience deterrent rather than secure authentication. The phrase and the
-static bundle are delivered to every visitor, so source code, JSON, media keys,
-and direct asset URLs remain public. Restricted access would require a
-separately approved protected hosting or edge solution.
+Viva starts behind a browser-side casual access gate. When browser storage is
+available, a successful entry is remembered only in that browser tab's
+`sessionStorage`; if storage is denied, it unlocks only the current document.
+The gate is a convenience deterrent rather than secure authentication. The
+phrase and static bundle are delivered to every visitor, so source code, JSON,
+media keys, and direct asset URLs remain public. Restricted access would
+require a separately approved protected hosting or edge solution.
 
 ## Domain cutover and rollback
 
