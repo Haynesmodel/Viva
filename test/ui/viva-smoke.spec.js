@@ -32,6 +32,8 @@ test('wrong and Easter-egg phrases stay locked without exposing the entered valu
   await expect(input).toHaveAttribute('aria-invalid', 'true');
   await expect(page.locator('#accessGateStatus')).toContainText('did not work');
   await expect(page.locator('#accessGateStatus')).not.toContainText('not-the-phrase');
+  const rejectionResults = await new AxeBuilder({ page }).analyze();
+  expect(rejectionResults.violations).toEqual([]);
 
   await input.fill(ACCESS_EASTER_EGG_PHRASE);
   await input.press('Enter');
@@ -40,23 +42,29 @@ test('wrong and Easter-egg phrases stay locked without exposing the entered valu
   await expect(input).toHaveValue('');
   await expect(page.locator('#appShell')).toBeHidden();
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('viva:casual-access:v1'))).toBeNull();
+  const eggResults = await new AxeBuilder({ page }).analyze();
+  expect(eggResults.violations).toEqual([]);
   await page.waitForTimeout(1_300);
   await expect(page.locator('#accessGateStatus')).toHaveText('');
 });
 
-test('locked gate stays readable at narrow width, zoom, and reduced motion', async ({ page }) => {
-  await page.setViewportSize({ width: 320, height: 568 });
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
-  await expect(page.locator('#accessGate')).toBeVisible();
-  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-  await page.locator('#accessPhrase').fill('wrong');
-  await page.locator('#accessPhrase').press('Enter');
-  await expect(page.locator('#accessGateStatus')).toBeVisible();
-  await page.evaluate(() => { document.documentElement.style.zoom = '2'; });
-  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-  await expect(page.locator('#accessGateStatus')).toBeVisible();
-});
+for (const width of [320, 390]) {
+  test(`locked gate stays readable at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: width === 320 ? 568 : 844 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    await expect(page.locator('#accessGate')).toBeVisible();
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    await page.locator('#accessPhrase').fill('wrong');
+    await page.locator('#accessPhrase').press('Enter');
+    await expect(page.locator('#accessGateStatus')).toBeVisible();
+    if (width === 320) {
+      await page.evaluate(() => { document.documentElement.style.zoom = '2'; });
+      await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+      await expect(page.locator('#accessGateStatus')).toBeVisible();
+    }
+  });
+}
 
 test('exact unlock starts the app only after submission and preserves a deep link', async ({ page }) => {
   const jsonRequests = [];
