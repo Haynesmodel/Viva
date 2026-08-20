@@ -34,4 +34,15 @@ Visual characterization was checked for:
 - 390×844 Dynasty with a long structured modal.
 - 1440×900 Trophy Case with the desktop hero and primary navigation.
 
-The dated execution record and remaining device/assistive-technology release activities are documented in `docs/accessibility-release-verification-2026-07-16.md`.
+## Post-review addendum — 2026-08-20
+
+The completed front-end review covered every supported Viva route at
+320×568, 390×844, 768×1024, and 1440×900 in the local production build and on
+the production host, with Playwright and Axe checks for repeatable evidence.
+The Shotguns review added a requirement that every playable control expose a
+distinct accessible name containing the owner, record date, and cause, while
+unavailable media remains present with an explicit disabled explanation.
+The review also checked keyboard/focus behavior, reduced motion, both themes,
+200% zoom, and document-level overflow. No DevTools trace service was
+available in the review session, so no LCP, INP, CLS, or other Core Web Vitals
+claim is made.

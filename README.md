@@ -46,8 +46,9 @@ owner assets, Shotguns records, or the media host.
 
 - `assets/H2H.json`, `assets/SeasonSummary.json`, and `assets/Rivalries.json`
   are the canonical historical data sources.
-- `assets/CurrentSeason.json` and draft-pick fields are optional. They remain
-  unavailable until a reviewed ESPN export is normalized and promoted.
+- `assets/CurrentSeason.json` contains the configured current-season snapshot.
+  Verified historical draft order is populated for the approved 2020–2025
+  seasons; future or unverified seasons remain intentionally unavailable.
 - `assets/Shotguns.json` contains 98 curated records: 95 completed,
   media-backed records and 3 owed records. Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
@@ -62,11 +63,15 @@ owner assets, Shotguns records, or the media host.
   `draft_pick`; unavailable seasons remain absent. Candidate output is
   validated outside `assets/`, and only explicit promotion may update the
   selected `SeasonSummary.json` draft fields. Transactions and Player History
-  remain deferred.
+  remain deliberately out of scope.
 - `scripts/refresh_viva_current_season.py` is the separate server-side current
-  season adapter. The Tuesday GitHub Actions workflow uses it only after the
-  required ESPN configuration is enabled, and opens a review PR rather than
-  publishing directly to `main`.
+  season adapter. A manual workflow dispatch can prove it while the scheduled
+  gate is off; the Tuesday GitHub Actions schedule runs only when
+  `VIVA_ESPN_ENABLED` is exactly `true`. It opens or updates a review PR rather
+  than publishing directly to `main`, and requires `VIVA_ESPN_LEAGUE_ID`,
+  `VIVA_ESPN_SEASON`, `VIVA_MEDIA_BASE_URL`, and (for a private league) the
+  `VIVA_ESPN_S2` and `VIVA_ESPN_SWID` Actions secrets. Never place credential
+  values in the repository, logs, or documentation.
 - `scripts/check_viva_media.cjs` audits the 95 preserved local clips and the
   built artifact. Every preserved clip must be referenced by one completed
   Shotguns record.

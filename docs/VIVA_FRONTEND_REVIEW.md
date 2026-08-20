@@ -1,7 +1,7 @@
 # Viva front-end review
 
 **Audit date:** 2026-08-20
-**Reviewed deployment commit:** `0d89cbbef3f5a9e6ea5a1766306dbdf9e9d3b547` (`origin/main`)
+**Reviewed implementation commit:** `0d89cbbef3f5a9e6ea5a1766306dbdf9e9d3b547` (merged through `origin/main` at `38df4812d6a4570c9ed418e541e918a4aa10100e`)
 **Environment:** `https://taylorsahoefantasy.com/` plus a local Vite production build served with the repository preview runner. Chrome was used for visual and interaction review; Playwright and `@axe-core/playwright` supplied repeatable route checks.
 **Viewports:** 320x568, 390x844, 768x1024, and 1440x900. Light and dark themes were checked where route styling is meaningful.
 

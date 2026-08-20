@@ -1,7 +1,8 @@
 # Viva data operations
 
-This runbook keeps Viva's data reproducible and reviewable while the league is
-fed by manually exported ESPN data.
+This runbook keeps Viva's data reproducible and reviewable. Historical data is
+fed by manually exported ESPN data; the separate current-season adapter is
+guarded and review-PR-only as described below.
 
 ## Historical refresh
 
@@ -25,13 +26,18 @@ fed by manually exported ESPN data.
 The importer is fail-closed. It does not infer a season, follow another
 league, call ESPN, or modify canonical assets in candidate mode.
 
-## Current Season, Draft Spot, and Tuesday refresh
+## Current Season and historical Draft Spot
 
-Current Season is optional and must be correctly seasoned before promotion.
+The configured `CurrentSeason.json` snapshot is present for the current
+season. A credentialed refresh may update it only through the guarded Tuesday
+workflow described below; the workflow opens a review PR and never publishes
+directly to `main`.
+
 Draft Spot is generated only from reviewed `draft_pick` fields in
-`SeasonSummary.json`. The current snapshot has zero draft-pick fields, so the
-route remains an accessible unavailable state rather than showing invented
-order.
+`SeasonSummary.json`. Complete, verified draft order is currently populated for
+the approved 2020–2025 seasons. A missing or unverified season must remain
+unavailable; never infer its order from standings, finish, screenshots, or a
+partial export.
 
 ### Historical draft-order enrichment
 
@@ -63,8 +69,7 @@ or duplicate orders, out-of-range picks, and unknown or ambiguous owner names.
 It never contacts ESPN, reads credentials, or writes under `assets/` in
 candidate mode. The commissioner must reconcile the report against the
 private source manifest and approve the exact owner-to-pick mapping. A season
-that cannot be verified completely remains unavailable; do not infer its
-order from standings, finish, screenshots, or partial exports.
+that cannot be verified completely remains unavailable.
 
 After approval, promote one season explicitly, then regenerate and validate the
 derived assets in the normal reviewed data PR:
@@ -100,29 +105,43 @@ boundary is not the date the league should show to users. The adapter also
 normalizes ESPN's `NONE` playoff-tier sentinel to the empty regular-season
 round.
 
+## Tuesday current-season refresh
+
 The `Refresh current season` workflow is scheduled for Tuesday at 10:17 AM
-America/Chicago. It is disabled until repository variable
-`VIVA_ESPN_ENABLED` is exactly `true`. When enabled it needs:
+America/Chicago, but the schedule is guarded and runs only when repository
+variable `VIVA_ESPN_ENABLED` is exactly the literal string `true`. Manual
+dispatch is available while that gate is disabled and is the required proof
+path before enabling the schedule.
 
-- `VIVA_ESPN_LEAGUE_ID` and `VIVA_ESPN_SEASON` repository variables;
-- `VIVA_MEDIA_BASE_URL` (already configured for the production build);
-- for a private league only, `VIVA_ESPN_S2` and `VIVA_ESPN_SWID` GitHub Actions
-  secrets.
+Run this procedure without disclosing any secret value:
 
-Before enabling the workflow, open the repository's **Settings → Actions →
-General** page and set **Workflow permissions** to **Read and write
-permissions**, then enable **Allow GitHub Actions to create and approve pull
-requests**. The approval capability is required by GitHub's `GITHUB_TOKEN`
-policy for this automated review-PR flow; the workflow itself never approves
-or merges its PR. The workflow relies on this setup and does not use an
-Administration-scoped preflight credential; `gh pr create` is the authoritative
-check when the first review PR is opened.
+1. Check that the required repository variables
+   `VIVA_ESPN_LEAGUE_ID`, `VIVA_ESPN_SEASON`, and `VIVA_MEDIA_BASE_URL` exist.
+   For a private league, also check that the `VIVA_ESPN_S2` and
+   `VIVA_ESPN_SWID` Actions secrets exist. Never print or copy their values.
+2. In **Settings → Actions → General**, confirm workflow permissions provide
+   `contents: write` and `pull-requests: write`, and that repository policy
+   permits GitHub Actions to create review pull requests. The checked-in
+   workflow does not approve or merge anything.
+3. Keep the scheduled gate disabled. Use **Actions → Refresh current season →
+   Run workflow** with the intended season, then inspect the run and any
+   `automation/espn-current-season` pull request.
+4. Review the normalized `CurrentSeason.json` and generated dependent assets,
+   run the required CI checks, and merge a resulting PR only through normal
+   maintainer review. A successful no-change run is also a valid proof result.
+5. Only after a correct manual run or reviewed no-change result, set
+   `VIVA_ESPN_ENABLED` to exact lowercase `true`. Record the next Tuesday
+   10:17 AM America/Chicago expected run and review every resulting PR.
+6. To pause future schedules, remove the variable or set it to any value other
+   than `true`; manual dispatch remains available for diagnosis.
 
-The workflow fetches server-side, validates the candidate, regenerates data,
-and opens/updates `automation/espn-current-season` as a review PR. It never
-commits raw ESPN responses, credentials, or browser session data, and it never
-merges its own PR. Test it first with **Run workflow** before setting
-`VIVA_ESPN_ENABLED=true`.
+The workflow fetches and validates server-side, regenerates only
+`CurrentSeason.json` plus its dependent generated assets, and opens/updates
+`automation/espn-current-season` as a review PR. It never commits raw ESPN
+responses, credentials, or browser session data, and it never merges its own
+PR. The first manual dispatch is the authoritative check that the configured
+repository permissions allow `gh pr create`; no administration-scoped
+preflight credential is used.
 
 ## Shotguns and external media
 
@@ -178,9 +197,11 @@ then remove the Pages custom-domain setting and the new apex/`www` web
 records. Never roll back by changing the media host, data assets, owner
 records, or Shotguns keys.
 
-## Deferred automation
+## Deferred scope
 
-Credentialed ESPN discovery, scheduled refreshes, Transactions, and Player
-History remain deferred. They require a separately approved data/security
-contract and representative exports; they must not be reintroduced by copying
-an unrelated workflow.
+Transactions and Player History remain out of scope. Historical ESPN import
+and draft enrichment remain manual, candidate-first, and commissioner-reviewed;
+they do not infer or fill unverified seasons. Credentialed current-season
+refresh is implemented but remains guarded until the manual proof and review
+steps above are complete. Do not reintroduce unrelated Sleeper workflows or
+new ESPN data surfaces without a separately approved data/security contract.
