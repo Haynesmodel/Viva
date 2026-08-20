@@ -13,6 +13,9 @@ test('fresh sessions stay locked and make no canonical JSON request', async ({ p
   });
   await page.goto('/');
   await expect(page.locator('#accessGate')).toBeVisible();
+  await expect(page.locator('#accessGateInstructions')).toHaveText('Enter the password to continue in this browser tab.');
+  await expect(page.locator('label[for="accessPhrase"]')).toHaveText('Password');
+  await expect(page.locator('.access-gate-boundary')).toHaveCount(0);
   await expect(page.locator('#accessPhrase')).toBeFocused();
   await expect(page.locator('#appShell')).toBeHidden();
   await expect(page.locator('#appShell')).toHaveAttribute('inert', '');
@@ -44,7 +47,7 @@ test('wrong and Easter-egg phrases stay locked without exposing the entered valu
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('viva:casual-access:v1'))).toBeNull();
   const eggResults = await new AxeBuilder({ page }).analyze();
   expect(eggResults.violations).toEqual([]);
-  await page.waitForTimeout(1_300);
+  await page.waitForTimeout(3_700);
   await expect(page.locator('#accessGateStatus')).toHaveText('');
 });
 

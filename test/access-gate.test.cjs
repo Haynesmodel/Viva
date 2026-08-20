@@ -70,6 +70,7 @@ test.before(async () => {
 test.after(() => fs.rmSync(temp, { recursive: true, force: true }));
 
 test('phrase classification is exact and case-sensitive', () => {
+  assert.equal(gate.ACCESS_EASTER_EGG_DURATION_MS, 3_600);
   assert.equal(gate.evaluateAccessAttempt('ShotgunsDueSoon'), 'grant');
   assert.equal(gate.evaluateAccessAttempt('shotgunsduesoon'), 'reject');
   assert.equal(gate.evaluateAccessAttempt(' ShotgunsDueSoon'), 'reject');
@@ -151,6 +152,7 @@ test('the Easter egg stays locked and stale timers cannot clear a newer message'
   fixture.elements.accessPhrase.value = 'TaylorsAHoe';
   fixture.elements.accessGate.dispatch('submit');
   const first = timers[0];
+  assert.equal(first.delay, gate.ACCESS_EASTER_EGG_DURATION_MS);
   assert.equal(fixture.elements.accessGateStatus.textContent, gate.ACCESS_EASTER_EGG_MESSAGE);
   fixture.elements.accessPhrase.value = 'TaylorsAHoe';
   fixture.elements.accessGate.dispatch('submit');

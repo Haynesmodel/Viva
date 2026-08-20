@@ -3,7 +3,7 @@ export type AccessAttempt = 'grant' | 'easter-egg' | 'reject';
 export const ACCESS_STORAGE_KEY = 'viva:casual-access:v1';
 export const ACCESS_STORAGE_VALUE = 'granted';
 export const ACCESS_EASTER_EGG_MESSAGE = "Dulberger's one too";
-export const ACCESS_EASTER_EGG_DURATION_MS = 1_200;
+export const ACCESS_EASTER_EGG_DURATION_MS = 3_600;
 
 const PRIMARY_ACCESS_PHRASE = 'ShotgunsDueSoon';
 const EASTER_EGG_PHRASE = 'TaylorsAHoe';

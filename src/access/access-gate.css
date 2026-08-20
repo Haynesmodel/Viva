@@ -26,8 +26,7 @@
   text-transform:uppercase;
 }
 .access-gate h1{margin:0;font-size:clamp(28px,8vw,40px);line-height:1.1}
-.access-gate-instructions,
-.access-gate-boundary{margin:0;line-height:1.5}
+.access-gate-instructions{margin:0;line-height:1.5}
 .access-gate label{font-size:14px;font-weight:750}
 .access-gate input{
   min-block-size:var(--control-min-block-size);
@@ -42,7 +41,6 @@
 .access-gate button{justify-self:start}
 .access-gate-status{min-block-size:1.5em;margin:0;color:var(--status-error-text);font-weight:700}
 .access-gate-status[data-access-result="easter-egg"]{color:var(--accent-primary)}
-.access-gate-boundary{color:var(--text-muted);font-size:12px}
 .access-gate button:focus-visible,
 .access-gate input:focus-visible{outline:var(--focus-ring-width) solid var(--border-focus);outline-offset:var(--focus-ring-offset)}
 
