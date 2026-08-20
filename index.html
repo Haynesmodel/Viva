@@ -23,7 +23,30 @@
   <meta name="twitter:image:alt" content="Viva league history and Shotguns." />
 </head>
 <body>
-  <div id="appShell">
+  <main id="accessGateMain">
+    <form id="accessGate" class="access-gate" aria-labelledby="accessGateTitle" aria-describedby="accessGateInstructions">
+      <div class="access-gate-panel">
+        <p class="access-gate-kicker">Viva</p>
+        <h1 id="accessGateTitle">Enter Viva</h1>
+        <p id="accessGateInstructions" class="access-gate-instructions">
+          Enter the password to continue in this browser tab.
+        </p>
+        <label for="accessPhrase">Password</label>
+        <input
+          id="accessPhrase"
+          name="accessPhrase"
+          type="password"
+          autocomplete="off"
+          spellcheck="false"
+          aria-describedby="accessGateInstructions accessGateStatus"
+        />
+        <button type="submit" class="btn primary">Enter Viva</button>
+        <p id="accessGateStatus" class="access-gate-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </form>
+  </main>
+
+  <div id="appShell" hidden inert aria-hidden="true">
     <a class="skip-link" href="#mainContent">Skip to league content</a>
   <header class="site-hero">
     <picture class="site-hero-media" aria-hidden="true">

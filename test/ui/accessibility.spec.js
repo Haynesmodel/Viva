@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from './coverage-fixture.js';
+import { unlockViva } from './access-gate.ts';
 
 const routes = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dynasty', 'draft', 'gauntlet', 'shotguns'];
 const buttons = Object.fromEntries(routes.filter(route => route !== 'pulse').map(route => [route, `#tab${route[0].toUpperCase()}${route.slice(1)}Btn`]));
@@ -16,6 +17,8 @@ async function waitForApp(page) {
 for (const route of routes) {
   test(`Viva ${route} route is axe-clean`, async ({ page }) => {
     await page.goto('/');
+    await analyze(page, 'access-gate-locked');
+    await unlockViva(page);
     await waitForApp(page);
     if (route !== 'pulse') {
       const group = ['owner', 'history', 'trophy', 'dynasty', 'shotguns'].includes(route) ? 'owners' : ['draft', 'gauntlet'].includes(route) ? 'tools' : null;
@@ -30,6 +33,7 @@ for (const route of routes) {
 
 test('theme controls remain accessible across light, dark, and system modes', async ({ page }) => {
   await page.goto('/?tab=history');
+  await unlockViva(page);
   await waitForApp(page);
   for (const preference of ['light', 'dark', 'system']) {
     const control = page.locator(`[data-theme-preference="${preference}"]`);
@@ -43,6 +47,7 @@ test('theme controls remain accessible across light, dark, and system modes', as
 test('Viva remains usable at 320px and 200 percent zoom', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
   await page.goto('/');
+  await unlockViva(page);
   await waitForApp(page);
   await page.locator('details[data-navigation-group="owners"] > summary').click();
   await page.locator('#tabShotgunsBtn').click();
@@ -59,6 +64,7 @@ test('Shotguns announces modal playback failures and restores focus', async ({ p
     HTMLMediaElement.prototype.play = () => Promise.reject(new Error('blocked in test'));
   });
   await page.goto('/?tab=shotguns');
+  await unlockViva(page);
   await waitForApp(page);
   const play = page.locator('.shotgun-play').first();
   await expect(play).toBeEnabled();
@@ -71,6 +77,7 @@ test('Shotguns announces modal playback failures and restores focus', async ({ p
 
 test('Shotguns filtered archive remains axe-clean and labels actions distinctly', async ({ page }) => {
   await page.goto('/?tab=shotguns');
+  await unlockViva(page);
   await analyze(page, 'shotguns-default');
   const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
   expect(new Set(labels).size).toBe(labels.length);

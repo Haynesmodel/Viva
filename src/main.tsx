@@ -15,6 +15,7 @@ import { bindDropdownChecklists } from './accessibility/dropdown-checklist';
 import { focusableElements } from './accessibility/focus';
 import { prefersReducedMotion, subscribeToReducedMotion } from './accessibility/motion';
 import { bindPrimaryNavigation, syncPageState } from './accessibility/primary-navigation';
+import { createAccessGate } from './access/access-gate';
 
 type VivaDataLoader = typeof import('./data/load-league-assets').loadLeagueAssets;
 
@@ -88,8 +89,10 @@ function mountShell() {
   void bootstrapVivaApp({ tableRuntime, searchRuntime, freshnessRuntime });
 }
 
+const accessGate = createAccessGate({ onGranted: mountShell });
+
 if (browser.document?.readyState === 'loading') {
-  browser.document.addEventListener('DOMContentLoaded', mountShell, { once: true });
+  browser.document.addEventListener('DOMContentLoaded', accessGate.initialize, { once: true });
 } else {
-  mountShell();
+  accessGate.initialize();
 }
