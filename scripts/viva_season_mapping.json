@@ -1,19 +1,19 @@
 {
   "owners": {
-    "Dulberger": ["Dulberger", "Josh", "Bed, Bath, and Bijan", "BBB", "Josh Dulberger"],
-    "Erin": ["Erin", "Fourth and Drunk", "E", "Erin Newell"],
-    "Joe": ["Joe", "JoeJoe JoeJoe", "JoeJoe", "Joe Haynes"],
-    "Kylie": ["Kylie", "Karma is my Tight End", "MALO", "Kylie Maloney"],
-    "Leah": ["Leah", "Another 'Quon", "LMM", "Leah Mahlka"],
-    "Malcolm": ["Malcolm", "No Child Left Behind", "BBC", "Malcolm Steele"],
-    "Marian": ["Marian", "Stroud Boys", "HILL", "Marian Hillebrand"],
-    "Mino": ["Mino", "Kmet Me Bro", "MINO", "Mino Matsuda"],
-    "Rico": ["Rico", "Smokin Jays", "RIco", "Rafael Rico"],
+    "Dulberger": ["Dulberger", "Josh", "Bed, Bath, and Bijan", "BBB", "Josh Dulberger", "Indianapolis Out of Luck", "Get CTE or Die Trying", "My Ball Zach Ertz"],
+    "Erin": ["Erin", "Fourth and Drunk", "E", "Erin Newell", "Denver Colts"],
+    "Joe": ["Joe", "JoeJoe JoeJoe", "JoeJoe", "Joe Haynes", "Team Haynes"],
+    "Kylie": ["Kylie", "Karma is my Tight End", "MALO", "Kylie Maloney", "Team Maloney"],
+    "Leah": ["Leah", "Another 'Quon", "LMM", "Leah Mahlka", "Team Mahlka", "Bijan Mustard", "Go DJ, That's my DJ"],
+    "Malcolm": ["Malcolm", "No Child Left Behind", "BBC", "Malcolm Steele", "Team Weak Ass Player", "House of TagDatAsk", "Big Commish!"],
+    "Marian": ["Marian", "Stroud Boys", "HILL", "Marian Hillebrand", "Team Hillebrand", "NoJoe JoeJoe"],
+    "Mino": ["Mino", "Kmet Me Bro", "MINO", "Mino Matsuda", "Da Bear Necessities", "Uncle Mino", "Life's a Mitch"],
+    "Rico": ["Rico", "Smokin Jays", "RIco", "Rafael Rico", "Team Rona", "Jehovah Witnesses"],
     "Seth": ["Seth", "Team Mills", "MILL", "Seth Mills"],
-    "Taylor": ["Taylor", "Leah \"I hate this league\" Matsu", "da", "Taylor Beegle"],
-    "Wei": ["Wei", "Pizza Nut", "PNUT", "Michael Wu"],
-    "Chuck": ["Chuck"],
-    "Julia": ["Julia"]
+    "Taylor": ["Taylor", "Leah \"I hate this league\" Matsu", "da", "Taylor Beegle", "Inside Steele's Taint", "Small Hunting Dogs", "Don't Knock On My Window"],
+    "Wei": ["Wei", "Pizza Nut", "PNUT", "Michael Wu", "The SeeNutz", "TheSee Nutz"],
+    "Chuck": ["Chuck", "Indy Dighty Mucks"],
+    "Julia": ["Julia", "Broad Ripple Pickle Backs"]
   },
   "seasons": {
     "2020": { "teams": 8 },
