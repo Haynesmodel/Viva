@@ -22,7 +22,7 @@ jobs:
       dist_digest: ${{ steps.dist.outputs.artifact-digest }}
     env:
       CI: '1'
-      VITE_BASE_PATH: /Viva/
+      VITE_BASE_PATH: /
       VITE_VIVA_MEDIA_BASE_URL: ${{ vars.VIVA_MEDIA_BASE_URL }}
       REQUIRE_VIVA_MEDIA_CONFIG: '1'
     steps:
@@ -301,6 +301,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: read
+      pages: read
     steps:
       - name: Download tested production artifact
         id: dist
@@ -309,6 +310,25 @@ jobs:
           name: viva-dist-${{ github.sha }}
           path: dist/
           digest-mismatch: error
+      - name: Confirm Pages apex custom domain before packaging
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          EXPECTED_PAGES_DOMAIN: taylorsahoefantasy.com
+        with:
+          script: |
+            const expected = process.env.EXPECTED_PAGES_DOMAIN;
+            const { data: pages } = await github.rest.repos.getPages({
+              ...context.repo,
+            });
+            if (pages.cname !== expected || pages.protected_domain_state !== 'verified') {
+              core.setFailed(
+                `Pages custom domain is ${pages.cname || 'unset'} with verification state `
+                + `${pages.protected_domain_state || 'unknown'}, expected ${expected} and verified. `
+                + 'Root-base Pages deployment is intentionally blocked until the owner configures and verifies the apex domain.',
+              );
+              return;
+            }
+            core.info(`Pages custom domain configured and verified for root-base deployment: ${expected}`);
       - name: Validate Pages payload
         run: |
           for file in \

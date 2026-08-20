@@ -4,7 +4,7 @@ const usePreview = process.env.PLAYWRIGHT_SERVER === 'preview';
 const collectCoverage = process.env.COLLECT_COVERAGE === '1';
 const port = Number(process.env.PLAYWRIGHT_PORT || 8000);
 const host = `http://127.0.0.1:${port}`;
-const basePath = process.env.PLAYWRIGHT_BASE_PATH || '/Viva/';
+const basePath = process.env.PLAYWRIGHT_BASE_PATH || '/';
 const strippedBasePath = basePath.replace(/^\/+|\/+$/g, '');
 const normalizedBasePath = strippedBasePath ? `/${strippedBasePath}/` : '/';
 const baseURL = usePreview ? `${host}${normalizedBasePath}` : host;

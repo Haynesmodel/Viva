@@ -760,7 +760,7 @@ test('local CI orchestrator sets CI and builds exactly once', async () => {
   ]);
   assert.equal(calls.filter(call => call[2].includes('build')).length, 1);
   assert.ok(calls.every(call => call[3].env.CI === '1'));
-  assert.equal(calls[2][3].env.VITE_BASE_PATH, '/Viva/');
+  assert.equal(calls[2][3].env.VITE_BASE_PATH, '/');
   assert.equal(calls[0][1], npmCommand);
   const errors = [];
   const originalError = console.error;

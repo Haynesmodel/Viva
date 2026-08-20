@@ -205,11 +205,11 @@ test('built audit catches missing, mismatched, oversized, invalid, and wrong-siz
 
 test('root metadata uses the absolute Open Graph and Twitter contract', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  const image = 'https://haynesmodel.github.io/Viva/assets/share/viva-default-card.png';
+  const image = 'https://taylorsahoefantasy.com/assets/share/viva-default-card.png';
   for (const fragment of [
     'property="og:title" content="Viva"',
     'property="og:type" content="website"',
-    'property="og:url" content="https://haynesmodel.github.io/Viva/"',
+    'property="og:url" content="https://taylorsahoefantasy.com/"',
     `property="og:image" content="${image}"`,
     `property="og:image:secure_url" content="${image}"`,
     'property="og:image:type" content="image/png"',
@@ -220,5 +220,6 @@ test('root metadata uses the absolute Open Graph and Twitter contract', () => {
     `name="twitter:image" content="${image}"`,
     'name="twitter:image:alt"',
   ]) assert.ok(html.includes(fragment), fragment);
+  assert.doesNotMatch(html, /https:\/\/haynesmodel\.github\.io\/Viva(?:\/|$)/);
   assert.doesNotMatch(html, /rel="canonical"/);
 });
