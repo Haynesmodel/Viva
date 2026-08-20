@@ -20,10 +20,17 @@ function normalizeRows(rows: ShotgunRecord[] | null): ShotgunRecord[] {
   return Array.isArray(rows) ? rows.filter(row => resolveVivaOwner(row.owner)) : [];
 }
 
-function card(row: ShotgunRecord): string {
-  const identity = vivaOwnerImage(row.owner);
-  const owner = vivaShotgunDisplayName(row.owner);
-  return `<article class="shotgun-card"><div class="shotgun-card-header">${identity ? `<img src="${escapeHtml(identity.src)}" alt="${escapeHtml(identity.alt)}" />` : ''}<h3>${escapeHtml(owner)}</h3></div><p>${escapeHtml(row.date)}${row.week ? ` · Week ${row.week}` : ''}</p><p>${escapeHtml(row.cause)}</p><button class="btn shotgun-play" type="button" data-shotgun-id="${escapeHtml(row.id)}" ${row.media_key && MEDIA_BASE_URL ? '' : 'disabled'}>${row.media_key && MEDIA_BASE_URL ? 'Play clip' : 'Media unavailable'}</button></article>`;
+function completedRecord(row: ShotgunRecord): string {
+  return `<li class="shotgun-record"><div><strong>${escapeHtml(row.date)}</strong>${row.week ? `<span>Week ${escapeHtml(row.week)}</span>` : ''}<span>${escapeHtml(row.cause)}</span></div><button class="btn shotgun-play" type="button" data-shotgun-id="${escapeHtml(row.id)}" ${row.media_key && MEDIA_BASE_URL ? '' : 'disabled'}>${row.media_key && MEDIA_BASE_URL ? 'Play clip' : 'Media unavailable'}</button></li>`;
+}
+
+function ownerTile(owner: string, owedCount: number, completed: ShotgunRecord[]): string {
+  const identity = vivaOwnerImage(owner);
+  const displayName = vivaShotgunDisplayName(owner);
+  const records = completed.length
+    ? `<ul class="shotgun-record-list">${completed.map(completedRecord).join('')}</ul>`
+    : '<p class="muted">No completed Shotguns.</p>';
+  return `<article class="shotgun-card shotgun-owner-tile"><div class="shotgun-card-header">${identity ? `<img src="${escapeHtml(identity.src)}" alt="${escapeHtml(identity.alt)}" />` : ''}<h3>${escapeHtml(displayName)}</h3></div><div class="shotgun-card-metrics"><span>Owed: ${owedCount}</span><span>Completed: ${completed.length}</span></div>${records}</article>`;
 }
 
 export function createFeatureController(): VivaFeatureController {
@@ -57,7 +64,9 @@ export function createFeatureController(): VivaFeatureController {
       const ownerCompleted = completed.filter(row => row.owner === owner).length;
       return `<tr><th scope="row">${escapeHtml(vivaShotgunDisplayName(owner))}</th><td>${ownerOwed}</td><td>${ownerCompleted}</td><td>${ownerOwed + ownerCompleted}</td></tr>`;
     }).join('');
-    root.innerHTML = `<div class="shotgun-summary"><p>${owed.length} owed · ${completed.length} completed · ${rows.length} total</p>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning" role="status">Shotgun media is not configured for this deployment. All records remain available.</p>' : ''}</div><section class="card"><h3>Shotguns by owner</h3><div class="table-wrap" tabindex="0" aria-label="Shotguns by owner"><table><thead><tr><th scope="col">Owner</th><th scope="col">Owed</th><th scope="col">Completed</th><th scope="col">Total</th></tr></thead><tbody>${ownerRows}</tbody></table></div></section><section class="card"><h3>Shotguns Owed</h3>${owed.length ? `<div class="table-wrap" tabindex="0" aria-label="Shotguns owed"><table><thead><tr><th scope="col">Owner</th><th scope="col">Week</th><th scope="col">Cause</th><th scope="col">Date</th><th scope="col">Due</th></tr></thead><tbody>${owed.map(row => `<tr><td>${escapeHtml(vivaShotgunDisplayName(row.owner))}</td><td>${escapeHtml(row.week ?? '—')}</td><td>${escapeHtml(row.cause)}</td><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.due_date || '—')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No shotguns owed.</p>'}</section><section class="card"><h3>Completed Shotguns</h3><div class="shotgun-grid">${owners.flatMap(owner => completed.filter(row => row.owner === owner)).map(card).join('') || '<p class="muted">No completed Shotguns available.</p>'}</div></section>`;
+    const completedByOwner = new Map(owners.map(owner => [owner, completed.filter(row => row.owner === owner)]));
+    const ownerTiles = owners.map(owner => ownerTile(owner, owed.filter(row => row.owner === owner).length, completedByOwner.get(owner) || [])).join('');
+    root.innerHTML = `<div class="shotgun-summary"><p>${owed.length} owed · ${completed.length} completed · ${rows.length} total</p>${!MEDIA_BASE_URL ? '<p class="status-banner status-warning" role="status">Shotgun media is not configured for this deployment. All records remain available.</p>' : ''}</div><section class="card"><h3>Shotguns by owner</h3><div class="table-wrap" tabindex="0" aria-label="Shotguns by owner"><table><thead><tr><th scope="col">Owner</th><th scope="col">Owed</th><th scope="col">Completed</th><th scope="col">Total</th></tr></thead><tbody>${ownerRows}</tbody></table></div></section><section class="card"><h3>Shotguns Owed</h3>${owed.length ? `<div class="table-wrap" tabindex="0" aria-label="Shotguns owed"><table><thead><tr><th scope="col">Owner</th><th scope="col">Week</th><th scope="col">Cause</th><th scope="col">Date</th><th scope="col">Due</th></tr></thead><tbody>${owed.map(row => `<tr><td>${escapeHtml(vivaShotgunDisplayName(row.owner))}</td><td>${escapeHtml(row.week ?? '—')}</td><td>${escapeHtml(row.cause)}</td><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.due_date || '—')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">No shotguns owed.</p>'}</section><section class="card"><h3>Completed Shotguns</h3><div class="shotgun-grid">${ownerTiles || '<p class="muted">No completed Shotguns available.</p>'}</div></section>`;
     root.querySelectorAll<HTMLButtonElement>('.shotgun-play').forEach(button => button.addEventListener('click', () => {
       const row = rows.find(candidate => candidate.id === button.getAttribute('data-shotgun-id'));
       const source = row?.media_key ? mediaUrl(row.media_key) : null;
