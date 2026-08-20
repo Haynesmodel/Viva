@@ -28,11 +28,11 @@ CSS, TypeScript, route boundaries, bundle budgets, and the Pages artifact.
 The GitHub Pages custom domain and the repository root `CNAME` must both be
 `taylorsahoefantasy.com`. The main push workflow queries the Pages API and
 refuses to package or deploy the root-base artifact until that exact custom
-domain is active. Before merging this cutover PR, the owner should verify the
-domain in GitHub and configure the Pages custom domain; only then publish
-DNS-only GitHub Pages records for the apex and a `www` CNAME pointing directly
-to `Haynesmodel.github.io`. Do not proxy these records, add a wildcard, or
-change `media.taylorsahoefantasy.com`.
+domain is configured and reported as verified. Before merging this cutover
+PR, the owner should verify the domain in GitHub and configure the Pages
+custom domain; only then publish DNS-only GitHub Pages records for the apex
+and a `www` CNAME pointing directly to `Haynesmodel.github.io`. Do not proxy
+these records, add a wildcard, or change `media.taylorsahoefantasy.com`.
 
 After Pages reports the custom domain served and HTTPS is available, verify the
 apex routes and the single permanent `www` redirect before enabling Enforce

@@ -320,14 +320,15 @@ jobs:
             const { data: pages } = await github.rest.repos.getPages({
               ...context.repo,
             });
-            if (pages.cname !== expected) {
+            if (pages.cname !== expected || pages.protected_domain_state !== 'verified') {
               core.setFailed(
-                `Pages custom domain is ${pages.cname || 'unset'}, expected ${expected}. `
+                `Pages custom domain is ${pages.cname || 'unset'} with verification state `
+                + `${pages.protected_domain_state || 'unknown'}, expected ${expected} and verified. `
                 + 'Root-base Pages deployment is intentionally blocked until the owner configures and verifies the apex domain.',
               );
               return;
             }
-            core.info(`Pages custom domain verified for root-base deployment: ${expected}`);
+            core.info(`Pages custom domain configured and verified for root-base deployment: ${expected}`);
       - name: Validate Pages payload
         run: |
           for file in \

@@ -11,7 +11,7 @@ test('Pages packaging requires the configured apex custom domain', () => {
   assert.match(packageJob, /Confirm Pages apex custom domain before packaging/);
   assert.match(packageJob, /EXPECTED_PAGES_DOMAIN: taylorsahoefantasy\.com/);
   assert.match(packageJob, /github\.rest\.repos\.getPages/);
-  assert.match(packageJob, /pages\.cname !== expected/);
+  assert.match(packageJob, /pages\.cname !== expected \|\| pages\.protected_domain_state !== 'verified'/);
   assert.match(packageJob, /Root-base Pages deployment is intentionally blocked/);
 });
 

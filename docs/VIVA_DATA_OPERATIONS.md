@@ -108,10 +108,11 @@ the site and certificate; `www.taylorsahoefantasy.com` is a redirect alias, and
 `media.taylorsahoefantasy.com` remains the separate Shotguns media host.
 
 Before public DNS changes, the owner verifies the domain with GitHub and sets
-the Pages custom domain to the exact apex hostname before merging or deploying
-the root-base PR. The main push workflow checks the Pages API and refuses to
-package/deploy the root-base artifact while the custom domain is unset or
-different. Then create only the documented DNS-only GitHub Pages apex records
+the Pages custom domain to the exact apex hostname and complete GitHub's
+verification before merging or deploying the root-base PR. The main push
+workflow checks the Pages API and refuses to package/deploy the root-base
+artifact while the custom domain is unset, different, or unverified. Then
+create only the documented DNS-only GitHub Pages apex records
 and the direct `www` CNAME to `Haynesmodel.github.io`; do not proxy them, add a
 wildcard, or modify the media record. Enable Enforce HTTPS only after Pages
 reports the certificate ready and an apex HTTPS request succeeds. Record the
