@@ -6,6 +6,7 @@ const routes = ['pulse', 'owner', 'history', 'current', 'rivalry', 'trophy', 'dy
 test('Viva shell exposes the supported route matrix and omits Transactions', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Viva|Preview|Year in Review/);
+  await expect(page.locator('#headerOwnerIdentity')).toBeHidden();
   await expect(page.locator('#tabShotgunsBtn')).toHaveCount(1);
   await expect(page.getByText('Transactions', { exact: true })).toHaveCount(0);
 
@@ -24,6 +25,9 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await expect(page.locator('#shotgunsRoot')).toContainText('3 owed');
   await expect(page.locator('#shotgunsRoot')).toContainText('95 completed');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
+  await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(95);
+  await expect(page.locator('.shotgun-card:not(.shotgun-owner-tile)')).toHaveCount(0);
   expect(videoRequests).toEqual([]);
 });
 
