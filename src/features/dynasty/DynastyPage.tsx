@@ -77,12 +77,12 @@ function gameOutcome(owner: string, game: H2HGame): string {
   return `${result} ${opponent}${round ? ` in ${round}` : ''}`;
 }
 
-export function isLastPlaceGame(game: H2HGame): boolean {
+function isLastPlaceGame(game: H2HGame): boolean {
   return /^(?:saunders|last place)$/i.test(String(game.type || '').trim())
     || /^(?:saunders|last place)\b/i.test(String(game.round || '').trim());
 }
 
-export function seasonOutcome(owner: string, season: DynastySeasonProfile, games: readonly H2HGame[], kind: 'playoffs' | 'saunders'): string {
+function seasonOutcome(owner: string, season: DynastySeasonProfile, games: readonly H2HGame[], kind: 'playoffs' | 'saunders'): string {
   const seasonGames = games.filter(game => game.season === season.season && (game.teamA === owner || game.teamB === owner) && (kind === 'saunders' ? isLastPlaceGame(game) : game.type === 'Playoff'));
   const fallbackGames = kind === 'playoffs' && seasonGames.length === 0 ? games.filter(game => game.season === season.season && (game.teamA === owner || game.teamB === owner) && isLastPlaceGame(game)) : seasonGames;
   const narrative = fallbackGames.map(game => gameOutcome(owner, game)).join(', ');

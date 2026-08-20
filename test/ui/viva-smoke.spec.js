@@ -145,6 +145,18 @@ test('Viva shell exposes the supported route matrix and omits Transactions', asy
   }
 });
 
+test('Dynasty last-place window shows normalized matchup result', async ({ page }) => {
+  await page.goto('/?tab=dynasty');
+  await unlockViva(page);
+  const slumps = page.locator('#dynastySlumpsDisclosure');
+  await slumps.locator('summary').click();
+  const lastPlaceWindow = slumps.locator('[data-window-kind="saunders"]').first();
+  await expect(lastPlaceWindow).toBeVisible();
+  await lastPlaceWindow.click();
+  await expect(page.locator('#dynastyWindowModal')).toBeVisible();
+  await expect(page.locator('#dynastyWindowModal')).toContainText('Last place');
+});
+
 test('Shotguns renders the preserved record states without loading video bytes', async ({ page }) => {
   const videoRequests = [];
   page.on('request', request => {
