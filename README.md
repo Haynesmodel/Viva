@@ -10,6 +10,30 @@ current snapshot adopts the shared platform shape documented in
 [`docs/VIVA_DARLING_SNAPSHOT.md`](docs/VIVA_DARLING_SNAPSHOT.md), but does not
 merge or replay another repository's history.
 
+## An archive built like a data product
+
+Viva is a purpose-built, evidence-first archive for one fantasy league—not a
+generic dashboard with a league logo applied afterward. It brings rigorous
+historical analysis, a populated current-season command center, and the
+gloriously specific accountability of Shotguns into one bespoke league
+identity. The repository currently carries 486 head-to-head rows, 66
+season-summary rows across six verified seasons, nine named rivalry groups, 98
+curated Shotguns records, and verified historical draft order for 2020–2025.
+
+- **Auditable by construction.** Canonical JSON, typed validators, generated
+  assets, candidate-first import workflows, and deterministic derived models
+  make the path from league record to visible fact inspectable and repeatable.
+- **Analysis with context.** Pulse, History, Current Season, Head to Head,
+  Trophy, Dynasty, Draft Spot, Historical Matchup, and Shotguns each answer a
+  different league question while preserving the underlying record.
+- **Accessible as a product requirement.** Semantic controls, keyboard and
+  focus coverage, responsive layouts, and Axe-backed route checks are part of
+  the delivery contract—not a polish pass after the statistics are done.
+- **Distinctly Viva.** Custom owner presentation, banner pages, the Shotguns
+  archive, and a separate media host give the site its own visual and
+  operational identity. Viva shares useful platform foundations with Darling
+  while remaining an independent repository with independent data boundaries.
+
 ## Development
 
 ```bash
