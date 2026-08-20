@@ -142,7 +142,7 @@ test('history renderer builds top highlight chips', () => {
   });
   assert.match(html, /Championships/);
   assert.match(html, /Years: 2025\*/);
-  assert.match(html, /Saunders/);
+  assert.match(html, /Last place/);
   assert.match(html, /Years: 2024\*/);
   assert.match(html, /Regular-Season Titles/);
   assert.match(html, /Years: 2025/);

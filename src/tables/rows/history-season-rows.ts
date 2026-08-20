@@ -18,7 +18,7 @@ export function adaptHistorySeasonRows(rows: unknown[], context: TableContext = 
       record: `${wins}-${losses}-${ties}`,
       winPct,
       finish: Number.isFinite(Number(row.finish)) ? Number(row.finish) : null,
-      outcome: String(row.outcome || (row.champion ? 'Champion' : row.saunders ? 'Saunders' : '—')),
+      outcome: String(row.outcome || (row.champion ? 'Champion' : row.saunders ? 'Last place' : '—')),
       details: [
         { label: 'Outcome', value: String(row.outcome || '—') },
         { label: 'PF / PA', value: Number.isFinite(pf) && Number.isFinite(pa) ? `${pf.toFixed(1)} / ${pa.toFixed(1)}` : '—' },

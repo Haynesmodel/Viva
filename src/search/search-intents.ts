@@ -57,7 +57,7 @@ function removeYear(query: string, year?: number): string {
 function removeGameType(query: string, gameType?: string): string {
   const patterns: Record<string, RegExp> = {
     Playoff: /\b(?:playoff|playoffs|postseason)\b/,
-    Saunders: /\bsaunders(?: bowl)?\b/,
+    Saunders: /\b(?:saunders(?: bowl)?|last place)\b/,
     Championship: /\bchampionship\b/,
     Regular: /\bregular(?: season)?\b/,
   };
@@ -95,7 +95,7 @@ function yearInQuery(query: string, seasons: number[]): number | undefined {
 
 function gameTypeInQuery(query: string): string | undefined {
   if (/\b(playoff|playoffs|postseason)\b/.test(query)) return 'Playoff';
-  if (/\bsaunders(?: bowl)?\b/.test(query)) return 'Saunders';
+  if (/\b(?:saunders(?: bowl)?|last place)\b/.test(query)) return 'Saunders';
   if (/\bchampionship\b/.test(query)) return 'Championship';
   if (/\bregular(?: season)?\b/.test(query)) return 'Regular';
   return undefined;

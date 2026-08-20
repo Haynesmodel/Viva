@@ -26,7 +26,7 @@ export const DRAFT_METRICS: Record<DraftMetricKey, DraftMetricDefinition> = {
   playoffRate: { key: 'playoffRate', label: 'Playoff Rate', summaryField: 'playoff_rate', rowField: 'made_playoffs', lowerIsBetter: false, format: 'percent' },
   topThreeRate: { key: 'topThreeRate', label: 'Top 3 Rate', summaryField: 'top_three_rate', rowField: 'top_three', lowerIsBetter: false, format: 'percent' },
   championships: { key: 'championships', label: 'Championship Count', summaryField: 'championships', rowField: 'champion', lowerIsBetter: false, format: 'count' },
-  saundersRate: { key: 'saundersRate', label: 'Saunders Rate', summaryField: 'saunders_rate', rowField: 'saunders', lowerIsBetter: true, format: 'percent' },
+  saundersRate: { key: 'saundersRate', label: 'Last-place Rate', summaryField: 'saunders_rate', rowField: 'saunders', lowerIsBetter: true, format: 'percent' },
   pointsZ: { key: 'pointsZ', label: 'Points z-score', summaryField: 'avg_points_z', rowField: 'points_z', lowerIsBetter: false, format: 'signed' },
   winsAboveAvg: { key: 'winsAboveAvg', label: 'Wins Above Average', summaryField: 'avg_wins_above_avg', rowField: 'wins_above_avg', lowerIsBetter: false, format: 'signed' },
 };

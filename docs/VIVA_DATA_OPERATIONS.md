@@ -97,7 +97,7 @@ current season response. It only writes `CurrentSeason.json`, so an ongoing
 season is never forced through finalized historical summary validation. It
 requires the target season's team count, owner aliases, and a
 `current_season` block in `scripts/viva_season_mapping.json` with the
-commissioner-verified league key, regular/max weeks, playoff/bye/Saunders
+commissioner-verified league key, regular/max weeks, playoff/bye/Last place
 slots, standings tiebreakers, and any commissioner-verified `week_display_dates`
 overrides. ESPN's matchup date and scoring-period `startDate` represent the
 provider's scoring-period boundary; use a display-date override when that

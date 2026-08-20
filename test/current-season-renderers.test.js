@@ -78,7 +78,7 @@ test('current-season renderer emits hero, matchup, standings, and snapshot html'
   const playoff = currentPlayoffPictureHtml(view);
   assert.match(playoff, /Playoff Picture/);
   assert.match(playoff, /Playoff line/);
-  assert.match(playoff, /Saunders danger line/);
+  assert.match(playoff, /Last-place danger line/);
   assert.match(playoff, /bottom 2 seeds/);
 
   const needs = currentWeekNeedsHtml(view);
@@ -173,7 +173,7 @@ test('current-season renderer labels postseason weeks', () => {
   const html = currentMatchupsHtml(view);
   assert.match(html, /Postseason Week 16 Matchups/);
   assert.match(html, /Playoff Week 16/);
-  assert.match(html, /Saunders Week 16/);
+  assert.match(html, /Last place Week 16/);
   assert.match(html, /live/);
   assert.equal(formattedGeneratedAt('2026-06-17T14:22:30Z'), 'Jun 17, 2026, 2:22 PM UTC');
 });
@@ -195,7 +195,7 @@ test('current-season renderer separates the Last Place path from the Championshi
   assert.match(html, /Championship Path/);
   assert.match(html, /Last Place Path/);
   assert.match(html, /Last Place Week 16/);
-  assert.doesNotMatch(html, /Saunders Path/);
+  assert.doesNotMatch(html, /Last-place path/);
 });
 
 test('current-season renderers hide containers when view mode filters sections', () => {

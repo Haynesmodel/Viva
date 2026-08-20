@@ -1,4 +1,5 @@
 import type { VivaTableRow, TableContext } from '../table-types';
+import { displayGameType, displayRound } from '../table-filter-functions';
 
 export function adaptRivalryGameRows(rows: unknown[], context: TableContext = {}): VivaTableRow[] {
   const chronological = rows.slice().sort((a: any, b: any) => String(a.date).localeCompare(String(b.date)));
@@ -25,7 +26,7 @@ export function adaptRivalryGameRows(rows: unknown[], context: TableContext = {}
       details: [
         { label: 'Running series record', value: `${context.rivalryA || 'Team A'} ${running.get(key) || '—'}` },
         { label: 'Winner', value: String(row.winner || 'Tie') },
-        { label: 'Context', value: [row.type, row.round].filter(Boolean).join(' · ') || 'Regular season' },
+        { label: 'Context', value: [displayGameType(row.type), displayRound(row.round)].filter(Boolean).join(' · ') || 'Regular season' },
       ],
     };
   });

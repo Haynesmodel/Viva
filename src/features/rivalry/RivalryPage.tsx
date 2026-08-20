@@ -33,7 +33,7 @@ function Headline({ view }: { view: RivalryViewModel }) {
       </div>
       <div class="rivalry-subtitle">{series}</div>
       <div class="rivalry-line">{formatScoreline(overall.pf, overall.pa)} total points</div>
-      <div class="rivalry-line">Regular {view.summary.regular.recordText} | Playoffs {view.summary.playoffs.recordText} | Saunders {view.summary.saunders.recordText}</div>
+      <div class="rivalry-line">Regular {view.summary.regular.recordText} | Playoffs {view.summary.playoffs.recordText} | Last place {view.summary.saunders.recordText}</div>
       <div class="rivalry-line">Current streak: {current} | Last meeting: {lastMeeting}</div>
     </div>
   </div>;

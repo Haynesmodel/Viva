@@ -322,7 +322,7 @@ function topStatHighlights(view: { owner: string; leagueRanks: TrophyLeagueRanks
     ['top2Seeds', 'Byes', 'beachChair', metrics.top2Seeds],
     ['avgFinish', 'Avg Finish', null, metrics.avgFinish],
     ['sub70Games', 'Sub-70 Games', 'warning', metrics.sub70Games],
-    ['saundersPain', 'Saunders Titles', 'warning', metrics.saundersPain],
+    ['saundersPain', 'Last-place finishes', 'warning', metrics.saundersPain],
   ];
 
   const items: TrophyHeroHighlight[] = [];
@@ -348,12 +348,12 @@ function topStatHighlights(view: { owner: string; leagueRanks: TrophyLeagueRanks
 function formatLedgerNotes(row: SeasonSummaryRow): string[] {
   const notes = [];
   if (row.champion) notes.push('Champion');
-  if (row.saunders) notes.push('Saunders');
+  if (row.saunders) notes.push('Last place');
   if (row.playoff_wins > 0 || row.playoff_losses > 0) {
     notes.push(`Postseason ${row.playoff_wins || 0}-${row.playoff_losses || 0}`);
   }
   if (row.saunders_wins > 0 || row.saunders_losses > 0) {
-    notes.push(`Saunders ${row.saunders_wins || 0}-${row.saunders_losses || 0}`);
+    notes.push(`Last place ${row.saunders_wins || 0}-${row.saunders_losses || 0}`);
   }
   if (row.bye) notes.push(row.champion ? 'Regular-season title' : 'Bye');
   if (row.wild_card) notes.push('Wild card');
@@ -714,7 +714,7 @@ function computeOwnerIdentity(ownerProfile: TrophyOwnerCareerProfile, leagueRank
     if (finishStdDev > 4.5 || (finishRank !== null && finishRank <= 2)) return 'Boom/Bust';
     if ((playoffWinPct !== null && playoffWinPct > 0 && playoffWinRank !== null && playoffWinRank <= 3) || playoffWins >= 4) return 'Playoff Riser';
     if (champCount === 0 && regularTitleCount === 0 && playoffWins === 0) return 'Rebuild Resume';
-    if (saundersPain === 0 && playoffWins > 0) return 'Saunders Survivor';
+    if (saundersPain === 0 && playoffWins > 0) return 'Last-place survivor';
     if (weeklyCrowns > top2Seeds && winPct !== null && winPct >= 0.5) return 'Chaos Team';
     return 'Contender Profile';
   })();
@@ -757,7 +757,7 @@ function buildHeroView(ownerProfile: TrophyOwnerCareerProfile, identity: TrophyI
         : 'Still building';
 
   const worstScar = ownerProfile.counts.saundersTitles > 0
-    ? `${joinYears(ownerProfile.years.saundersTitles)} Saunders`
+    ? `${joinYears(ownerProfile.years.saundersTitles)} Last place`
     : ownerProfile.worstGame
       ? `${ownerProfile.worstGame.game.season} lowest outing`
       : 'No clear low point yet';
@@ -830,20 +830,20 @@ function computeHardwareShelf(ownerProfile: TrophyOwnerCareerProfile, leagueRank
       icon: null,
     },
     {
-      label: 'Saunders titles',
+      label: 'Last-place finishes',
       count: ownerProfile.counts.saundersTitles,
       years: ownerProfile.years.saundersTitles,
       rank: rankMap?.saundersPain.rank ?? null,
-      context: ownerProfile.counts.saundersTitles > 0 ? 'Saunders hardware' : 'Clean Saunders sheet',
+      context: ownerProfile.counts.saundersTitles > 0 ? 'Last-place hardware' : 'Clean last-place sheet',
       tone: 'scar',
       icon: 'turd',
     },
     {
-      label: 'Saunders byes',
+      label: 'Last place byes',
       count: ownerProfile.counts.saundersByes,
       years: ownerProfile.years.saundersByes,
       rank: null,
-      context: ownerProfile.counts.saundersByes > 0 ? 'Avoided the basement' : 'Clean Saunders sheet',
+      context: ownerProfile.counts.saundersByes > 0 ? 'Avoided the basement' : 'Clean last-place sheet',
       tone: 'scar',
       icon: 'warning',
     },
@@ -866,7 +866,7 @@ function computeHardwareShelf(ownerProfile: TrophyOwnerCareerProfile, leagueRank
 
 function tierForSeason(row: SeasonSummaryRow): { tier: string; label: string } {
   if (row.champion) return { tier: 'champion', label: 'Champion' };
-  if (row.saunders) return { tier: 'saunders', label: 'Saunders' };
+  if (row.saunders) return { tier: 'saunders', label: 'Last place' };
   if (row.bye || (+row.finish <= 2)) return { tier: 'contender', label: 'Contender' };
   if (Number.isFinite(+row.finish) && +row.finish <= 4) return { tier: 'upper', label: 'Upper tier' };
   if (Number.isFinite(+row.finish) && +row.finish >= 8) return { tier: 'pain', label: 'Pain' };
@@ -917,7 +917,7 @@ function signatureSeasonReason(row: SeasonSummaryRow, profile: TrophyOwnerCareer
   if (profile.mostUnluckySeason && +profile.mostUnluckySeason.season === +row.season) reasons.push('Most unlucky season');
   if (profile.worstFinishSeason && +profile.worstFinishSeason.season === +row.season) reasons.push('Worst finish');
   if (row.bye && !profile.years?.regularTitles?.includes(+row.season)) reasons.push('Bye');
-  if (row.saunders) reasons.push('Saunders');
+  if (row.saunders) reasons.push('Last place');
   if (row.wild_card) reasons.push('Wild card');
   if (row.bagels_earned !== null && row.bagels_earned !== undefined) reasons.push(`Bagels earned ${row.bagels_earned}`);
   return uniquePreserveOrder(reasons);
@@ -942,7 +942,7 @@ function computeSignatureSeasons(ownerProfile: TrophyOwnerCareerProfile): Trophy
   for (const row of rows) {
     if (row.champion) addCandidate(row.season, 'Champion', 'Champion', 0);
     if (ownerProfile.years.regularTitles.includes(+row.season)) addCandidate(row.season, 'Regular-season title', 'Regular-season title', 1);
-    if (row.saunders) addCandidate(row.season, 'Saunders', 'Saunders', 4);
+    if (row.saunders) addCandidate(row.season, 'Last place', 'Last place', 4);
     if (row.bye && !ownerProfile.years.regularTitles.includes(+row.season)) addCandidate(row.season, 'Bye', 'Bye', 5);
     if (row.wild_card) addCandidate(row.season, 'Wild card', 'Wild card', 6);
   }
@@ -1104,7 +1104,7 @@ function achievementAndScarItems(ownerProfile: TrophyOwnerCareerProfile): Trophy
     saundersSeason ? {
       priority: 5,
       sourceKey: seasonKey(saundersSeason),
-      item: item(`low:saunders-season:${saundersSeason.season}`, seasonKey(saundersSeason), saundersSeason.saunders ? 'Saunders title' : 'Saunders bye', `${saundersSeason.season}`, saundersSeason.saunders ? 'Saunders title receipt' : 'Saunders bye receipt'),
+      item: item(`low:saunders-season:${saundersSeason.season}`, seasonKey(saundersSeason), saundersSeason.saunders ? 'Last-place finish' : 'Last-place bye', `${saundersSeason.season}`, saundersSeason.saunders ? 'Last-place finish receipt' : 'Last-place bye receipt'),
     } : null,
   ]);
 

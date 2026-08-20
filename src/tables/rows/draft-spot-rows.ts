@@ -3,7 +3,7 @@ import type { VivaTableRow, TableContext } from '../table-types';
 
 function outcome(row: DraftSpotRow): string {
   if (row.champion) return 'Champion';
-  if (row.saunders) return 'Saunders';
+  if (row.saunders) return 'Last place';
   if (row.made_playoffs) return row.top_three ? 'Top 3' : 'Playoffs';
   return 'Missed playoffs';
 }

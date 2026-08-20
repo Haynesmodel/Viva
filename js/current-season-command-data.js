@@ -483,10 +483,10 @@ function ownerGoalLabel(row, rules = DEFAULT_PLAYOFF_RULES, teamCount = 0) {
   const lineSeed = saundersLineSeed(rules, teamCount);
   if (row.status?.key === 'clinched-bye') return 'Bye locked';
   if (row.status?.key === 'clinched-playoff') return 'Bye race';
-  if (row.status?.key === 'eliminated') return lineSeed && row.currentSeed >= lineSeed ? 'Saunders danger' : 'Placement';
+  if (row.status?.key === 'eliminated') return lineSeed && row.currentSeed >= lineSeed ? 'Last-place danger' : 'Placement';
   if (row.currentSeed <= rules.bye_slots) return 'Bye race';
   if (row.currentSeed <= rules.playoff_slots) return 'Playoff line';
-  if (lineSeed && row.currentSeed >= lineSeed) return 'Saunders danger';
+  if (lineSeed && row.currentSeed >= lineSeed) return 'Last-place danger';
   return 'Playoff chase';
 }
 
@@ -495,10 +495,10 @@ function saundersSummary(row, rules = DEFAULT_PLAYOFF_RULES, teamCount = 0) {
   if (!row || !lineSeed) return '';
   if (row.currentSeed >= lineSeed) {
     const safeSeed = Math.max(1, lineSeed - 1);
-    return `In Saunders danger; climb to seed ${safeSeed} or better to clear the boundary.`;
+    return `In last-place danger; climb to seed ${safeSeed} or better to clear the boundary.`;
   }
-  if (lineSeed === 1) return 'Every seed is inside the Saunders boundary.';
-  return `Above Saunders danger; boundary starts at seed ${lineSeed}.`;
+  if (lineSeed === 1) return 'Every seed is inside the last-place boundary.';
+  return `Above last-place danger; boundary starts at seed ${lineSeed}.`;
 }
 
 function pointsForRanks(standings = []) {
@@ -727,7 +727,7 @@ function buildOwnerWeekNeeds({
           currentWeekMatchups,
           currentStandings,
           targetSlot: saundersSeed - 1,
-          targetLabel: 'Saunders safety',
+          targetLabel: 'Last-place safety',
           leagueGames,
           seasonSummaries,
           currentSeason,
@@ -755,7 +755,7 @@ function buildOwnerWeekNeeds({
     } else if (row.status.key === 'eliminated') {
       mainNeed = 'Eliminated from the playoff race.';
       helpNeeded = 'No playoff help remains.';
-      pathSummary = 'Focus is Saunders positioning and final placement.';
+      pathSummary = 'Focus is last-place positioning and final placement.';
       riskSummary = saundersNote || 'Losses still affect the consolation bracket path.';
     } else if (!matchup) {
       mainNeed = `No regular-season matchup found for Week ${week || '-'}.`;
@@ -783,7 +783,7 @@ function buildOwnerWeekNeeds({
           ? `Needs help from ${helpTargets.join(', ')}.`
           : 'Needs teams above the cutline to slip.';
       }
-      pathSummary = saundersPath && goalLabel === 'Saunders danger'
+      pathSummary = saundersPath && goalLabel === 'Last-place danger'
         ? saundersPath
         : `Against ${opponent}: win projects seed ${winSeed}, loss projects seed ${lossSeed}.`;
       riskSummary = saundersNote || (lossSeed > row.currentSeed
@@ -891,9 +891,9 @@ function impactLabelForMatchup(game, pictureByOwner, rules) {
   const hasBubble = rows.some(row => Math.abs(row.currentSeed - rules.playoff_slots) <= 1);
   const hasSaundersDanger = lineSeed && rows.some(row => row.currentSeed >= lineSeed || row.projectedSeed >= lineSeed);
   if (rows.some(row => row.currentSeed <= rules.bye_slots + 1)) return 'Bye race';
-  if (hasBubble && hasSaundersDanger) return 'Bubble / Saunders danger';
+  if (hasBubble && hasSaundersDanger) return 'Bubble / last-place danger';
   if (hasBubble) return 'Bubble swing';
-  if (hasSaundersDanger) return 'Saunders danger';
+  if (hasSaundersDanger) return 'Last-place danger';
   if (rows.some(row => row.status.key === 'eliminated')) return 'Seeding only';
   if (rows.some(row => row.currentSeed > rules.playoff_slots)) return 'Playoff chase';
   return 'Seeding only';

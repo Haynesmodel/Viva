@@ -138,3 +138,10 @@ test('chart data availability is uniform across every request kind', () => {
     assert.equal(chartRequestHasData(empty), false);
   }
 });
+
+test('draft-pick charts use numeric P labels for their categorical domain', () => {
+  const host = { child: null, replaceChildren(child) { this.child = child; } };
+  const rows = [1, 12, 10, 2, 11].map(pick => ({ label: `P${pick}`, value: pick, title: `P${pick}` }));
+  renderChart(host, { kind: 'draft-picks', data: { rows, xLabel: 'Pick', yLabel: 'Count', ariaLabel: 'Picks' } });
+  assert.deepEqual(host.child.options.x.domain, ['P1', 'P2', 'P10', 'P11', 'P12']);
+});

@@ -5,7 +5,6 @@ export function pulseMatchupGroups(matchups: PulseMatchupModel[], phase: PulsePh
   if (phase !== 'postseason') return [{ title: '', rows: matchups }];
   return [
     { title: 'Championship bracket', rows: matchups.filter(matchup => matchup.type !== 'Saunders' && !isLastPlaceGame(matchup)) },
-    { title: 'Last Place bracket', rows: matchups.filter(isLastPlaceGame) },
-    { title: 'Saunders bracket', rows: matchups.filter(matchup => matchup.type === 'Saunders') },
+    { title: 'Last-place bracket', rows: matchups.filter(matchup => isLastPlaceGame(matchup) || String(matchup.type || '').toLowerCase() === 'saunders' || String(matchup.round || '').toLowerCase().includes('saunders')) },
   ].filter(group => group.rows.length);
 }

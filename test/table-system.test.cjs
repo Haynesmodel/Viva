@@ -172,6 +172,18 @@ test('typed table filters cover text, enums, ranges, records, and game predicate
   assert.equal(filters.isBlowout({ margin: 31 }), true);
   assert.equal(filters.isPostseason({ type: 'Playoff' }), true);
   assert.equal(filters.isSaunders({ type: 'Saunders', round: 'Final' }), true);
+  assert.equal(filters.isSaunders({ type: 'Last place', round: 'Last place Final' }), true);
+});
+
+test('last-place table display normalizes raw Saunders rows while preserving quick-filter matching', async () => {
+  const [, filters, , historyGames] = await modules;
+  const [row] = historyGames.adaptHistoryGameRows([{
+    season: 2025, date: '2025-12-21', team: 'Joe', opponent: 'Shap',
+    score: 90, opponentScore: 95, result: 'L', type: 'Saunders', round: 'Saunders Final',
+  }], { owner: 'Joe' });
+  assert.equal(row.type, 'Last place');
+  assert.equal(row.round, 'Last place Final');
+  assert.equal(filters.isSaunders(row), true);
 });
 
 test('record columns filter their displayed record and sort by numeric performance', async () => {

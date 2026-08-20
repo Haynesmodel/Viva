@@ -335,8 +335,8 @@ test('Trophy hardware shelf preserves the semantic tone mapping for each card fa
       ['Byes', 'neutral'],
       ['Wild cards', 'neutral'],
       ['Playoff wins', 'neutral'],
-      ['Saunders titles', 'scar'],
-      ['Saunders byes', 'scar'],
+      ['Last-place finishes', 'scar'],
+      ['Last place byes', 'scar'],
       ['Bagels', 'scar'],
     ],
   );

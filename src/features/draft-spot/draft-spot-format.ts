@@ -38,7 +38,7 @@ export function outcomeLabel(row: {
   top_three: boolean;
 }): string {
   if (row.champion) return 'Champion';
-  if (row.saunders) return 'Saunders';
+  if (row.saunders) return 'Last place';
   if (row.top_three) return 'Top 3';
   if (row.made_playoffs) return 'Playoffs';
   return 'Missed playoffs';

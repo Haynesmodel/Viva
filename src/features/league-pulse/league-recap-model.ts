@@ -325,7 +325,7 @@ function seasonEdition(data: PulseModelData, pathname: string, season: number): 
   const highlights: PulseSuperlative[] = [
     { label: 'Champion', value: review.champion, detail: review.championshipResult || 'League champion' },
     { label: 'Runner-up', value: review.runnerUp || '—', detail: review.championshipResult || 'Finalist' },
-    { label: 'Saunders winner', value: review.saunders, detail: 'Saunders Bowl' },
+    { label: 'Last-place finisher', value: review.saunders, detail: 'Last-place matchup' },
     ...review.superlatives.slice(0, 1),
   ];
   return { ...base, state: 'complete', headline: `${review.champion} wins the ${season} Viva championship`, statusLabel: 'Final', facts: review, highlights, issue: null };

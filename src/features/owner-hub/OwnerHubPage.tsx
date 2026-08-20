@@ -53,7 +53,7 @@ function HubContent({ model }: { model: OwnerHubModel }) {
           <Stat label="Season" value={model.legacy.record} />
           <Stat label="Win %" value={model.legacy.winPct === null ? 'Not available' : `${(model.legacy.winPct * 100).toFixed(1)}%`} />
           <Stat label="Titles" value={model.legacy.championships} />
-          <Stat label="Saunders" value={model.legacy.saundersTitles} />
+          <Stat label="Last place" value={model.legacy.saundersTitles} />
           <Stat label="Playoffs" value={model.legacy.playoffRecord} />
           <Stat label="Best" value={model.legacy.bestFinish === null ? 'Not available' : `No. ${model.legacy.bestFinish}`} />
           <Stat label="Avg. finish" value={model.legacy.averageFinish === null ? 'Not available' : model.legacy.averageFinish.toFixed(1)} />

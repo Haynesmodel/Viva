@@ -128,7 +128,7 @@ function formattedGeneratedAt(value) {
 function weekTypeLabel(type) {
   const normalized = String(type || '').trim().toLowerCase();
   if (normalized === 'playoff') return 'Playoff';
-  if (normalized === 'saunders') return 'Saunders';
+  if (normalized === 'saunders') return 'Last place';
   if (normalized === 'last place') return 'Last Place';
   return 'Week';
 }
@@ -319,7 +319,7 @@ function currentSeasonHeroHtml(view) {
         </div>
         <div class="current-hero-stats">
           <div class="stat"><div class="label">Champion</div><div class="value">${escapeHtml(recap?.champion || 'Pending')}</div></div>
-          <div class="stat"><div class="label">Saunders</div><div class="value">${escapeHtml(recap?.saunders || 'Pending')}</div></div>
+          <div class="stat"><div class="label">Last place</div><div class="value">${escapeHtml(recap?.saunders || 'Pending')}</div></div>
           <div class="stat"><div class="label">Final Table</div><div class="value">${escapeHtml(recap?.finalStandings?.length || 0)}</div><div class="sub">owners</div></div>
         </div>
       </div>
@@ -370,17 +370,17 @@ function currentRecapHtml(view) {
     <div class="current-recap-honors">
       <article><div class="label">Champion</div><strong>${escapeHtml(recap.champion)}</strong></article>
       <article><div class="label">Runner-up</div><strong>${escapeHtml(recap.runnerUp || 'Not available')}</strong></article>
-      <article><div class="label">Saunders Bowl</div><strong>${escapeHtml(recap.saunders)}</strong></article>
+      <article><div class="label">Last-place matchup</div><strong>${escapeHtml(recap.saunders)}</strong></article>
     </div>
   ` : phase === 'preseason' && context?.complete ? `
     <div class="current-recap-honors">
       <article><div class="label">Defending champion</div><strong>${escapeHtml(context.champion)}</strong></article>
-      <article><div class="label">Latest Saunders winner</div><strong>${escapeHtml(context.saunders)}</strong></article>
+      <article><div class="label">Latest last-place finisher</div><strong>${escapeHtml(context.saunders)}</strong></article>
     </div>
   ` : `
     <div class="current-recap-pending">
       <strong>Authoritative honors pending</strong>
-      <p>Champion and Saunders claims wait for one validated winner of each honor.</p>
+      <p>Champion and last-place claims wait for one validated result of each honor.</p>
     </div>
   `;
 
@@ -513,7 +513,7 @@ function currentMatchupsHtml(view) {
       </div>
       ${group('Championship Path', championship)}
       ${group('Last Place Path', lastPlace)}
-      ${group('Saunders Path', saunders)}
+      ${group('Last-place path', saunders)}
     `;
   }
   return `
@@ -594,13 +594,13 @@ function currentPlayoffPictureHtml(view) {
   return `
     <div class="section-heading current-section-heading">
       <h3>Playoff Picture</h3>
-      <div class="muted">Top ${escapeHtml(command.rules.playoff_slots)} make playoffs &middot; Top ${escapeHtml(command.rules.bye_slots)} earn byes${saundersLine ? ` &middot; Saunders danger starts at seed ${escapeHtml(saundersLine)}` : ''}</div>
+      <div class="muted">Top ${escapeHtml(command.rules.playoff_slots)} make playoffs &middot; Top ${escapeHtml(command.rules.bye_slots)} earn byes${saundersLine ? ` &middot; Last-place danger starts at seed ${escapeHtml(saundersLine)}` : ''}</div>
     </div>
     <div class="current-playoff-grid">
       ${rows.map(row => `
         ${row.currentSeed === command.rules.bye_slots + 1 ? '<div class="current-cutline">Bye line</div>' : ''}
         ${row.currentSeed === command.rules.playoff_slots + 1 ? '<div class="current-cutline current-cutline-playoff">Playoff line</div>' : ''}
-        ${saundersLine && row.currentSeed === saundersLine ? '<div class="current-cutline current-cutline-saunders">Saunders danger line</div>' : ''}
+        ${saundersLine && row.currentSeed === saundersLine ? '<div class="current-cutline current-cutline-saunders">Last-place danger line</div>' : ''}
         <div class="current-seed-row${row.owner === command.selectedOwner ? ' current-owner-focus' : ''}">
           <div class="current-seed-badge">${escapeHtml(row.currentSeed)}</div>
           <div class="current-seed-main">
@@ -614,7 +614,7 @@ function currentPlayoffPictureHtml(view) {
             ${estimatesMeaningful && row.odds ? `
               <span class="current-odds-chip">Playoffs ${escapeHtml(fmtOdds(row.odds.playoffOdds))}</span>
               <span class="current-odds-chip">Bye ${escapeHtml(fmtOdds(row.odds.byeOdds))}</span>
-              <span class="current-odds-chip current-odds-chip-saunders">Saunders ${escapeHtml(fmtOdds(row.odds.saundersOdds))}</span>
+              <span class="current-odds-chip current-odds-chip-saunders">Last place ${escapeHtml(fmtOdds(row.odds.saundersOdds))}</span>
               <details class="current-seed-distribution">
                 <summary>Seed odds</summary>
                 <span>${Object.entries(row.odds.seedProbabilities).map(([seed, probability]) => `#${escapeHtml(seed)} ${escapeHtml(fmtOdds(probability))}`).join(' · ')}</span>
@@ -635,7 +635,7 @@ function currentPlayoffPictureHtml(view) {
         Probability model unavailable. Deterministic standings remain authoritative.
       </div>
     ` : ''}
-    ${saundersLine ? `<p class="current-boundary-note">The Saunders boundary marks the bottom ${escapeHtml(command.rules.saunders_slots)} seed${command.rules.saunders_slots === 1 ? '' : 's'} entering the consolation danger zone.</p>` : ''}
+    ${saundersLine ? `<p class="current-boundary-note">The last-place boundary marks the bottom ${escapeHtml(command.rules.saunders_slots)} seed${command.rules.saunders_slots === 1 ? '' : 's'} entering the consolation danger zone.</p>` : ''}
   `;
 }
 

@@ -53,7 +53,7 @@ export function buildSearchIndex(data: SearchHydrationData): BuiltSearchIndex {
   data.seasonSummaries.forEach(row => add(buildIntentDocument({ kind: 'owner-season', owner: row.owner, season: Number(row.season) }, data)));
   seasons.forEach(season => {
     add(buildIntentDocument({ kind: 'season-type', season, gameType: 'Playoff' }, data));
-    add(buildIntentDocument({ kind: 'season-type', season, gameType: 'Saunders' }, data));
+    add(buildIntentDocument({ kind: 'season-type', season, gameType: 'Last Place' }, data));
   });
   for (let a = 0; a < owners.length; a += 1) {
     for (let b = a + 1; b < owners.length; b += 1) {

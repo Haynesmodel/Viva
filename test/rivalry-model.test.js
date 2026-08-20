@@ -32,7 +32,7 @@ test('typed rivalry model preserves records, runs, tables, and chart facts', () 
   assert.equal(model.summary.closestGame?.margin, 0);
   assert.equal(model.seasonRows[0].recordText, '1-2');
   assert.match(model.seasonRows[0].notes.join(' • '), /Playoff meeting \(Championship\) winner: Joel/);
-  assert.match(model.seasonRows[1].notes.join(' • '), /Saunders meeting \(Saunders Final\)/);
+  assert.match(model.seasonRows[1].notes.join(' • '), /Last place meeting \(Last place Final\)/);
   assert.equal(model.gameRows[0].score, '70.00 - 80.00');
   assert.equal(model.tape.find(item => item.label === 'Margin Avg / Median')?.value, '7.50 / 10.00');
   assert.equal(model.highlights.map(item => item.label).join('|'), 'Biggest Blowout|Highest Combined|Longest Run|Shootouts|Stinkers');
