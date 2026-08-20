@@ -1262,7 +1262,7 @@
       "week": 14
     }
   ],
-  "generated_at": "2026-08-14T03:43:44Z",
+  "generated_at": "2026-08-20T18:38:04Z",
   "league_key": "viva",
   "max_week": 17,
   "playoff_rules": {
@@ -1354,7 +1354,7 @@
   "update_context": {
     "contains_live_scores": false,
     "contains_projected_scores": false,
-    "cutoff_date": "2026-08-14",
+    "cutoff_date": "2026-08-20",
     "mode": "scheduled"
   },
   "weeks_fetched": [
