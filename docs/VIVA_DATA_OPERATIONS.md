@@ -168,6 +168,12 @@ After the current-season ESPN refresh, inspect a finalized week with the
 starter-level report. A started player means a lineup slot below 20; a score
 of zero or below creates one owed Shotgun for that owner:
 
+The guarded `Refresh weekly Shotguns` workflow runs automatically at 10:47 AM
+America/Chicago on Tuesdays when `VIVA_ESPN_ENABLED` is exactly `true`. It
+uses the GitHub Actions variables and secrets, and opens or updates the
+`automation/shotguns-weekly` review PR. Use manual workflow dispatch when a
+specific week needs to be rerun.
+
 ```bash
 npm run report:shotguns -- --league-id "$VIVA_ESPN_LEAGUE_ID" \
   --season 2026 --week 1
