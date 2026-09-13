@@ -4,7 +4,8 @@
     "src/components/charts",
     "src/features/rivalry",
     "src/features/trophy",
-    "src/features/dynasty"
+    "src/features/dynasty",
+    "src/features/shotguns"
   ],
   "direct_plot_vendor_import_exceptions": [
     "src/charting/chart-vendor.ts"
