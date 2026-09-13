@@ -162,6 +162,25 @@ VITE_BASE_PATH=/ npm run build
 The media audit must report zero video files in `dist/` and every preserved
 clip must have exactly one completed Shotguns media key.
 
+### Weekly Shotguns check
+
+After the current-season ESPN refresh, inspect a finalized week with the
+starter-level report. A started player means a lineup slot below 20; a score
+of zero or below creates one owed Shotgun for that owner:
+
+```bash
+npm run report:shotguns -- --league-id "$VIVA_ESPN_LEAGUE_ID" \
+  --season 2026 --week 1
+```
+
+Use the same `ESPN_S2` and `ESPN_SWID` environment variables as the current-
+season refresh when the league is private. Review the listed team scores and
+candidate rows, then rerun with `--promote` to append approved owed records.
+The command is idempotent by owner/week/date/player ID. When a video arrives,
+upload it to the R2 media host, set the matching row's `media_key`, mark it
+completed, regenerate the manifest, and run `npm run test:assets` before the
+normal data PR.
+
 ## Deployment and rollback
 
 Deploy only a reviewed PR whose generated assets, bundle audit, media audit,
