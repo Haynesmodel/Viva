@@ -39,11 +39,9 @@ async function check(root = process.cwd(), options = {}) {
   const warnings = [];
   const expectedCount = options.expectedCount ?? 96;
   if (new Set(keys).size !== keys.length) errors.push('Shotguns media keys must be unique');
-  if (localKeys.length !== expectedCount) errors.push(`Expected ${expectedCount} preserved local Shotguns clips, found ${localKeys.length}`);
   if (keys.length !== expectedCount) errors.push(`Expected ${expectedCount} referenced completed Shotguns media keys, found ${keys.length}`);
   const referenced = new Set(keys);
   localKeys.filter(key => !referenced.has(key)).forEach(key => errors.push(`Unreferenced preserved clip has no Shotguns record: ${key}`));
-  keys.filter(key => !localKeys.includes(key)).forEach(key => errors.push(`Shotguns media key is missing from preserved local clips: ${key}`));
   const mediaConfig = validateMediaBaseUrl(options.mediaBaseUrl || process.env.VITE_VIVA_MEDIA_BASE_URL);
   const requireRemote = options.requireRemote ?? process.env.REQUIRE_VIVA_MEDIA_AUDIT === '1';
   const probeFn = options.probe || probe;
@@ -70,7 +68,7 @@ async function check(root = process.cwd(), options = {}) {
 if (require.main === module) check().then(result => {
   result.warnings.forEach(warning => console.warn(warning));
   result.errors.forEach(error => console.error(error));
-  console.log(`Viva media audit: ${result.expectedKeys} expected clips, ${result.referencedKeys} referenced records, ${result.distVideos} dist clips.`);
+  console.log(`Viva media audit: ${result.localMediaFiles} local clips, ${result.referencedKeys} referenced records, ${result.distVideos} dist clips.`);
   process.exitCode = result.errors.length ? 1 : 0;
 }).catch(error => { console.error(error.message || error); process.exitCode = 1; });
 

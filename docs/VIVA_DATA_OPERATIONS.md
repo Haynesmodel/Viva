@@ -159,8 +159,9 @@ npm run check:viva-media
 VITE_BASE_PATH=/ npm run build
 ```
 
-The media audit must report zero video files in `dist/` and every preserved
-clip must have exactly one completed Shotguns media key.
+The media audit must report zero video files in `dist/`, every local clip must
+have exactly one completed Shotguns media key, and every external-only key must
+respond successfully from the configured media origin.
 
 ### Weekly Shotguns check
 
