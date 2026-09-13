@@ -169,6 +169,10 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
   await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(96);
+  await expect(page.locator('#recentShotgunsHeading')).toHaveText('Recently complete');
+  await expect(page.locator('section[aria-labelledby="recentShotgunsHeading"] .shotgun-record')).toHaveCount(5);
+  const latestCompletionDates = await page.locator('.shotgun-owner-tile .shotgun-record-list').evaluateAll(lists => lists.map(list => list.querySelector('.shotgun-record strong')?.textContent || ''));
+  expect(latestCompletionDates).toEqual([...latestCompletionDates].sort((a, b) => b.localeCompare(a)));
   await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
   await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
   await expect(page.locator('#shotgunOwnerFilter option')).toHaveCount(13);
