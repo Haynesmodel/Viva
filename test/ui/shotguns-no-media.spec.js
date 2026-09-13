@@ -10,7 +10,7 @@ test('Shotguns no-media build keeps records and explains unavailable actions', a
   await page.goto('/?tab=shotguns');
   await unlockViva(page);
   const unavailable = page.locator('.shotgun-play[disabled]');
-  await expect(unavailable).toHaveCount(95);
+  await expect(unavailable).toHaveCount(96);
   const copy = await unavailable.allTextContents();
   expect(copy.every(text => /^Media unavailable for .+ · \d{4}-\d{2}-\d{2} · .+/.test(text))).toBe(true);
   const labels = await unavailable.evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
