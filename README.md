@@ -110,9 +110,9 @@ owner assets, Shotguns records, or the media host.
   `VIVA_ESPN_SEASON`, `VIVA_MEDIA_BASE_URL`, and (for a private league) the
   `VIVA_ESPN_S2` and `VIVA_ESPN_SWID` Actions secrets. Never place credential
   values in the repository, logs, or documentation.
-- `scripts/check_viva_media.cjs` audits the 96 preserved local clips and the
-  built artifact. Every preserved clip must be referenced by one completed
-  Shotguns record.
+- `scripts/check_viva_media.cjs` audits the preserved local clips, every
+  externally hosted completed record, and the built artifact. Every local clip
+  must be referenced by one completed Shotguns record.
 
 See [`docs/VIVA_DATA_OPERATIONS.md`](docs/VIVA_DATA_OPERATIONS.md) for the
 manual normalization, promotion, media, deployment, and rollback procedure.

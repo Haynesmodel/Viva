@@ -27,10 +27,24 @@ test('media audit rejects incomplete local-to-record mappings', async () => {
       requireRemote: false,
       probe: async () => {},
     });
-    assert.deepEqual(result.errors, [
-      'Expected 2 referenced completed Shotguns media keys, found 1',
-      'Unreferenced preserved clip has no Shotguns record: Joe/two.mov',
-    ]);
+    assert.deepEqual(result.errors, ['Expected 2 referenced completed Shotguns media keys, found 1', 'Unreferenced preserved clip has no Shotguns record: Joe/two.mov']);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('media audit allows a completed record hosted only on the external media origin', async () => {
+  const root = fixtureRoot([{ completed: true, media_key: 'Joe/remote.mov' }], []);
+  const requests = [];
+  try {
+    const result = await check(root, {
+      expectedCount: 1,
+      mediaBaseUrl: 'https://media.example.test',
+      requireRemote: true,
+      probe: async url => requests.push(url),
+    });
+    assert.deepEqual(result.errors, []);
+    assert.deepEqual(requests, ['https://media.example.test/Joe/remote.mov']);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
