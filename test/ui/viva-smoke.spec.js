@@ -165,15 +165,15 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await page.goto('/?tab=shotguns');
   await unlockViva(page);
   await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed0');
-  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed95');
+  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed96');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
-  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(95);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(96);
   await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
   await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
   await expect(page.locator('#shotgunOwnerFilter option')).toHaveCount(13);
   const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
-  expect(new Set(labels).size).toBe(95);
+  expect(new Set(labels).size).toBe(96);
   expect(labels.every(label => label?.startsWith('Play '))).toBe(true);
   expect(videoRequests).toEqual([]);
 });
@@ -189,7 +189,7 @@ test('Shotguns owner filter narrows and restores the completed archive', async (
   await expect(page.locator('#shotgunFilterStatus')).toContainText('Taylor');
   await filter.selectOption('');
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
-  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(95);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(96);
 });
 
 test('Shotguns shows an empty state for an owner with only owed records', async ({ page }) => {

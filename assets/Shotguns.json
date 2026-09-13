@@ -948,5 +948,15 @@
     "cause": "DavanteAdams",
     "completed": true,
     "media_key": "Taylor/DavanteAdams-Week3-9-8-2025.mov"
+  },
+  {
+    "id": "shotgun-joe-2026-09-10-1-rams-97",
+    "owner": "Joe",
+    "week": 1,
+    "date": "2026-09-10",
+    "due_date": null,
+    "cause": "Rams",
+    "completed": true,
+    "media_key": "Joe/IMG_2573.mov"
   }
 ]

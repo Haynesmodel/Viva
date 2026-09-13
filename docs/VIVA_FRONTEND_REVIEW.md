@@ -20,7 +20,7 @@ No DevTools trace service was configured in this Codex session. LCP, INP, CLS, a
 | Dynasty | Period selection; modal keyboard/focus behavior | Pass. Period controls and modal close/focus behavior are reachable from the keyboard. |
 | Draft Spot | Populated historic draft data; owner filter; mobile controls | Pass. Verified historical draft data renders and owner controls stack at mobile widths. |
 | Historical Matchup | Controls; table/card responsiveness; unsupported-feature leakage | Pass. Controls and responsive results render; Transactions and Player History are absent. |
-| Shotguns | Owed, completed, configured/unavailable media copy, dialog keyboard/error behavior | Finding confirmed and remediated in this PR: overview/owed tables were clipped on narrow screens and generic “Play clip” labels were not unique. The archive retains 3 owed records, 95 completed records, 12 owner groups, owner imagery, lazy media, and dialog safeguards. |
+| Shotguns | Owed, completed, configured/unavailable media copy, dialog keyboard/error behavior | Finding confirmed and remediated in this PR: overview/owed tables were clipped on narrow screens and generic “Play clip” labels were not unique. The archive retains 96 completed records, 12 owner groups, owner imagery, lazy media, and dialog safeguards. |
 
 ## Persistent shell checks
 

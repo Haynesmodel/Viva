@@ -17,7 +17,7 @@ generic dashboard with a league logo applied afterward. It brings rigorous
 historical analysis, a populated current-season command center, and the
 gloriously specific accountability of Shotguns into one bespoke league
 identity. The repository currently carries 486 head-to-head rows, 66
-season-summary rows across six verified seasons, nine named rivalry groups, 98
+season-summary rows across six verified seasons, nine named rivalry groups, 96
 curated Shotguns records, and verified historical draft order for 2020–2025.
 
 - **Auditable by construction.** Canonical JSON, typed validators, generated
@@ -87,8 +87,8 @@ owner assets, Shotguns records, or the media host.
 - `assets/CurrentSeason.json` contains the configured current-season snapshot.
   Verified historical draft order is populated for the approved 2020–2025
   seasons; future or unverified seasons remain intentionally unavailable.
-- `assets/Shotguns.json` contains 98 curated records: 95 completed,
-  media-backed records and 3 owed records. Completed records
+- `assets/Shotguns.json` contains 96 curated records: all completed and
+  media-backed. Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
   artifact and are resolved through `VITE_VIVA_MEDIA_BASE_URL`.
 - `scripts/import_viva_espn.py` accepts local, manually exported ESPN JSON for
@@ -110,7 +110,7 @@ owner assets, Shotguns records, or the media host.
   `VIVA_ESPN_SEASON`, `VIVA_MEDIA_BASE_URL`, and (for a private league) the
   `VIVA_ESPN_S2` and `VIVA_ESPN_SWID` Actions secrets. Never place credential
   values in the repository, logs, or documentation.
-- `scripts/check_viva_media.cjs` audits the 95 preserved local clips and the
+- `scripts/check_viva_media.cjs` audits the 96 preserved local clips and the
   built artifact. Every preserved clip must be referenced by one completed
   Shotguns record.
 
