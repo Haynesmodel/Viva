@@ -87,7 +87,7 @@ def date_from_espn(value: Any, label: str) -> str:
 
 def api_url(base_url: str, season: int, league_id: str) -> str:
     base = base_url.rstrip("/")
-    query = urllib.parse.urlencode([("view", "mTeam"), ("view", "mMatchupScore"), ("view", "mSettings")])
+    query = urllib.parse.urlencode([("view", "mTeam"), ("view", "mMatchup"), ("view", "mMatchupScore"), ("view", "mSettings")])
     return f"{base}/seasons/{season}/segments/0/leagues/{urllib.parse.quote(str(league_id), safe='')}?{query}"
 
 

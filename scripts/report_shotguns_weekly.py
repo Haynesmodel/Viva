@@ -69,7 +69,7 @@ def player_score(entry: dict[str, Any], week: int) -> float | None:
             continue
         if stat.get("statSourceId") not in (None, 0, "0"):
             continue
-        for key in ("appliedStatTotal", "statTotal", "totalPoints", "points"):
+        for key in ("appliedStatTotal", "appliedTotal", "statTotal", "totalPoints", "points"):
             score = number(stat.get(key))
             if score is not None:
                 return score

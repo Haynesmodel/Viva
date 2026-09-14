@@ -12,12 +12,12 @@ test('weekly Shotguns report finds started players at zero or below', () => {
     status: { currentMatchupPeriod: 2 },
     teams: [
       { id: 1, name: 'Joe', roster: { entries: [
-        { lineupSlotId: 0, playerPoolEntry: { id: 11, player: { fullName: 'Zero Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: 0 }] } } },
+        { lineupSlotId: 0, playerPoolEntry: { id: 11, player: { fullName: 'Zero Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedTotal: 0 }] } } },
         { lineupSlotId: 20, playerPoolEntry: { id: 12, player: { fullName: 'Bench Player', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: -5 }] } } },
       ] } },
       { id: 2, name: 'Kylie', roster: { entries: [
         { lineupSlotId: 0, playerPoolEntry: { id: 13, player: { fullName: 'Positive Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: 5 }] } } },
-        { lineupSlotId: 2, playerPoolEntry: { id: 14, player: { fullName: 'Negative Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: -1 }] } } },
+        { lineupSlotId: 2, playerPoolEntry: { id: 14, player: { fullName: 'Negative Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedTotal: -1 }] } } },
       ] } },
     ],
     schedule: [{ id: 101, matchupPeriodId: 1, date: '2026-09-13', winner: 'HOME', home: { teamId: 1, totalPoints: 100 }, away: { teamId: 2, totalPoints: 90 } }],
