@@ -177,7 +177,8 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
   await expect(page.locator('#shotgunOwnerFilter option')).toHaveCount(13);
   const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
-  expect(new Set(labels).size).toBe(96);
+  expect(labels).toHaveLength(101);
+  expect(new Set(labels).size).toBe(101);
   expect(labels.every(label => label?.startsWith('Play '))).toBe(true);
   expect(videoRequests).toEqual([]);
 });

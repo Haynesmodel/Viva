@@ -16,6 +16,8 @@
     "src/features/trophy/**/*.tsx"
     ,"src/features/dynasty/**/*.ts"
     ,"src/features/dynasty/**/*.tsx"
+    ,"src/features/shotguns/**/*.ts"
+    ,"src/features/shotguns/**/*.tsx"
   ],
   "exclude": ["node_modules", "dist", "public"]
 }
