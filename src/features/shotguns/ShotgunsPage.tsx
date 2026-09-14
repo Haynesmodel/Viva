@@ -3,17 +3,17 @@ import { resolveVivaOwner, vivaOwnerImage, vivaShotgunDisplayName } from '../../
 
 type ShotgunRecord = VivaShotguns[number];
 
-function mediaLabel(row: ShotgunRecord): string {
-  return `Play ${vivaShotgunDisplayName(row.owner)}'s Shotgun from ${row.date}: ${row.cause} (record ${row.id})`;
+function mediaLabel(row: ShotgunRecord, recent: boolean): string {
+  return `Play ${vivaShotgunDisplayName(row.owner)}'s Shotgun from ${row.date}: ${row.cause} (record ${row.id})${recent ? ' · Recently complete' : ''}`;
 }
 
-function MediaAction({ row, mediaAvailable, onPlay }: { row: ShotgunRecord; mediaAvailable: boolean; onPlay(row: ShotgunRecord): void }) {
+function MediaAction({ row, mediaAvailable, onPlay, recent }: { row: ShotgunRecord; mediaAvailable: boolean; onPlay(row: ShotgunRecord): void; recent: boolean }) {
   const owner = vivaShotgunDisplayName(row.owner);
   return <button
     class="btn shotgun-play"
     type="button"
     data-shotgun-id={row.id}
-    aria-label={mediaAvailable ? mediaLabel(row) : `Media unavailable for ${owner}'s Shotgun from ${row.date}: ${row.cause} (record ${row.id})`}
+    aria-label={mediaAvailable ? mediaLabel(row, recent) : `Media unavailable for ${owner}'s Shotgun from ${row.date}: ${row.cause} (record ${row.id})${recent ? ' · Recently complete' : ''}`}
     disabled={!mediaAvailable}
     onClick={() => onPlay(row)}
   >
@@ -33,7 +33,7 @@ function RecordDetails({ row, recent = false }: { row: ShotgunRecord; recent?: b
 function RecordRow({ row, mediaAvailable, onPlay, recent = false }: { row: ShotgunRecord; mediaAvailable: boolean; onPlay(row: ShotgunRecord): void; recent?: boolean }) {
   return <li class="shotgun-record">
     <RecordDetails row={row} recent={recent} />
-    <MediaAction row={row} mediaAvailable={mediaAvailable} onPlay={onPlay} />
+    <MediaAction row={row} mediaAvailable={mediaAvailable} onPlay={onPlay} recent={recent} />
   </li>;
 }
 
