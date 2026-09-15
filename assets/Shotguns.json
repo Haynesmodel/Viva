@@ -958,5 +958,55 @@
     "cause": "Rams",
     "completed": true,
     "media_key": "Joe/IMG_2573.mov"
+  },
+  {
+    "id": "shotgun-marian-2026-09-13-week-1-player-16034",
+    "owner": "Marian",
+    "week": 1,
+    "date": "2026-09-13",
+    "due_date": null,
+    "cause": "Started player: Texans D/ST (-4 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-mino-2026-09-13-week-1-player-4723086",
+    "owner": "Mino",
+    "week": 1,
+    "date": "2026-09-13",
+    "due_date": null,
+    "cause": "Started player: Colston Loveland (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-mino-2026-09-13-week-1-player-16010",
+    "owner": "Mino",
+    "week": 1,
+    "date": "2026-09-13",
+    "due_date": null,
+    "cause": "Started player: Titans D/ST (-2 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-leah-2026-09-13-week-1-player-16024",
+    "owner": "Leah",
+    "week": 1,
+    "date": "2026-09-13",
+    "due_date": null,
+    "cause": "Started player: Chargers D/ST (-1 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-erin-2026-09-13-week-1-player-4360248",
+    "owner": "Erin",
+    "week": 1,
+    "date": "2026-09-13",
+    "due_date": null,
+    "cause": "Started player: Kyle Pitts Sr. (0 points)",
+    "completed": false,
+    "media_key": null
   }
 ]
