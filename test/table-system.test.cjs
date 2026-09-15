@@ -12,6 +12,13 @@ async function importTypeScript(relativePath) {
     platform: 'node',
     target: 'node20',
     write: false,
+    plugins: [{
+      name: 'stub-css',
+      setup(build) {
+        build.onResolve({ filter: /\.css$/ }, () => ({ path: 'css', namespace: 'stub' }));
+        build.onLoad({ filter: /.*/, namespace: 'stub' }, () => ({ contents: 'export default {};', loader: 'js' }));
+      },
+    }],
   });
   const source = result.outputFiles[0].text;
   return import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
@@ -24,6 +31,7 @@ const modules = Promise.all([
   importTypeScript('src/tables/rows/history-game-rows.ts'),
   importTypeScript('src/tables/table-registry.ts'),
   importTypeScript('src/tables/rows/trophy-season-rows.ts'),
+  importTypeScript('src/tables/table-runtime.tsx'),
 ]);
 
 class FakeStorage {
@@ -281,4 +289,30 @@ test('history game row adapter creates stable perspective IDs and useful detail 
   assert.equal(rows[0].margin, 11);
   assert.match(rows[0].details.map(detail => detail.value).join(' '), /Combined score|291\.00/);
   assert.match(rows[0].links[0].href, /tab=rivalry/);
+});
+
+test('table runtime validates registrations and safely handles absent mounts', async () => {
+  const [, , , , registryModule, , runtimeModule] = await modules;
+  const runtime = runtimeModule.createTableRuntime();
+  const definition = registryModule.getTableRegistryEntry('current-standings');
+  const opponentDefinition = registryModule.getTableRegistryEntry('history-opponents');
+  const adapter = rows => rows;
+  const alternateAdapter = rows => rows;
+  const previousDocument = global.document;
+  global.document = { getElementById: () => null };
+  try {
+    assert.equal(runtime.isRegistered('current-standings'), false);
+    assert.throws(() => runtime.register('history-opponents', definition, adapter), /cannot be registered/);
+    runtime.register('current-standings', definition, adapter);
+    runtime.register('current-standings', definition, adapter);
+    assert.throws(() => runtime.register('current-standings', definition, alternateAdapter), /already registered/);
+    assert.equal(runtime.isRegistered('current-standings'), true);
+    runtime.render('current-standings', { rows: [] });
+    runtime.register('history-opponents', opponentDefinition, adapter);
+    runtime.render('history-opponents', { rows: [], context: { isLeague: true } });
+    runtime.unmount('current-standings');
+    assert.deepEqual(runtime.listSavedViews(), []);
+  } finally {
+    global.document = previousDocument;
+  }
 });

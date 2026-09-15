@@ -1,5 +1,5 @@
 {
-  "current_week": 1,
+  "current_week": 2,
   "games": [
     {
       "date": "2026-09-13",
@@ -7,10 +7,10 @@
       "rosterA": 9,
       "rosterB": 11,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 142.5,
+      "scoreB": 176.06,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Joe",
       "teamB": "Kylie",
       "type": "Regular",
@@ -22,12 +22,12 @@
       "rosterA": 5,
       "rosterB": 7,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 139.92,
+      "scoreB": 173.02,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Marian",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 1
     },
@@ -37,10 +37,10 @@
       "rosterA": 3,
       "rosterB": 1,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 145.84,
+      "scoreB": 100.66,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Taylor",
       "teamB": "Malcolm",
       "type": "Regular",
@@ -52,10 +52,10 @@
       "rosterA": 8,
       "rosterB": 6,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 138.5,
+      "scoreB": 104.66,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Dulberger",
       "teamB": "Seth",
       "type": "Regular",
@@ -67,10 +67,10 @@
       "rosterA": 10,
       "rosterB": 2,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 127.46,
+      "scoreB": 91.54,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Mino",
       "teamB": "Leah",
       "type": "Regular",
@@ -82,10 +82,10 @@
       "rosterA": 12,
       "rosterB": 4,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 126.76,
+      "scoreB": 147.26,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Erin",
       "teamB": "Wei",
       "type": "Regular",
@@ -102,7 +102,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Kylie",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 2
     },
@@ -206,7 +206,7 @@
       "scoreB": null,
       "season": 2026,
       "status": "scheduled",
-      "teamA": "Rico",
+      "teamA": "Will",
       "teamB": "Taylor",
       "type": "Regular",
       "week": 3
@@ -312,7 +312,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Joe",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 4
     },
@@ -402,7 +402,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Malcolm",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 5
     },
@@ -491,7 +491,7 @@
       "scoreB": null,
       "season": 2026,
       "status": "scheduled",
-      "teamA": "Rico",
+      "teamA": "Will",
       "teamB": "Leah",
       "type": "Regular",
       "week": 6
@@ -567,7 +567,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Dulberger",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 7
     },
@@ -641,7 +641,7 @@
       "scoreB": null,
       "season": 2026,
       "status": "scheduled",
-      "teamA": "Rico",
+      "teamA": "Will",
       "teamB": "Seth",
       "type": "Regular",
       "week": 8
@@ -807,7 +807,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Mino",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 9
     },
@@ -881,7 +881,7 @@
       "scoreB": null,
       "season": 2026,
       "status": "scheduled",
-      "teamA": "Rico",
+      "teamA": "Will",
       "teamB": "Erin",
       "type": "Regular",
       "week": 10
@@ -957,7 +957,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Wei",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 11
     },
@@ -1032,7 +1032,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Leah",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 12
     },
@@ -1106,7 +1106,7 @@
       "scoreB": null,
       "season": 2026,
       "status": "scheduled",
-      "teamA": "Rico",
+      "teamA": "Will",
       "teamB": "Dulberger",
       "type": "Regular",
       "week": 13
@@ -1182,7 +1182,7 @@
       "season": 2026,
       "status": "scheduled",
       "teamA": "Seth",
-      "teamB": "Rico",
+      "teamB": "Will",
       "type": "Regular",
       "week": 14
     },
@@ -1262,7 +1262,7 @@
       "week": 14
     }
   ],
-  "generated_at": "2026-08-20T18:38:04Z",
+  "generated_at": "2026-09-15T15:43:39Z",
   "league_key": "viva",
   "max_week": 17,
   "playoff_rules": {
@@ -1282,7 +1282,7 @@
       "display_name": "Dulberger",
       "owner": "Dulberger",
       "roster_id": 8,
-      "source_team_name": "Bed, Bath, and Bijan"
+      "source_team_name": "Glizzy Gobbler"
     },
     {
       "display_name": "Erin",
@@ -1306,13 +1306,13 @@
       "display_name": "Leah",
       "owner": "Leah",
       "roster_id": 2,
-      "source_team_name": "Another 'Quon"
+      "source_team_name": "Chase Sapphire Reserve"
     },
     {
       "display_name": "Malcolm",
       "owner": "Malcolm",
       "roster_id": 1,
-      "source_team_name": "No Child Left Behind"
+      "source_team_name": "Big Black Commish"
     },
     {
       "display_name": "Marian",
@@ -1324,13 +1324,7 @@
       "display_name": "Mino",
       "owner": "Mino",
       "roster_id": 10,
-      "source_team_name": "Kmet Me Bro"
-    },
-    {
-      "display_name": "Rico",
-      "owner": "Rico",
-      "roster_id": 7,
-      "source_team_name": "Smokin Jays "
+      "source_team_name": "How I Kmet Your Mother"
     },
     {
       "display_name": "Seth",
@@ -1349,12 +1343,18 @@
       "owner": "Wei",
       "roster_id": 4,
       "source_team_name": "Pizza Nut"
+    },
+    {
+      "display_name": "Will",
+      "owner": "Will",
+      "roster_id": 7,
+      "source_team_name": "Will's Wild Team"
     }
   ],
   "update_context": {
     "contains_live_scores": false,
     "contains_projected_scores": false,
-    "cutoff_date": "2026-08-20",
+    "cutoff_date": "2026-09-15",
     "mode": "scheduled"
   },
   "weeks_fetched": [

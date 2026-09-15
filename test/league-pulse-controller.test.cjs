@@ -113,7 +113,7 @@ test('Pulse controller mount is idempotent and activation is history-safe withou
   const activation = new AbortController();
   controller.activate({ signal: activation.signal });
   assert.equal(globalThis.__pulseControllerRenders.length, 1);
-  assert.deepEqual(calls.headers, [['League Pulse', null, 'Fixture Pulse']]);
+  assert.deepEqual(calls.headers, [['League Pulse', null, 'Viva — Fixture Pulse']]);
   assert.deepEqual(calls.themes, ['regular']);
   assert.deepEqual(calls.routes, [{ tab: 'pulse' }]);
 });

@@ -145,6 +145,17 @@ test('Viva shell exposes the supported route matrix and omits Transactions', asy
   }
 });
 
+test('table runtime unmounts a registered current-season table', async ({ page }) => {
+  await page.goto('/?tab=current');
+  await unlockViva(page);
+  await expect(page.locator('#appStatus')).toBeHidden({ timeout: 15_000 });
+  await expect(page.locator('#page-current')).toHaveAttribute('data-feature-state', 'ready');
+  expect(await page.evaluate(() => {
+    window.vivaTables?.unmount('current-standings');
+    return true;
+  })).toBe(true);
+});
+
 test('Dynasty last-place window shows normalized matchup result', async ({ page }) => {
   await page.goto('/?tab=dynasty');
   await unlockViva(page);
