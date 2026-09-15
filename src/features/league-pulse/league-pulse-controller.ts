@@ -40,7 +40,7 @@ export function createFeatureController(): VivaFeatureController {
       const model = renderCurrent();
       if (!model) return;
       if (input.signal.aborted || activeSignal !== input.signal) return;
-      context.header.feature('League Pulse', null, model.hero.title);
+      context.header.feature('League Pulse', null, `Viva — ${model.hero.title}`);
       context.theme.league(model.state.phase === 'postseason' ? 'postseason' : 'regular');
       context.router.update({ tab: 'pulse' });
     },
