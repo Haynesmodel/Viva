@@ -46,16 +46,16 @@
       "sha256": "sha256:00a67bf1fd3300a6ceaccf00fd9629e2865fdd0f7d65cc3e8ada1f4d0eb16346"
     },
     "Shotguns": {
-      "bytes": 24544,
+      "bytes": 24892,
       "path": "assets/Shotguns.json",
       "required": false,
-      "rows": 101,
+      "rows": 102,
       "season_max": null,
       "season_min": null,
-      "sha256": "sha256:bcfbe67f2add2a8012ac9a1004f21c087964fc0661e0f682ddd98990c03e1f3d"
+      "sha256": "sha256:c2e2550c30c66422399327f1dd1249f356c9df8d6171705daf7f0415230e831f"
     }
   },
-  "data_version": "sha256:a47bfca8b4dfcc3d0bdbfcd018c3c6dd1042890fc735624b416f55d012992a07",
+  "data_version": "sha256:208d42e3b80dee620dbfec781dd508cf10365c5aeaa0e721bdeb72a2c37eae41",
   "derived": {
     "bytes": 127374,
     "path": "assets/DerivedStats.json",
