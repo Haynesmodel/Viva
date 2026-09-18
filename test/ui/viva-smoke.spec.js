@@ -175,22 +175,21 @@ test('Shotguns renders the preserved record states without loading video bytes',
   });
   await page.goto('/?tab=shotguns');
   await unlockViva(page);
-  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed5');
-  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed96');
+  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed0');
+  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed102');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
-  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(96);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(102);
   await expect(page.locator('#recentShotgunsHeading')).toHaveText('Recently complete');
   await expect(page.locator('section[aria-labelledby="recentShotgunsHeading"] .shotgun-record')).toHaveCount(5);
   const latestCompletionDates = await page.locator('.shotgun-owner-tile .shotgun-record-list').evaluateAll(lists => lists.map(list => list.querySelector('.shotgun-record strong')?.textContent || ''));
   expect(latestCompletionDates).toEqual([...latestCompletionDates].sort((a, b) => b.localeCompare(a)));
-  await expect(page.locator('.shotgun-owed-record')).toHaveCount(5);
-  await expect(page.locator('.shotgun-owed-record').nth(0)).toContainText('Marian');
+  await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
   await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
   await expect(page.locator('#shotgunOwnerFilter option')).toHaveCount(13);
   const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
-  expect(labels).toHaveLength(101);
-  expect(new Set(labels).size).toBe(101);
+  expect(labels).toHaveLength(107);
+  expect(new Set(labels).size).toBe(107);
   expect(labels.every(label => label?.startsWith('Play '))).toBe(true);
   expect(videoRequests).toEqual([]);
 });
@@ -206,7 +205,7 @@ test('Shotguns owner filter narrows and restores the completed archive', async (
   await expect(page.locator('#shotgunFilterStatus')).toContainText('Taylor');
   await filter.selectOption('');
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
-  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(96);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(102);
 });
 
 test('Shotguns shows an empty state for an owner with only owed records', async ({ page }) => {
@@ -242,7 +241,7 @@ for (const width of [320, 390]) {
     await page.goto('/?tab=shotguns');
     await unlockViva(page);
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-    await expect(page.locator('.shotgun-owed-record')).toHaveCount(5);
+    await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
     await expect(page.locator('.shotgun-owner-overview-card').first()).toBeVisible();
   });
 }
