@@ -179,7 +179,10 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed102');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
+  await expect(page.locator('.shotgun-owner-tile:not([open])')).toHaveCount(12);
   await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(102);
+  await page.locator('.shotgun-owner-tile').first().locator('summary').click();
+  await expect(page.locator('.shotgun-owner-tile').first()).toHaveAttribute('open', '');
   await expect(page.locator('#recentShotgunsHeading')).toHaveText('Recently complete');
   await expect(page.locator('section[aria-labelledby="recentShotgunsHeading"] .shotgun-record')).toHaveCount(5);
   const latestCompletionDates = await page.locator('.shotgun-owner-tile .shotgun-record-list').evaluateAll(lists => lists.map(list => list.querySelector('.shotgun-record strong')?.textContent || ''));
@@ -201,6 +204,7 @@ test('Shotguns owner filter narrows and restores the completed archive', async (
   await filter.selectOption({ label: 'Taylor' });
   await expect(filter).toHaveValue('Taylor');
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(1);
+  await expect(page.locator('.shotgun-owner-tile[open]')).toHaveCount(1);
   await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(4);
   await expect(page.locator('#shotgunFilterStatus')).toContainText('Taylor');
   await filter.selectOption('');

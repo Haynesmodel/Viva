@@ -13,11 +13,7 @@
   .shotgun-owner-overview-card { height: 100%; }
   .shotgun-card { border: 1px solid var(--border); border-radius: var(--radius-panel); display: grid; gap: var(--space-2); min-width: 0; padding: var(--space-3); }
   .shotgun-card p, .shotgun-card h3 { margin: 0; }
-  .shotgun-card-header { align-items: center; display: flex; gap: var(--space-2); min-width: 0; }
-  .shotgun-card-header img { border-radius: 50%; flex: 0 0 auto; height: 3rem; object-fit: cover; width: 3rem; }
-  .shotgun-card-header h3 { overflow-wrap: anywhere; }
   .shotgun-card-metrics { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; }
-  .shotgun-card-metrics > span { background: var(--surface-panel-alt); border-radius: 999px; font-size: .85rem; font-weight: 700; padding: .25rem .55rem; }
   .shotgun-card-metrics div { background: var(--surface-panel-alt); border-radius: 999px; display: grid; gap: .1rem; min-width: 4rem; padding: .25rem .55rem; }
   .shotgun-card-metrics dt { color: var(--text-muted); font-size: .7rem; font-weight: 700; }
   .shotgun-card-metrics dd { font-size: .85rem; font-weight: 800; margin: 0; }
@@ -33,7 +29,18 @@
   .shotgun-filter { align-items: end; display: flex; flex-wrap: wrap; gap: var(--space-2); }
   .shotgun-filter label { color: var(--text-muted); font-size: .8rem; font-weight: 700; }
   .shotgun-filter select { min-block-size: var(--control-min-block-size); min-width: 10rem; padding: .4rem .55rem; }
-  .shotgun-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 72rem; }
+  .shotgun-grid { display: grid; gap: var(--space-2); max-width: 72rem; }
+  .shotgun-owner-tile { border: 1px solid var(--border); border-radius: var(--radius-panel); min-width: 0; overflow: hidden; }
+  .shotgun-owner-summary { align-items: center; cursor: pointer; display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: space-between; list-style: none; min-width: 0; padding: var(--space-3); }
+  .shotgun-owner-summary::-webkit-details-marker { display: none; }
+  .shotgun-owner-summary::after { color: var(--text-muted); content: '+'; flex: 0 0 auto; font-size: 1.25rem; font-weight: 800; line-height: 1; }
+  .shotgun-owner-tile[open] > .shotgun-owner-summary::after { content: '−'; }
+  .shotgun-owner-identity { align-items: center; display: flex; gap: var(--space-2); min-width: 0; }
+  .shotgun-owner-identity img { border-radius: 50%; flex: 0 0 auto; height: 2.5rem; object-fit: cover; width: 2.5rem; }
+  .shotgun-owner-name { font-weight: 800; overflow-wrap: anywhere; }
+  .shotgun-owner-summary-metrics { color: var(--text-muted); font-size: .85rem; font-weight: 700; text-align: end; }
+  .shotgun-owner-content { border-block-start: 1px solid var(--border); padding: 0 var(--space-3) var(--space-3); }
+  .shotgun-owner-content .shotgun-record-list { margin: 0; }
   .shotgun-record-list { display: grid; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
   .shotgun-record { align-items: start; border-block-start: 1px solid var(--border); display: grid; gap: var(--space-2); grid-template-columns: minmax(0, 1fr) auto; min-width: 0; padding-block-start: var(--space-2); }
   .shotgun-record-details { display: grid; gap: .15rem; min-width: 0; }
@@ -47,15 +54,16 @@
   .shotgun-dialog-actions { display: flex; justify-content: flex-end; margin-block-end: var(--space-2); }
 
   @media (max-width: 1000px) {
-    .shotgun-grid, .shotgun-owner-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .shotgun-owner-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 600px) {
-    .shotgun-metrics, .shotgun-grid, .shotgun-owner-overview { grid-template-columns: 1fr; max-width: none; }
+    .shotgun-metrics, .shotgun-owner-overview { grid-template-columns: 1fr; max-width: none; }
     .shotgun-archive-heading { align-items: stretch; }
     .shotgun-filter { align-items: stretch; display: grid; }
     .shotgun-filter select { min-width: 0; width: 100%; }
     .shotgun-filter .btn { justify-self: start; }
+    .shotgun-owner-summary-metrics { flex: 1 1 100%; text-align: start; }
     .shotgun-record { grid-template-columns: minmax(0, 1fr); }
     .shotgun-play { justify-self: start; }
   }

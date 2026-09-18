@@ -50,21 +50,22 @@ function OwnerOverviewCard({ owner, owedCount, completedCount }: { owner: string
   </li>;
 }
 
-function OwnerTile({ owner, owedCount, completed, mediaAvailable, onPlay }: { owner: string; owedCount: number; completed: ShotgunRecord[]; mediaAvailable: boolean; onPlay(row: ShotgunRecord): void }) {
+function OwnerTile({ owner, owedCount, completed, mediaAvailable, onPlay, open }: { owner: string; owedCount: number; completed: ShotgunRecord[]; mediaAvailable: boolean; onPlay(row: ShotgunRecord): void; open: boolean }) {
   const identity = vivaOwnerImage(owner);
-  return <article class="shotgun-card shotgun-owner-tile">
-    <div class="shotgun-card-header">
-      {identity && <img src={identity.src} alt={identity.alt} />}
-      <h3>{vivaShotgunDisplayName(owner)}</h3>
+  return <details class="shotgun-owner-tile" open={open}>
+    <summary class="shotgun-owner-summary">
+      <span class="shotgun-owner-identity">
+        {identity && <img src={identity.src} alt="" />}
+        <span class="shotgun-owner-name" role="heading" aria-level={4}>{vivaShotgunDisplayName(owner)}</span>
+      </span>
+      <span class="shotgun-owner-summary-metrics">{completed.length} completed · {owedCount} owed</span>
+    </summary>
+    <div class="shotgun-owner-content">
+      {completed.length
+        ? <ul class="shotgun-record-list">{completed.map(row => <RecordRow key={row.id} row={row} mediaAvailable={mediaAvailable} onPlay={onPlay} />)}</ul>
+        : <p class="muted">No completed Shotguns.</p>}
     </div>
-    <div class="shotgun-card-metrics">
-      <span>Owed: {owedCount}</span>
-      <span>Completed: {completed.length}</span>
-    </div>
-    {completed.length
-      ? <ul class="shotgun-record-list">{completed.map(row => <RecordRow key={row.id} row={row} mediaAvailable={mediaAvailable} onPlay={onPlay} />)}</ul>
-      : <p class="muted">No completed Shotguns.</p>}
-  </article>;
+  </details>;
 }
 
 function OwedRecord({ row }: { row: ShotgunRecord }) {
@@ -140,7 +141,7 @@ export function ShotgunsPage({ rows, owed, completed, owners, completedOwners, s
       </div>
       <div class="shotgun-grid" aria-live="polite">
         {completedOwners.length
-          ? completedOwners.map(owner => <OwnerTile key={owner} owner={owner} owedCount={ownerOwed(owner)} completed={ownerCompleted(owner)} mediaAvailable={mediaAvailable} onPlay={onPlay} />)
+          ? completedOwners.map(owner => <OwnerTile key={owner} owner={owner} owedCount={ownerOwed(owner)} completed={ownerCompleted(owner)} mediaAvailable={mediaAvailable} onPlay={onPlay} open={Boolean(selectedOwner)} />)
           : <p class="muted shotgun-empty-state">No completed Shotguns match this owner. <button type="button" class="btn" data-shotgun-clear-filter onClick={onClearFilter}>Clear filter</button></p>}
       </div>
     </section>

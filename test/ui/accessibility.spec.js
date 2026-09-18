@@ -110,4 +110,5 @@ test('Shotguns filtered archive remains axe-clean and labels actions distinctly'
   await page.locator('#shotgunOwnerFilter').selectOption({ label: 'Taylor' });
   await analyze(page, 'shotguns-filtered');
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(1);
+  await expect(page.locator('.shotgun-owner-tile[open]')).toHaveCount(1);
 });
