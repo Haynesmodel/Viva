@@ -175,7 +175,7 @@ test('Shotguns renders the preserved record states without loading video bytes',
   });
   await page.goto('/?tab=shotguns');
   await unlockViva(page);
-  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed0');
+  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed2');
   await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed107');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
@@ -187,7 +187,7 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await expect(page.locator('section[aria-labelledby="recentShotgunsHeading"] .shotgun-record')).toHaveCount(5);
   const latestCompletionDates = await page.locator('.shotgun-owner-tile .shotgun-record-list').evaluateAll(lists => lists.map(list => list.querySelector('.shotgun-record strong')?.textContent || ''));
   expect(latestCompletionDates).toEqual([...latestCompletionDates].sort((a, b) => b.localeCompare(a)));
-  await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
+  await expect(page.locator('.shotgun-owed-record')).toHaveCount(2);
   await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
   await expect(page.locator('#shotgunOwnerFilter option')).toHaveCount(13);
   const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
@@ -245,7 +245,7 @@ for (const width of [320, 390]) {
     await page.goto('/?tab=shotguns');
     await unlockViva(page);
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-    await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
+    await expect(page.locator('.shotgun-owed-record')).toHaveCount(2);
     await expect(page.locator('.shotgun-owner-overview-card').first()).toBeVisible();
   });
 }
