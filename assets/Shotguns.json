@@ -1013,10 +1013,60 @@
     "id": "shotgun-joe-2026-09-17-week-2-player-dj-moore",
     "owner": "Joe",
     "week": 2,
-    "date": "2026-09-17",
+    "date": "2026-09-20",
     "due_date": null,
-    "cause": "Started player: DJ Moore (0 points)",
+    "cause": "Started player: DJ Moore (-0.1 points)",
     "completed": true,
     "media_key": "Joe/2026-09-17.mov"
+  },
+  {
+    "id": "shotgun-wei-2026-09-20-week-2-player-16008",
+    "owner": "Wei",
+    "week": 2,
+    "date": "2026-09-20",
+    "due_date": null,
+    "cause": "Started player: Lions D/ST (-4 points)",
+    "completed": true,
+    "media_key": "Wei/2026-10-01.mov"
+  },
+  {
+    "id": "shotgun-erin-2026-09-20-week-2-player-4432708",
+    "owner": "Erin",
+    "week": 2,
+    "date": "2026-09-20",
+    "due_date": null,
+    "cause": "Started player: Marvin Harrison Jr. (0 points)",
+    "completed": true,
+    "media_key": "Erin/2026-09-24.mov"
+  },
+  {
+    "id": "shotgun-seth-2026-09-27-week-3-player-16021",
+    "owner": "Seth",
+    "week": 3,
+    "date": "2026-09-27",
+    "due_date": null,
+    "cause": "Started player: Eagles D/ST (-2 points)",
+    "completed": true,
+    "media_key": "Seth/2026-10-01.mov"
+  },
+  {
+    "id": "shotgun-leah-2026-09-27-week-3-player-16025",
+    "owner": "Leah",
+    "week": 3,
+    "date": "2026-09-27",
+    "due_date": null,
+    "cause": "Started player: 49ers D/ST (0 points)",
+    "completed": true,
+    "media_key": "Leah/2026-10-01.mov"
+  },
+  {
+    "id": "shotgun-mino-2026-09-20-week-2-player-4426515",
+    "owner": "Mino",
+    "week": 2,
+    "date": "2026-09-20",
+    "due_date": null,
+    "cause": "Started player: Puka Nacua (0 points)",
+    "completed": true,
+    "media_key": "Mino/2026-09-24.mov"
   }
 ]

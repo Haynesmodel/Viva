@@ -109,6 +109,9 @@ class RefreshVivaCurrentSeasonTest(unittest.TestCase):
         self.assertIn("view=mTeam", url)
         self.assertIn("view=mMatchupScore", url)
         self.assertIn("view=mSettings", url)
+        historical_url = self.refresher.api_url("https://example.test/api", 2026, "league id", 3)
+        self.assertIn("view=mRoster", historical_url)
+        self.assertIn("scoringPeriodId=3", historical_url)
 
     def test_current_consolation_matchups_use_generic_last_place_label(self):
         matchup = {"playoffTierType": "CONSOLATION_LADDER"}

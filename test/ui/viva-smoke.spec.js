@@ -176,11 +176,11 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await page.goto('/?tab=shotguns');
   await unlockViva(page);
   await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed0');
-  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed102');
+  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed107');
   await expect(page.locator('#shotgunDialog')).toBeHidden();
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
   await expect(page.locator('.shotgun-owner-tile:not([open])')).toHaveCount(12);
-  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(102);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(107);
   await page.locator('.shotgun-owner-tile').first().locator('summary').click();
   await expect(page.locator('.shotgun-owner-tile').first()).toHaveAttribute('open', '');
   await expect(page.locator('#recentShotgunsHeading')).toHaveText('Recently complete');
@@ -191,8 +191,8 @@ test('Shotguns renders the preserved record states without loading video bytes',
   await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
   await expect(page.locator('#shotgunOwnerFilter option')).toHaveCount(13);
   const labels = await page.locator('.shotgun-play').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-label')));
-  expect(labels).toHaveLength(107);
-  expect(new Set(labels).size).toBe(107);
+  expect(labels).toHaveLength(112);
+  expect(new Set(labels).size).toBe(112);
   expect(labels.every(label => label?.startsWith('Play '))).toBe(true);
   expect(videoRequests).toEqual([]);
 });
@@ -209,7 +209,7 @@ test('Shotguns owner filter narrows and restores the completed archive', async (
   await expect(page.locator('#shotgunFilterStatus')).toContainText('Taylor');
   await filter.selectOption('');
   await expect(page.locator('.shotgun-owner-tile')).toHaveCount(12);
-  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(102);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(107);
 });
 
 test('Shotguns shows an empty state for an owner with only owed records', async ({ page }) => {

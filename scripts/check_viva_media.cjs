@@ -37,7 +37,7 @@ async function check(root = process.cwd(), options = {}) {
   const localKeys = mediaFiles(root).map(file => path.relative(path.join(root, 'assets', 'Shotguns'), file).split(path.sep).join('/')).sort();
   const errors = [];
   const warnings = [];
-  const expectedCount = options.expectedCount ?? 102;
+  const expectedCount = options.expectedCount ?? 107;
   if (new Set(keys).size !== keys.length) errors.push('Shotguns media keys must be unique');
   if (keys.length !== expectedCount) errors.push(`Expected ${expectedCount} referenced completed Shotguns media keys, found ${keys.length}`);
   const referenced = new Set(keys);

@@ -30,3 +30,28 @@ test('weekly Shotguns report finds started players at zero or below', () => {
   assert.match(output, /Kylie: Started player: Negative Starter \(-1 points\)/);
   assert.doesNotMatch(output, /Bench Player|Positive Starter/);
 });
+
+test('weekly Shotguns report catches a zero-point starter omitted from the matchup roster', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-shotguns-missing-'));
+  const input = path.join(directory, 'espn.json');
+  const positive = { lineupSlotId: 2, playerPoolEntry: { id: 20, appliedStatTotal: 8, player: { fullName: 'Positive Starter' } } };
+  fs.writeFileSync(input, JSON.stringify({
+    status: { currentMatchupPeriod: 3 },
+    teams: [{ id: 1, name: 'Mino' }, { id: 2, name: 'Kylie' }],
+    schedule: [{ id: 102, matchupPeriodId: 2, winner: 'HOME',
+      home: { teamId: 1, totalPoints: 8,
+        rosterForMatchupPeriod: { entries: [positive] },
+        rosterForCurrentScoringPeriod: { entries: [positive,
+          { lineupSlotId: 4, playerPoolEntry: { id: 21, appliedStatTotal: 0, player: { fullName: 'Missing Starter' } } },
+          { lineupSlotId: 20, playerPoolEntry: { id: 22, appliedStatTotal: -2, player: { fullName: 'Bench Player' } } },
+        ] },
+      },
+      away: { teamId: 2, totalPoints: 0 },
+    }],
+  }));
+  const output = execFileSync('python3', [
+    'scripts/report_shotguns_weekly.py', '--input', input, '--season', '2026', '--week', '2',
+  ], { cwd: path.join(__dirname, '..'), encoding: 'utf8' });
+  assert.match(output, /Mino: Started player: Missing Starter \(0 points\)/);
+  assert.doesNotMatch(output, /Bench Player|Positive Starter/);
+});
