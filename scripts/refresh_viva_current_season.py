@@ -85,9 +85,12 @@ def date_from_espn(value: Any, label: str) -> str:
         return IMPORTER.iso_date(value, label)
 
 
-def api_url(base_url: str, season: int, league_id: str) -> str:
+def api_url(base_url: str, season: int, league_id: str, scoring_period: int | None = None) -> str:
     base = base_url.rstrip("/")
-    query = urllib.parse.urlencode([("view", "mTeam"), ("view", "mMatchup"), ("view", "mMatchupScore"), ("view", "mSettings")])
+    params = [("view", "mTeam"), ("view", "mMatchup"), ("view", "mMatchupScore"), ("view", "mSettings")]
+    if scoring_period is not None:
+        params.extend([("view", "mRoster"), ("scoringPeriodId", str(scoring_period))])
+    query = urllib.parse.urlencode(params)
     return f"{base}/seasons/{season}/segments/0/leagues/{urllib.parse.quote(str(league_id), safe='')}?{query}"
 
 
@@ -95,13 +98,13 @@ def scoring_period_url(base_url: str, season: int, period: int) -> str:
     return f"{base_url.rstrip('/')}/{season}/types/2/weeks/{period}"
 
 
-def fetch_league(base_url: str, season: int, league_id: str, espn_s2: str | None, swid: str | None) -> dict[str, Any]:
+def fetch_league(base_url: str, season: int, league_id: str, espn_s2: str | None, swid: str | None, scoring_period: int | None = None) -> dict[str, Any]:
     if bool(espn_s2) != bool(swid):
         raise ValueError("ESPN_S2 and ESPN_SWID must either both be set for a private league or both be omitted for a public league")
     headers = {"Accept": "application/json", "User-Agent": "Viva current-season refresh"}
     if espn_s2 and swid:
         headers["Cookie"] = f"espn_s2={espn_s2}; SWID={swid}"
-    request = urllib.request.Request(api_url(base_url, season, league_id), headers=headers)
+    request = urllib.request.Request(api_url(base_url, season, league_id, scoring_period), headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
             payload = json.load(response)

@@ -34,7 +34,9 @@
         "saunders_slots": 6,
         "standings_tiebreakers": ["points_for"],
         "week_display_dates": {
-          "1": "2026-09-13"
+          "1": "2026-09-13",
+          "2": "2026-09-20",
+          "3": "2026-09-27"
         }
       }
     }

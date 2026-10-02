@@ -17,7 +17,7 @@ generic dashboard with a league logo applied afterward. It brings rigorous
 historical analysis, a populated current-season command center, and the
 gloriously specific accountability of Shotguns into one bespoke league
 identity. The repository currently carries 486 head-to-head rows, 66
-season-summary rows across six verified seasons, nine named rivalry groups, 102
+season-summary rows across six verified seasons, nine named rivalry groups, 107
 curated Shotguns records, and verified historical draft order for 2020–2025.
 
 - **Auditable by construction.** Canonical JSON, typed validators, generated
@@ -87,7 +87,7 @@ owner assets, Shotguns records, or the media host.
 - `assets/CurrentSeason.json` contains the configured current-season snapshot.
   Verified historical draft order is populated for the approved 2020–2025
   seasons; future or unverified seasons remain intentionally unavailable.
-- `assets/Shotguns.json` contains 102 curated records, all completed and
+- `assets/Shotguns.json` contains 107 curated records, all completed and
   media-backed. Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
   artifact and are resolved through `VITE_VIVA_MEDIA_BASE_URL`.

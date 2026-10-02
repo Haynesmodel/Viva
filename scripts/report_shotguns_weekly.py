@@ -47,12 +47,19 @@ def slug(value: Any) -> str:
     return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", str(value).strip().lower()))
 
 
-def date_for(matchup: dict[str, Any], current_games: list[dict[str, Any]]) -> str:
-    if matchup.get("date") is not None:
-        return refresh.date_from_espn(matchup["date"], "ESPN matchup date")
+def obligation_key(row: dict[str, Any]) -> tuple[str, Any, Any, str]:
+    return str(row.get("date", ""))[:4], row.get("owner"), row.get("week"), str(row.get("cause", "")).rsplit(" (", 1)[0]
+
+
+def date_for(matchup: dict[str, Any], current_games: list[dict[str, Any]], display_dates: dict[str, str]) -> str:
+    override = display_dates.get(str(matchup.get("matchupPeriodId")))
+    if override:
+        return override
     for game in current_games:
         if matchup.get("id") is not None and str(game.get("matchup_id")) == str(matchup["id"]):
             return game["date"]
+    if matchup.get("date") is not None:
+        return refresh.date_from_espn(matchup["date"], "ESPN matchup date")
     raise ValueError("selected matchup has no date; refresh CurrentSeason.json first or provide an ESPN date")
 
 
@@ -112,7 +119,7 @@ def started_player_rows(team: dict[str, Any], owner: str, week: int, date: str) 
     return rows
 
 
-def final_matchups(payload: dict[str, Any], week: int, owners: dict[int, str], current_games: list[dict[str, Any]]) -> list[tuple[dict[str, Any], str, str, str]]:
+def final_matchups(payload: dict[str, Any], week: int, owners: dict[int, str], current_games: list[dict[str, Any]], display_dates: dict[str, str]) -> list[tuple[dict[str, Any], str, str, str]]:
     status = payload.get("status") if isinstance(payload.get("status"), dict) else {}
     raw_period = status.get("currentMatchupPeriod", status.get("currentScoringPeriod"))
     current_period = int(raw_period) if raw_period not in (None, "", 0, "0") else None
@@ -126,7 +133,7 @@ def final_matchups(payload: dict[str, Any], week: int, owners: dict[int, str], c
             continue
         if refresh.matchup_status(matchup, week, current_period) != "final":
             continue
-        output.append((matchup, owners[home["teamId"]], owners[away["teamId"]], date_for(matchup, current_games)))
+        output.append((matchup, owners[home["teamId"]], owners[away["teamId"]], date_for(matchup, current_games, display_dates)))
     return output
 
 
@@ -159,7 +166,13 @@ def main() -> int:
         league_id = args.league_id or os.environ.get("VIVA_ESPN_LEAGUE_ID")
         if not league_id:
             raise ValueError("VIVA_ESPN_LEAGUE_ID is required when --league-id is not supplied")
-        payload = refresh.fetch_league(args.api_base, args.season, league_id, os.environ.get("ESPN_S2"), os.environ.get("ESPN_SWID"))
+        credentials = (args.api_base, args.season, league_id, os.environ.get("ESPN_S2"), os.environ.get("ESPN_SWID"))
+        payload = refresh.fetch_league(*credentials, scoring_period=args.week)
+
+    raw_period = payload.get("status", {}).get("currentMatchupPeriod", 1)
+    week = int(args.week if args.week is not None else (int(raw_period) - 1 if int(raw_period) > 1 else 1))
+    if not args.input and args.week is None:
+        payload = refresh.fetch_league(*credentials, scoring_period=week)
 
     aliases = refresh.IMPORTER.owner_map(mapping)
     members = refresh.member_names(payload)
@@ -172,9 +185,8 @@ def main() -> int:
 
     current = load_json(args.current_season) if args.current_season.exists() else {}
     current_games = current.get("games", []) if isinstance(current, dict) else []
-    raw_period = payload.get("status", {}).get("currentMatchupPeriod", 1)
-    week = int(args.week if args.week is not None else (int(raw_period) - 1 if int(raw_period) > 1 else 1))
-    matchups = final_matchups(payload, week, owners, current_games)
+    display_dates = mapping["seasons"][str(args.season)]["current_season"].get("week_display_dates", {})
+    matchups = final_matchups(payload, week, owners, current_games, display_dates)
     candidates = []
     print(f"Week {week} finalized scores")
     for matchup, home_owner, away_owner, date in matchups:
@@ -187,7 +199,8 @@ def main() -> int:
     shotguns_path = ROOT / "assets" / "Shotguns.json"
     existing = load_json(shotguns_path)
     existing_ids = {row.get("id") for row in existing}
-    candidates = [row for row in candidates if row["id"] not in existing_ids]
+    existing_obligations = {obligation_key(row) for row in existing}
+    candidates = [row for row in candidates if row["id"] not in existing_ids and obligation_key(row) not in existing_obligations]
     print("Started players at 0 or below")
     if not candidates:
         print("- None")

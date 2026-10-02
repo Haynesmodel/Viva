@@ -1,13 +1,13 @@
 {
   "assets": {
     "CurrentSeason": {
-      "bytes": 28255,
+      "bytes": 28249,
       "path": "assets/CurrentSeason.json",
       "required": false,
       "rows": 84,
       "season_max": 2026,
       "season_min": 2026,
-      "sha256": "sha256:eaab36c7504f3413afc84833f2dd5c4ffda27dc15a45b278979fa833a2b09e31"
+      "sha256": "sha256:b90791c597e2c594340efb41837f116cd5528d5c08a3254b1bbd5b362c8e6a51"
     },
     "DraftSpot": {
       "bytes": 74856,
@@ -46,16 +46,16 @@
       "sha256": "sha256:00a67bf1fd3300a6ceaccf00fd9629e2865fdd0f7d65cc3e8ada1f4d0eb16346"
     },
     "Shotguns": {
-      "bytes": 24892,
+      "bytes": 26201,
       "path": "assets/Shotguns.json",
       "required": false,
-      "rows": 102,
+      "rows": 107,
       "season_max": null,
       "season_min": null,
-      "sha256": "sha256:c2e2550c30c66422399327f1dd1249f356c9df8d6171705daf7f0415230e831f"
+      "sha256": "sha256:e7328db239b5f524c04da35094498cca6fcaa0fedc3effe5a4ba0db667b6542a"
     }
   },
-  "data_version": "sha256:208d42e3b80dee620dbfec781dd508cf10365c5aeaa0e721bdeb72a2c37eae41",
+  "data_version": "sha256:c56088f9d353d4e58430710da3c14c9eebd34ab706d591719f461fbc8dcc6f24",
   "derived": {
     "bytes": 127374,
     "path": "assets/DerivedStats.json",
