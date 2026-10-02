@@ -84,38 +84,44 @@ def player_score(entry: dict[str, Any], week: int) -> float | None:
 
 
 def started_player_rows(team: dict[str, Any], owner: str, week: int, date: str) -> list[dict[str, Any]]:
-    roster = next(
-        (team[key] for key in ("rosterForMatchupPeriod", "roster", "rosterForCurrentScoringPeriod") if isinstance(team.get(key), dict)),
-        {},
-    )
-    entries = roster.get("entries", []) if isinstance(roster, dict) else []
     rows: list[dict[str, Any]] = []
-    for entry in entries:
-        if not isinstance(entry, dict):
+    seen_players: set[str] = set()
+    for roster_key in ("rosterForMatchupPeriod", "rosterForCurrentScoringPeriod", "roster"):
+        roster = team.get(roster_key)
+        if not isinstance(roster, dict):
             continue
-        try:
-            slot = int(entry.get("lineupSlotId"))
-        except (TypeError, ValueError):
-            continue
-        if slot in BENCH_SLOTS or slot >= 20:
-            continue
-        score = player_score(entry, week)
-        if score is None or score > 0:
-            continue
-        pool = entry.get("playerPoolEntry") if isinstance(entry.get("playerPoolEntry"), dict) else {}
-        player = pool.get("player") if isinstance(pool.get("player"), dict) else {}
-        name = str(player.get("fullName") or player.get("name") or "Unknown player").strip()
-        player_id = player.get("id") or pool.get("id") or name
-        rows.append({
-            "id": f"shotgun-{slug(owner)}-{date}-week-{week}-player-{slug(player_id)}",
-            "owner": owner,
-            "week": week,
-            "date": date,
-            "due_date": None,
-            "cause": f"Started player: {name} ({score:g} points)",
-            "completed": False,
-            "media_key": None,
-        })
+        for entry in roster.get("entries", []):
+            if not isinstance(entry, dict):
+                continue
+            pool = entry.get("playerPoolEntry") if isinstance(entry.get("playerPoolEntry"), dict) else {}
+            player = pool.get("player") if isinstance(pool.get("player"), dict) else {}
+            name = str(player.get("fullName") or player.get("name") or "Unknown player").strip()
+            player_id = player.get("id") or pool.get("id") or entry.get("playerId") or name
+            if str(player_id) in seen_players:
+                continue
+            try:
+                slot = int(entry.get("lineupSlotId"))
+            except (TypeError, ValueError):
+                continue
+            if slot in BENCH_SLOTS or slot >= 20:
+                seen_players.add(str(player_id))
+                continue
+            score = player_score(entry, week)
+            if score is None:
+                continue
+            seen_players.add(str(player_id))
+            if score > 0:
+                continue
+            rows.append({
+                "id": f"shotgun-{slug(owner)}-{date}-week-{week}-player-{slug(player_id)}",
+                "owner": owner,
+                "week": week,
+                "date": date,
+                "due_date": None,
+                "cause": f"Started player: {name} ({score:g} points)",
+                "completed": False,
+                "media_key": None,
+            })
     return rows
 
 

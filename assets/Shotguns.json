@@ -1060,12 +1060,12 @@
     "media_key": "Leah/2026-10-01.mov"
   },
   {
-    "id": "shotgun-mino-2026-09-24-extra",
+    "id": "shotgun-mino-2026-09-20-week-2-player-4426515",
     "owner": "Mino",
-    "week": null,
-    "date": "2026-09-24",
+    "week": 2,
+    "date": "2026-09-20",
     "due_date": null,
-    "cause": "Extra Shotgun",
+    "cause": "Started player: Puka Nacua (0 points)",
     "completed": true,
     "media_key": "Mino/2026-09-24.mov"
   }

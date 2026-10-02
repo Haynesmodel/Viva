@@ -23,6 +23,7 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     [
       '2:Erin:Started player: Marvin Harrison Jr. (0 points)',
       '2:Joe:Started player: DJ Moore (-0.1 points)',
+      '2:Mino:Started player: Puka Nacua (0 points)',
       '2:Wei:Started player: Lions D/ST (-4 points)',
       '3:Leah:Started player: 49ers D/ST (0 points)',
       '3:Seth:Started player: Eagles D/ST (-2 points)',
