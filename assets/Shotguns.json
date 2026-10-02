@@ -1025,7 +1025,7 @@
     "week": 2,
     "date": "2026-09-20",
     "due_date": null,
-    "cause": "Started player: Lions D/ST (-4 points)",
+    "cause": "Started player: Lions D/ST (-4 points); completed Oct 1 as carryover",
     "completed": true,
     "media_key": "Wei/2026-10-01.mov"
   },
@@ -1068,5 +1068,25 @@
     "cause": "Started player: Puka Nacua (0 points)",
     "completed": true,
     "media_key": "Mino/2026-09-24.mov"
+  },
+  {
+    "id": "shotgun-wei-2026-09-24-week-3-carryover",
+    "owner": "Wei",
+    "week": 3,
+    "date": "2026-09-24",
+    "due_date": "2026-10-01",
+    "cause": "Carryover: Week 2 Lions D/ST missed Sep 24 deadline",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-wei-2026-10-01-week-4-carryover",
+    "owner": "Wei",
+    "week": 4,
+    "date": "2026-10-01",
+    "due_date": "2026-10-08",
+    "cause": "Carryover: Week 3 shotgun missed Oct 1 deadline",
+    "completed": false,
+    "media_key": null
   }
 ]

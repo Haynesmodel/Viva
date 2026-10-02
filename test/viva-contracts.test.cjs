@@ -8,26 +8,33 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 107);
+  assert.equal(shotguns.length, 109);
   assert.equal(shotguns.filter(row => row.completed).length, 107);
-  assert.equal(shotguns.filter(row => !row.completed).length, 0);
+  assert.equal(shotguns.filter(row => !row.completed).length, 2);
   assert.deepEqual(
     shotguns.filter(row => !row.completed).map(row => `${row.owner}: ${row.cause}`).sort(),
-    [],
+    [
+      'Wei: Carryover: Week 2 Lions D/ST missed Sep 24 deadline',
+      'Wei: Carryover: Week 3 shotgun missed Oct 1 deadline',
+    ],
   );
   assert.equal(new Set(shotguns.map(row => row.id)).size, shotguns.length);
   assert.ok(shotguns.every(row => Object.hasOwn(row, 'media_key')));
   assert.deepEqual(
-    shotguns.filter(row => row.date.startsWith('2026-') && [2, 3].includes(row.week))
+    shotguns.filter(row => row.date.startsWith('2026-') && [2, 3].includes(row.week) && row.cause.startsWith('Started player:'))
       .map(row => `${row.week}:${row.owner}:${row.cause}`).sort(),
     [
       '2:Erin:Started player: Marvin Harrison Jr. (0 points)',
       '2:Joe:Started player: DJ Moore (-0.1 points)',
       '2:Mino:Started player: Puka Nacua (0 points)',
-      '2:Wei:Started player: Lions D/ST (-4 points)',
+      '2:Wei:Started player: Lions D/ST (-4 points); completed Oct 1 as carryover',
       '3:Leah:Started player: 49ers D/ST (0 points)',
       '3:Seth:Started player: Eagles D/ST (-2 points)',
     ],
+  );
+  assert.deepEqual(
+    shotguns.filter(row => row.owner === 'Wei' && !row.completed).map(row => [row.week, row.date, row.due_date]),
+    [[3, '2026-09-24', '2026-10-01'], [4, '2026-10-01', '2026-10-08']],
   );
   assert.equal(fs.existsSync(path.join(root, 'assets/TransactionHistory.json')), false);
   assert.equal(fs.existsSync(path.join(root, 'src/features/transactions')), false);
