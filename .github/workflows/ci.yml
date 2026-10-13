@@ -39,7 +39,7 @@ jobs:
         run: npm ci
       - name: Audit dependencies
         id: audit
-        run: npm audit --audit-level=moderate
+        run: node scripts/audit_dependencies.cjs
       - name: Validate reviewed external media origin
         run: |
           test -n "$VITE_VIVA_MEDIA_BASE_URL"
