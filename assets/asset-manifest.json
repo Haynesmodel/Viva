@@ -1,13 +1,13 @@
 {
   "assets": {
     "CurrentSeason": {
-      "bytes": 28249,
+      "bytes": 28239,
       "path": "assets/CurrentSeason.json",
       "required": false,
       "rows": 84,
       "season_max": 2026,
       "season_min": 2026,
-      "sha256": "sha256:b90791c597e2c594340efb41837f116cd5528d5c08a3254b1bbd5b362c8e6a51"
+      "sha256": "sha256:ede55366904a7d50071c955abf363c05b73ea0f425427b1d0c4f4ed9068af299"
     },
     "DraftSpot": {
       "bytes": 74856,
@@ -55,7 +55,7 @@
       "sha256": "sha256:908a30d9812c973edb5251a508ebbfb42fea2f99940e89df06b3b45d649d5657"
     }
   },
-  "data_version": "sha256:4368d2f275f0a6bf4a987dc90a3f92e9250d5ff1b0003c449094dbdd32feb95e",
+  "data_version": "sha256:542e4c415da9dea01831f0f43125aca5206f26162d1628b7474d394e199b5014",
   "derived": {
     "bytes": 127374,
     "path": "assets/DerivedStats.json",
