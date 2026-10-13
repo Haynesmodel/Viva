@@ -1088,5 +1088,85 @@
     "cause": "Carryover: Week 3 shotgun missed Oct 1 deadline",
     "completed": false,
     "media_key": null
+  },
+  {
+    "id": "shotgun-marian-2026-09-30-week-4-player-4612826",
+    "owner": "Marian",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Ladd McConkey (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-malcolm-2026-09-30-week-4-player-16007",
+    "owner": "Malcolm",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Broncos D/ST (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-malcolm-2026-09-30-week-4-player-4697815",
+    "owner": "Malcolm",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Rachaad White (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-seth-2026-09-30-week-4-player-5083315",
+    "owner": "Seth",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Kenyon Sadiq (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-wei-2026-09-30-week-4-player-16008",
+    "owner": "Wei",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Lions D/ST (-1 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-wei-2026-09-30-week-4-player-3052096",
+    "owner": "Wei",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Johnny Mundt (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-dulberger-2026-09-30-week-4-player-3121422",
+    "owner": "Dulberger",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Terry McLaurin (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-leah-2026-09-30-week-4-player-4428331",
+    "owner": "Leah",
+    "week": 4,
+    "date": "2026-09-30",
+    "due_date": null,
+    "cause": "Started player: Rashee Rice (0 points)",
+    "completed": false,
+    "media_key": null
   }
 ]
