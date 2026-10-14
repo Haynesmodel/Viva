@@ -83,3 +83,14 @@ test('Shotguns validation accepts an active current-season owner without histori
   }, { root });
   assert.deepEqual(result.errors, []);
 });
+
+test('Shotguns validation rejects a configured owner absent from both historical and current seasons', () => {
+  const result = validateSemanticBundle({
+    H2H: [], SeasonSummary: [], Rivalries: [], CurrentSeason: null,
+    Shotguns: [{ id: 'shotgun-will-unmapped-season', owner: 'Will', week: 5,
+      date: '2026-10-11', due_date: null, cause: 'Started player: Oronde Gadsden (0 points)',
+      completed: false, media_key: null }],
+  }, { root });
+  assert.match(result.errors.join('\n'), /SHOTGUN_UNKNOWN_OWNER.*Will/);
+  assert.doesNotMatch(result.errors.join('\n'), /OWNER_UNCONFIGURED/);
+});

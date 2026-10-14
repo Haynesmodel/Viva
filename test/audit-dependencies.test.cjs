@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { checkAudit } = require('../scripts/audit_dependencies.cjs');
+const { checkAudit, runAudit } = require('../scripts/audit_dependencies.cjs');
 
 const braces = { name: 'braces', severity: 'high', via: [{ name: 'braces', url: 'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm' }] };
 const micromatch = { name: 'micromatch', severity: 'high', via: ['braces'] };
@@ -22,4 +22,25 @@ test('audit rejects malformed reports and cycles', () => {
     alpha: { name: 'alpha', severity: 'high', via: ['beta'] },
     beta: { name: 'beta', severity: 'high', via: ['alpha'] },
   } }), /Unexpected npm audit findings/);
+});
+
+test('audit command checks production dependencies when only the known dev chain remains', () => {
+  const commands = [];
+  const report = JSON.stringify({ auditReportVersion: 2, vulnerabilities: { braces, micromatch } });
+  const exec = (command, args) => {
+    commands.push([command, args]);
+    if (commands.length === 1) throw Object.assign(new Error('audit findings'), { stdout: report });
+    return '';
+  };
+  assert.equal(runAudit(exec), 2);
+  assert.deepEqual(commands, [
+    ['npm', ['audit', '--json']],
+    ['npm', ['audit', '--omit=dev', '--audit-level=moderate']],
+  ]);
+});
+
+test('audit command passes clean reports and fails closed on command errors', () => {
+  const clean = JSON.stringify({ auditReportVersion: 2, vulnerabilities: {} });
+  assert.equal(runAudit(() => clean), 0);
+  assert.throws(() => runAudit(() => { throw new Error('network unavailable'); }), /network unavailable/);
 });

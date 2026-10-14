@@ -30,10 +30,10 @@ function checkAudit(report) {
   return relevant.length;
 }
 
-if (require.main === module) {
+function runAudit(exec = execFileSync) {
   let output;
   try {
-    output = execFileSync('npm', ['audit', '--json'], { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
+    output = exec('npm', ['audit', '--json'], { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 });
   } catch (error) {
     if (!error.stdout) throw error;
     output = error.stdout;
@@ -42,11 +42,14 @@ if (require.main === module) {
   if (exceptionCount) {
     // The braces advisory has no patched release; only trusted build-time
     // stylelint globs reach it. Keep the production dependency audit strict.
-    execFileSync('npm', ['audit', '--omit=dev', '--audit-level=moderate'], { stdio: 'inherit' });
+    exec('npm', ['audit', '--omit=dev', '--audit-level=moderate'], { stdio: 'inherit' });
     console.log(`Accepted ${exceptionCount} dev-only findings caused solely by ${KNOWN_DEV_ADVISORY}.`);
   } else {
     console.log('npm audit found no moderate-or-higher vulnerabilities.');
   }
+  return exceptionCount;
 }
 
-module.exports = { checkAudit, onlyKnownAdvisory };
+if (require.main === module) runAudit();
+
+module.exports = { checkAudit, onlyKnownAdvisory, runAudit };
