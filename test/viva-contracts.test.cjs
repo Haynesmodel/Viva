@@ -8,9 +8,9 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 127);
-  assert.equal(shotguns.filter(row => row.completed).length, 110);
-  assert.equal(shotguns.filter(row => !row.completed).length, 17);
+  assert.equal(shotguns.length, 128);
+  assert.equal(shotguns.filter(row => row.completed).length, 122);
+  assert.equal(shotguns.filter(row => !row.completed).length, 6);
   assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
     && row.cause === 'Started player: Rams D/ST (0 points)' && row.media_key === 'Joe/IMG_2573.mov'));
   assert.deepEqual(
@@ -23,9 +23,11 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     && row.cause.includes('Stefon Diggs') && row.media_key === 'Taylor/2026-10-12-week-5-second-shotgun.mov'));
   assert.ok(shotguns.some(row => row.owner === 'Malcolm' && row.week === 4 && row.completed
     && row.cause.includes('Broncos D/ST') && row.media_key === 'Malcolm/2026-10-11-week-4-broncos-dst.mov'));
-  assert.ok(shotguns.some(row => row.owner === 'Malcolm' && row.week === 5 && !row.completed
+  assert.ok(shotguns.some(row => row.owner === 'Malcolm' && row.week === 5 && row.completed
     && row.cause.includes('Week 4 Broncos D/ST missed Oct 8 deadline') && row.due_date === '2026-10-15'));
-  assert.ok(shotguns.some(row => row.owner === 'Will' && row.week === 5 && !row.completed && row.cause.includes('Oronde Gadsden')));
+  assert.ok(shotguns.some(row => row.owner === 'Malcolm' && row.week === 5 && row.completed
+    && row.cause.includes('Week 4 Rachaad White missed Oct 8 deadline') && row.due_date === '2026-10-15'));
+  assert.ok(shotguns.some(row => row.owner === 'Will' && row.week === 5 && row.completed && row.cause.includes('Oronde Gadsden')));
   assert.ok(shotguns.filter(row => [4, 5].includes(row.week) && row.cause.startsWith('Started player:'))
     .every(row => row.date === (row.week === 4 ? '2026-10-04' : '2026-10-11')));
   assert.equal(new Set(shotguns.map(row => row.id)).size, shotguns.length);
@@ -43,9 +45,10 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     ],
   );
   assert.deepEqual(
-    shotguns.filter(row => row.owner === 'Wei' && !row.completed && row.cause.startsWith('Carryover:'))
-      .map(row => [row.week, row.date, row.due_date]),
-    [[3, '2026-09-24', '2026-10-01'], [4, '2026-10-01', '2026-10-08']],
+    shotguns.filter(row => row.owner === 'Wei' && row.completed && row.cause.startsWith('Carryover:'))
+      .map(row => [row.week, row.date, row.due_date, row.media_key]),
+    [[3, '2026-09-24', '2026-10-01', 'Wei/2026-10-02-week-3-carryover.mov'],
+      [4, '2026-10-01', '2026-10-08', 'Wei/2026-10-03-week-4-carryover.mov']],
   );
   assert.equal(fs.existsSync(path.join(root, 'assets/TransactionHistory.json')), false);
   assert.equal(fs.existsSync(path.join(root, 'src/features/transactions')), false);

@@ -148,9 +148,9 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 127 rows: 110 completed and
-media-backed, plus 17 owed obligations through Week 5. Keep IDs, owner, week, date, cause, due date,
-completion, and `media_key` stable. Do not commit video bytes to the Pages
+`assets/Shotguns.json` is the source of record for 128 rows: 122 completed and
+media-backed, plus 6 owed obligations through Week 5. Keep IDs, owner, week,
+date, cause, due date, completion, and `media_key` stable. Do not commit video bytes to the Pages
 artifact. The reviewed external Viva media origin is supplied through
 `VITE_VIVA_MEDIA_BASE_URL`; run:
 
@@ -175,9 +175,17 @@ adds one carryover obligation for the next week. Review completion timing and
 append the carryover explicitly; the ESPN report only detects score-based
 obligations. Wei's Week 2 Lions D/ST Shotgun was completed October 1, after
 the September 24 deadline. His Week 3 carryover missed the October 1 cutoff,
-so Week 3 and Week 4 carryovers remain owed.
+so a Week 4 carryover was added. Both carryovers were completed October 2–3.
 Malcolm's Week 4 Broncos D/ST clip was recorded October 11, after the
-October 8 cutoff, so its Week 5 carryover remains owed.
+October 8 cutoff; its Week 5 carryover was completed from the October 9
+four-shotgun recording.
+Malcolm's Week 4 Rachaad White clip was recorded October 9, also after the
+October 8 cutoff. Its Week 5 carryover was added and completed from the same
+four-shotgun recording. The Broncos carryover was also completed from that
+recording. Three distinct media keys reference the same four-shotgun source
+file so each completed obligation retains a unique key. One shotgun in that
+recording and a separate October 11 clip have no remaining documented
+obligation; see `SHOTGUN_SUBMISSIONS_2026-10-15.md` before assigning either.
 
 The guarded `Refresh weekly Shotguns` workflow runs automatically at 10:47 AM
 America/Chicago on Tuesdays when `VIVA_ESPN_ENABLED` is exactly `true`. It

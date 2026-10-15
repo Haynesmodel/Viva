@@ -1076,8 +1076,8 @@
     "date": "2026-09-24",
     "due_date": "2026-10-01",
     "cause": "Carryover: Week 2 Lions D/ST missed Sep 24 deadline",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Wei/2026-10-02-week-3-carryover.mov"
   },
   {
     "id": "shotgun-wei-2026-10-01-week-4-carryover",
@@ -1086,8 +1086,8 @@
     "date": "2026-10-01",
     "due_date": "2026-10-08",
     "cause": "Carryover: Week 3 shotgun missed Oct 1 deadline",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Wei/2026-10-03-week-4-carryover.mov"
   },
   {
     "id": "shotgun-marian-2026-10-04-week-4-player-4612826",
@@ -1096,8 +1096,8 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Ladd McConkey (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Marian/2026-10-08-week-4-ladd-mcconkey.mov"
   },
   {
     "id": "shotgun-malcolm-2026-10-04-week-4-player-16007",
@@ -1116,8 +1116,8 @@
     "date": "2026-10-08",
     "due_date": "2026-10-15",
     "cause": "Carryover: Week 4 Broncos D/ST missed Oct 8 deadline",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Malcolm/2026-10-09-week-5-broncos-carryover.mov"
   },
   {
     "id": "shotgun-malcolm-2026-10-04-week-4-player-4697815",
@@ -1126,8 +1126,8 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Rachaad White (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Malcolm/2026-10-09-week-4-rachaad-white.mov"
   },
   {
     "id": "shotgun-seth-2026-10-04-week-4-player-5083315",
@@ -1136,8 +1136,8 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Kenyon Sadiq (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Seth/2026-10-07-week-4-kenyon-sadiq.mov"
   },
   {
     "id": "shotgun-wei-2026-10-04-week-4-player-16008",
@@ -1146,8 +1146,8 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Lions D/ST (-1 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Wei/2026-10-07-week-4-lions-dst.mov"
   },
   {
     "id": "shotgun-wei-2026-10-04-week-4-player-3052096",
@@ -1156,8 +1156,8 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Johnny Mundt (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Wei/2026-10-08-week-4-johnny-mundt.mov"
   },
   {
     "id": "shotgun-dulberger-2026-10-04-week-4-player-3121422",
@@ -1166,8 +1166,8 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Terry McLaurin (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Dulberger/2026-10-08-week-4-terry-mclaurin.mov"
   },
   {
     "id": "shotgun-leah-2026-10-04-week-4-player-4428331",
@@ -1176,8 +1176,8 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Rashee Rice (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Leah/2026-10-08-week-4-rashee-rice.mov"
   },
   {
     "id": "shotgun-kylie-2026-10-11-week-5-player-16003",
@@ -1216,8 +1216,8 @@
     "date": "2026-10-11",
     "due_date": null,
     "cause": "Started player: Oronde Gadsden (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Will/2026-10-11-week-5-oronde-gadsden.mov"
   },
   {
     "id": "shotgun-mino-2026-10-11-week-5-player-16006",
@@ -1268,5 +1268,15 @@
     "cause": "Started player: Lamar Jackson (0 points)",
     "completed": false,
     "media_key": null
+  },
+  {
+    "id": "shotgun-malcolm-2026-10-08-week-5-carryover-rachaad-white",
+    "owner": "Malcolm",
+    "week": 5,
+    "date": "2026-10-08",
+    "due_date": "2026-10-15",
+    "cause": "Carryover: Week 4 Rachaad White missed Oct 8 deadline",
+    "completed": true,
+    "media_key": "Malcolm/2026-10-09-week-5-rachaad-carryover.mov"
   }
 ]
