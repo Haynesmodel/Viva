@@ -118,9 +118,9 @@ test('Shotguns controller renders unavailable data and rejects missing roots', (
 test('Shotguns controller sorts, filters, plays, closes, and disposes', async () => {
   globalThis.__shotgunsRenders = [];
   const state = fixture({ data: [
-    { id: 'old', owner: 'Joe', completed: true, date: '2026-09-01', media_key: 'Joe/old.mov' },
+    { id: 'old', owner: 'Joe', completed: true, date: '2025-09-01', media_key: 'Joe/old.mov' },
     { id: 'new', owner: 'Shap', completed: true, date: '2026-09-10', media_key: 'Shap/new.mov' },
-    { id: 'owed', owner: 'Joe', completed: false, due_date: '2026-09-12', media_key: '' },
+    { id: 'owed', owner: 'Joe', completed: false, date: '2026-09-11', due_date: '2026-09-12', media_key: '' },
   ] });
   const controller = createFeatureController();
   controller.mount(state.context);
@@ -129,12 +129,40 @@ test('Shotguns controller sorts, filters, plays, closes, and disposes', async ()
   assert.deepEqual(props.owed.map(row => row.id), ['owed']);
   assert.deepEqual(props.completed.map(row => row.id), ['new', 'old']);
   assert.deepEqual(props.completedOwners, ['Shap', 'Joe']);
+  assert.deepEqual(props.years, ['2026', '2025']);
+  assert.equal(props.selectedYear, null);
   assert.equal(state.calls.headers.length, 1);
   assert.deepEqual(state.calls.themes, ['league']);
 
   props.onOwnerChange('Joe');
   props = globalThis.__shotgunsRenders.at(-1).value.props;
   assert.equal(props.selectedOwner, 'Joe');
+  props.onYearChange('2026');
+  props = globalThis.__shotgunsRenders.at(-1).value.props;
+  assert.equal(props.selectedYear, '2026');
+  assert.equal(props.selectedOwner, 'Joe');
+  assert.deepEqual(props.rows.map(row => row.id), ['new', 'owed']);
+  assert.deepEqual(props.owed.map(row => row.id), ['owed']);
+  assert.deepEqual(props.completed.map(row => row.id), ['new']);
+  assert.deepEqual(props.owners, ['Joe', 'Shap']);
+  assert.deepEqual(props.filterOwners, ['Joe', 'Shap']);
+  assert.deepEqual(props.completedOwners, []);
+  props.onClearFilter();
+  props = globalThis.__shotgunsRenders.at(-1).value.props;
+  assert.equal(props.selectedOwner, null);
+  assert.equal(props.selectedYear, '2026');
+  props.onOwnerChange('Joe');
+  props = globalThis.__shotgunsRenders.at(-1).value.props;
+  props.onYearChange('2025');
+  props = globalThis.__shotgunsRenders.at(-1).value.props;
+  assert.equal(props.selectedOwner, 'Joe');
+  assert.deepEqual(props.rows.map(row => row.id), ['old']);
+  assert.deepEqual(props.completedOwners, ['Joe']);
+  props.onYearChange(null);
+  props = globalThis.__shotgunsRenders.at(-1).value.props;
+  assert.equal(props.selectedOwner, 'Joe');
+  assert.equal(props.selectedYear, null);
+  assert.equal(props.rows.length, 3);
   props.onClearFilter();
   assert.equal(globalThis.__shotgunsRenders.at(-1).value.props.selectedOwner, null);
   props.onOwnerChange('Missing');

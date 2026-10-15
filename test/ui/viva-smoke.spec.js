@@ -227,6 +227,47 @@ test('Shotguns owner filter narrows and restores the completed archive', async (
   await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(122);
 });
 
+test('Shotguns year filter updates every section and combines with the owner filter', async ({ page }) => {
+  await page.goto('/?tab=shotguns');
+  await unlockViva(page);
+  const year = page.getByLabel('Filter by year');
+  const owner = page.getByLabel('Filter by owner');
+  await expect(year.locator('option')).toHaveText(['All years', '2026', '2025']);
+  await year.selectOption('2025');
+  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed0');
+  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed80');
+  await expect(page.locator('.shotgun-metric').nth(2)).toContainText('Total80');
+  await expect(page.locator('.shotgun-owed-record')).toHaveCount(0);
+  await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(12);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(80);
+  await expect(page.locator('section[aria-labelledby="recentShotgunsHeading"] .shotgun-record')).toHaveCount(5);
+  await expect(page.locator('section[aria-labelledby="recentShotgunsHeading"] .shotgun-record').first()).toContainText('2025');
+  await owner.selectOption('Taylor');
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(4);
+  await year.selectOption('2026');
+  await expect(owner).toHaveValue('Taylor');
+  await expect(page.locator('.shotgun-metric').nth(0)).toContainText('Owed6');
+  await expect(page.locator('.shotgun-metric').nth(1)).toContainText('Completed42');
+  await expect(page.locator('.shotgun-metric').nth(2)).toContainText('Total48');
+  await expect(page.locator('.shotgun-owed-record')).toHaveCount(6);
+  await expect(page.locator('.shotgun-owner-overview-card')).toHaveCount(13);
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(2);
+  await expect(page.locator('#shotgunFilterStatus')).toContainText('Taylor completed Shotguns from 2026');
+  await page.locator('[data-shotgun-clear-filter]').first().click();
+  await expect(owner).toHaveValue('');
+  await expect(year).toHaveValue('2026');
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(42);
+  await owner.selectOption('Taylor');
+  await year.selectOption('');
+  await expect(owner).toHaveValue('Taylor');
+  await expect(page.locator('.shotgun-metric').nth(2)).toContainText('Total128');
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(6);
+  await page.locator('[data-shotgun-clear-filter]').first().click();
+  await expect(owner).toHaveValue('');
+  await expect(year).toHaveValue('');
+  await expect(page.locator('.shotgun-owner-tile .shotgun-record')).toHaveCount(122);
+});
+
 test('Shotguns shows an empty state for an owner with only owed records', async ({ page }) => {
   const records = JSON.parse(readFileSync(new URL('../../assets/Shotguns.json', import.meta.url), 'utf8'));
   records.push({ id: 'shotgun-chuck-owed-only', owner: 'Chuck', week: 17, date: '2026-01-02', due_date: '2026-01-09', cause: 'Owed-only fixture', completed: false, media_key: null });
