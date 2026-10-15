@@ -21,6 +21,7 @@ export function createFeatureController(): VivaFeatureController {
   let mediaStatus: HTMLElement | null = null;
   let lastFocused: HTMLElement | null = null;
   let selectedOwner: string | null = null;
+  let selectedYear: string | null = null;
   let rows: ShotgunRecord[] | null = null;
 
   const closeDialog = () => {
@@ -47,22 +48,30 @@ export function createFeatureController(): VivaFeatureController {
       if (root) render(h('p', { class: 'status-banner status-warning', role: 'status' }, 'Shotguns data is unavailable. The rest of Viva remains available.'), root);
       return;
     }
-    const owed = rows.filter(row => !row.completed).sort((a, b) => String(b.due_date || '').localeCompare(String(a.due_date || '')));
-    const completed = rows.filter(row => row.completed).sort((a, b) => b.date.localeCompare(a.date));
-    const owners = [...new Set(rows.map(row => row.owner))].sort();
-    if (selectedOwner && !owners.includes(selectedOwner)) selectedOwner = null;
+    const years = [...new Set(rows.map(row => row.date.slice(0, 4)))].sort((a, b) => b.localeCompare(a));
+    if (selectedYear && !years.includes(selectedYear)) selectedYear = null;
+    const visibleRows = selectedYear ? rows.filter(row => row.date.startsWith(`${selectedYear}-`)) : rows;
+    const owed = visibleRows.filter(row => !row.completed).sort((a, b) => String(b.due_date || '').localeCompare(String(a.due_date || '')));
+    const completed = visibleRows.filter(row => row.completed).sort((a, b) => b.date.localeCompare(a.date));
+    const owners = [...new Set(visibleRows.map(row => row.owner))].sort();
+    const filterOwners = [...new Set(rows.map(row => row.owner))].sort();
+    if (selectedOwner && !filterOwners.includes(selectedOwner)) selectedOwner = null;
     const completedOwners = owners
       .filter(owner => completed.some(row => row.owner === owner))
       .sort((a, b) => String(completed.find(row => row.owner === b)?.date || '').localeCompare(String(completed.find(row => row.owner === a)?.date || '')) || a.localeCompare(b))
       .filter(owner => !selectedOwner || owner === selectedOwner);
     render(h(ShotgunsPage, {
-      rows,
+      rows: visibleRows,
       owed,
       completed,
       owners,
+      filterOwners,
       completedOwners,
+      years,
+      selectedYear,
       selectedOwner,
       mediaAvailable: Boolean(MEDIA_BASE_URL),
+      onYearChange: year => { selectedYear = year && years.includes(year) ? year : null; renderCurrent(); },
       onOwnerChange: owner => { selectedOwner = owner; renderCurrent(); },
       onClearFilter: () => { selectedOwner = null; renderCurrent(); },
       onPlay: play,
@@ -88,6 +97,7 @@ export function createFeatureController(): VivaFeatureController {
     activate(input: FeatureActivation) {
       rows = context.data.shotguns === null ? null : normalizeShotgunRows(context.data.shotguns);
       selectedOwner = null;
+      selectedYear = null;
       context.header.feature('Shotguns', null, 'Shotguns — Viva');
       context.theme.league();
       renderCurrent();

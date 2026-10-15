@@ -84,23 +84,38 @@ export interface ShotgunsPageProps {
   owed: ShotgunRecord[];
   completed: ShotgunRecord[];
   owners: string[];
+  filterOwners: string[];
   completedOwners: string[];
+  years: string[];
+  selectedYear: string | null;
   selectedOwner: string | null;
   mediaAvailable: boolean;
+  onYearChange(year: string | null): void;
   onOwnerChange(owner: string | null): void;
   onClearFilter(): void;
   onPlay(row: ShotgunRecord): void;
 }
 
-export function ShotgunsPage({ rows, owed, completed, owners, completedOwners, selectedOwner, mediaAvailable, onOwnerChange, onClearFilter, onPlay }: ShotgunsPageProps) {
+export function ShotgunsPage({ rows, owed, completed, owners, filterOwners, completedOwners, years, selectedYear, selectedOwner, mediaAvailable, onYearChange, onOwnerChange, onClearFilter, onPlay }: ShotgunsPageProps) {
   const ownerCompleted = (owner: string) => completed.filter(row => row.owner === owner);
   const ownerOwed = (owner: string) => owed.filter(row => row.owner === owner).length;
+  const emptyArchiveMessage = selectedOwner
+    ? `No completed Shotguns match this owner${selectedYear ? ' and year' : ''}.`
+    : `No completed Shotguns${selectedYear ? ' in this year' : ''}.`;
   return <>
     <section class="shotgun-lead">
       <div>
         <p class="shotgun-kicker">Viva archive</p>
         <h2 id="shotgunsLeadHeading">Shotguns</h2>
         <p class="shotgun-lead-copy">Track owed consequences and revisit every completed Shotgun.</p>
+      </div>
+      <div class="shotgun-year-filter">
+        <label for="shotgunYearFilter">Filter by year</label>
+        <select id="shotgunYearFilter" value={selectedYear || ''} onChange={event => onYearChange(event.currentTarget.value || null)}>
+          <option value="">All years</option>
+          {years.map(year => <option value={year} key={year}>{year}</option>)}
+        </select>
+        <span class="muted" role="status" aria-live="polite">{selectedYear ? `Showing ${selectedYear} Shotguns` : 'Showing all years'}</span>
       </div>
       <div class="shotgun-metrics" aria-label="Shotguns totals">
         <div class="shotgun-metric"><span>Owed</span><strong>{owed.length}</strong></div>
@@ -129,20 +144,20 @@ export function ShotgunsPage({ rows, owed, completed, owners, completedOwners, s
 
     <section class="card" aria-labelledby="completedShotgunsHeading">
       <div class="section-heading shotgun-archive-heading">
-        <div><h3 id="completedShotgunsHeading">Completed archive</h3><p id="shotgunFilterStatus" class="muted" role="status" aria-live="polite">{selectedOwner ? `Showing ${vivaShotgunDisplayName(selectedOwner)} completed Shotguns` : 'Showing all owners completed Shotguns'}</p></div>
+        <div><h3 id="completedShotgunsHeading">Completed archive</h3><p id="shotgunFilterStatus" class="muted" role="status" aria-live="polite">{selectedOwner ? `Showing ${vivaShotgunDisplayName(selectedOwner)} completed Shotguns` : 'Showing all owners completed Shotguns'}{selectedYear ? ` from ${selectedYear}` : ''}</p></div>
         <div class="shotgun-filter">
           <label for="shotgunOwnerFilter">Filter by owner</label>
           <select id="shotgunOwnerFilter" value={selectedOwner || ''} onChange={event => onOwnerChange(event.currentTarget.value || null)}>
             <option value="">All owners</option>
-            {owners.map(owner => <option value={owner} key={owner}>{vivaShotgunDisplayName(owner)}</option>)}
+            {filterOwners.map(owner => <option value={owner} key={owner}>{vivaShotgunDisplayName(owner)}</option>)}
           </select>
-          {selectedOwner && <button type="button" class="btn" data-shotgun-clear-filter onClick={onClearFilter}>Clear filter</button>}
+          {selectedOwner && <button type="button" class="btn" data-shotgun-clear-filter onClick={onClearFilter}>Clear owner filter</button>}
         </div>
       </div>
       <div class="shotgun-grid" aria-live="polite">
         {completedOwners.length
           ? completedOwners.map(owner => <OwnerTile key={owner} owner={owner} owedCount={ownerOwed(owner)} completed={ownerCompleted(owner)} mediaAvailable={mediaAvailable} onPlay={onPlay} open={Boolean(selectedOwner)} />)
-          : <p class="muted shotgun-empty-state">No completed Shotguns match this owner. <button type="button" class="btn" data-shotgun-clear-filter onClick={onClearFilter}>Clear filter</button></p>}
+          : <p class="muted shotgun-empty-state">{emptyArchiveMessage} {selectedOwner && <button type="button" class="btn" data-shotgun-clear-filter onClick={onClearFilter}>Clear owner filter</button>}</p>}
       </div>
     </section>
   </>;

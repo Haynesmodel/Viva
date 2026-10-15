@@ -3,6 +3,9 @@
   .shotgun-lead h2, .shotgun-lead p { margin: 0; }
   .shotgun-kicker { color: var(--text-muted); font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
   .shotgun-lead-copy { color: var(--text-muted); margin-block-start: var(--space-1); }
+  .shotgun-year-filter { align-items: center; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .shotgun-year-filter label { color: var(--text-muted); font-size: .8rem; font-weight: 700; }
+  .shotgun-year-filter select { min-block-size: var(--control-min-block-size); min-width: 8rem; padding: .4rem .55rem; }
   .shotgun-metrics { display: grid; gap: var(--space-2); grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 34rem; }
   .shotgun-metric { background: var(--surface-panel-alt); border: 1px solid var(--border); border-radius: var(--radius-control); display: grid; gap: .15rem; min-width: 0; padding: var(--space-2); }
   .shotgun-metric span { color: var(--text-muted); font-size: .8rem; font-weight: 700; }
@@ -59,6 +62,8 @@
 
   @media (max-width: 600px) {
     .shotgun-metrics, .shotgun-owner-overview { grid-template-columns: 1fr; max-width: none; }
+    .shotgun-year-filter { align-items: stretch; display: grid; }
+    .shotgun-year-filter select { min-width: 0; width: 100%; }
     .shotgun-archive-heading { align-items: stretch; }
     .shotgun-filter { align-items: stretch; display: grid; }
     .shotgun-filter select { min-width: 0; width: 100%; }
