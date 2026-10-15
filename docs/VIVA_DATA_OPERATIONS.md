@@ -148,7 +148,7 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 126 rows: 109 completed and
+`assets/Shotguns.json` is the source of record for 127 rows: 110 completed and
 media-backed, plus 17 owed obligations through Week 5. Keep IDs, owner, week, date, cause, due date,
 completion, and `media_key` stable. Do not commit video bytes to the Pages
 artifact. The reviewed external Viva media origin is supplied through
@@ -176,6 +176,8 @@ append the carryover explicitly; the ESPN report only detects score-based
 obligations. Wei's Week 2 Lions D/ST Shotgun was completed October 1, after
 the September 24 deadline. His Week 3 carryover missed the October 1 cutoff,
 so Week 3 and Week 4 carryovers remain owed.
+Malcolm's Week 4 Broncos D/ST clip was recorded October 11, after the
+October 8 cutoff, so its Week 5 carryover remains owed.
 
 The guarded `Refresh weekly Shotguns` workflow runs automatically at 10:47 AM
 America/Chicago on Tuesdays when `VIVA_ESPN_ENABLED` is exactly `true`. It

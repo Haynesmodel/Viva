@@ -1106,6 +1106,16 @@
     "date": "2026-10-04",
     "due_date": null,
     "cause": "Started player: Broncos D/ST (0 points)",
+    "completed": true,
+    "media_key": "Malcolm/2026-10-11-week-4-broncos-dst.mov"
+  },
+  {
+    "id": "shotgun-malcolm-2026-10-08-week-5-carryover-broncos-dst",
+    "owner": "Malcolm",
+    "week": 5,
+    "date": "2026-10-08",
+    "due_date": "2026-10-15",
+    "cause": "Carryover: Week 4 Broncos D/ST missed Oct 8 deadline",
     "completed": false,
     "media_key": null
   },
