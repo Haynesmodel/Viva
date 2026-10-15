@@ -103,7 +103,7 @@ def started_player_rows(team: dict[str, Any], owner: str, week: int, date: str) 
                 slot = int(entry.get("lineupSlotId"))
             except (TypeError, ValueError):
                 continue
-            if slot in BENCH_SLOTS or slot >= 20:
+            if slot in BENCH_SLOTS:
                 seen_players.add(str(player_id))
                 continue
             score = player_score(entry, week)

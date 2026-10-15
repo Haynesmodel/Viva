@@ -148,7 +148,7 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 125 rows: 108 completed and
+`assets/Shotguns.json` is the source of record for 126 rows: 109 completed and
 media-backed, plus 17 owed obligations through Week 5. Keep IDs, owner, week, date, cause, due date,
 completion, and `media_key` stable. Do not commit video bytes to the Pages
 artifact. The reviewed external Viva media origin is supplied through
@@ -166,7 +166,8 @@ respond successfully from the configured media origin.
 ### Weekly Shotguns check
 
 After the current-season ESPN refresh, inspect a finalized week with the
-starter-level report. A started player means a lineup slot below 20; a score
+starter-level report. ESPN slot 23 is a starting FLEX slot; only bench (20) and
+injured reserve (21) are excluded. A score
 of zero or below creates one owed Shotgun for that owner:
 
 An unfinished Shotgun at 7:20 p.m. America/Chicago on the following Thursday

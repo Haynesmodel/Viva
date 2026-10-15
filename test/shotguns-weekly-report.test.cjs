@@ -14,6 +14,7 @@ test('weekly Shotguns report finds started players at zero or below', () => {
       { id: 1, name: 'Joe', roster: { entries: [
         { lineupSlotId: 0, playerPoolEntry: { id: 11, player: { fullName: 'Zero Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedTotal: 0 }] } } },
         { lineupSlotId: 20, playerPoolEntry: { id: 12, player: { fullName: 'Bench Player', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: -5 }] } } },
+        { lineupSlotId: 23, playerPoolEntry: { id: 15, player: { fullName: 'Zero FLEX Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedTotal: 0 }] } } },
       ] } },
       { id: 2, name: 'Kylie', roster: { entries: [
         { lineupSlotId: 0, playerPoolEntry: { id: 13, player: { fullName: 'Positive Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: 5 }] } } },
@@ -27,6 +28,7 @@ test('weekly Shotguns report finds started players at zero or below', () => {
   ], { cwd: path.join(__dirname, '..'), encoding: 'utf8' });
   assert.match(output, /Joe 100/);
   assert.match(output, /Joe: Started player: Zero Starter \(0 points\)/);
+  assert.match(output, /Joe: Started player: Zero FLEX Starter \(0 points\)/);
   assert.match(output, /Kylie: Started player: Negative Starter \(-1 points\)/);
   assert.doesNotMatch(output, /Bench Player|Positive Starter/);
 });
