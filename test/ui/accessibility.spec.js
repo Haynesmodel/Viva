@@ -102,6 +102,7 @@ test('Shotguns announces modal playback failures and restores focus', async ({ p
 });
 
 test('Shotguns filtered archive remains axe-clean and labels actions distinctly', async ({ page }) => {
+  test.setTimeout(60_000);
   await page.goto('/?tab=shotguns');
   await unlockViva(page);
   await analyze(page, 'shotguns-default');

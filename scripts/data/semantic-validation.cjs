@@ -148,7 +148,9 @@ function validateSemanticBundle(bundle, opts = {}) {
     if (shotgunIds.has(shotgun.id)) report('SHOTGUN_DUPLICATE_ID', location, shotgun.id, `duplicate Shotguns id ${shotgun.id}`);
     shotgunIds.add(shotgun.id);
     if (!configuredOwners.has(shotgun.owner)) report('OWNER_UNCONFIGURED', location, `${shotgun.id}|${shotgun.owner}`, `${shotgun.owner} is not present in src/viva/owners.ts`);
-    if (!summaryOwners.has(shotgun.owner)) report('SHOTGUN_UNKNOWN_OWNER', location, `${shotgun.id}|${shotgun.owner}`, `unknown owner ${shotgun.owner}`);
+    if (!summaryOwners.has(shotgun.owner) && !currentOwners.has(shotgun.owner)) {
+      report('SHOTGUN_UNKNOWN_OWNER', location, `${shotgun.id}|${shotgun.owner}`, `unknown owner ${shotgun.owner}`);
+    }
     if (shotgun.completed && !shotgun.media_key) report('SHOTGUN_MEDIA_KEY_MISSING', location, shotgun.id, 'completed records require media_key');
     if (!shotgun.completed && shotgun.media_key !== null) report('SHOTGUN_OWED_MEDIA_KEY', location, shotgun.id, 'owed records cannot carry a media key');
   });

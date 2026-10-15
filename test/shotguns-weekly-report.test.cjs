@@ -14,6 +14,7 @@ test('weekly Shotguns report finds started players at zero or below', () => {
       { id: 1, name: 'Joe', roster: { entries: [
         { lineupSlotId: 0, playerPoolEntry: { id: 11, player: { fullName: 'Zero Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedTotal: 0 }] } } },
         { lineupSlotId: 20, playerPoolEntry: { id: 12, player: { fullName: 'Bench Player', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: -5 }] } } },
+        { lineupSlotId: 23, playerPoolEntry: { id: 15, player: { fullName: 'Zero FLEX Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedTotal: 0 }] } } },
       ] } },
       { id: 2, name: 'Kylie', roster: { entries: [
         { lineupSlotId: 0, playerPoolEntry: { id: 13, player: { fullName: 'Positive Starter', stats: [{ scoringPeriodId: 1, statSourceId: 0, appliedStatTotal: 5 }] } } },
@@ -27,6 +28,7 @@ test('weekly Shotguns report finds started players at zero or below', () => {
   ], { cwd: path.join(__dirname, '..'), encoding: 'utf8' });
   assert.match(output, /Joe 100/);
   assert.match(output, /Joe: Started player: Zero Starter \(0 points\)/);
+  assert.match(output, /Joe: Started player: Zero FLEX Starter \(0 points\)/);
   assert.match(output, /Kylie: Started player: Negative Starter \(-1 points\)/);
   assert.doesNotMatch(output, /Bench Player|Positive Starter/);
 });
@@ -35,14 +37,15 @@ test('weekly Shotguns report catches a zero-point starter omitted from the match
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-shotguns-missing-'));
   const input = path.join(directory, 'espn.json');
   const positive = { lineupSlotId: 2, playerPoolEntry: { id: 20, appliedStatTotal: 8, player: { fullName: 'Positive Starter' } } };
+  const missingOnBench = { lineupSlotId: 20, playerPoolEntry: { id: 21, appliedStatTotal: 0, player: { fullName: 'Missing Starter' } } };
   fs.writeFileSync(input, JSON.stringify({
     status: { currentMatchupPeriod: 3 },
     teams: [{ id: 1, name: 'Mino' }, { id: 2, name: 'Kylie' }],
     schedule: [{ id: 102, matchupPeriodId: 2, winner: 'HOME',
       home: { teamId: 1, totalPoints: 8,
-        rosterForMatchupPeriod: { entries: [positive] },
+        rosterForMatchupPeriod: { entries: [positive, missingOnBench] },
         rosterForCurrentScoringPeriod: { entries: [positive,
-          { lineupSlotId: 4, playerPoolEntry: { id: 21, appliedStatTotal: 0, player: { fullName: 'Missing Starter' } } },
+          { lineupSlotId: 23, playerPoolEntry: { id: 21, appliedStatTotal: 0, player: { fullName: 'Missing Starter' } } },
           { lineupSlotId: 20, playerPoolEntry: { id: 22, appliedStatTotal: -2, player: { fullName: 'Bench Player' } } },
         ] },
       },

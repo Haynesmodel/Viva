@@ -8,16 +8,28 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 109);
-  assert.equal(shotguns.filter(row => row.completed).length, 107);
-  assert.equal(shotguns.filter(row => !row.completed).length, 2);
+  assert.equal(shotguns.length, 128);
+  assert.equal(shotguns.filter(row => row.completed).length, 122);
+  assert.equal(shotguns.filter(row => !row.completed).length, 6);
+  assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
+    && row.cause === 'Started player: Rams D/ST (0 points)' && row.media_key === 'Joe/IMG_2573.mov'));
   assert.deepEqual(
-    shotguns.filter(row => !row.completed).map(row => `${row.owner}: ${row.cause}`).sort(),
-    [
-      'Wei: Carryover: Week 2 Lions D/ST missed Sep 24 deadline',
-      'Wei: Carryover: Week 3 shotgun missed Oct 1 deadline',
-    ],
+    [4, 5].map(week => shotguns.filter(row => row.week === week && row.cause.startsWith('Started player:')).length),
+    [8, 9],
   );
+  assert.ok(shotguns.some(row => row.owner === 'Taylor' && row.week === 5 && row.completed
+    && row.cause.includes('Brian Thomas Jr.') && row.media_key === 'Taylor/2026-10-12-week-5-brian-thomas-jr.mov'));
+  assert.ok(shotguns.some(row => row.owner === 'Taylor' && row.week === 5 && row.completed
+    && row.cause.includes('Stefon Diggs') && row.media_key === 'Taylor/2026-10-12-week-5-second-shotgun.mov'));
+  assert.ok(shotguns.some(row => row.owner === 'Malcolm' && row.week === 4 && row.completed
+    && row.cause.includes('Broncos D/ST') && row.media_key === 'Malcolm/2026-10-11-week-4-broncos-dst.mov'));
+  assert.ok(shotguns.some(row => row.owner === 'Malcolm' && row.week === 5 && row.completed
+    && row.cause.includes('Week 4 Broncos D/ST missed Oct 8 deadline') && row.due_date === '2026-10-15'));
+  assert.ok(shotguns.some(row => row.owner === 'Malcolm' && row.week === 5 && row.completed
+    && row.cause.includes('Week 4 Rachaad White missed Oct 8 deadline') && row.due_date === '2026-10-15'));
+  assert.ok(shotguns.some(row => row.owner === 'Will' && row.week === 5 && row.completed && row.cause.includes('Oronde Gadsden')));
+  assert.ok(shotguns.filter(row => [4, 5].includes(row.week) && row.cause.startsWith('Started player:'))
+    .every(row => row.date === (row.week === 4 ? '2026-10-04' : '2026-10-11')));
   assert.equal(new Set(shotguns.map(row => row.id)).size, shotguns.length);
   assert.ok(shotguns.every(row => Object.hasOwn(row, 'media_key')));
   assert.deepEqual(
@@ -33,8 +45,10 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     ],
   );
   assert.deepEqual(
-    shotguns.filter(row => row.owner === 'Wei' && !row.completed).map(row => [row.week, row.date, row.due_date]),
-    [[3, '2026-09-24', '2026-10-01'], [4, '2026-10-01', '2026-10-08']],
+    shotguns.filter(row => row.owner === 'Wei' && row.completed && row.cause.startsWith('Carryover:'))
+      .map(row => [row.week, row.date, row.due_date, row.media_key]),
+    [[3, '2026-09-24', '2026-10-01', 'Wei/2026-10-02-week-3-carryover.mov'],
+      [4, '2026-10-01', '2026-10-08', 'Wei/2026-10-03-week-4-carryover.mov']],
   );
   assert.equal(fs.existsSync(path.join(root, 'assets/TransactionHistory.json')), false);
   assert.equal(fs.existsSync(path.join(root, 'src/features/transactions')), false);
@@ -64,4 +78,32 @@ test('semantic validation rejects owners outside the typed Viva owner contract',
   }, { root });
   assert.match(result.errors.join('\n'), /OWNER_UNCONFIGURED/);
   assert.match(result.errors.join('\n'), /Intruder/);
+});
+
+test('Shotguns validation accepts an active current-season owner without historical results', () => {
+  const result = validateSemanticBundle({
+    H2H: [], SeasonSummary: [], Rivalries: [],
+    CurrentSeason: {
+      season: 2026,
+      teams: [{ roster_id: 7, owner: 'Will' }],
+      games: [],
+      playoff_rules: { playoff_slots: 0, bye_slots: 0, saunders_slots: 0, regular_season_max_week: 14 },
+      regular_season_max_week: 14,
+    },
+    Shotguns: [{ id: 'shotgun-will-2026-10-11-week-5-player-4595342', owner: 'Will', week: 5,
+      date: '2026-10-11', due_date: null, cause: 'Started player: Oronde Gadsden (0 points)',
+      completed: false, media_key: null }],
+  }, { root });
+  assert.deepEqual(result.errors, []);
+});
+
+test('Shotguns validation rejects a configured owner absent from both historical and current seasons', () => {
+  const result = validateSemanticBundle({
+    H2H: [], SeasonSummary: [], Rivalries: [], CurrentSeason: null,
+    Shotguns: [{ id: 'shotgun-will-unmapped-season', owner: 'Will', week: 5,
+      date: '2026-10-11', due_date: null, cause: 'Started player: Oronde Gadsden (0 points)',
+      completed: false, media_key: null }],
+  }, { root });
+  assert.match(result.errors.join('\n'), /SHOTGUN_UNKNOWN_OWNER.*Will/);
+  assert.doesNotMatch(result.errors.join('\n'), /OWNER_UNCONFIGURED/);
 });
