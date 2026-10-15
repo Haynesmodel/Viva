@@ -11,6 +11,8 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
   assert.equal(shotguns.length, 126);
   assert.equal(shotguns.filter(row => row.completed).length, 109);
   assert.equal(shotguns.filter(row => !row.completed).length, 17);
+  assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
+    && row.cause === 'Started player: Rams D/ST (0 points)' && row.media_key === 'Joe/IMG_2573.mov'));
   assert.deepEqual(
     [4, 5].map(week => shotguns.filter(row => row.week === week && row.cause.startsWith('Started player:')).length),
     [8, 9],
