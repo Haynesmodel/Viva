@@ -104,7 +104,6 @@ def started_player_rows(team: dict[str, Any], owner: str, week: int, date: str) 
             except (TypeError, ValueError):
                 continue
             if slot in BENCH_SLOTS:
-                seen_players.add(str(player_id))
                 continue
             score = player_score(entry, week)
             if score is None:

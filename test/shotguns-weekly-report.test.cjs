@@ -37,14 +37,15 @@ test('weekly Shotguns report catches a zero-point starter omitted from the match
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-shotguns-missing-'));
   const input = path.join(directory, 'espn.json');
   const positive = { lineupSlotId: 2, playerPoolEntry: { id: 20, appliedStatTotal: 8, player: { fullName: 'Positive Starter' } } };
+  const missingOnBench = { lineupSlotId: 20, playerPoolEntry: { id: 21, appliedStatTotal: 0, player: { fullName: 'Missing Starter' } } };
   fs.writeFileSync(input, JSON.stringify({
     status: { currentMatchupPeriod: 3 },
     teams: [{ id: 1, name: 'Mino' }, { id: 2, name: 'Kylie' }],
     schedule: [{ id: 102, matchupPeriodId: 2, winner: 'HOME',
       home: { teamId: 1, totalPoints: 8,
-        rosterForMatchupPeriod: { entries: [positive] },
+        rosterForMatchupPeriod: { entries: [positive, missingOnBench] },
         rosterForCurrentScoringPeriod: { entries: [positive,
-          { lineupSlotId: 4, playerPoolEntry: { id: 21, appliedStatTotal: 0, player: { fullName: 'Missing Starter' } } },
+          { lineupSlotId: 23, playerPoolEntry: { id: 21, appliedStatTotal: 0, player: { fullName: 'Missing Starter' } } },
           { lineupSlotId: 20, playerPoolEntry: { id: 22, appliedStatTotal: -2, player: { fullName: 'Bench Player' } } },
         ] },
       },
