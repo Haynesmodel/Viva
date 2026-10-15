@@ -126,7 +126,7 @@ export function ShotgunsPage({ rows, owed, completed, owners, filterOwners, comp
     </section>
 
     <section class="card" aria-labelledby="shotgunsByOwnerHeading">
-      <div class="section-heading"><div><h3 id="shotgunsByOwnerHeading">Shotguns by owner</h3><p class="muted">A compact overview of every owner in the archive.</p></div></div>
+      <div class="section-heading"><div><h3 id="shotgunsByOwnerHeading">Shotguns by owner</h3><p class="muted">Owed and completed records by owner.</p></div></div>
       <ul class="shotgun-owner-overview">{owners.map(owner => <OwnerOverviewCard key={owner} owner={owner} owedCount={ownerOwed(owner)} completedCount={ownerCompleted(owner).length} />)}</ul>
     </section>
 
