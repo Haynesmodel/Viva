@@ -1186,8 +1186,8 @@
     "date": "2026-10-11",
     "due_date": null,
     "cause": "Started player: Bears D/ST (-2 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Kylie/2026-10-15.mov"
   },
   {
     "id": "shotgun-taylor-2026-10-11-week-5-player-4432773",
