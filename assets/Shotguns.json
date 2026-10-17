@@ -1236,8 +1236,8 @@
     "date": "2026-10-11",
     "due_date": null,
     "cause": "Started player: Cairo Santos (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Erin/2026-10-15.mp4"
   },
   {
     "id": "shotgun-erin-2026-10-11-week-5-player-4431492",
@@ -1246,8 +1246,8 @@
     "date": "2026-10-11",
     "due_date": null,
     "cause": "Started player: Roman Wilson (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Erin/2026-10-15-second.mp4"
   },
   {
     "id": "shotgun-dulberger-2026-10-11-week-5-player-16023",
