@@ -1226,8 +1226,8 @@
     "date": "2026-10-11",
     "due_date": null,
     "cause": "Started player: Cowboys D/ST (-3 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Mino/2026-10-15.mp4"
   },
   {
     "id": "shotgun-erin-2026-10-11-week-5-player-17427",
