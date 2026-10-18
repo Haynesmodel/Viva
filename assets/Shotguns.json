@@ -1256,8 +1256,8 @@
     "date": "2026-10-11",
     "due_date": null,
     "cause": "Started player: Steelers D/ST (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Dulberger/2026-10-15.mp4"
   },
   {
     "id": "shotgun-wei-2026-10-11-week-5-player-3916387",

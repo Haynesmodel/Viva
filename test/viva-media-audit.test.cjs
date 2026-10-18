@@ -74,6 +74,26 @@ test('media audit probes every expected HTTPS object', async () => {
   }
 });
 
+test('media audit retries transient media timeouts', async () => {
+  const root = fixtureRoot([{ completed: true, media_key: 'Joe/one.mov' }], []);
+  let attempts = 0;
+  try {
+    const result = await check(root, {
+      expectedCount: 1,
+      mediaBaseUrl: 'https://media.example.test',
+      requireRemote: true,
+      probe: async () => {
+        attempts += 1;
+        if (attempts < 3) throw Object.assign(new Error('timed out'), { name: 'TimeoutError' });
+      },
+    });
+    assert.deepEqual(result.errors, []);
+    assert.equal(attempts, 3);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('media audit scans video leaks anywhere in the built dist tree', () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'viva-media-dist-'));
   try {

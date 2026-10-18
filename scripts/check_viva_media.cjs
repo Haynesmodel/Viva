@@ -37,7 +37,7 @@ async function check(root = process.cwd(), options = {}) {
   const localKeys = mediaFiles(root).map(file => path.relative(path.join(root, 'assets', 'Shotguns'), file).split(path.sep).join('/')).sort();
   const errors = [];
   const warnings = [];
-  const expectedCount = options.expectedCount ?? 126;
+  const expectedCount = options.expectedCount ?? 127;
   if (new Set(keys).size !== keys.length) errors.push('Shotguns media keys must be unique');
   if (keys.length !== expectedCount) errors.push(`Expected ${expectedCount} referenced completed Shotguns media keys, found ${keys.length}`);
   const referenced = new Set(keys);
@@ -52,10 +52,17 @@ async function check(root = process.cwd(), options = {}) {
   } else {
     const probeKeys = [...new Set([...localKeys, ...keys])].sort();
     for (const key of probeKeys) {
-      try {
-        await probeFn(mediaUrl(mediaConfig.value, key));
-      } catch (error) {
-        errors.push(`Shotguns media URL is unreachable: ${key} (${error.message})`);
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        try {
+          await probeFn(mediaUrl(mediaConfig.value, key));
+          break;
+        } catch (error) {
+          if (attempt === 2 || !['TimeoutError', 'AbortError', 'TypeError'].includes(error.name)) {
+            errors.push(`Shotguns media URL is unreachable: ${key} (${error.message})`);
+            break;
+          }
+          await new Promise(resolve => setTimeout(resolve, 100 * (attempt + 1)));
+        }
       }
     }
   }
