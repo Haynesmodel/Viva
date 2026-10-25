@@ -8,8 +8,8 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 128);
-  assert.equal(shotguns.filter(row => row.completed).length, 127);
+  assert.equal(shotguns.length, 134);
+  assert.equal(shotguns.filter(row => row.completed).length, 133);
   assert.equal(shotguns.filter(row => !row.completed).length, 1);
   assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
     && row.cause === 'Started player: Rams D/ST (0 points)' && row.media_key === 'Joe/IMG_2573.mov'));
@@ -23,6 +23,16 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     && row.completed && row.media_key === 'Erin/2026-10-15-second.mp4'));
   assert.ok(shotguns.some(row => row.id === 'shotgun-dulberger-2026-10-11-week-5-player-16023'
     && row.completed && row.media_key === 'Dulberger/2026-10-15.mp4'));
+  for (const [id, mediaKey] of Object.entries({
+    'shotgun-joe-2026-10-18-week-6-player-16030': 'Joe/2026-10-22-week-6.mp4',
+    'shotgun-leah-2026-10-18-week-6-player-4696981': 'Leah/2026-10-22-week-6.mp4',
+    'shotgun-seth-2026-10-18-week-6-player-16021': 'Seth/2026-10-21-week-6.mp4',
+    'shotgun-wei-2026-10-18-week-6-player-4685702': 'Wei/2026-10-21-week-6.mp4',
+    'shotgun-will-2026-10-18-week-6-player-3929645': 'Will/2026-10-18-week-6.mp4',
+    'shotgun-wei-2026-10-11-week-5-player-3916387': 'Wei/2026-10-16-week-5.mp4',
+  })) assert.ok(shotguns.some(row => row.id === id && row.completed && row.media_key === mediaKey));
+  assert.ok(shotguns.some(row => row.id === 'shotgun-marian-2026-10-18-week-6-player-16034'
+    && !row.completed && row.media_key === null));
   assert.deepEqual(
     [4, 5].map(week => shotguns.filter(row => row.week === week && row.cause.startsWith('Started player:')).length),
     [8, 9],

@@ -1266,8 +1266,8 @@
     "date": "2026-10-11",
     "due_date": null,
     "cause": "Started player: Lamar Jackson (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Wei/2026-10-16-week-5.mp4"
   },
   {
     "id": "shotgun-malcolm-2026-10-08-week-5-carryover-rachaad-white",
@@ -1278,5 +1278,65 @@
     "cause": "Carryover: Week 4 Rachaad White missed Oct 8 deadline",
     "completed": true,
     "media_key": "Malcolm/2026-10-09-week-5-rachaad-carryover.mov"
+  },
+  {
+    "id": "shotgun-seth-2026-10-18-week-6-player-16021",
+    "owner": "Seth",
+    "week": 6,
+    "date": "2026-10-18",
+    "due_date": null,
+    "cause": "Started player: Eagles D/ST (0 points)",
+    "completed": true,
+    "media_key": "Seth/2026-10-21-week-6.mp4"
+  },
+  {
+    "id": "shotgun-joe-2026-10-18-week-6-player-16030",
+    "owner": "Joe",
+    "week": 6,
+    "date": "2026-10-18",
+    "due_date": null,
+    "cause": "Started player: Jaguars D/ST (-2 points)",
+    "completed": true,
+    "media_key": "Joe/2026-10-22-week-6.mp4"
+  },
+  {
+    "id": "shotgun-will-2026-10-18-week-6-player-3929645",
+    "owner": "Will",
+    "week": 6,
+    "date": "2026-10-18",
+    "due_date": null,
+    "cause": "Started player: Juwan Johnson (0 points)",
+    "completed": true,
+    "media_key": "Will/2026-10-18-week-6.mp4"
+  },
+  {
+    "id": "shotgun-leah-2026-10-18-week-6-player-4696981",
+    "owner": "Leah",
+    "week": 6,
+    "date": "2026-10-18",
+    "due_date": null,
+    "cause": "Started player: Cam Skattebo (0 points)",
+    "completed": true,
+    "media_key": "Leah/2026-10-22-week-6.mp4"
+  },
+  {
+    "id": "shotgun-wei-2026-10-18-week-6-player-4685702",
+    "owner": "Wei",
+    "week": 6,
+    "date": "2026-10-18",
+    "due_date": null,
+    "cause": "Started player: Quinshon Judkins (0 points)",
+    "completed": true,
+    "media_key": "Wei/2026-10-21-week-6.mp4"
+  },
+  {
+    "id": "shotgun-marian-2026-10-18-week-6-player-16034",
+    "owner": "Marian",
+    "week": 6,
+    "date": "2026-10-18",
+    "due_date": null,
+    "cause": "Started player: Texans D/ST (-2 points)",
+    "completed": false,
+    "media_key": null
   }
 ]
