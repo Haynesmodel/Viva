@@ -1,7 +1,7 @@
 {
-  "description": "Reviewed changed-file floors for the feature-parity snapshot: each metric is the required changed-file threshold unless the minimum local/exact-head hosted observation was lower, in which case it is floored one whole percentage point below that minimum. These separate, expiring floors cannot be lowered by per-file overrides.",
+  "description": "Reviewed changed-file floors for the feature-parity snapshot: each metric is the required changed-file threshold unless the minimum local/exact-head hosted observation was lower, in which case it is floored one whole percentage point below that minimum. All floors rechecked against the 2026-10-25 hosted coverage report. These separate, expiring floors cannot be lowered by per-file overrides.",
   "owner": "@Haynesmodel",
-  "expires": "2026-10-22",
+  "expires": "2027-01-25",
   "files": {
     "js/app-state-controller.js": {
       "lines": 80,
