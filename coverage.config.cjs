@@ -1,8 +1,8 @@
 const correctedBaseline = thresholds => ({
   thresholds,
-  reason: 'Authored-coordinate baseline captured 2026-07-23 after TSX source-map proof; ratchet with behavior-focused tests.',
+  reason: 'Authored-coordinate baseline captured 2026-07-23 after TSX source-map proof; all floors rechecked against the 2026-10-25 hosted coverage report; ratchet with behavior-focused tests.',
   owner: '@Haynesmodel',
-  expires: '2026-10-22',
+  expires: '2027-01-25',
 });
 const vivaBaseline = require('./coverage.viva-baseline.json');
 const vivaChangedBaseline = require('./coverage.viva-changed-baseline.json');

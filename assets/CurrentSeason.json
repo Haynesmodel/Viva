@@ -1,5 +1,5 @@
 {
-  "current_week": 6,
+  "current_week": 7,
   "games": [
     {
       "date": "2026-09-13",
@@ -452,97 +452,97 @@
       "week": 5
     },
     {
-      "date": "2026-10-14",
+      "date": "2026-10-18",
       "matchup_id": 31,
       "rosterA": 11,
       "rosterB": 6,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 132.2,
+      "scoreB": 90.62,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Kylie",
       "teamB": "Seth",
       "type": "Regular",
       "week": 6
     },
     {
-      "date": "2026-10-14",
+      "date": "2026-10-18",
       "matchup_id": 32,
       "rosterA": 9,
       "rosterB": 8,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 125.44,
+      "scoreB": 134.48,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Joe",
       "teamB": "Dulberger",
       "type": "Regular",
       "week": 6
     },
     {
-      "date": "2026-10-14",
+      "date": "2026-10-18",
       "matchup_id": 33,
       "rosterA": 7,
       "rosterB": 2,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 117.54,
+      "scoreB": 116.78,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Will",
       "teamB": "Leah",
       "type": "Regular",
       "week": 6
     },
     {
-      "date": "2026-10-14",
+      "date": "2026-10-18",
       "matchup_id": 34,
       "rosterA": 1,
       "rosterB": 4,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 149.94,
+      "scoreB": 99.78,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Malcolm",
       "teamB": "Wei",
       "type": "Regular",
       "week": 6
     },
     {
-      "date": "2026-10-14",
+      "date": "2026-10-18",
       "matchup_id": 35,
       "rosterA": 3,
       "rosterB": 12,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 81.08,
+      "scoreB": 163.02,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Taylor",
       "teamB": "Erin",
       "type": "Regular",
       "week": 6
     },
     {
-      "date": "2026-10-14",
+      "date": "2026-10-18",
       "matchup_id": 36,
       "rosterA": 5,
       "rosterB": 10,
       "round": "",
-      "scoreA": null,
-      "scoreB": null,
+      "scoreA": 86.5,
+      "scoreB": 129.5,
       "season": 2026,
-      "status": "scheduled",
+      "status": "final",
       "teamA": "Marian",
       "teamB": "Mino",
       "type": "Regular",
       "week": 6
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-25",
       "matchup_id": 37,
       "rosterA": 6,
       "rosterB": 9,
@@ -557,7 +557,7 @@
       "week": 7
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-25",
       "matchup_id": 38,
       "rosterA": 8,
       "rosterB": 7,
@@ -572,7 +572,7 @@
       "week": 7
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-25",
       "matchup_id": 39,
       "rosterA": 2,
       "rosterB": 1,
@@ -587,7 +587,7 @@
       "week": 7
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-25",
       "matchup_id": 40,
       "rosterA": 4,
       "rosterB": 3,
@@ -602,7 +602,7 @@
       "week": 7
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-25",
       "matchup_id": 41,
       "rosterA": 12,
       "rosterB": 5,
@@ -617,7 +617,7 @@
       "week": 7
     },
     {
-      "date": "2026-10-21",
+      "date": "2026-10-25",
       "matchup_id": 42,
       "rosterA": 10,
       "rosterB": 11,
@@ -632,7 +632,7 @@
       "week": 7
     },
     {
-      "date": "2026-10-28",
+      "date": "2026-11-01",
       "matchup_id": 43,
       "rosterA": 7,
       "rosterB": 6,
@@ -647,7 +647,7 @@
       "week": 8
     },
     {
-      "date": "2026-10-28",
+      "date": "2026-11-01",
       "matchup_id": 44,
       "rosterA": 1,
       "rosterB": 8,
@@ -662,7 +662,7 @@
       "week": 8
     },
     {
-      "date": "2026-10-28",
+      "date": "2026-11-01",
       "matchup_id": 45,
       "rosterA": 3,
       "rosterB": 2,
@@ -677,7 +677,7 @@
       "week": 8
     },
     {
-      "date": "2026-10-28",
+      "date": "2026-11-01",
       "matchup_id": 46,
       "rosterA": 5,
       "rosterB": 4,
@@ -692,7 +692,7 @@
       "week": 8
     },
     {
-      "date": "2026-10-28",
+      "date": "2026-11-01",
       "matchup_id": 47,
       "rosterA": 11,
       "rosterB": 12,
@@ -707,7 +707,7 @@
       "week": 8
     },
     {
-      "date": "2026-10-28",
+      "date": "2026-11-01",
       "matchup_id": 48,
       "rosterA": 9,
       "rosterB": 10,
@@ -722,7 +722,7 @@
       "week": 8
     },
     {
-      "date": "2026-11-04",
+      "date": "2026-11-08",
       "matchup_id": 49,
       "rosterA": 6,
       "rosterB": 1,
@@ -737,7 +737,7 @@
       "week": 9
     },
     {
-      "date": "2026-11-04",
+      "date": "2026-11-08",
       "matchup_id": 50,
       "rosterA": 8,
       "rosterB": 3,
@@ -752,7 +752,7 @@
       "week": 9
     },
     {
-      "date": "2026-11-04",
+      "date": "2026-11-08",
       "matchup_id": 51,
       "rosterA": 2,
       "rosterB": 5,
@@ -767,7 +767,7 @@
       "week": 9
     },
     {
-      "date": "2026-11-04",
+      "date": "2026-11-08",
       "matchup_id": 52,
       "rosterA": 4,
       "rosterB": 11,
@@ -782,7 +782,7 @@
       "week": 9
     },
     {
-      "date": "2026-11-04",
+      "date": "2026-11-08",
       "matchup_id": 53,
       "rosterA": 12,
       "rosterB": 9,
@@ -797,7 +797,7 @@
       "week": 9
     },
     {
-      "date": "2026-11-04",
+      "date": "2026-11-08",
       "matchup_id": 54,
       "rosterA": 10,
       "rosterB": 7,
@@ -812,7 +812,7 @@
       "week": 9
     },
     {
-      "date": "2026-11-11",
+      "date": "2026-11-15",
       "matchup_id": 55,
       "rosterA": 3,
       "rosterB": 6,
@@ -827,7 +827,7 @@
       "week": 10
     },
     {
-      "date": "2026-11-11",
+      "date": "2026-11-15",
       "matchup_id": 56,
       "rosterA": 5,
       "rosterB": 8,
@@ -842,7 +842,7 @@
       "week": 10
     },
     {
-      "date": "2026-11-11",
+      "date": "2026-11-15",
       "matchup_id": 57,
       "rosterA": 11,
       "rosterB": 2,
@@ -857,7 +857,7 @@
       "week": 10
     },
     {
-      "date": "2026-11-11",
+      "date": "2026-11-15",
       "matchup_id": 58,
       "rosterA": 9,
       "rosterB": 4,
@@ -872,7 +872,7 @@
       "week": 10
     },
     {
-      "date": "2026-11-11",
+      "date": "2026-11-15",
       "matchup_id": 59,
       "rosterA": 7,
       "rosterB": 12,
@@ -887,7 +887,7 @@
       "week": 10
     },
     {
-      "date": "2026-11-11",
+      "date": "2026-11-15",
       "matchup_id": 60,
       "rosterA": 1,
       "rosterB": 10,
@@ -902,7 +902,7 @@
       "week": 10
     },
     {
-      "date": "2026-11-18",
+      "date": "2026-11-22",
       "matchup_id": 61,
       "rosterA": 6,
       "rosterB": 5,
@@ -917,7 +917,7 @@
       "week": 11
     },
     {
-      "date": "2026-11-18",
+      "date": "2026-11-22",
       "matchup_id": 62,
       "rosterA": 8,
       "rosterB": 11,
@@ -932,7 +932,7 @@
       "week": 11
     },
     {
-      "date": "2026-11-18",
+      "date": "2026-11-22",
       "matchup_id": 63,
       "rosterA": 2,
       "rosterB": 9,
@@ -947,7 +947,7 @@
       "week": 11
     },
     {
-      "date": "2026-11-18",
+      "date": "2026-11-22",
       "matchup_id": 64,
       "rosterA": 4,
       "rosterB": 7,
@@ -962,7 +962,7 @@
       "week": 11
     },
     {
-      "date": "2026-11-18",
+      "date": "2026-11-22",
       "matchup_id": 65,
       "rosterA": 12,
       "rosterB": 1,
@@ -977,7 +977,7 @@
       "week": 11
     },
     {
-      "date": "2026-11-18",
+      "date": "2026-11-22",
       "matchup_id": 66,
       "rosterA": 10,
       "rosterB": 3,
@@ -992,7 +992,7 @@
       "week": 11
     },
     {
-      "date": "2026-11-25",
+      "date": "2026-11-29",
       "matchup_id": 67,
       "rosterA": 6,
       "rosterB": 11,
@@ -1007,7 +1007,7 @@
       "week": 12
     },
     {
-      "date": "2026-11-25",
+      "date": "2026-11-29",
       "matchup_id": 68,
       "rosterA": 8,
       "rosterB": 9,
@@ -1022,7 +1022,7 @@
       "week": 12
     },
     {
-      "date": "2026-11-25",
+      "date": "2026-11-29",
       "matchup_id": 69,
       "rosterA": 2,
       "rosterB": 7,
@@ -1037,7 +1037,7 @@
       "week": 12
     },
     {
-      "date": "2026-11-25",
+      "date": "2026-11-29",
       "matchup_id": 70,
       "rosterA": 4,
       "rosterB": 1,
@@ -1052,7 +1052,7 @@
       "week": 12
     },
     {
-      "date": "2026-11-25",
+      "date": "2026-11-29",
       "matchup_id": 71,
       "rosterA": 12,
       "rosterB": 3,
@@ -1067,7 +1067,7 @@
       "week": 12
     },
     {
-      "date": "2026-11-25",
+      "date": "2026-11-29",
       "matchup_id": 72,
       "rosterA": 10,
       "rosterB": 5,
@@ -1082,7 +1082,7 @@
       "week": 12
     },
     {
-      "date": "2026-12-02",
+      "date": "2026-12-06",
       "matchup_id": 73,
       "rosterA": 9,
       "rosterB": 6,
@@ -1097,7 +1097,7 @@
       "week": 13
     },
     {
-      "date": "2026-12-02",
+      "date": "2026-12-06",
       "matchup_id": 74,
       "rosterA": 7,
       "rosterB": 8,
@@ -1112,7 +1112,7 @@
       "week": 13
     },
     {
-      "date": "2026-12-02",
+      "date": "2026-12-06",
       "matchup_id": 75,
       "rosterA": 1,
       "rosterB": 2,
@@ -1127,7 +1127,7 @@
       "week": 13
     },
     {
-      "date": "2026-12-02",
+      "date": "2026-12-06",
       "matchup_id": 76,
       "rosterA": 3,
       "rosterB": 4,
@@ -1142,7 +1142,7 @@
       "week": 13
     },
     {
-      "date": "2026-12-02",
+      "date": "2026-12-06",
       "matchup_id": 77,
       "rosterA": 5,
       "rosterB": 12,
@@ -1157,7 +1157,7 @@
       "week": 13
     },
     {
-      "date": "2026-12-02",
+      "date": "2026-12-06",
       "matchup_id": 78,
       "rosterA": 11,
       "rosterB": 10,
@@ -1172,7 +1172,7 @@
       "week": 13
     },
     {
-      "date": "2026-12-09",
+      "date": "2026-12-13",
       "matchup_id": 79,
       "rosterA": 6,
       "rosterB": 7,
@@ -1187,7 +1187,7 @@
       "week": 14
     },
     {
-      "date": "2026-12-09",
+      "date": "2026-12-13",
       "matchup_id": 80,
       "rosterA": 8,
       "rosterB": 1,
@@ -1202,7 +1202,7 @@
       "week": 14
     },
     {
-      "date": "2026-12-09",
+      "date": "2026-12-13",
       "matchup_id": 81,
       "rosterA": 2,
       "rosterB": 3,
@@ -1217,7 +1217,7 @@
       "week": 14
     },
     {
-      "date": "2026-12-09",
+      "date": "2026-12-13",
       "matchup_id": 82,
       "rosterA": 4,
       "rosterB": 5,
@@ -1232,7 +1232,7 @@
       "week": 14
     },
     {
-      "date": "2026-12-09",
+      "date": "2026-12-13",
       "matchup_id": 83,
       "rosterA": 12,
       "rosterB": 11,
@@ -1247,7 +1247,7 @@
       "week": 14
     },
     {
-      "date": "2026-12-09",
+      "date": "2026-12-13",
       "matchup_id": 84,
       "rosterA": 10,
       "rosterB": 9,
@@ -1262,7 +1262,7 @@
       "week": 14
     }
   ],
-  "generated_at": "2026-10-13T16:35:01Z",
+  "generated_at": "2026-10-25T12:11:41Z",
   "league_key": "viva",
   "max_week": 17,
   "playoff_rules": {
@@ -1354,7 +1354,7 @@
   "update_context": {
     "contains_live_scores": false,
     "contains_projected_scores": false,
-    "cutoff_date": "2026-10-13",
+    "cutoff_date": "2026-10-25",
     "mode": "scheduled"
   },
   "weeks_fetched": [

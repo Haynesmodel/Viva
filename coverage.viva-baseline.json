@@ -1,7 +1,7 @@
 {
-  "description": "Stable reviewed floor: one whole percentage point below the minimum metric observed in local and exact-head hosted coverage runs on 2026-08-13. Ratchet upward with behavior-focused tests before expiry.",
+  "description": "Stable reviewed floor: one whole percentage point below the minimum metric observed in local and exact-head hosted coverage runs on 2026-08-13. All floors rechecked against the 2026-10-25 hosted coverage report; ratchet upward with behavior-focused tests before expiry.",
   "owner": "@Haynesmodel",
-  "expires": "2026-10-22",
+  "expires": "2027-01-25",
   "files": {
     "js/app-state-controller.js": {
       "lines": 90,
