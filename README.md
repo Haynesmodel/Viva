@@ -87,8 +87,8 @@ owner assets, Shotguns records, or the media host.
 - `assets/CurrentSeason.json` contains the configured current-season snapshot.
   Verified historical draft order is populated for the approved 2020–2025
   seasons; future or unverified seasons remain intentionally unavailable.
-- `assets/Shotguns.json` contains 134 curated records: 133 completed and
-  media-backed, plus 1 owed obligation through Week 6. Completed records
+- `assets/Shotguns.json` contains 140 curated records: 133 completed and
+  media-backed, plus 7 owed obligations through Week 7. Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
   artifact and are resolved through `VITE_VIVA_MEDIA_BASE_URL`.
 - `scripts/import_viva_espn.py` accepts local, manually exported ESPN JSON for

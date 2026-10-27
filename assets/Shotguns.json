@@ -1338,5 +1338,65 @@
     "cause": "Started player: Texans D/ST (-2 points)",
     "completed": false,
     "media_key": null
+  },
+  {
+    "id": "shotgun-seth-2026-10-25-week-7-player-16021",
+    "owner": "Seth",
+    "week": 7,
+    "date": "2026-10-25",
+    "due_date": null,
+    "cause": "Started player: Eagles D/ST (-6 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-leah-2026-10-25-week-7-player-16012",
+    "owner": "Leah",
+    "week": 7,
+    "date": "2026-10-25",
+    "due_date": null,
+    "cause": "Started player: Chiefs D/ST (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-wei-2026-10-25-week-7-player-16029",
+    "owner": "Wei",
+    "week": 7,
+    "date": "2026-10-25",
+    "due_date": null,
+    "cause": "Started player: Panthers D/ST (-3 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-erin-2026-10-25-week-7-player-16033",
+    "owner": "Erin",
+    "week": 7,
+    "date": "2026-10-25",
+    "due_date": null,
+    "cause": "Started player: Ravens D/ST (-3 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-mino-2026-10-25-week-7-player-16010",
+    "owner": "Mino",
+    "week": 7,
+    "date": "2026-10-25",
+    "due_date": null,
+    "cause": "Started player: Titans D/ST (-1 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-kylie-2026-10-25-week-7-player-16034",
+    "owner": "Kylie",
+    "week": 7,
+    "date": "2026-10-25",
+    "due_date": null,
+    "cause": "Started player: Texans D/ST (-1 points)",
+    "completed": false,
+    "media_key": null
   }
 ]

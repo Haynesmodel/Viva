@@ -148,8 +148,8 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 134 rows: 133 completed and
-media-backed, plus 1 owed obligation through Week 6. Keep IDs, owner, week,
+`assets/Shotguns.json` is the source of record for 140 rows: 133 completed and
+media-backed, plus 7 owed obligations through Week 7. Keep IDs, owner, week,
 date, cause, due date, completion, and `media_key` stable. Do not commit video bytes to the Pages
 artifact. The reviewed external Viva media origin is supplied through
 `VITE_VIVA_MEDIA_BASE_URL`; run:
