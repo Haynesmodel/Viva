@@ -8,9 +8,11 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 134);
+  assert.equal(shotguns.length, 140);
   assert.equal(shotguns.filter(row => row.completed).length, 133);
-  assert.equal(shotguns.filter(row => !row.completed).length, 1);
+  assert.equal(shotguns.filter(row => !row.completed).length, 7);
+  assert.deepEqual(shotguns.filter(row => row.date === '2026-10-25' && row.week === 7)
+    .map(row => row.owner).sort(), ['Erin', 'Kylie', 'Leah', 'Mino', 'Seth', 'Wei']);
   assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
     && row.cause === 'Started player: Rams D/ST (0 points)' && row.media_key === 'Joe/IMG_2573.mov'));
   assert.ok(shotguns.some(row => row.id === 'shotgun-kylie-2026-10-11-week-5-player-16003'
