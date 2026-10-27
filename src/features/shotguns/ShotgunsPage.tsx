@@ -25,7 +25,7 @@ function RecordDetails({ row, recent = false }: { row: ShotgunRecord; recent?: b
   return <div class="shotgun-record-details">
     <strong>{recent ? vivaShotgunDisplayName(row.owner) : row.date}</strong>
     <span>{recent ? row.date : row.week ? `Week ${row.week}` : null}</span>
-    {recent && row.week && <span>Week {row.week}</span>}
+    {recent && row.week ? <span>Week {row.week}</span> : null}
     <span>{row.cause}</span>
   </div>;
 }
