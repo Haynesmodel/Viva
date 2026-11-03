@@ -8,9 +8,10 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 140);
-  assert.equal(shotguns.filter(row => row.completed).length, 133);
-  assert.equal(shotguns.filter(row => !row.completed).length, 7);
+  assert.equal(shotguns.length, 145);
+  assert.equal(shotguns.filter(row => row.completed).length, 142);
+  assert.equal(shotguns.filter(row => !row.completed).length, 3);
+  assert.deepEqual(shotguns.filter(row => !row.completed).map(row => row.owner).sort(), ['Erin', 'Marian', 'Marian']);
   assert.deepEqual(shotguns.filter(row => row.date === '2026-10-25' && row.week === 7)
     .map(row => row.owner).sort(), ['Erin', 'Kylie', 'Leah', 'Mino', 'Seth', 'Wei']);
   assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
@@ -33,8 +34,22 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     'shotgun-will-2026-10-18-week-6-player-3929645': 'Will/2026-10-18-week-6.mp4',
     'shotgun-wei-2026-10-11-week-5-player-3916387': 'Wei/2026-10-16-week-5.mp4',
   })) assert.ok(shotguns.some(row => row.id === id && row.completed && row.media_key === mediaKey));
-  assert.ok(shotguns.some(row => row.id === 'shotgun-marian-2026-10-18-week-6-player-16034'
-    && !row.completed && row.media_key === null));
+  for (const [id, mediaKey] of Object.entries({
+    'shotgun-marian-2026-10-18-week-6-player-16034': 'Marian/IMG_6298.mov',
+    'shotgun-wei-2026-10-25-week-7-player-16029': 'Wei/IMG_7752.mov',
+    'shotgun-kylie-2026-10-25-week-7-player-16034': 'Kylie/IMG_3095.mov',
+    'shotgun-leah-2026-10-25-week-7-player-16012': 'Leah/IMG_7881.mov',
+    'shotgun-seth-2026-10-25-week-7-player-16021': 'Seth/IMG_1376.mov',
+    'shotgun-mino-2026-10-25-week-7-player-16010': 'Mino/IMG_5081.mov',
+    'shotgun-joe-2026-11-01-week-8-player-4429615': 'Joe/IMG_2624.mov',
+    'shotgun-will-2026-11-01-week-8-player-4567104': 'Will/Calderwood.mov',
+    'shotgun-will-2026-11-01-week-8-player-4723820': 'Will/IMG_7137.mov',
+  })) assert.ok(shotguns.some(row => row.id === id && row.completed && row.media_key === mediaKey));
+  assert.deepEqual(shotguns.filter(row => !row.completed && row.cause.startsWith('Carryover:'))
+    .map(row => [row.owner, row.week, row.date, row.due_date]), [
+    ['Marian', 7, '2026-10-22', '2026-10-29'],
+    ['Marian', 8, '2026-10-29', '2026-11-05'],
+  ]);
   assert.deepEqual(
     [4, 5].map(week => shotguns.filter(row => row.week === week && row.cause.startsWith('Started player:')).length),
     [8, 9],
