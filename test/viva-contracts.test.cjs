@@ -8,9 +8,10 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 146);
+  assert.equal(shotguns.length, 145);
   assert.equal(shotguns.filter(row => row.completed).length, 142);
-  assert.equal(shotguns.filter(row => !row.completed).length, 4);
+  assert.equal(shotguns.filter(row => !row.completed).length, 3);
+  assert.deepEqual(shotguns.filter(row => !row.completed).map(row => row.owner).sort(), ['Erin', 'Marian', 'Marian']);
   assert.deepEqual(shotguns.filter(row => row.date === '2026-10-25' && row.week === 7)
     .map(row => row.owner).sort(), ['Erin', 'Kylie', 'Leah', 'Mino', 'Seth', 'Wei']);
   assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
@@ -48,7 +49,6 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     .map(row => [row.owner, row.week, row.date, row.due_date]), [
     ['Marian', 7, '2026-10-22', '2026-10-29'],
     ['Marian', 8, '2026-10-29', '2026-11-05'],
-    ['Wei', 8, '2026-10-29', '2026-11-05'],
   ]);
   assert.deepEqual(
     [4, 5].map(week => shotguns.filter(row => row.week === week && row.cause.startsWith('Started player:')).length),

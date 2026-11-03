@@ -1448,15 +1448,5 @@
     "cause": "Carryover: Week 7 shotgun missed Oct 29 deadline",
     "completed": false,
     "media_key": null
-  },
-  {
-    "id": "shotgun-wei-2026-10-29-week-8-carryover",
-    "owner": "Wei",
-    "week": 8,
-    "date": "2026-10-29",
-    "due_date": "2026-11-05",
-    "cause": "Carryover: Week 7 Panthers D/ST missed Oct 29 deadline",
-    "completed": false,
-    "media_key": null
   }
 ]
