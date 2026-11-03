@@ -1448,5 +1448,55 @@
     "cause": "Carryover: Week 7 shotgun missed Oct 29 deadline",
     "completed": false,
     "media_key": null
+  },
+  {
+    "id": "shotgun-seth-2026-11-01-week-8-player-4608810",
+    "owner": "Seth",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Tez Johnson (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-malcolm-2026-11-01-week-8-player-16007",
+    "owner": "Malcolm",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Broncos D/ST (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-leah-2026-11-01-week-8-player-4428718",
+    "owner": "Leah",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Tre Tucker (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-wei-2026-11-01-week-8-player-3916387",
+    "owner": "Wei",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Lamar Jackson (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-erin-2026-11-01-week-8-player-16033",
+    "owner": "Erin",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Ravens D/ST (-1 points)",
+    "completed": false,
+    "media_key": null
   }
 ]

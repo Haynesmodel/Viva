@@ -8,10 +8,18 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 145);
+  assert.equal(shotguns.length, 150);
   assert.equal(shotguns.filter(row => row.completed).length, 142);
-  assert.equal(shotguns.filter(row => !row.completed).length, 3);
-  assert.deepEqual(shotguns.filter(row => !row.completed).map(row => row.owner).sort(), ['Erin', 'Marian', 'Marian']);
+  assert.equal(shotguns.filter(row => !row.completed).length, 8);
+  assert.deepEqual(shotguns.filter(row => !row.completed).map(row => row.owner).sort(), ['Erin', 'Erin', 'Leah', 'Malcolm', 'Marian', 'Marian', 'Seth', 'Wei']);
+  assert.deepEqual(shotguns.filter(row => row.week === 8 && !row.completed && row.cause.startsWith('Started player:'))
+    .map(row => [row.owner, row.cause]).sort(), [
+    ['Erin', 'Started player: Ravens D/ST (-1 points)'],
+    ['Leah', 'Started player: Tre Tucker (0 points)'],
+    ['Malcolm', 'Started player: Broncos D/ST (0 points)'],
+    ['Seth', 'Started player: Tez Johnson (0 points)'],
+    ['Wei', 'Started player: Lamar Jackson (0 points)'],
+  ]);
   assert.deepEqual(shotguns.filter(row => row.date === '2026-10-25' && row.week === 7)
     .map(row => row.owner).sort(), ['Erin', 'Kylie', 'Leah', 'Mino', 'Seth', 'Wei']);
   assert.ok(shotguns.some(row => row.owner === 'Joe' && row.week === 1 && row.completed
