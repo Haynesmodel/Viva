@@ -148,9 +148,22 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 134 rows: 133 completed and
-media-backed, plus 1 owed obligation through Week 6. Keep IDs, owner, week,
-date, cause, due date, completion, and `media_key` stable. Do not commit video bytes to the Pages
+`assets/Shotguns.json` is the source of record for 150 rows: 142 completed and
+media-backed, plus 8 owed obligations through finalized Week 8 (refreshed
+November 3, 2026). The Week 8 report adds Seth (Tez Johnson), Malcolm (Broncos
+D/ST), Leah (Tre Tucker), Wei (Lamar Jackson), and Erin (Ravens D/ST).
+Joe’s Zay Flowers completion and Will’s Will Reichard and Omar Cooper Jr.
+completions retain their November 1 matchup dates, IDs, and media references;
+rerunning the finalized-week report adds no duplicate obligations.
+
+Nine videos received November 2 completed Marian’s Week 6 obligation, five
+Week 7 obligations, and those three Week 8 obligations. The confirmed opening
+Week 8 balance included only Erin’s Week 7 Ravens D/ST and Marian’s two deadline
+carryovers (Weeks 7–8). Marian’s November 2 recording missed the October 22 and
+October 29 Thursday cutoffs. No additional Wei carryover is assigned from the
+recording timestamp; the five new records are score-based Week 8 obligations.
+
+Keep IDs, owner, week, date, cause, due date, completion, and `media_key` stable. Do not commit video bytes to the Pages
 artifact. The reviewed external Viva media origin is supplied through
 `VITE_VIVA_MEDIA_BASE_URL`; run:
 

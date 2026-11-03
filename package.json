@@ -82,6 +82,8 @@
     "vite": "^8.1.4"
   },
   "overrides": {
+    "glob": "^14.0.2",
+    "minimatch": "^11.0.1",
     "baseline-browser-mapping": "^2.11.23",
     "browserslist": "^4.28.9",
     "colord": "^2.10.0",
