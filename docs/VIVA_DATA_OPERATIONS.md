@@ -148,9 +148,20 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 134 rows: 133 completed and
-media-backed, plus 1 owed obligation through Week 6. Keep IDs, owner, week,
-date, cause, due date, completion, and `media_key` stable. Do not commit video bytes to the Pages
+`assets/Shotguns.json` is the source of record for 145 rows: 142 completed and
+media-backed, plus 3 owed obligations: Erin’s Week 7 Ravens D/ST and Marian’s
+two deadline carryovers (Weeks 7–8).
+Nine videos received November 2 complete Marian’s Week 6 obligation, five
+Week 7 obligations, and three verified Week 8 obligations: Joe (Zay Flowers)
+and Will (Will Reichard and Omar Cooper Jr.). The three Week 8 records use
+the November 1 matchup date and must retain their IDs and media references
+when the finalized-week report adds the remaining obligations. Marian’s
+November 2 recording missed the October 22 and October 29 Thursday cutoffs.
+The confirmed opening Week 8 balance includes only Erin and Marian; no
+additional Wei carryover is assigned from the recording timestamp. Marian’s two
+carryovers remain owed.
+
+Keep IDs, owner, week, date, cause, due date, completion, and `media_key` stable. Do not commit video bytes to the Pages
 artifact. The reviewed external Viva media origin is supplied through
 `VITE_VIVA_MEDIA_BASE_URL`; run:
 
