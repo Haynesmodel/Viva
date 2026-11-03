@@ -1336,8 +1336,8 @@
     "date": "2026-10-18",
     "due_date": null,
     "cause": "Started player: Texans D/ST (-2 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Marian/IMG_6298.mov"
   },
   {
     "id": "shotgun-seth-2026-10-25-week-7-player-16021",
@@ -1346,8 +1346,8 @@
     "date": "2026-10-25",
     "due_date": null,
     "cause": "Started player: Eagles D/ST (-6 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Seth/IMG_1376.mov"
   },
   {
     "id": "shotgun-leah-2026-10-25-week-7-player-16012",
@@ -1356,8 +1356,8 @@
     "date": "2026-10-25",
     "due_date": null,
     "cause": "Started player: Chiefs D/ST (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Leah/IMG_7881.mov"
   },
   {
     "id": "shotgun-wei-2026-10-25-week-7-player-16029",
@@ -1366,8 +1366,8 @@
     "date": "2026-10-25",
     "due_date": null,
     "cause": "Started player: Panthers D/ST (-3 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Wei/IMG_7752.mov"
   },
   {
     "id": "shotgun-erin-2026-10-25-week-7-player-16033",
@@ -1386,8 +1386,8 @@
     "date": "2026-10-25",
     "due_date": null,
     "cause": "Started player: Titans D/ST (-1 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Mino/IMG_5081.mov"
   },
   {
     "id": "shotgun-kylie-2026-10-25-week-7-player-16034",
@@ -1396,6 +1396,66 @@
     "date": "2026-10-25",
     "due_date": null,
     "cause": "Started player: Texans D/ST (-1 points)",
+    "completed": true,
+    "media_key": "Kylie/IMG_3095.mov"
+  },
+  {
+    "id": "shotgun-joe-2026-11-01-week-8-player-4429615",
+    "owner": "Joe",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Zay Flowers (0 points)",
+    "completed": true,
+    "media_key": "Joe/IMG_2624.mov"
+  },
+  {
+    "id": "shotgun-will-2026-11-01-week-8-player-4567104",
+    "owner": "Will",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Will Reichard (0 points)",
+    "completed": true,
+    "media_key": "Will/Calderwood.mov"
+  },
+  {
+    "id": "shotgun-will-2026-11-01-week-8-player-4723820",
+    "owner": "Will",
+    "week": 8,
+    "date": "2026-11-01",
+    "due_date": null,
+    "cause": "Started player: Omar Cooper Jr. (0 points)",
+    "completed": true,
+    "media_key": "Will/IMG_7137.mov"
+  },
+  {
+    "id": "shotgun-marian-2026-10-22-week-7-carryover",
+    "owner": "Marian",
+    "week": 7,
+    "date": "2026-10-22",
+    "due_date": "2026-10-29",
+    "cause": "Carryover: Week 6 Texans D/ST missed Oct 22 deadline",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-marian-2026-10-29-week-8-carryover",
+    "owner": "Marian",
+    "week": 8,
+    "date": "2026-10-29",
+    "due_date": "2026-11-05",
+    "cause": "Carryover: Week 7 shotgun missed Oct 29 deadline",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-wei-2026-10-29-week-8-carryover",
+    "owner": "Wei",
+    "week": 8,
+    "date": "2026-10-29",
+    "due_date": "2026-11-05",
+    "cause": "Carryover: Week 7 Panthers D/ST missed Oct 29 deadline",
     "completed": false,
     "media_key": null
   }
