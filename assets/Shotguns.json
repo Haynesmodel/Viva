@@ -1376,8 +1376,8 @@
     "date": "2026-10-25",
     "due_date": null,
     "cause": "Started player: Ravens D/ST (-3 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Erin/IMG_0338.mov"
   },
   {
     "id": "shotgun-mino-2026-10-25-week-7-player-16010",
@@ -1436,8 +1436,8 @@
     "date": "2026-10-22",
     "due_date": "2026-10-29",
     "cause": "Carryover: Week 6 Texans D/ST missed Oct 22 deadline",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Marian/IMG_6340.mov"
   },
   {
     "id": "shotgun-marian-2026-10-29-week-8-carryover",
@@ -1446,8 +1446,8 @@
     "date": "2026-10-29",
     "due_date": "2026-11-05",
     "cause": "Carryover: Week 7 shotgun missed Oct 29 deadline",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Marian/IMG_6347.mov"
   },
   {
     "id": "shotgun-seth-2026-11-01-week-8-player-4608810",
@@ -1456,8 +1456,8 @@
     "date": "2026-11-01",
     "due_date": null,
     "cause": "Started player: Tez Johnson (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Seth/IMG_1416.mov"
   },
   {
     "id": "shotgun-malcolm-2026-11-01-week-8-player-16007",
@@ -1466,8 +1466,8 @@
     "date": "2026-11-01",
     "due_date": null,
     "cause": "Started player: Broncos D/ST (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Malcolm/IMG_6226.mov"
   },
   {
     "id": "shotgun-leah-2026-11-01-week-8-player-4428718",
@@ -1486,8 +1486,8 @@
     "date": "2026-11-01",
     "due_date": null,
     "cause": "Started player: Lamar Jackson (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Wei/IMG_7795.mov"
   },
   {
     "id": "shotgun-erin-2026-11-01-week-8-player-16033",
