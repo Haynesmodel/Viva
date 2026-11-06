@@ -87,10 +87,10 @@ owner assets, Shotguns records, or the media host.
 - `assets/CurrentSeason.json` contains the configured current-season snapshot.
   Verified historical draft order is populated for the approved 2020–2025
   seasons; future or unverified seasons remain intentionally unavailable.
-- `assets/Shotguns.json` contains 150 curated records: 142 completed and
-  media-backed, plus 8 owed obligations through finalized Week 8, including
-  deadline carryovers. The three Week 8 completions received November 2 are
-  preserved. Completed records
+- `assets/Shotguns.json` contains 150 curated records: 148 completed and
+  media-backed, plus 2 owed Week 8 obligations (Erin and Leah). Six new
+  recordings reconciled November 5 settle six existing obligations; Marian’s
+  resubmitted Week 6 clip is counted once. Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
   artifact and are resolved through `VITE_VIVA_MEDIA_BASE_URL`.
 - `scripts/import_viva_espn.py` accepts local, manually exported ESPN JSON for

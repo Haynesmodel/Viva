@@ -148,10 +148,14 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 150 rows: 142 completed and
-media-backed, plus 8 owed obligations through finalized Week 8 (refreshed
-November 3, 2026). The Week 8 report adds Seth (Tez Johnson), Malcolm (Broncos
-D/ST), Leah (Tre Tucker), Wei (Lamar Jackson), and Erin (Ravens D/ST).
+`assets/Shotguns.json` is the source of record for 150 rows: 148 completed and
+media-backed, plus 2 owed Week 8 obligations (Erin’s Ravens D/ST and Leah’s
+Tre Tucker), reconciled November 5, 2026. Six new recordings complete Wei,
+Seth, and Malcolm’s Week 8 obligations, Erin’s oldest open obligation (Week 7),
+and Marian’s two carryovers. Marian’s resubmitted `IMG_6298.mov` is an exact
+duplicate of her already-counted Week 6 recording. See
+[`SHOTGUN_SUBMISSIONS_2026-11-05.md`](SHOTGUN_SUBMISSIONS_2026-11-05.md) for
+the recording timestamps, hashes, and assignments.
 Joe’s Zay Flowers completion and Will’s Will Reichard and Omar Cooper Jr.
 completions retain their November 1 matchup dates, IDs, and media references;
 rerunning the finalized-week report adds no duplicate obligations.
