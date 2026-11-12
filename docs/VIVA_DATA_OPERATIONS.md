@@ -148,9 +148,24 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 150 rows: 148 completed and
-media-backed, plus 2 owed Week 8 obligations (Erin’s Ravens D/ST and Leah’s
-Tre Tucker), reconciled November 5, 2026. Six new recordings complete Wei,
+`assets/Shotguns.json` is the source of record for 155 rows: 151 completed and
+media-backed, plus 4 owed through Week 9, refreshed November 12, 2026.
+The refresh adds four Week 9 starter obligations and reconciles three new
+recordings and seven exact duplicates. Erin’s Week 7 obligation was completed
+November 4, after its October 29 deadline; its previously missing Week 8
+carryover is added and completed by her November 5 recording. Erin’s later
+November 5 clip completes Week 8 Ravens D/ST, and Leah’s November 5 clip
+completes Week 8 Tre Tucker. Both owners completed before the November 5
+cutoff, so no carryover from that cutoff is due. See
+[`SHOTGUN_SUBMISSIONS_2026-11-12.md`](SHOTGUN_SUBMISSIONS_2026-11-12.md) for
+the recording timestamps, hashes, and assignments.
+The November 12 7:20 p.m. America/Chicago cutoff has not yet passed at the
+snapshot time; no carryover from that cutoff is included. See
+[`DATA_REFRESH_2026-11-12.md`](DATA_REFRESH_2026-11-12.md) for source checks,
+results, and the 2026 season leaderboards.
+
+The November 5 reconciliation left two owed Week 8 obligations (Erin’s
+Ravens D/ST and Leah’s Tre Tucker). Six new recordings complete Wei,
 Seth, and Malcolm’s Week 8 obligations, Erin’s oldest open obligation (Week 7),
 and Marian’s two carryovers. Marian’s resubmitted `IMG_6298.mov` is an exact
 duplicate of her already-counted Week 6 recording. See
@@ -161,9 +176,11 @@ completions retain their November 1 matchup dates, IDs, and media references;
 rerunning the finalized-week report adds no duplicate obligations.
 
 Nine videos received November 2 completed Marian’s Week 6 obligation, five
-Week 7 obligations, and those three Week 8 obligations. The confirmed opening
-Week 8 balance included only Erin’s Week 7 Ravens D/ST and Marian’s two deadline
-carryovers (Weeks 7–8). Marian’s November 2 recording missed the October 22 and
+Week 7 obligations, and those three Week 8 obligations. That reconciliation
+tracked Erin’s Week 7 Ravens D/ST and Marian’s two deadline carryovers
+(Weeks 7–8); the November 12 review also restores Erin’s missing October 29
+carryover using the recording dates and commissioner clarification.
+Marian’s November 2 recording missed the October 22 and
 October 29 Thursday cutoffs. No additional Wei carryover is assigned from the
 recording timestamp; the five new records are score-based Week 8 obligations.
 
