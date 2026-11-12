@@ -17,7 +17,7 @@ generic dashboard with a league logo applied afterward. It brings rigorous
 historical analysis, a populated current-season command center, and the
 gloriously specific accountability of Shotguns into one bespoke league
 identity. The repository currently carries 486 head-to-head rows, 66
-season-summary rows across six verified seasons, nine named rivalry groups, 150
+season-summary rows across six verified seasons, nine named rivalry groups, 155
 curated Shotguns records, and verified historical draft order for 2020–2025.
 
 - **Auditable by construction.** Canonical JSON, typed validators, generated
@@ -87,10 +87,12 @@ owner assets, Shotguns records, or the media host.
 - `assets/CurrentSeason.json` contains the configured current-season snapshot.
   Verified historical draft order is populated for the approved 2020–2025
   seasons; future or unverified seasons remain intentionally unavailable.
-- `assets/Shotguns.json` contains 150 curated records: 148 completed and
-  media-backed, plus 2 owed Week 8 obligations (Erin and Leah). Six new
-  recordings reconciled November 5 settle six existing obligations; Marian’s
-  resubmitted Week 6 clip is counted once. Completed records
+- `assets/Shotguns.json` contains 155 curated records: 151 completed and
+  media-backed, plus 4 owed through Week 9. The November 12 refresh adds four
+  Week 9 starter obligations, reconciles three new recordings and seven
+  duplicates, and records Erin’s previously missing October 29 carryover.
+  See the [2026 refresh and leaderboards](docs/DATA_REFRESH_2026-11-12.md).
+  Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
   artifact and are resolved through `VITE_VIVA_MEDIA_BASE_URL`.
 - `scripts/import_viva_espn.py` accepts local, manually exported ESPN JSON for
