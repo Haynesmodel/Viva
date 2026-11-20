@@ -1526,8 +1526,8 @@
     "date": "2026-11-08",
     "due_date": "2026-11-12",
     "cause": "Started player: George Pickens (0 points)",
-    "completed": false,
-    "media_key": null
+    "completed": true,
+    "media_key": "Mino/IMG_5376.mov"
   },
   {
     "id": "shotgun-will-2026-11-08-week-9-player-4597500",
@@ -1548,5 +1548,55 @@
     "cause": "Carryover: Week 7 Ravens D/ST missed Oct 29 deadline",
     "completed": true,
     "media_key": "Erin/IMG_0340.mov"
+  },
+  {
+    "id": "shotgun-leah-2026-11-15-week-10-player-16017",
+    "owner": "Leah",
+    "week": 10,
+    "date": "2026-11-15",
+    "due_date": "2026-11-19",
+    "cause": "Started player: Patriots D/ST (-2 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-joe-2026-11-15-week-10-player-4723820",
+    "owner": "Joe",
+    "week": 10,
+    "date": "2026-11-15",
+    "due_date": "2026-11-19",
+    "cause": "Started player: Omar Cooper Jr. (0 points)",
+    "completed": true,
+    "media_key": "Joe/IMG_2650.mov"
+  },
+  {
+    "id": "shotgun-wei-2026-11-15-week-10-player-4429205",
+    "owner": "Wei",
+    "week": 10,
+    "date": "2026-11-15",
+    "due_date": "2026-11-19",
+    "cause": "Started player: Jordan Addison (0 points)",
+    "completed": true,
+    "media_key": "Wei/IMG_7856.mov"
+  },
+  {
+    "id": "shotgun-mino-2026-11-15-week-10-player-4035538",
+    "owner": "Mino",
+    "week": 10,
+    "date": "2026-11-15",
+    "due_date": "2026-11-19",
+    "cause": "Started player: David Montgomery (0 points)",
+    "completed": false,
+    "media_key": null
+  },
+  {
+    "id": "shotgun-mino-2026-11-12-week-10-carryover",
+    "owner": "Mino",
+    "week": 10,
+    "date": "2026-11-12",
+    "due_date": "2026-11-19",
+    "cause": "Carryover: Week 9 George Pickens missed Nov 12 deadline",
+    "completed": false,
+    "media_key": null
   }
 ]

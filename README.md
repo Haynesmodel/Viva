@@ -17,7 +17,7 @@ generic dashboard with a league logo applied afterward. It brings rigorous
 historical analysis, a populated current-season command center, and the
 gloriously specific accountability of Shotguns into one bespoke league
 identity. The repository currently carries 486 head-to-head rows, 66
-season-summary rows across six verified seasons, nine named rivalry groups, 155
+season-summary rows across six verified seasons, nine named rivalry groups, 160
 curated Shotguns records, and verified historical draft order for 2020–2025.
 
 - **Auditable by construction.** Canonical JSON, typed validators, generated
@@ -87,11 +87,13 @@ owner assets, Shotguns records, or the media host.
 - `assets/CurrentSeason.json` contains the configured current-season snapshot.
   Verified historical draft order is populated for the approved 2020–2025
   seasons; future or unverified seasons remain intentionally unavailable.
-- `assets/Shotguns.json` contains 155 curated records: 151 completed and
-  media-backed, plus 4 owed through Week 9. The November 12 refresh adds four
-  Week 9 starter obligations, reconciles three new recordings and seven
-  duplicates, and records Erin’s previously missing October 29 carryover.
-  See the [2026 refresh and leaderboards](docs/DATA_REFRESH_2026-11-12.md).
+- `assets/Shotguns.json` contains 160 curated records: 154 completed and
+  media-backed, plus 6 recorded as owed. The November 20 submissions settle
+  Joe and Wei’s Week 10 obligations and Mino’s Week 9 obligation; his missed
+  November 12 deadline adds a carryover. All four Week 10 starter obligations
+  are verified. Kylie’s new recording is uploaded and documented as unassigned.
+  Further deadline carryovers await completion evidence; see the
+  [submission reconciliation](docs/SHOTGUN_SUBMISSIONS_2026-11-20.md).
   Completed records
   contain stable `media_key` values; video bytes remain outside the Pages
   artifact and are resolved through `VITE_VIVA_MEDIA_BASE_URL`.

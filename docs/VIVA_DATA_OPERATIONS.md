@@ -148,8 +148,17 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 155 rows: 151 completed and
-media-backed, plus 4 owed through Week 9, refreshed November 12, 2026.
+`assets/Shotguns.json` is the source of record for 160 rows: 154 completed and
+media-backed, plus 6 recorded as owed, reconciled November 20, 2026. Joe and
+Wei’s new recordings settle their verified Week 10 obligations; Mino’s settles
+Week 9 George Pickens and establishes a missed-November-12 carryover. All four
+Week 10 score-based obligations are included. Kylie’s recording is uploaded
+but remains unassigned because no matching obligation is documented. These
+balances are not a complete assessment of the November 12/19 carryover
+cutoffs; unsubmitted completion evidence must be reconciled first. See
+[`SHOTGUN_SUBMISSIONS_2026-11-20.md`](SHOTGUN_SUBMISSIONS_2026-11-20.md).
+
+The November 12 reconciliation contained 155 rows: 151 completed and 4 owed.
 The refresh adds four Week 9 starter obligations and reconciles three new
 recordings and seven exact duplicates. Erin’s Week 7 obligation was completed
 November 4, after its October 29 deadline; its previously missing Week 8
@@ -159,8 +168,8 @@ completes Week 8 Tre Tucker. Both owners completed before the November 5
 cutoff, so no carryover from that cutoff is due. See
 [`SHOTGUN_SUBMISSIONS_2026-11-12.md`](SHOTGUN_SUBMISSIONS_2026-11-12.md) for
 the recording timestamps, hashes, and assignments.
-The November 12 7:20 p.m. America/Chicago cutoff has not yet passed at the
-snapshot time; no carryover from that cutoff is included. See
+The November 12 7:20 p.m. America/Chicago cutoff had not yet passed at that
+snapshot time; that refresh did not assess carryovers from the cutoff. See
 [`DATA_REFRESH_2026-11-12.md`](DATA_REFRESH_2026-11-12.md) for source checks,
 results, and the 2026 season leaderboards.
 
