@@ -1598,5 +1598,15 @@
     "cause": "Carryover: Week 9 George Pickens missed Nov 12 deadline",
     "completed": false,
     "media_key": null
+  },
+  {
+    "id": "shotgun-kylie-2026-11-19-commissioner-redo",
+    "owner": "Kylie",
+    "week": null,
+    "date": "2026-11-19",
+    "due_date": null,
+    "cause": "Redo required by Malcolm: Previous shotgun deemed invalid",
+    "completed": true,
+    "media_key": "Kylie/IMG_3186.mov"
   }
 ]

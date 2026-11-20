@@ -3,8 +3,9 @@
 This follow-up uses the November 12 ledger in
 [PR #41](https://github.com/Haynesmodel/Viva/pull/41), commit
 `b24d3da3d5c71fd75da522d310a810d407f4e4ba`. It accounts for all four submitted
-originals. Three recordings have documented obligations; Kylie's is preserved
-as unassigned rather than creating an unsupported obligation.
+originals. All four recordings now have documented obligations. The user
+confirmed that Kylie owed a redo because Malcolm deemed a previous shotgun
+invalid; her recording completes that commissioner-required redo.
 
 Recording dates use each MOV's embedded QuickTime recording-date metadata,
 converted to America/Chicago (CST). Container creation timestamps can reflect
@@ -13,7 +14,7 @@ Shotgun by the submitted owner in each recording.
 
 | Owner / submitted clip | Recorded (CST) | Ledger outcome |
 | --- | --- | --- |
-| Kylie `IMG_3186.mov` | 2026-11-19 20:33:50 | Uploaded, unassigned. No open obligation in the November 12 ledger or Week 10 starter report. Commissioner clarification requested. |
+| Kylie `IMG_3186.mov` | 2026-11-19 20:33:50 | Completes the redo Malcolm required after deeming a previous shotgun invalid, as confirmed by the user. |
 | Wei `IMG_7856.mov` | 2026-11-19 18:38:56 | Completes Week 10 Jordan Addison (0 points), before the November 19 7:20 p.m. cutoff. |
 | Joe `IMG_2650.mov` | 2026-11-18 21:56:09 | Completes Week 10 Omar Cooper Jr. (0 points), before the November 19 cutoff. The embedded source time is 20:56:09 at UTC−07:00. |
 | Mino `IMG_5376.mov` | 2026-11-15 16:54:08 | Completes his oldest outstanding obligation, Week 9 George Pickens (0 points). Its November 12 cutoff was missed, so a Week 10 carryover remains owed. |
@@ -38,11 +39,14 @@ completion and media reference change. His added Week 10 carryover is dated
 November 12 and due November 19, with cause `Carryover: Week 9 George Pickens
 missed Nov 12 deadline`. One clip receives one completion credit.
 
-Kylie's prior completed recordings remain intact. Her new clip is not applied
-to a future week, counted a second time against an already completed row, or
-included in obligation totals. Its confirmed player/week or carryover is
-needed before assignment. Follow the existing unassigned-recording procedure
-documented in `SHOTGUN_SUBMISSIONS_2026-10-15.md`.
+The user clarified: "Malcolm deemed a previous shotgun of hers invalid, so
+that's why she owed one." Kylie's recording therefore completes a separate
+commissioner-required redo, with cause `Redo required by Malcolm: Previous
+shotgun deemed invalid`. It is neither a new starter-scoring event nor a
+deadline carryover. The rejected clip, its original week, and the ruling date
+were not identified. Existing historical rows remain intact; the redo uses
+the November 19 recording date with `week` and `due_date` set to null.
+No extra carryover is inferred from its recording after the Thursday cutoff.
 
 ## Hosted originals
 
@@ -61,11 +65,12 @@ Video bytes stay outside Git and the Pages artifact.
 
 ## Recorded balances and remaining reconciliation
 
-The ledger contains **160 obligations: 154 completed, 6 recorded as owed**.
+The ledger contains **161 obligations: 155 completed, 6 recorded as owed**.
 It adds four Week 10 score-based obligations and Mino's confirmed November 12
-carryover to the prior 155 records. All 151 prior completed rows and keys are
-unchanged. The 2026 football season has 57 earned obligations and 8 recorded
-carryovers; January archive records belong to the prior season.
+carryover, plus Kylie's completed commissioner-required redo, to the prior
+155 records. All 151 prior completed rows and keys are unchanged. The 2026
+football season has 57 earned obligations, 8 recorded carryovers, and 1
+commissioner-required redo; January archive records belong to the prior season.
 
 The six recorded open obligations are Leah's Week 9 and Week 10 Patriots D/ST,
 Marian's Week 9 Ladd McConkey, Will's Week 9 Adonai Mitchell, Mino's Week 10
@@ -76,5 +81,5 @@ November 12 and 19 cutoffs. Missing recordings for the remaining obligations
 could affect additional carryovers. In particular, Mino's two Week 10
 obligations need completion evidence or a November 19 carryover assessment.
 No extra deadline penalties are inferred from the absence of a new attachment.
-Kylie's assignment remains pending. This submission change does not advance
-the Current Season snapshot or alter historical matchup data.
+All four submitted recordings are assigned. This submission change does not
+advance the Current Season snapshot or alter historical matchup data.

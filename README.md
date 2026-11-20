@@ -17,7 +17,7 @@ generic dashboard with a league logo applied afterward. It brings rigorous
 historical analysis, a populated current-season command center, and the
 gloriously specific accountability of Shotguns into one bespoke league
 identity. The repository currently carries 486 head-to-head rows, 66
-season-summary rows across six verified seasons, nine named rivalry groups, 160
+season-summary rows across six verified seasons, nine named rivalry groups, 161
 curated Shotguns records, and verified historical draft order for 2020–2025.
 
 - **Auditable by construction.** Canonical JSON, typed validators, generated
@@ -87,11 +87,12 @@ owner assets, Shotguns records, or the media host.
 - `assets/CurrentSeason.json` contains the configured current-season snapshot.
   Verified historical draft order is populated for the approved 2020–2025
   seasons; future or unverified seasons remain intentionally unavailable.
-- `assets/Shotguns.json` contains 160 curated records: 154 completed and
+- `assets/Shotguns.json` contains 161 curated records: 155 completed and
   media-backed, plus 6 recorded as owed. The November 20 submissions settle
   Joe and Wei’s Week 10 obligations and Mino’s Week 9 obligation; his missed
   November 12 deadline adds a carryover. All four Week 10 starter obligations
-  are verified. Kylie’s new recording is uploaded and documented as unassigned.
+  are verified. Kylie’s new recording completes the redo Malcolm required
+  after invalidating an earlier shotgun.
   Further deadline carryovers await completion evidence; see the
   [submission reconciliation](docs/SHOTGUN_SUBMISSIONS_2026-11-20.md).
   Completed records

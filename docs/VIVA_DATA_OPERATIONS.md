@@ -148,12 +148,14 @@ merges its own PR. No administration-scoped preflight credential is used.
 
 ## Shotguns and external media
 
-`assets/Shotguns.json` is the source of record for 160 rows: 154 completed and
+`assets/Shotguns.json` is the source of record for 161 rows: 155 completed and
 media-backed, plus 6 recorded as owed, reconciled November 20, 2026. Joe and
 Wei’s new recordings settle their verified Week 10 obligations; Mino’s settles
 Week 9 George Pickens and establishes a missed-November-12 carryover. All four
-Week 10 score-based obligations are included. Kylie’s recording is uploaded
-but remains unassigned because no matching obligation is documented. These
+Week 10 score-based obligations are included. Kylie’s recording completes a
+commissioner-required redo: the user confirmed Malcolm invalidated an earlier
+shotgun. Its original week and ruling date are unspecified; the record uses
+the new recording date with no inferred week or deadline. These
 balances are not a complete assessment of the November 12/19 carryover
 cutoffs; unsubmitted completion evidence must be reconciled first. See
 [`SHOTGUN_SUBMISSIONS_2026-11-20.md`](SHOTGUN_SUBMISSIONS_2026-11-20.md).

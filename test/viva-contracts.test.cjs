@@ -8,8 +8,8 @@ const root = path.join(__dirname, '..');
 
 test('Viva canonical assets preserve the Shotguns contract and omit transaction data', () => {
   const shotguns = JSON.parse(fs.readFileSync(path.join(root, 'assets/Shotguns.json'), 'utf8'));
-  assert.equal(shotguns.length, 160);
-  assert.equal(shotguns.filter(row => row.completed).length, 154);
+  assert.equal(shotguns.length, 161);
+  assert.equal(shotguns.filter(row => row.completed).length, 155);
   assert.equal(shotguns.filter(row => !row.completed).length, 6);
   assert.deepEqual(shotguns.filter(row => !row.completed).map(row => row.owner).sort(),
     ['Leah', 'Leah', 'Marian', 'Mino', 'Mino', 'Will']);
@@ -37,7 +37,13 @@ test('Viva canonical assets preserve the Shotguns contract and omit transaction 
     && row.date === '2026-11-12' && row.due_date === '2026-11-19'
     && row.cause === 'Carryover: Week 9 George Pickens missed Nov 12 deadline'
     && !row.completed && row.media_key === null));
-  assert.ok(!shotguns.some(row => row.media_key === 'Kylie/IMG_3186.mov'));
+  assert.deepEqual(shotguns.find(row => row.id === 'shotgun-kylie-2026-11-19-commissioner-redo'), {
+    id: 'shotgun-kylie-2026-11-19-commissioner-redo', owner: 'Kylie', week: null,
+    date: '2026-11-19', due_date: null,
+    cause: 'Redo required by Malcolm: Previous shotgun deemed invalid',
+    completed: true, media_key: 'Kylie/IMG_3186.mov',
+  });
+  assert.equal(shotguns.filter(row => row.media_key === 'Kylie/IMG_3186.mov').length, 1);
   assert.deepEqual(shotguns.filter(row => row.week === 8 && !row.completed && row.cause.startsWith('Started player:'))
     .map(row => row.owner), []);
   for (const [id, mediaKey] of Object.entries({
